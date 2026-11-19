@@ -1,0 +1,26 @@
+{
+  "name": "kalangoos-site",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Landing page do KalangoOS (kalangoos.com): React + Vite, páginas estáticas pré-renderizadas em pt-BR e inglês.",
+  "scripts": {
+    "dev": "vite",
+    "tokens": "node scripts/gen-tokens.mjs",
+    "springs": "node scripts/gen-springs.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "npm run typecheck && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 18900"
+  },
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.2.1",
+    "typescript": "6.0.3",
+    "vite": "8.3.5"
+  }
+}
