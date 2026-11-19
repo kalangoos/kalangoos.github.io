@@ -1,7 +1,8 @@
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import { Icon } from './Icon';
 import { useSite } from '../lib/context';
-import { allShots, SHOTS } from '../content';
+import { allShots } from '../content';
+import { ShotImages } from './Bits';
 
 export type LightboxHandle = { open: (shot: string) => void };
 
@@ -19,7 +20,6 @@ export const Lightbox = forwardRef<LightboxHandle>(function Lightbox(_, ref) {
     },
   }));
   const cur = list[i];
-  const s = SHOTS[cur.shot];
   const step = (d: number) => setI((x) => (x + d + list.length) % list.length);
   return (
     <dialog
@@ -47,7 +47,7 @@ export const Lightbox = forwardRef<LightboxHandle>(function Lightbox(_, ref) {
           </button>
         </div>
         <figure key={cur.shot}>
-          <img src={`/img/shots/${cur.shot}.webp`} width={s.w} height={s.h} alt={cur.alt} />
+          <ShotImages shot={cur.shot} alt={cur.alt} eager />
           <figcaption>{cur.caption}</figcaption>
         </figure>
       </div>

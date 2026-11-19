@@ -33,30 +33,44 @@ export function CaptureChip() {
   );
 }
 
+/** One capture as <img> elements: the dark one, and the light one when the screen was also captured in the light
+ *  theme. CSS shows the one for the page's theme (data-theme or prefers-color-scheme, so also without JavaScript);
+ *  the hidden one is lazy and display:none, so the browser does not download it. */
+export function ShotImages({ shot, alt, eager, sizes }: { shot: string; alt: string; eager?: boolean; sizes?: string }) {
+  const s = SHOTS[shot];
+  const one = (variant: '' | '-light') => {
+    const src = `/img/shots/${shot}${variant}.webp`;
+    return (
+      <img
+        key={variant || 'dark'}
+        className={s.light ? (variant ? 'only-light' : 'only-dark') : undefined}
+        src={src}
+        srcSet={s.small ? `/img/shots/${shot}${variant}-640.webp 640w, ${src} ${s.w}w` : undefined}
+        sizes={s.small ? sizes ?? '(max-width: 760px) 100vw, 50vw' : undefined}
+        width={s.w}
+        height={s.h}
+        alt={alt}
+        loading={eager && !s.light ? 'eager' : 'lazy'}
+        decoding="async"
+      />
+    );
+  };
+  return s.light ? <>{one('')}{one('-light')}</> : one('');
+}
+
 /** A real capture from the test session; clicking opens it enlarged. */
 export function Shot({ shot, alt, eager, sizes, fit }: { shot: string; alt: string; eager?: boolean; sizes?: string; fit?: boolean }) {
   const { t, openShot } = useSite();
   const s = SHOTS[shot];
-  const src = `/img/shots/${shot}.webp`;
   return (
     <button
       type="button"
       className={`capture__img${fit ? ' capture__img--fit' : ''}`}
       onClick={() => openShot(shot)}
       aria-label={`${t.a11y.openImage}: ${alt}`}
-      style={{ aspectRatio: fit ? '1280 / 800' : `${s.w} / ${s.h}` }}
+      style={{ aspectRatio: fit ? '1280 / 800' : `${s.w} / ${s.h}`, maxWidth: fit ? undefined : s.w }} /* never drawn past its own width */
     >
-      <img
-        src={src}
-        srcSet={s.small ? `/img/shots/${shot}-640.webp 640w, ${src} ${s.w}w` : undefined}
-        sizes={s.small ? sizes ?? '(max-width: 720px) 100vw, 400px' : undefined}
-        width={s.w}
-        height={s.h}
-        alt={alt}
-        loading={eager ? 'eager' : 'lazy'}
-        decoding="async"
-        fetchPriority={eager ? 'high' : undefined}
-      />
+      <ShotImages shot={shot} alt={alt} eager={eager} sizes={sizes} />
     </button>
   );
 }

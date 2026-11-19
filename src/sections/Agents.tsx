@@ -77,7 +77,7 @@ export function Agents() {
                 <p>{x.text}</p>
               </div>
               <div className="showcase__shot">
-                <Shot shot={x.shot} alt={x.alt} sizes="(max-width: 900px) 100vw, 780px" />
+                <Shot shot={x.shot} alt={x.alt} sizes="(max-width: 900px) 100vw, 1280px" />
                 <CaptureChip />
               </div>
             </div>

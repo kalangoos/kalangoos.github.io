@@ -173,7 +173,7 @@
       { "shot": "today", "caption": "Hoje: resumo do dia, clima, foco e agenda", "alt": "Barra lateral Hoje aberta à esquerda com o resumo do dia, clima, temporizador de foco e agenda" },
       { "shot": "spaces", "caption": "Espaços por intenção", "alt": "Tela Espaços com os espaços Estudar e Escrever textos e a sugestão de rotina do agente" },
       { "shot": "lock", "caption": "Bloqueio", "alt": "Tela de bloqueio com o relógio colorido, a data e cartões discretos de agentes e notificações" },
-      { "shot": "light", "caption": "Tema claro", "alt": "Configurações › Aparência no tema claro, com prévia ao vivo, cor de destaque, arredondamento e estilo da dock" },
+      { "shot": "appearance", "caption": "Aparência: escuro ou claro", "alt": "Configurações › Aparência com prévia ao vivo, o estilo (claro, escuro ou automático), a cor de destaque, o arredondamento e a dock" },
       { "shot": "editor", "caption": "Editor de Texto com sugestões", "alt": "Editor de Texto com markdown, prévia ao vivo e sugestões do agente" },
       { "shot": "music", "caption": "Música", "alt": "App Música tocando uma faixa, com a mistura montada pelo agente" }
     ],
@@ -212,7 +212,7 @@
   "gallery": {
     "eyebrow": "Capturas",
     "title": "Mais telas, direto da sessão de teste",
-    "lead": "Todas as capturas desta página vêm da sessão de teste do KalangoOS, com dados de teste.",
+    "lead": "Todas as capturas desta página vêm da sessão de teste do KalangoOS, com dados de teste, no tema da página.",
     "items": [
       { "shot": "first-use", "caption": "Primeiro uso: trazer pastas e favoritos do outro sistema", "alt": "Primeiro uso perguntando se quer trazer arquivos e pastas, favoritos do navegador e conectores dos agentes" },
       { "shot": "help", "caption": "Ajuda que responde sem internet", "alt": "App Ajuda respondendo como conectar um segundo monitor, com os botões Mostre para mim e Fazer por mim" },

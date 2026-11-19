@@ -5,26 +5,27 @@ export type Content = typeof pt;
 export type Lang = 'pt-BR' | 'en';
 
 /** Every screenshot on the page: real captures from the KalangoOS test session (see site/README.md). */
-export const SHOTS: Record<string, { w: number; h: number; small?: boolean }> = {
-  desktop: { w: 1280, h: 800, small: true },
-  'files-agent': { w: 1280, h: 800, small: true },
-  documents: { w: 1280, h: 800, small: true },
-  'command-ui': { w: 1280, h: 800, small: true },
-  'new-agent': { w: 1280, h: 800, small: true },
-  'chat-changes': { w: 1280, h: 800, small: true },
-  'privacy-panel': { w: 460, h: 590 },
-  'monitor-agents': { w: 1280, h: 800, small: true },
-  'install-agent': { w: 1280, h: 800, small: true },
-  today: { w: 1280, h: 800, small: true },
-  spaces: { w: 1280, h: 800, small: true },
-  lock: { w: 1280, h: 800, small: true },
-  light: { w: 1280, h: 800, small: true },
-  editor: { w: 1280, h: 800, small: true },
-  music: { w: 1280, h: 800, small: true },
-  help: { w: 1280, h: 800, small: true },
-  'chat-data': { w: 1280, h: 800, small: true },
-  calculator: { w: 1280, h: 800, small: true },
-  'first-use': { w: 699, h: 320 },
+/** small: there is a 640 px version too; light: there is a capture of the same screen in the light theme (<name>-light). */
+export const SHOTS: Record<string, { w: number; h: number; small?: boolean; light?: boolean }> = {
+  desktop: { w: 1280, h: 800, small: true, light: true },
+  'files-agent': { w: 1280, h: 800, small: true, light: true },
+  documents: { w: 1280, h: 800, small: true, light: true },
+  'command-ui': { w: 1280, h: 800, small: true, light: true },
+  'new-agent': { w: 1280, h: 800, small: true, light: true },
+  'chat-changes': { w: 1280, h: 800, small: true, light: true },
+  'privacy-panel': { w: 460, h: 590, light: true },
+  'monitor-agents': { w: 1280, h: 800, small: true, light: true },
+  'install-agent': { w: 1280, h: 800, small: true, light: true },
+  today: { w: 1280, h: 800, small: true, light: true },
+  spaces: { w: 1280, h: 800, small: true, light: true },
+  lock: { w: 1280, h: 800, small: true, light: true },
+  appearance: { w: 1280, h: 800, small: true, light: true },
+  editor: { w: 1280, h: 800, small: true, light: true },
+  music: { w: 1280, h: 800, small: true, light: true },
+  help: { w: 1280, h: 800, small: true, light: true },
+  'chat-data': { w: 1280, h: 800, small: true, light: true },
+  calculator: { w: 1280, h: 800, small: true, light: true },
+  'first-use': { w: 699, h: 320, light: true },
 };
 
 export type ShotRef = { shot: string; caption: string; alt: string };

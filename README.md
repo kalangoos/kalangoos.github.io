@@ -77,7 +77,14 @@ site/
   scripts/                      geração de tokens, molas, imagens, Open Graph e a pré-renderização
 ```
 
-Regenerar as imagens: `KALANGO_CAPTURES=<repo>/target/captura/ python3 scripts/prepare-images.py` e
+Cada tela também foi capturada com o sistema no tema claro (a mesma sessão de teste, com o `tema.json` em
+`"claro"`): o site mostra a captura do tema da página (`<nome>.webp` no escuro, `<nome>-light.webp` no claro). As duas
+ficam no HTML pré-renderizado e o CSS esconde a do outro tema, pelo `data-theme` do botão ou pelo
+`prefers-color-scheme` do sistema, então a troca funciona também sem JavaScript; a escondida é `loading="lazy"` com
+`display: none`, e o navegador não a baixa. A tela "Tema claro" (Aparência) é a mesma nos dois temas.
+
+Regenerar as imagens: `KALANGO_CAPTURES=<repo>/target/captura/ KALANGO_CAPTURES_CLARO=<pasta da rodada clara>/
+python3 scripts/prepare-images.py` e
 `python3 scripts/make-og.py` (Pillow; a imagem do Open Graph usa URW Gothic e JetBrains Mono instaladas).
 
 ## Decisões de design
@@ -86,6 +93,12 @@ Regenerar as imagens: `KALANGO_CAPTURES=<repo>/target/captura/ python3 scripts/p
   projeto), a navegação é a dock única (um item por seção, a grade abre todas), as seções aparecem como janelas e
   cartões sobre o papel de parede, e o herói mostra o painel do agente montado com os componentes reais
   (rotulado como ilustração) ao lado de uma captura real.
+- **Logo em destaque:** o logo principal (mascote e nome) abre o herói, grande (216 px; 150 no celular; o mínimo da
+  marca é 96 px), sempre sobre o fundo liso: a regra da marca pede só a versão de uma cor sobre papel de parede, então
+  o papel de parede fica atrás da captura, que flutua sobre o céu do sistema. No claro, o logo do tema claro.
+- **Largura:** o conteúdo vai até 1840 px (respiro lateral de 20 a 80 px); títulos e textos mantêm a largura de
+  leitura. As capturas vão no máximo até o tamanho em que foram feitas (1280×800), sem esticar; nas grades, duas por
+  linha no desktop.
 - **Tokens:** cores dos dois modos, raios e espaços vêm de `design/tokens/tokens.json`. Escuro é o padrão; o claro
   segue `prefers-color-scheme` ou o botão da barra (guardado no navegador). Nenhuma sombra.
 - **Contraste:** no modo Claro, `cor/accent_text` (#248F55) fica em 3,6:1 sobre o fundo. O site usa #277955

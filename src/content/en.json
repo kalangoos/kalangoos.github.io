@@ -173,7 +173,7 @@
       { "shot": "today", "caption": "Today: the day's summary, weather, focus and agenda", "alt": "The Today side bar open on the left with the day's summary, weather, focus timer and agenda (interface in Brazilian Portuguese)" },
       { "shot": "spaces", "caption": "Spaces by intention", "alt": "Spaces screen with two spaces and the agent's routine suggestion (interface in Brazilian Portuguese)" },
       { "shot": "lock", "caption": "Lock screen", "alt": "Lock screen with the coloured clock, the date and discreet cards for agents and notifications" },
-      { "shot": "light", "caption": "Light theme", "alt": "Settings › Appearance in the light theme, with live preview, accent colour, rounding and dock style (interface in Brazilian Portuguese)" },
+      { "shot": "appearance", "caption": "Appearance: dark or light", "alt": "Settings › Appearance with live preview, the style (light, dark or automatic), accent colour, rounding and dock (interface in Brazilian Portuguese)" },
       { "shot": "editor", "caption": "Text Editor with suggestions", "alt": "Text Editor with markdown, live preview and the agent's suggestions" },
       { "shot": "music", "caption": "Music", "alt": "The Music app playing a track, with the mix put together by the agent" }
     ],
@@ -212,7 +212,7 @@
   "gallery": {
     "eyebrow": "Screenshots",
     "title": "More screens, straight from the test session",
-    "lead": "Every capture on this page comes from the KalangoOS test session, with test data. The interface is in Brazilian Portuguese for now.",
+    "lead": "Every capture on this page comes from the KalangoOS test session, with test data, in the page's theme. The interface is in Brazilian Portuguese for now.",
     "items": [
       { "shot": "first-use", "caption": "First use: bring folders and bookmarks from the other system", "alt": "First use asking whether to bring files and folders, browser bookmarks and agent connectors" },
       { "shot": "help", "caption": "Help that answers offline", "alt": "The Help app answering how to connect a second monitor, with Show me and Do it for me buttons" },

@@ -81,7 +81,7 @@ export function Privacy() {
               </p>
               <p>{P.cloud.text}</p>
             </div>
-            <Capture shot={P.shots[1].shot} alt={P.shots[1].alt} caption={P.shots[1].caption} sizes="(max-width: 960px) 100vw, 752px" />
+            <Capture shot={P.shots[1].shot} alt={P.shots[1].alt} caption={P.shots[1].caption} sizes="(max-width: 960px) 100vw, 1280px" />
           </div>
         </div>
       </div>
@@ -136,7 +136,7 @@ export function Security() {
           </div>
         </div>
         <div className="cols cols--install">
-          <Capture shot="install-agent" alt={S.install.alt} caption={S.install.caption} sizes="(max-width: 960px) 100vw, 720px" />
+          <Capture shot="install-agent" alt={S.install.alt} caption={S.install.caption} sizes="(max-width: 960px) 100vw, 60vw" />
           <div className="status reveal">
             <h3>{S.statusTitle}</h3>
             <Checks items={[S.done]} small />

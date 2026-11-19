@@ -12,7 +12,7 @@ WT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '
 CAP = os.path.join(WT, 'target', 'captura') + '/'
 if not os.path.isdir(CAP):  # a git worktree has no target/: use the main checkout's
     CAP = os.environ.get('KALANGO_CAPTURES', CAP)
-FC_OUT = os.path.join(os.path.dirname(os.path.dirname(CAP.rstrip('/'))), 'site-design', 'assets') + '/'
+FC_OUT = os.path.join(os.path.dirname(CAP.rstrip('/')), 'site-design', 'assets') + '/'  # target/site-design/assets
 WEB = WT + '/site/public/img/'
 for d in (FC_OUT, WEB + 'shots', WEB + 'brand', WEB + 'apps', WEB + 'wallpaper'):
     os.makedirs(d, exist_ok=True)
@@ -31,7 +31,7 @@ SHOTS = {
     'today': ('sessao-hoje.png', FULL),
     'spaces': ('sessao-espacos-habito.png', FULL),
     'lock': ('sessao-bloqueio.png', FULL),
-    'light': ('sessao-aparencia-clara.png', FULL),
+    'appearance': ('sessao-aparencia.png', FULL),  # Settings › Appearance with the dark style chosen (KALANGO_CAPTURES_EXTRA)
     'editor': ('sessao-editor-sugestoes.png', FULL),
     'music': ('sessao-musica.png', FULL),
     'help': ('sessao-ajuda.png', FULL),
@@ -47,13 +47,38 @@ def webp(im, path, w=None, q=84):
     im.save(path, 'WEBP', quality=q, method=6)
     return im.size
 
+# the same screens captured with the system in the light theme (a run of the session with tema.json "claro"):
+# written as <name>-light; the page shows them in its light theme. KALANGO_CAPTURES_CLARO: that run's folder.
+CAP_LIGHT = os.environ.get('KALANGO_CAPTURES_CLARO', '')
+LIGHT_SRC = {'appearance': 'sessao-aparencia-clara.png'}  # its light version has another file name
+# captures that are not in the suite's folder (the dark Appearance screen, made in an isolated session)
+EXTRA = os.environ.get('KALANGO_CAPTURES_EXTRA', '')
+def source(src):
+    return CAP + src if os.path.exists(CAP + src) or not EXTRA else os.path.join(EXTRA, src)
+
+# KALANGO_SO_NOVAS=1: keep the dark images already in public/ (they were checked for personal data) and write only
+# what is missing (the light versions, a new shot)
+ONLY_NEW = os.environ.get('KALANGO_SO_NOVAS') == '1'
+
 sizes = {}
 for name, (src, box) in SHOTS.items():
-    im = Image.open(CAP + src).convert('RGB').crop(box)
-    im.save(FC_OUT + f'shot-{name}.png', optimize=True)
-    sizes[name] = webp(im, WEB + f'shots/{name}.webp')
-    if im.width > 700:
-        webp(im, WEB + f'shots/{name}-640.webp', 640)
+    if not (ONLY_NEW and os.path.exists(WEB + f'shots/{name}.webp')):
+        im = Image.open(source(src)).convert('RGB').crop(box)
+        im.save(FC_OUT + f'shot-{name}.png', optimize=True)
+        sizes[name] = webp(im, WEB + f'shots/{name}.webp')
+        if im.width > 700:
+            webp(im, WEB + f'shots/{name}-640.webp', 640)
+    light = os.path.join(CAP_LIGHT, LIGHT_SRC.get(name, src)) if CAP_LIGHT else ''
+    if light and os.path.exists(light):
+        im = Image.open(light).convert('RGB').crop(box)
+        im.save(FC_OUT + f'shot-{name}-light.png', optimize=True)
+        webp(im, WEB + f'shots/{name}-light.webp')
+        if im.width > 700:
+            webp(im, WEB + f'shots/{name}-light-640.webp', 640)
+        print('light', name)
+
+if ONLY_NEW:
+    raise SystemExit(0)
 
 # wallpapers: dark and light 16:9
 for name, src in (('dark', 'sdrustos-16x9-4k.png'), ('light', 'sdrustos-16x9-4k-claro.png')):
