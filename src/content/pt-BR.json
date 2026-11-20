@@ -22,7 +22,15 @@
   "bar": {
     "status": "Em desenvolvimento",
     "statusDetail": "ainda sem imagem para instalar",
-    "statusLink": "Veja o que existe hoje"
+    "statusLink": "Veja o que existe hoje",
+    "signIn": "Entrar",
+    "soon": "em breve",
+    "soonHint": "A área de membros ainda não está conectada",
+    "account": "Conta",
+    "members": "Área de membros",
+    "memberOf": "membro da kalangoos",
+    "profile": "Perfil no GitHub",
+    "signOut": "Sair"
   },
   "nav": [
     { "id": "top", "label": "Início", "icon": "home" },

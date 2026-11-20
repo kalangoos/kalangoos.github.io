@@ -9,10 +9,12 @@
     "tokens": "node scripts/gen-tokens.mjs",
     "springs": "node scripts/gen-springs.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "build": "npm run typecheck && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "test": "node --test tests/*.test.ts",
+    "build": "npm run typecheck && npm test && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 18900"
   },
   "dependencies": {
+    "marked": "18.2.1",
     "react": "19.3.1",
     "react-dom": "19.3.1"
   },

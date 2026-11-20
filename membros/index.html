@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Área de membros · KalangoOS</title>
+    <meta name="description" content="Área de membros do KalangoOS: documentação técnica, especificação e quadro de tarefas, para quem é da organização kalangoos no GitHub." />
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href="https://kalangoos.com/membros/" />
+    <meta name="theme-color" content="#16171B" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F0F0F5" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Jost:wght@500;600&family=Roboto:wght@400;500;700&family=Ubuntu:wght@500;700&display=swap" />
+    <script>
+      /* theme before first paint: the visitor's choice, else the system's (dark by default) */
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        /* if the app never starts (script blocked or failed), show everything without the reveal motion */
+        setTimeout(function () {
+          if (!window.__kalangoMounted) d.classList.remove('js');
+        }, 4000);
+        try {
+          var t = localStorage.getItem('kalangoos-theme');
+          if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"><!--app--></div>
+    <script type="module" src="/src/entry-members.tsx"></script>
+  </body>
+</html>

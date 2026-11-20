@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Icon } from './Icon';
 import { useSite } from '../lib/context';
+import { MemberButton, useMemberState, type MemberState } from './Member';
 
 const KEY = 'kalangoos-theme';
 
@@ -10,9 +11,13 @@ function currentTheme(): 'dark' | 'light' {
   return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 }
 
-/** The site's header is the system's top bar: brand, the island with the project's status, follow, language and theme. */
-export function Bar() {
+/**
+ * The site's header is the system's top bar: brand, the island with the project's status, follow, language, theme and
+ * the members area ("Entrar" or the account). `onLanding` is false on /membros/, where the section links go back home.
+ */
+export function Bar({ onLanding = true, member }: { onLanding?: boolean; member?: MemberState }) {
   const { t, lang } = useSite();
+  const memberState = useMemberState(member);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   useEffect(() => setTheme(currentTheme()), []);
 
@@ -29,17 +34,18 @@ export function Bar() {
 
   // the other language keeps the section in view
   const keepHash = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (location.hash) e.currentTarget.href = e.currentTarget.pathname + location.hash;
+    if (onLanding && location.hash) e.currentTarget.href = e.currentTarget.pathname + location.hash;
   };
   const home = lang === 'en' ? '/en/' : '/';
+  const here = onLanding ? '' : home;
 
   return (
     <header className="bar">
       <a className="bar__brand" href={`${home}#top`}>
-        <img src="/img/brand/symbol.webp" width="22" height="24" alt="" />
+        <img src="/img/brand/symbol.webp" width="36" height="40" alt="" />
         <span>KalangoOS</span>
       </a>
-      <a className="island" href="#roadmap">
+      <a className="island" href={`${here}#roadmap`}>
         <span className="dot" aria-hidden="true" />
         <strong>{t.bar.status}</strong>
         <span className="sep" aria-hidden="true">·</span>
@@ -50,7 +56,7 @@ export function Bar() {
         </span>
       </a>
       <div className="bar__right">
-        <a className="indicator" href="#follow">
+        <a className="indicator" href={`${here}#follow`}>
           <Icon name="spark" />
           {t.follow.eyebrow}
           <span className="indicator__dots" aria-hidden="true"><i /><i /><i /></span>
@@ -75,6 +81,8 @@ export function Bar() {
           <Icon name="sun" className="icon when-dark" />
           <Icon name="moon" className="icon when-light" />
         </button>
+        <span className="bar__sep" aria-hidden="true" />
+        <MemberButton state={memberState} />
       </div>
     </header>
   );
