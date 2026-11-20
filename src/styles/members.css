@@ -408,3 +408,5 @@
 .callout--warning .callout__title { color: var(--gold); }
 .callout--caution { border-color: var(--coral); background: color-mix(in srgb, var(--coral) 10%, transparent); }
 .callout--caution .callout__title { color: var(--coral); }
+.gate__notice--error { background: color-mix(in srgb, var(--coral) 12%, transparent); }
+.gate__notice--error svg { color: var(--coral); }

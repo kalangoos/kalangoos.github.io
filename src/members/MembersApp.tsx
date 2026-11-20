@@ -16,7 +16,8 @@ export type Route =
   | { view: 'docs'; path: string; heading?: string }
   | { view: 'spec'; kind: 's' | 'c'; id: string; tab?: string }
   | { view: 'board' }
-  | { view: 'outside'; login: string };
+  | { view: 'outside'; login: string }
+  | { view: 'error' };
 
 export const DEFAULT_DOC = 'README.md';
 
@@ -25,6 +26,7 @@ export function parseRoute(hash: string): Route {
   const [path, query = ''] = h.split('?') as [string, string?];
   const q = new URLSearchParams(query);
   if (path.startsWith('/fora')) return { view: 'outside', login: q.get('login') ?? '' };
+  if (path.startsWith('/erro')) return { view: 'error' };
   if (path.startsWith('/quadro')) return { view: 'board' };
   const spec = /^\/spec\/([sc])\/([^/]+(?:\/[^/]+)*?)(?:\/(proposta|design|tarefas|specs))?$/.exec(path);
   if (spec) return { view: 'spec', kind: spec[1] as 's' | 'c', id: spec[2]!, tab: spec[3] };
@@ -70,14 +72,14 @@ export function MembersApp({ t }: { t: Content }) {
   }, []);
 
   useEffect(() => {
-    const titles: Record<Route['view'], string> = { docs: 'Documentação', spec: 'Especificação', board: 'Quadro de tarefas', outside: 'Área de membros' };
+    const titles: Record<Route['view'], string> = { docs: 'Documentação', spec: 'Especificação', board: 'Quadro de tarefas', outside: 'Área de membros', error: 'Área de membros' };
     document.title = `${gate === 'in' || gate === 'preview' ? titles[route.view] : 'Área de membros'} · KalangoOS`;
   }, [route.view, gate]);
 
   let body: ReactNode;
   if (route.view === 'outside') body = <GateCard kind="outside" login={route.login} />;
   else if (gate === 'soon') body = <GateCard kind="soon" />;
-  else if (gate === 'checking' || gate === 'out') body = <GateCard kind="login" checking={gate === 'checking'} />;
+  else if (gate === 'checking' || gate === 'out' || route.view === 'error') body = <GateCard kind="login" checking={gate === 'checking'} failed={route.view === 'error'} />;
   else body = <Shell route={route} login={member.kind === 'in' ? member.session.login : null} preview={gate === 'preview'} />;
 
   return (
@@ -95,7 +97,7 @@ export function MembersApp({ t }: { t: Content }) {
 
 // ------------------------------------------------------------------ the entry cards
 
-function GateCard({ kind, login, checking }: { kind: 'login' | 'outside' | 'soon'; login?: string; checking?: boolean }) {
+function GateCard({ kind, login, checking, failed }: { kind: 'login' | 'outside' | 'soon'; login?: string; checking?: boolean; failed?: boolean }) {
   const [leaving, setLeaving] = useState(false);
   return (
     <div className="gate">
@@ -127,6 +129,12 @@ function GateCard({ kind, login, checking }: { kind: 'login' | 'outside' | 'soon
         </p>
         {kind === 'login' && (
           <>
+            {failed && (
+              <p className="gate__notice gate__notice--error">
+                <Icon name="alert" />
+                <span>Não deu para concluir a entrada (o pedido expirou ou foi recusado no GitHub). Tente de novo.</span>
+              </p>
+            )}
             <a
               className={`btn btn--primary btn--lg gate__wide${checking ? ' is-busy' : ''}`}
               href={checking ? undefined : loginUrl()}

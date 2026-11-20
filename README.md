@@ -1,6 +1,6 @@
 # Site do KalangoOS (kalangoos.com)
 
-Landing page pública do KalangoOS, em português (`/`) e inglês (`/en/`). React 19 + Vite 8 + TypeScript,
+Landing page pública do KalangoOS, em português (`/`) e inglês (`/en/`), e a área de membros (`/membros/`). React 19 + Vite 8 + TypeScript,
 pré-renderizada no build: o `dist/` é só HTML, CSS, JS e imagens estáticos, e o conteúdo aparece mesmo sem
 JavaScript.
 
@@ -13,13 +13,32 @@ comportamento e movimento). O código espelha esses quadros.
 ```sh
 npm ci                 # dependências exatas do package-lock.json
 npm run dev            # desenvolvimento em http://localhost:5173 (sem pré-renderização)
-npm run build          # typecheck + build + pré-renderização → dist/
+npm test               # testes de unidade (node --test): quadro, leitura do repositório, serviço de login
+npm run build          # typecheck (site e worker) + testes + build + pré-renderização → dist/
 npm run preview        # serve o dist/ em http://127.0.0.1:18900
 ```
 
-Dependências de execução: só `react` e `react-dom`. De desenvolvimento: `vite`, `@vitejs/plugin-react`,
+Dependências de execução: `react`, `react-dom` e `marked` (só na área de membros, MIT). De desenvolvimento: `vite`, `@vitejs/plugin-react`,
 `typescript` e os tipos do React. Nada de bibliotecas de i18n, animação ou CSS: o dicionário é JSON e as molas são
 CSS gerado dos tokens.
+
+## Área de membros (`/membros/`)
+
+Documentação técnica, especificação (OpenSpec) e quadro de tarefas, só para quem é da organização `kalangoos` no
+GitHub. Desenho: quadros "Site · Barra alta" e "Site · Membros · …" da página "Site · Landing page" do Design System.
+
+- **Entrada:** login com o GitHub por um Cloudflare Worker em `auth.kalangoos.com` (código em `worker/`, desenho em
+  [worker/README.md](worker/README.md)). O token fica num cookie `HttpOnly` cifrado do Worker; a página nunca o vê.
+  O endereço do serviço entra no build por `VITE_AUTH_URL` (num `.env.production`); **sem ele a área aparece como
+  "ainda não conectada"**, que é o estado de hoje. Para ligar: [worker/SETUP.md](worker/SETUP.md) (precisa de
+  aprovação: app OAuth, Worker, domínio e segredos).
+- **Documentação e especificação:** lidas do repositório público `kalangoos/kalangoos` (a árvore numa chamada da
+  API, sem token; os arquivos pelo `raw.githubusercontent.com`). O Markdown vira componentes React (`marked` só como
+  lexer); o HTML dos documentos passa por uma lista fechada de tags e atributos, sem `dangerouslySetInnerHTML`.
+- **Quadro:** GitHub Projects (v2) da organização, pelo Worker (`GET /project`, consultas GraphQL fixas). Sem sessão
+  ou sem projeto, diz isso; nunca mostra cartões de exemplo.
+- **Prévia local** sem sessão (só a parte pública): `VITE_MEMBERS_PREVIEW=1 npx vite build --outDir /tmp/previa`
+  e `npx vite preview --outDir /tmp/previa`. O build da CI nunca liga essa opção.
 
 ## Publicar
 
@@ -67,6 +86,10 @@ site/
   index.html, en/index.html     páginas (meta, Open Graph, tema antes da pintura)
   src/content/*.json            texto em pt-BR e inglês
   src/sections/                 seções da página
+  membros/index.html            a área de membros (pt-BR, noindex)
+  src/members/                  área de membros: entrada, documentação, especificação, quadro, Markdown
+  worker/                       serviço de login (Cloudflare Worker), README do desenho e SETUP
+  tests/                        testes de unidade (node --test)
   src/components/               barra (a barra superior do sistema), dock, painel do agente, aprovação,
                                 capturas, ampliação, laboratório de molas, ícones
   src/styles/tokens.css         GERADO de design/tokens/tokens.json (npm run tokens)
