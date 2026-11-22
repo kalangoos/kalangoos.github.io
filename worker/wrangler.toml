@@ -13,7 +13,7 @@ ORG = "kalangoos"
 SITE_ORIGIN = "https://kalangoos.com"
 AUTH_ORIGIN = "https://auth.kalangoos.com"
 # Client ID of the GitHub OAuth App (public, not a secret). Filled in at SETUP.md, step 2.
-GITHUB_CLIENT_ID = ""
+GITHUB_CLIENT_ID = "Ov23li2ofReAsPovr4nn"
 # Optional: number of the organisation project the board shows. Empty: the most recently updated open project.
 PROJECT_NUMBER = ""
 
