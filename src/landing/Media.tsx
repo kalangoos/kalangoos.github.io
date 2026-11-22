@@ -1,14 +1,58 @@
 import { useEffect, useRef, useState } from 'react';
+import type React from 'react';
 import { ShotImages } from '../components/Bits';
 import { useSite } from '../lib/context';
 import { CLIPS, type ClipSource } from './media';
 import { reducedMotion, tone as toneVar } from './motion';
 
+/** True when the page shows the light theme (data-theme wins; without it, prefers-color-scheme). */
+function isLight(): boolean {
+  const root = document.documentElement;
+  return root.getAttribute('data-theme') === 'light' ||
+    (!root.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: light)').matches);
+}
+
 /** The light-theme render when there is one, else the default. */
 function pickSrc(c: NonNullable<ClipSource>): string {
-  const light = document.documentElement.getAttribute('data-theme') === 'light' ||
-    (!document.documentElement.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: light)').matches);
-  return light && c.light ? c.light : c.src;
+  return isLight() && c.light ? c.light : c.src;
+}
+
+/** The poster (first frame) for the page's theme, if the clip has one. */
+function pickPoster(c: NonNullable<ClipSource>): string | undefined {
+  return isLight() && c.posterLight ? c.posterLight : c.poster;
+}
+
+/**
+ * Keeps a loaded video on the render that matches the page's theme: when the theme toggles (data-theme on <html>)
+ * or the system scheme changes, it swaps the source in place, at the same time and with the same play state.
+ */
+function useThemedSource(vid: React.RefObject<HTMLVideoElement | null>, clip: ClipSource) {
+  useEffect(() => {
+    if (!clip || !clip.light) return;
+    const sync = () => {
+      const v = vid.current;
+      if (!v) return;
+      v.poster = pickPoster(clip) ?? '';
+      if (!v.getAttribute('src')) return;
+      const want = pickSrc(clip);
+      if (v.getAttribute('src') === want) return;
+      const at = v.currentTime;
+      const wasPlaying = !v.paused;
+      v.src = want;
+      v.addEventListener('loadedmetadata', () => {
+        v.currentTime = at;
+        if (wasPlaying) v.play().catch(() => {});
+      }, { once: true });
+    };
+    const mo = new MutationObserver(sync);
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    const mq = window.matchMedia('(prefers-color-scheme: light)');
+    mq.addEventListener('change', sync);
+    return () => {
+      mo.disconnect();
+      mq.removeEventListener('change', sync);
+    };
+  }, [vid, clip]);
 }
 
 /**
@@ -23,6 +67,7 @@ export function Clip({ id, shot, alt, tone, portrait }: { id: keyof typeof CLIPS
   const vid = useRef<HTMLVideoElement>(null);
   const bar = useRef<HTMLElement>(null);
   const clip = CLIPS[id];
+  useThemedSource(vid, clip);
 
   useEffect(() => {
     const el = fig.current;
@@ -49,7 +94,10 @@ export function Clip({ id, shot, alt, tone, portrait }: { id: keyof typeof CLIPS
         el.classList.toggle('is-live', on);
         if (!v || reducedMotion()) return;
         if (on) {
-          if (!v.src) v.src = pickSrc(clip!);
+          if (!v.getAttribute('src')) {
+            v.poster = pickPoster(clip!) ?? '';
+            v.src = pickSrc(clip!);
+          }
           v.play().catch(() => {});
         } else v.pause();
       },
@@ -95,12 +143,20 @@ export function Tour() {
   const src = CLIPS.tour;
   const vid = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
+  useThemedSource(vid, src);
 
   const play = (at?: number) => {
     const v = vid.current;
     if (!v || !src) return;
-    if (!v.src) v.src = pickSrc(src);
-    if (at !== undefined) v.currentTime = at;
+    if (!v.getAttribute('src')) {
+      v.poster = pickPoster(src) ?? '';
+      v.src = pickSrc(src);
+    }
+    if (at !== undefined) {
+      // before the metadata arrives the seek would be lost: wait for it
+      if (v.readyState >= 1) v.currentTime = at;
+      else v.addEventListener('loadedmetadata', () => { v.currentTime = at; }, { once: true });
+    }
     setPlaying(true);
     v.play().catch(() => {});
   };
