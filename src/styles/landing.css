@@ -23,6 +23,13 @@
   overflow-x: clip;
 }
 :root[data-theme="light"] .lv { --lv-code-bg: var(--bg); --lv-sheen: color-mix(in srgb, #FFFFFF 55%, transparent); }
+/* Landing only: the red/coral family is replaced by the dark theme's purple (the accent of "Escuro"), in both themes.
+   In light it is deepened toward the light theme's text colour so labels stay readable on white. */
+.lv { --coral: #A5A1E2; --red: #A5A1E2; --pink: #A5A1E2; }
+:root[data-theme="light"] .lv { --coral: color-mix(in srgb, #A5A1E2 62%, #322153); --red: var(--coral); --pink: var(--coral); }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .lv { --coral: color-mix(in srgb, #A5A1E2 62%, #322153); --red: var(--coral); --pink: var(--coral); }
+}
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) .lv { --lv-code-bg: var(--bg); --lv-sheen: color-mix(in srgb, #FFFFFF 55%, transparent); }
 }
