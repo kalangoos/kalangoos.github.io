@@ -1,7 +1,8 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Icon } from './Icon';
 import { useSite } from '../lib/context';
-import { AUTH_URL, MEMBERS_PATH, fetchSession, signOut, type Session } from '../members/auth';
+import { AUTH_URL, fetchSession, signOut, type Session } from '../members/auth';
+import { pathOf } from '../lib/routes';
 
 /** What the bar knows about the visitor: not connected (no login service yet), unknown, signed out or signed in. */
 export type MemberState = { kind: 'soon' } | { kind: 'checking' } | { kind: 'out' } | { kind: 'in'; session: Session };
@@ -26,13 +27,15 @@ export function useMemberState(given?: MemberState): MemberState {
 
 function Avatar({ session, size }: { session: Session; size: number }) {
   const [broken, setBroken] = useState(false);
+  // only GitHub's own avatar host is loaded (the Worker passes what GitHub said, and the page's CSP agrees)
+  const trusted = /^https:\/\/avatars\.githubusercontent\.com\//.test(session.avatarUrl);
   const initials = (session.name || session.login)
     .split(/[\s-]+/)
     .filter(Boolean)
     .slice(0, 2)
     .map((w) => w[0]!.toUpperCase())
     .join('');
-  return session.avatarUrl && !broken ? (
+  return trusted && !broken ? (
     <img className="avatar" src={`${session.avatarUrl}${session.avatarUrl.includes('?') ? '&' : '?'}s=${size * 2}`} width={size} height={size} alt="" onError={() => setBroken(true)} />
   ) : (
     <span className="avatar avatar--initials" style={{ width: size, height: size }} aria-hidden="true">
@@ -43,7 +46,8 @@ function Avatar({ session, size }: { session: Session; size: number }) {
 
 /** The bar's right end: "Entrar" (with "em breve" while the login service is not connected) or the account menu. */
 export function MemberButton({ state }: { state: MemberState }) {
-  const { t } = useSite();
+  const { t, lang } = useSite();
+  const membersPath = pathOf(lang, 'members');
   const menuId = useId();
   const [open, setOpen] = useState(false);
   const btn = useRef<HTMLButtonElement>(null);
@@ -72,7 +76,7 @@ export function MemberButton({ state }: { state: MemberState }) {
   if (state.kind !== 'in') {
     const soon = state.kind === 'soon';
     return (
-      <a className={`member-btn${soon ? ' is-soon' : ''}`} href={MEMBERS_PATH} title={soon ? t.bar.soonHint : t.bar.members}>
+      <a className={`member-btn${soon ? ' is-soon' : ''}`} href={membersPath} title={soon ? t.bar.soonHint : t.bar.members}>
         <Icon name="github" className="icon member-btn__gh" />
         <span className="member-btn__label">{t.bar.signIn}</span>
         {soon && (
@@ -114,7 +118,7 @@ export function MemberButton({ state }: { state: MemberState }) {
             </div>
           </div>
           <hr />
-          <a role="menuitem" href={MEMBERS_PATH} className="account__item">
+          <a role="menuitem" href={membersPath} className="account__item">
             <Icon name="doc" />
             {t.bar.members}
           </a>
@@ -129,7 +133,7 @@ export function MemberButton({ state }: { state: MemberState }) {
             className="account__item"
             onClick={async () => {
               await signOut();
-              location.href = '/';
+              location.href = pathOf(lang, 'home');
             }}
           >
             <Icon name="power" />

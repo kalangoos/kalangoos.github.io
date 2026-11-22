@@ -28,25 +28,31 @@ const obj = (v: unknown): Record<string, unknown> => (v && typeof v === 'object'
 const arr = (v: unknown): unknown[] => (Array.isArray(v) ? v : []);
 const str = (v: unknown): string | null => (typeof v === 'string' ? v : null);
 const num = (v: unknown): number | null => (typeof v === 'number' ? v : null);
+/** Links the board draws come from GitHub's data, but only github.com addresses are ever put in an href (no javascript:, no other hosts). */
+export const ghUrl = (v: unknown): string | null => (typeof v === 'string' && /^https:\/\/github\.com\/[^\s]*$/.test(v) ? v : null);
+/** A label colour is six hex digits; anything else would reach a CSS value. */
+export const labelColor = (v: unknown): string => (typeof v === 'string' && /^#?[0-9a-f]{6}$/i.test(v) ? v.replace(/^#/, '') : '8E8F99');
+/** Avatars: only GitHub's own host (the page's CSP agrees). */
+export const avatarOf = (v: unknown): string => (typeof v === 'string' && /^https:\/\/avatars\.githubusercontent\.com\//.test(v) ? v : '');
 const nodes = (v: unknown): unknown[] => arr(obj(v).nodes);
 
 const people = (v: unknown): BoardPerson[] =>
   nodes(v)
     .map(obj)
     .filter((p) => str(p.login))
-    .map((p) => ({ login: str(p.login)!, avatarUrl: str(p.avatarUrl) ?? '' }));
+    .map((p) => ({ login: str(p.login)!, avatarUrl: avatarOf(p.avatarUrl) }));
 
 const labels = (v: unknown): BoardLabel[] =>
   nodes(v)
     .map(obj)
     .filter((l) => str(l.name))
-    .map((l) => ({ name: str(l.name)!, color: (str(l.color) ?? '8E8F99').replace(/^#/, '') }));
+    .map((l) => ({ name: str(l.name)!, color: labelColor(l.color) }));
 
 const links = (v: unknown, kind: BoardLink['kind']): BoardLink[] =>
   nodes(v)
     .map(obj)
-    .filter((l) => num(l.number) !== null && str(l.url))
-    .map((l) => ({ kind, number: num(l.number)!, url: str(l.url)!, repo: str(obj(l.repository).nameWithOwner) ?? '' }));
+    .filter((l) => num(l.number) !== null && ghUrl(l.url))
+    .map((l) => ({ kind, number: num(l.number)!, url: ghUrl(l.url)!, repo: str(obj(l.repository).nameWithOwner) ?? '' }));
 
 /** One project item: an issue, a pull request, a draft, or content the viewer cannot see. */
 export function mapItem(raw: unknown): BoardItem | null {
@@ -62,7 +68,7 @@ export function mapItem(raw: unknown): BoardItem | null {
         kind: 'issue',
         title: str(content.title) ?? '',
         number: num(content.number),
-        url: str(content.url),
+        url: ghUrl(content.url),
         repo: str(obj(content.repository).nameWithOwner),
         state: content.state === 'CLOSED' ? 'closed' : 'open',
         labels: labels(content.labels),
@@ -75,7 +81,7 @@ export function mapItem(raw: unknown): BoardItem | null {
         kind: 'pr',
         title: str(content.title) ?? '',
         number: num(content.number),
-        url: str(content.url),
+        url: ghUrl(content.url),
         repo: str(obj(content.repository).nameWithOwner),
         state: content.state === 'MERGED' ? 'merged' : content.state === 'CLOSED' ? 'closed' : content.isDraft === true ? 'draft' : 'open',
         labels: labels(content.labels),
@@ -130,7 +136,7 @@ export function mapProject(data: unknown, extraItems: unknown[] = []): Board | n
   return {
     number: num(p.number) ?? 0,
     title: str(p.title) ?? '',
-    url: str(p.url) ?? '',
+    url: ghUrl(p.url) ?? '',
     updatedAt: str(p.updatedAt) ?? '',
     total: num(obj(p.items).totalCount) ?? items.length,
     columns: none.items.length ? [none, ...columns] : columns,

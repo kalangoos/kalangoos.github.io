@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Icon } from '../components/Icon';
 import { ORG } from './constants';
 import { fetchProject } from './auth';
+import { useSite } from '../lib/context';
 import { NO_FILTER, STATUS_TOKEN, facets, mapProject, matches, shortRef, type Board as BoardData, type BoardFilter, type BoardItem } from './project';
 import { SearchField, useSlashFocus } from './Layout';
 
@@ -153,16 +154,17 @@ function Select({ label, value, options, onChange }: { label: string; value: str
 
 /** Label colours come from GitHub (any hex): drawn as a dot, with the text in the theme's own colour for contrast. */
 function Card({ item, projectUrl }: { item: BoardItem; projectUrl: string }) {
+  const B = useSite().t.members.board;
   const href = item.url ?? projectUrl;
   const ref = shortRef(item.repo, item.number, ORG);
-  const kindLabel = { issue: 'Issue', pr: 'Pull request', draft: 'Rascunho', redacted: 'Item sem acesso' }[item.kind];
-  const title = item.kind === 'redacted' ? 'Item de um repositório que você não pode ver' : item.title;
+  const kindLabel = { issue: B.issue, pr: B.pr, draft: B.draft, redacted: B.redacted }[item.kind];
+  const title = item.kind === 'redacted' ? B.redactedTitle : item.title;
   return (
     <a className={`bcard bcard--${item.kind}`} href={href} target="_blank" rel="noopener noreferrer">
       <span className="bcard__ref">
         <Icon name={item.kind === 'pr' ? 'pr' : item.kind === 'issue' ? 'issue' : 'doc'} />
         <span className="mono">{ref || kindLabel}</span>
-        {item.state && item.state !== 'open' && item.kind !== 'draft' && <span className="bcard__state">{{ closed: 'fechada', merged: 'mesclado', draft: 'rascunho' }[item.state]}</span>}
+        {item.state && item.state !== 'open' && item.kind !== 'draft' && <span className="bcard__state">{{ closed: B.closed, merged: B.merged, draft: B.draftState }[item.state]}</span>}
         <span className="visually-hidden">{kindLabel}</span>
       </span>
       <b className="bcard__title">{title}</b>
@@ -180,7 +182,7 @@ function Card({ item, projectUrl }: { item: BoardItem; projectUrl: string }) {
         <span className="bcard__foot">
           <span className="bcard__links">
             {item.links.map((l) => (
-              <span key={l.url} className="mono" title={l.kind === 'pr' ? 'Pull request ligado' : 'Issue ligada'}>
+              <span key={l.url} className="mono" title={l.kind === 'pr' ? B.linkedPr : B.linkedIssue}>
                 <Icon name={l.kind} />#{l.number}
               </span>
             ))}

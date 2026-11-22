@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'node:path';
 
-// Static pages: / (pt-BR), /en/ (English) and /membros/ (the members area, pt-BR). `npm run build` also pre-renders both
+// Two static pages: / (pt-BR) and /en/ (English). `npm run build` also pre-renders both
 // (scripts/prerender.mjs), so the HTML works without JavaScript and for search engines.
 export default defineConfig({
   plugins: [react()],
@@ -13,7 +13,6 @@ export default defineConfig({
       input: {
         main: resolve(import.meta.dirname, 'index.html'),
         en: resolve(import.meta.dirname, 'en/index.html'),
-        membros: resolve(import.meta.dirname, 'membros/index.html'),
       },
     },
   },

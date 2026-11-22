@@ -1,7 +1,7 @@
 import routes from '../routes.json';
 import type { Lang } from '../content';
 
-export type PageId = 'home' | 'download' | 'security' | 'docs' | 'notes' | 'contribute' | 'notfound';
+export type PageId = 'home' | 'download' | 'security' | 'docs' | 'notes' | 'contribute' | 'members' | 'notfound';
 export const ORIGIN: string = routes.origin;
 export const PAGES = routes.pages as Record<PageId, Record<Lang, string>>;
 

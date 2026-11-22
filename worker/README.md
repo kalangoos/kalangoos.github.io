@@ -4,8 +4,8 @@ Um Cloudflare Worker pequeno que faz a única coisa que um site estático não p
 OAuth do GitHub e trocar o código de autorização por um token. Ele também decide quem entra na área de membros
 (`kalangoos.com/membros/`): **só membros ativos da organização `kalangoos` no GitHub**.
 
-Nada aqui está no ar ainda. O que precisa ser criado (app OAuth, Worker, domínio, segredos) está em
-[SETUP.md](SETUP.md), para ser aprovado e feito por quem administra as contas.
+**Está no ar** em `auth.kalangoos.com` (app OAuth e segredos criados pelos mantenedores). O estado atual, como publicar
+a versão corrigida (`npx wrangler deploy`), como conferir e como reverter estão em [SETUP.md](SETUP.md).
 
 ## Fluxo
 
@@ -28,9 +28,13 @@ Depois disso a página só faz três chamadas, todas com `credentials: 'include'
 
 | Rota | O quê |
 |---|---|
-| `GET /session` | Quem está logado (login, nome, avatar). Confere a participação na organização **a cada chamada**: quem sai da organização perde o acesso na hora seguinte em que a página abrir |
+| `GET /session` | Quem está logado (login, nome, avatar). Confere a participação na organização **a cada chamada**: quem sai da organização perde o acesso na hora seguinte em que a página abrir. Se o GitHub não puder responder (403 de SAML SSO, 429 ou limite secundário, 5xx, rede), responde **503 sem apagar o cookie**: ninguém é desconectado por uma falha do GitHub |
 | `GET /project` | O projeto da organização no GitHub Projects (v2), por consultas GraphQL **fixas** (`src/project-query.ts`); o Worker não repassa consultas arbitrárias com o token de ninguém. Pagina até 500 itens. A resposta também confere `viewerIsAMember` |
-| `POST /logout` | Revoga o token no GitHub e apaga o cookie |
+| `POST /logout` | Revoga o token no GitHub e apaga o cookie (exige `Origin: https://kalangoos.com`; de outra origem responde 403 e não toca no token) |
+
+A conferência de participação tem **quatro** respostas, não duas: membro, não é membro (404 ou convite pendente), token
+expirado (401) e **indisponível** (403, 429, 5xx, rede). Só as duas do meio tiram a sessão; no `/callback`, "indisponível"
+vai para `#/erro` ("tente de novo"), e só "não é membro" vai para `#/fora`.
 
 ## Por que este desenho
 
@@ -52,7 +56,30 @@ Depois disso a página só faz três chamadas, todas com `credentials: 'include'
   Nenhum escopo de escrita, nem `repo`: a documentação e a especificação vêm do repositório público sem token.
 - **Quem não é da organização não deixa rastro.** O token é revogado antes do redirecionamento e nenhuma sessão é
   gravada.
-- **Sem redirecionamento aberto.** Depois do login, só caminhos dentro de `/membros/` são aceitos (`safeNext`).
+- **Sem redirecionamento aberto.** Depois do login, só caminhos de `/membros/` e `/en/members/` são aceitos
+  (`safeNext`): lista fechada de caracteres (sem `\`, sem `%..`), sem `//` e sem segmentos `.` ou `..`.
+- **Cabeçalhos.** Toda resposta leva `Cache-Control: no-store`, `X-Content-Type-Options: nosniff`, `Referrer-Policy:
+  no-referrer` e `Strict-Transport-Security` (1 ano).
+- **Logs.** O que vem de fora (o parâmetro `error` do GitHub, mensagens de exceção) é limpo e cortado em 60
+  caracteres antes de ir para o log (`logSafe`). No `wrangler.toml`, `invocation_logs = false` desliga o registro de cada
+  pedido, que traria a URL completa do `/callback` (com o `code` de uso único e o `state`); só ficam as linhas do próprio
+  Worker.
+- **Sem limite de pedidos próprio.** Use a regra de rate limit da Cloudflare (SETUP.md, 5b).
+
+## O que a área de membros protege
+
+A página é uma barreira de **interface** sobre conteúdo **público**: a documentação e a especificação vêm do repositório
+público `kalangoos/kalangoos`, e qualquer pessoa as lê sem login. Só o quadro de tarefas (GitHub Projects) é protegido
+de verdade, e essa conferência é feita aqui, no servidor. O texto da página não deve sugerir que os documentos são
+privados.
+
+## Alcance do token
+
+`read:org` e `read:project` valem para todas as organizações e projetos da pessoa, não só os da `kalangoos`; o GitHub só
+deixa escolher escopos, não organizações, num app OAuth. O token fica 8 horas num cookie selado e é revogado em "Sair" e
+para quem não é da organização. O GitHub guarda até 10 tokens por pessoa e app: o 11º revoga o mais antigo, e um token
+cuja revogação falhou continua válido até isso acontecer. Um **GitHub App** instalado só na organização (tokens de
+usuário que expiram em 8 horas) reduziria o alcance; é a evolução a considerar (SETUP.md, "Alcance do token").
 
 ## Código
 
@@ -69,5 +96,5 @@ colunas do quadro). O typecheck do Worker roda no `npm run build` do site.
 
 ## O que o site precisa
 
-O endereço do serviço entra no build como `VITE_AUTH_URL` (público, não é segredo). Sem ele, o site mostra a área
-de membros como "ainda não conectada" e o botão Entrar com o selo "em breve" — é o estado de hoje.
+O endereço do serviço entra no build como `VITE_AUTH_URL` (público, não é segredo), no `site/.env.production`. Sem ele o
+site mostra a área de membros como "ainda não conectada" e o botão Entrar com o selo "em breve".

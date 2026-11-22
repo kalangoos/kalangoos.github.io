@@ -12,10 +12,17 @@ routes = [{ pattern = "auth.kalangoos.com", custom_domain = true }]
 ORG = "kalangoos"
 SITE_ORIGIN = "https://kalangoos.com"
 AUTH_ORIGIN = "https://auth.kalangoos.com"
-# Client ID of the GitHub OAuth App (public, not a secret). Filled in at SETUP.md, step 2.
+# Client ID of the GitHub OAuth App (public, not a secret). Created by the maintainers (SETUP.md, step 2).
 GITHUB_CLIENT_ID = "Ov23li2ofReAsPovr4nn"
 # Optional: number of the organisation project the board shows. Empty: the most recently updated open project.
 PROJECT_NUMBER = ""
 
+# Logs: the Worker's own console lines (short, sanitised, no tokens) are kept; the per-request "invocation logs" are NOT,
+# because they carry the full request URL, and /callback's URL holds the one-time `code` and the `state`.
 [observability]
 enabled = true
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+invocation_logs = false
