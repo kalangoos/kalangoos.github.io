@@ -1,8 +1,21 @@
 import type pt from './content/pt-BR.json';
 
-/** The page's text: src/content/pt-BR.json and src/content/en.json have the same shape. */
-export type Content = typeof pt;
 export type Lang = 'pt-BR' | 'en';
+
+/** One item of a content block: a card, a step or a link (the fields each kind uses are in Blocks.tsx). */
+export type Item = { title?: string; text?: string; badge?: string; code?: string; label?: string; href?: string; link?: { label: string; href: string; text?: string } };
+/** A block of a sub-page; `kind` is text | cards | checks | steps | links | notice | todo. Links to other pages are "@id". */
+export type Block = { kind: string; title?: string; tone?: string; text?: string; note?: string; paras?: string[]; items?: Array<string | Item>; link?: { label: string; href: string } };
+export type PageContent = { title: string; description: string; eyebrow: string; h1: string; lead: string; blocks: Block[]; /** one line the maintainers edit before a release: "not yet in this version" (notes page only) */ pending?: string };
+export type NotFound = {
+  title: string; description: string; eyebrow: string; h1: string; lead: string; home: string;
+  other: { lang: string; h: string; text: string; home: string; href: string };
+};
+export type SubPageId = 'download' | 'security' | 'docs' | 'notes' | 'contribute';
+
+/** The site's text: src/content/pt-BR.json and src/content/en.json have the same shape (scripts/check-content.mjs
+ *  fails the build when they do not). The sub-pages are declared above because JSON cannot narrow `kind`. */
+export type Content = Omit<typeof pt, 'pages'> & { pages: Record<SubPageId, PageContent> & { notfound: NotFound } };
 
 /** Every screenshot on the page: real captures from the KalangoOS test session (see site/README.md). */
 /** small: there is a 640 px version too; light: there is a capture of the same screen in the light theme (<name>-light). */

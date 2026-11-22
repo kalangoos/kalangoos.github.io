@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Icon } from './Icon';
 import { useSite } from '../lib/context';
+import { pathOf } from '../lib/routes';
 
 const KEY = 'kalangoos-theme';
 
@@ -12,7 +13,7 @@ function currentTheme(): 'dark' | 'light' {
 
 /** The site's header is the system's top bar: brand, the island with the project's status, follow, language and theme. */
 export function Bar() {
-  const { t, lang } = useSite();
+  const { t, lang, page } = useSite();
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   useEffect(() => setTheme(currentTheme()), []);
 
@@ -27,11 +28,12 @@ export function Bar() {
     setTheme(next);
   };
 
-  // the other language keeps the section in view
+  // the other language opens the same page, and keeps the section in view
   const keepHash = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (location.hash) e.currentTarget.href = e.currentTarget.pathname + location.hash;
   };
-  const home = lang === 'en' ? '/en/' : '/';
+  const home = pathOf(lang, 'home');
+  const here = page === 'notfound' ? 'home' : page;
 
   return (
     <header className="bar">
@@ -39,7 +41,7 @@ export function Bar() {
         <img src="/img/brand/symbol.webp" width="22" height="24" alt="" />
         <span>KalangoOS</span>
       </a>
-      <a className="island" href="#roadmap">
+      <a className="island" href={pathOf(lang, 'download')}>
         <span className="dot" aria-hidden="true" />
         <strong>{t.bar.status}</strong>
         <span className="sep" aria-hidden="true">·</span>
@@ -50,17 +52,17 @@ export function Bar() {
         </span>
       </a>
       <div className="bar__right">
-        <a className="indicator" href="#follow">
-          <Icon name="spark" />
-          {t.follow.eyebrow}
+        <a className="indicator" href={pathOf(lang, 'download')} aria-current={page === 'download' ? 'page' : undefined}>
+          <Icon name="chevdown" />
+          {t.bar.download}
           <span className="indicator__dots" aria-hidden="true"><i /><i /><i /></span>
         </a>
         <nav className="lang" aria-label={t.a11y.language}>
-          <a href="/" hrefLang="pt-BR" lang="pt-BR" aria-current={lang === 'pt-BR' ? 'true' : undefined} onClick={keepHash}>
+          <a href={pathOf('pt-BR', here)} hrefLang="pt-BR" lang="pt-BR" aria-current={lang === 'pt-BR' ? 'true' : undefined} onClick={keepHash}>
             <span aria-hidden="true">PT</span>
             <span className="visually-hidden">Português</span>
           </a>
-          <a href="/en/" hrefLang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} onClick={keepHash}>
+          <a href={pathOf('en', here)} hrefLang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} onClick={keepHash}>
             <span aria-hidden="true">EN</span>
             <span className="visually-hidden">English</span>
           </a>
