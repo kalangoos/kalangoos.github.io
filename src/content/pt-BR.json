@@ -1300,6 +1300,11 @@
               "label": "Kalango Audio",
               "href": "https://github.com/kalangoos/kalango-audio",
               "text": "Sessões de som, gravação e transcrição local."
+            },
+            {
+              "label": "Design System",
+              "href": "https://github.com/kalangoos/design",
+              "text": "Fonte FigCraft, tokens, marca, ícones e vitrine de telas — contribuições de design."
             }
           ]
         },
