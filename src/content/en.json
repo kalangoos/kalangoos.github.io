@@ -26,7 +26,15 @@
     "status": "Technical preview 0.1",
     "statusDetail": "ISO and binaries on the releases page",
     "statusLink": "How to download",
-    "download": "Download"
+    "download": "Download",
+    "signIn": "Sign in",
+    "soon": "soon",
+    "soonHint": "The members area is not connected yet",
+    "account": "Account",
+    "members": "Members area",
+    "memberOf": "kalangoos member",
+    "profile": "GitHub profile",
+    "signOut": "Sign out"
   },
   "nav": [
     {

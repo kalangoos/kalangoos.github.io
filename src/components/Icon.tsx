@@ -1,8 +1,9 @@
 import { ICONS } from '../lib/icons.generated';
+import { SITE_ICONS } from '../lib/icons.site';
 
 /** A symbolic icon from the KalangoOS Design System (24×24, drawn in currentColor). */
 export function Icon({ name, className = 'icon', label }: { name: string; className?: string; label?: string }) {
-  const body = ICONS[name] ?? ICONS.spark;
+  const body = ICONS[name] ?? SITE_ICONS[name] ?? ICONS.spark;
   return (
     <svg
       className={className}

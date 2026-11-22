@@ -1,0 +1,96 @@
+{
+  "_note": "Sample of the Worker's /project response (the GraphQL `data` of PROJECT_BY_NUMBER, items of every page joined). Shaped by GitHub's schema; the query was validated against the live API. People, numbers and titles are invented.",
+  "organization": {
+    "viewerIsAMember": true,
+    "projectV2": {
+      "number": 1,
+      "title": "Roteiro do KalangoOS",
+      "url": "https://github.com/orgs/kalangoos/projects/1",
+      "closed": false,
+      "updatedAt": "2026-11-19T18:02:11Z",
+      "field": {
+        "id": "PVTSSF_exemplo",
+        "name": "Status",
+        "options": [
+          { "id": "f75ad846", "name": "A fazer", "color": "GRAY" },
+          { "id": "47fc9ee4", "name": "Em andamento", "color": "YELLOW" },
+          { "id": "a1b2c3d4", "name": "Em revisão", "color": "BLUE" },
+          { "id": "98236657", "name": "Feito", "color": "GREEN" }
+        ]
+      },
+      "items": {
+        "totalCount": 7,
+        "pageInfo": { "hasNextPage": false, "endCursor": "Nw" },
+        "nodes": [
+          {
+            "id": "PVTI_1", "type": "ISSUE", "isArchived": false,
+            "fieldValueByName": { "name": "A fazer", "optionId": "f75ad846" },
+            "content": {
+              "__typename": "Issue", "title": "Dock fixa com menu Iniciar e prévia de janela", "number": 31,
+              "url": "https://github.com/kalangoos/kalangoos/issues/31", "state": "OPEN", "stateReason": null,
+              "repository": { "nameWithOwner": "kalangoos/kalangoos" },
+              "labels": { "nodes": [{ "name": "shell", "color": "c7a7dc" }, { "name": "design", "color": "f2a9a9" }] },
+              "assignees": { "nodes": [{ "login": "caio-m", "avatarUrl": "https://avatars.githubusercontent.com/u/1?v=4" }] },
+              "closedByPullRequestsReferences": { "nodes": [] }
+            }
+          },
+          {
+            "id": "PVTI_2", "type": "ISSUE", "isArchived": false,
+            "fieldValueByName": { "name": "Em andamento", "optionId": "47fc9ee4" },
+            "content": {
+              "__typename": "Issue", "title": "Ilha com estados relógio, agente, música, aprovação, foco e voz", "number": 24,
+              "url": "https://github.com/kalangoos/kalangoos/issues/24", "state": "OPEN", "stateReason": null,
+              "repository": { "nameWithOwner": "kalangoos/kalangoos" },
+              "labels": { "nodes": [{ "name": "shell", "color": "c7a7dc" }, { "name": "movimento", "color": "8ed2c3" }] },
+              "assignees": { "nodes": [{ "login": "lia-souza", "avatarUrl": "https://avatars.githubusercontent.com/u/2?v=4" }] },
+              "closedByPullRequestsReferences": { "nodes": [{ "number": 57, "url": "https://github.com/kalangoos/kalangoos/pull/57", "repository": { "nameWithOwner": "kalangoos/kalangoos" } }] }
+            }
+          },
+          {
+            "id": "PVTI_3", "type": "PULL_REQUEST", "isArchived": false,
+            "fieldValueByName": { "name": "Em revisão", "optionId": "a1b2c3d4" },
+            "content": {
+              "__typename": "PullRequest", "title": "Site: barra mais alta e área de membros", "number": 3,
+              "url": "https://github.com/kalangoos/kalangoos.github.io/pull/3", "state": "OPEN", "isDraft": false,
+              "repository": { "nameWithOwner": "kalangoos/kalangoos.github.io" },
+              "labels": { "nodes": [{ "name": "site", "color": "#8ed2c3" }] },
+              "assignees": { "nodes": [{ "login": "lia-souza", "avatarUrl": "https://avatars.githubusercontent.com/u/2?v=4" }, { "login": "davi-t", "avatarUrl": "https://avatars.githubusercontent.com/u/4?v=4" }] },
+              "closingIssuesReferences": { "nodes": [{ "number": 2, "url": "https://github.com/kalangoos/kalangoos.github.io/issues/2", "repository": { "nameWithOwner": "kalangoos/kalangoos.github.io" } }] }
+            }
+          },
+          {
+            "id": "PVTI_4", "type": "PULL_REQUEST", "isArchived": false,
+            "fieldValueByName": { "name": "Feito", "optionId": "98236657" },
+            "content": {
+              "__typename": "PullRequest", "title": "Molas do Design System em código", "number": 14,
+              "url": "https://github.com/kalangoos/kalangoos/pull/14", "state": "MERGED", "isDraft": false,
+              "repository": { "nameWithOwner": "kalangoos/kalangoos" },
+              "labels": { "nodes": [] }, "assignees": { "nodes": [] },
+              "closingIssuesReferences": { "nodes": [{ "number": 9, "url": "https://github.com/kalangoos/kalangoos/issues/9", "repository": { "nameWithOwner": "kalangoos/kalangoos" } }] }
+            }
+          },
+          {
+            "id": "PVTI_5", "type": "DRAFT_ISSUE", "isArchived": false,
+            "fieldValueByName": null,
+            "content": { "__typename": "DraftIssue", "title": "Rascunho: medir o tempo de entrada da sessão", "assignees": { "nodes": [{ "login": "bia-rocha", "avatarUrl": "https://avatars.githubusercontent.com/u/3?v=4" }] } }
+          },
+          {
+            "id": "PVTI_6", "type": "REDACTED", "isArchived": false,
+            "fieldValueByName": { "name": "Bloqueado", "optionId": "removida" },
+            "content": null
+          },
+          {
+            "id": "PVTI_7", "type": "ISSUE", "isArchived": true,
+            "fieldValueByName": { "name": "Feito", "optionId": "98236657" },
+            "content": {
+              "__typename": "Issue", "title": "Arquivado: não aparece", "number": 1,
+              "url": "https://github.com/kalangoos/kalangoos/issues/1", "state": "CLOSED", "stateReason": "COMPLETED",
+              "repository": { "nameWithOwner": "kalangoos/kalangoos" },
+              "labels": { "nodes": [] }, "assignees": { "nodes": [] }, "closedByPullRequestsReferences": { "nodes": [] }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

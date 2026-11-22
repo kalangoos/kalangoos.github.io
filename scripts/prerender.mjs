@@ -1,12 +1,13 @@
 // After `vite build` (client) and `vite build --ssr` (server entry): writes the rendered HTML of every page and
-// language (dist/<path>/index.html, dist/404.html), plus sitemap.xml, so dist/ works as plain static files and the
-// text is there without JavaScript. The two Vite pages (dist/index.html, dist/en/index.html) are the templates.
+// language (dist/<path>/index.html, dist/404.html), the members area entry card into /membros/, plus sitemap.xml,
+// so dist/ works as plain static files and the text is there without JavaScript. The two Vite pages
+// (dist/index.html, dist/en/index.html) are the templates.
 import { readFileSync, writeFileSync, rmSync, mkdirSync, readdirSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const { render } = await import(pathToFileURL(join(root, 'dist-ssr/entry-server.js')).href);
+const { render, renderMembers } = await import(pathToFileURL(join(root, 'dist-ssr/entry-server.js')).href);
 const routes = JSON.parse(readFileSync(join(root, 'src/routes.json'), 'utf8'));
 const content = {
   'pt-BR': JSON.parse(readFileSync(join(root, 'src/content/pt-BR.json'), 'utf8')),
@@ -94,4 +95,13 @@ for (const f of readdirSync(assets)) {
     writeFileSync(join(assets, f), css.replace(/,\s*url\([^)]*\.woff\)\s*format\(["']woff["']\)/g, ''));
   }
 }
+
+{
+  const path = join(root, 'dist/membros/index.html');
+  const html = readFileSync(path, 'utf8');
+  if (!html.includes('<!--app-->')) throw new Error('dist/membros/index.html: marker <!--app--> not found');
+  writeFileSync(path, html.replace('<!--app-->', renderMembers()));
+  console.log('prerendered dist/membros/index.html');
+}
+
 rmSync(join(root, 'dist-ssr'), { recursive: true, force: true });

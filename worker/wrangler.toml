@@ -1,0 +1,21 @@
+# Login service of kalangoos.com (Cloudflare Worker). See README.md (design) and SETUP.md (what to create first).
+# Secrets are NOT here: GITHUB_CLIENT_SECRET and SESSION_KEY go in with `npx wrangler secret put`.
+name = "kalangoos-auth"
+main = "src/index.ts"
+compatibility_date = "2026-11-01"
+workers_dev = false
+
+# auth.kalangoos.com is served by this Worker (Cloudflare creates the DNS record for a custom domain).
+routes = [{ pattern = "auth.kalangoos.com", custom_domain = true }]
+
+[vars]
+ORG = "kalangoos"
+SITE_ORIGIN = "https://kalangoos.com"
+AUTH_ORIGIN = "https://auth.kalangoos.com"
+# Client ID of the GitHub OAuth App (public, not a secret). Filled in at SETUP.md, step 2.
+GITHUB_CLIENT_ID = "Ov23li2ofReAsPovr4nn"
+# Optional: number of the organisation project the board shows. Empty: the most recently updated open project.
+PROJECT_NUMBER = ""
+
+[observability]
+enabled = true

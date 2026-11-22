@@ -26,7 +26,15 @@
     "status": "Prévia técnica 0.1",
     "statusDetail": "ISO e binários na página de lançamentos",
     "statusLink": "Como baixar",
-    "download": "Baixar"
+    "download": "Baixar",
+    "signIn": "Entrar",
+    "soon": "em breve",
+    "soonHint": "A área de membros ainda não está conectada",
+    "account": "Conta",
+    "members": "Área de membros",
+    "memberOf": "membro da kalangoos",
+    "profile": "Perfil no GitHub",
+    "signOut": "Sair"
   },
   "nav": [
     {
