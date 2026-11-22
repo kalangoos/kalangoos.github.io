@@ -2,9 +2,10 @@ import { Icon } from '../components/Icon';
 import { AgentPanel } from '../components/AgentPanel';
 import { CaptureChip, Eyebrow, Shot, WindowControls } from '../components/Bits';
 import { useSite } from '../lib/context';
+import { pathOf } from '../lib/routes';
 
 export function Hero() {
-  const { t } = useSite();
+  const { t, lang } = useSite();
   const H = t.hero;
   return (
     <section className="hero" id="top" aria-labelledby="hero-title">
@@ -20,7 +21,7 @@ export function Hero() {
             <h1 id="hero-title" className="display">{H.title}</h1>
             <p className="lead">{H.lead}</p>
             <div className="hero__ctas">
-              <a className="btn btn--primary" href="#follow">{H.ctaPrimary}</a>
+              <a className="btn btn--primary" href={pathOf(lang, 'download')}>{H.ctaPrimary}</a>
               <a className="btn btn--secondary" href="#roadmap">{H.ctaSecondary}</a>
             </div>
             <p className="hero__note">

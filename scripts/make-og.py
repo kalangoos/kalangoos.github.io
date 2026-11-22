@@ -19,6 +19,8 @@ shot = Image.open(ASSETS + 'shots/desktop.webp').convert('RGB').resize((512, 320
 frame = Image.new('RGB', (514, 350), (38, 39, 47))
 frame.paste(Image.new('RGB', (512, 28), (16, 17, 20)), (1, 1)); frame.paste(shot, (1, 29))
 img.paste(frame, (W - 514 - 48, 140))
+# the capture greets the test account by its name: cover the name (and the comma) so no name is on the card
+d.rectangle((701, 298, 740, 312), fill=img.getpixel((744, 305)))
 # left: the logo, big, with its clear space, then the tagline
 logo = Image.open(ASSETS + 'brand/badge.webp').convert('RGBA')
 lh = 280
@@ -29,6 +31,6 @@ mono = ImageFont.truetype('/usr/share/fonts/truetype/jetbrains-mono/JetBrainsMon
 y = 372
 for line in ('O Linux em que agentes', 'de IA trabalham com você.'):
     d.text((64, y), line, font=display, fill=(226, 226, 230)); y += 46
-d.text((64, y + 26), 'kalangoos.com  ·  em desenvolvimento', font=mono, fill=(165, 161, 226))
+d.text((64, y + 26), 'kalangoos.com  ·  prévia técnica 0.1', font=mono, fill=(165, 161, 226))
 img.save(WT + '/site/public/og.png', optimize=True)
 print('og.png', img.size)

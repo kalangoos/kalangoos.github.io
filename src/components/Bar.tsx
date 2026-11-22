@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Icon } from './Icon';
 import { useSite } from '../lib/context';
 import { MemberButton, useMemberState, type MemberState } from './Member';
+import { pathOf, type PageId } from '../lib/routes';
 
 const KEY = 'kalangoos-theme';
 
@@ -13,10 +14,10 @@ function currentTheme(): 'dark' | 'light' {
 
 /**
  * The site's header is the system's top bar: brand, the island with the project's status, follow, language, theme and
- * the members area ("Entrar" or the account). `onLanding` is false on /membros/, where the section links go back home.
+ * the members area ("Entrar" or the account). `onLanding` is false on /membros/, where section links go back home.
  */
 export function Bar({ onLanding = true, member }: { onLanding?: boolean; member?: MemberState }) {
-  const { t, lang } = useSite();
+  const { t, lang, page } = useSite();
   const memberState = useMemberState(member);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   useEffect(() => setTheme(currentTheme()), []);
@@ -32,12 +33,13 @@ export function Bar({ onLanding = true, member }: { onLanding?: boolean; member?
     setTheme(next);
   };
 
-  // the other language keeps the section in view
+  const langPage: PageId = onLanding ? (page === 'notfound' ? 'home' : page) : 'home';
+
+  // the other language opens the same page, and keeps the section in view on the landing home
   const keepHash = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (onLanding && location.hash) e.currentTarget.href = e.currentTarget.pathname + location.hash;
+    if (onLanding && page === 'home' && location.hash) e.currentTarget.href = e.currentTarget.pathname + location.hash;
   };
-  const home = lang === 'en' ? '/en/' : '/';
-  const here = onLanding ? '' : home;
+  const home = pathOf(lang, 'home');
 
   return (
     <header className="bar">
@@ -45,7 +47,7 @@ export function Bar({ onLanding = true, member }: { onLanding?: boolean; member?
         <img src="/img/brand/symbol.webp" width="36" height="40" alt="" />
         <span>KalangoOS</span>
       </a>
-      <a className="island" href={`${here}#roadmap`}>
+      <a className="island" href={pathOf(lang, 'download')}>
         <span className="dot" aria-hidden="true" />
         <strong>{t.bar.status}</strong>
         <span className="sep" aria-hidden="true">·</span>
@@ -56,17 +58,17 @@ export function Bar({ onLanding = true, member }: { onLanding?: boolean; member?
         </span>
       </a>
       <div className="bar__right">
-        <a className="indicator" href={`${here}#follow`}>
-          <Icon name="spark" />
-          {t.follow.eyebrow}
+        <a className="indicator" href={pathOf(lang, 'download')} aria-current={page === 'download' ? 'page' : undefined}>
+          <Icon name="chevdown" />
+          {t.bar.download}
           <span className="indicator__dots" aria-hidden="true"><i /><i /><i /></span>
         </a>
         <nav className="lang" aria-label={t.a11y.language}>
-          <a href="/" hrefLang="pt-BR" lang="pt-BR" aria-current={lang === 'pt-BR' ? 'true' : undefined} onClick={keepHash}>
+          <a href={pathOf('pt-BR', langPage)} hrefLang="pt-BR" lang="pt-BR" aria-current={lang === 'pt-BR' ? 'true' : undefined} onClick={keepHash}>
             <span aria-hidden="true">PT</span>
             <span className="visually-hidden">Português</span>
           </a>
-          <a href="/en/" hrefLang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} onClick={keepHash}>
+          <a href={pathOf('en', langPage)} hrefLang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} onClick={keepHash}>
             <span aria-hidden="true">EN</span>
             <span className="visually-hidden">English</span>
           </a>
