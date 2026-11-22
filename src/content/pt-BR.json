@@ -1597,5 +1597,571 @@
         "href": "/en/"
       }
     }
+  },
+  "landing": {
+    "announce": {
+      "text": "KalangoOS 0.1.0 · prévia técnica publicada",
+      "link": "Leia as notas da versão"
+    },
+    "nav": {
+      "label": "Navegação principal",
+      "items": [
+        {
+          "id": "recursos",
+          "label": "Recursos"
+        },
+        {
+          "id": "capturas",
+          "label": "Capturas"
+        },
+        {
+          "id": "baixar",
+          "label": "Baixar"
+        },
+        {
+          "id": "notas",
+          "label": "Notas"
+        },
+        {
+          "id": "comunidade",
+          "label": "Comunidade"
+        },
+        {
+          "id": "apoie",
+          "label": "Apoie"
+        }
+      ],
+      "members": "Área de membros",
+      "download": "Baixar",
+      "menu": "Menu"
+    },
+    "hero": {
+      "logoAlt": "KalangoOS",
+      "version": "v0.1.0 · PRÉVIA TÉCNICA · x86_64 · UEFI",
+      "title": "O Linux em que agentes de IA trabalham com você",
+      "lead": "Uma distribuição Linux em que agentes entendem pedidos em português e operam o sistema e os apps, com o modelo rodando no seu computador, aprovação antes do que é arriscado e uma linha do tempo para desfazer.",
+      "download": "Baixar a 0.1",
+      "tour": "Assistir ao tour",
+      "github": "Código no GitHub"
+    },
+    "tour": {
+      "label": "Tour · 1:04",
+      "title": "KalangoOS em um minuto",
+      "play": "Reproduzir o tour",
+      "soon": "vídeo em breve",
+      "chaptersLabel": "Capítulos do tour",
+      "chapters": [
+        {
+          "t": "0:00",
+          "s": 0,
+          "label": "Área de trabalho"
+        },
+        {
+          "t": "0:10",
+          "s": 10,
+          "label": "Agentes"
+        },
+        {
+          "t": "0:22",
+          "s": 22,
+          "label": "Aprovar e desfazer"
+        },
+        {
+          "t": "0:34",
+          "s": 34,
+          "label": "Privacidade"
+        },
+        {
+          "t": "0:46",
+          "s": 46,
+          "label": "Apps"
+        },
+        {
+          "t": "0:56",
+          "s": 56,
+          "label": "Baixar"
+        }
+      ],
+      "alt": "Área de trabalho do KalangoOS: relógio, resumo do dia gerado pelo agente, campo “Pergunte ao KalangoOS” e o céu noturno do papel de parede"
+    },
+    "facts": [
+      {
+        "value": "Rust",
+        "text": "do kernel aos pixels",
+        "tone": "gold"
+      },
+      {
+        "value": "Local",
+        "text": "o modelo roda no seu PC",
+        "tone": "teal"
+      },
+      {
+        "value": "Ctrl+Z",
+        "text": "para o sistema todo",
+        "tone": "coral"
+      },
+      {
+        "value": "eBPF + Landlock",
+        "text": "regras que o kernel impõe",
+        "tone": "accent"
+      }
+    ],
+    "features": {
+      "eyebrow": "Funcionalidades",
+      "title": "Tudo o que o sistema faz por você",
+      "lead": "Cada destaque tem um clipe curto, feito a partir das telas reais.",
+      "clip": "Clipe",
+      "watch": "Ver no tour",
+      "items": [
+        {
+          "id": "agentes",
+          "label": "Agentes",
+          "tone": "accent",
+          "title": "Peça em português. Ele faz.",
+          "text": "Agentes entendem pedidos em linguagem natural e operam o sistema e os apps: organizam arquivos, montam tabelas e gráficos, mudam configurações.",
+          "bullets": [
+            "Entendem português do dia a dia",
+            "Operam apps e o próprio sistema",
+            "Mostram o plano antes de agir"
+          ],
+          "shot": "chat-data",
+          "alt": "Conversa em que o agente monta uma tabela com gráfico a partir do arquivo gastos.csv"
+        },
+        {
+          "id": "aprovar",
+          "label": "Aprovar e desfazer",
+          "tone": "coral",
+          "title": "Você aprova. E pode voltar atrás.",
+          "text": "O que é arriscado pede sua aprovação antes. Tudo fica registrado numa linha do tempo, e o que mudou no computador pode ser desfeito.",
+          "bullets": [
+            "Aprovação antes do que é arriscado",
+            "Linha do tempo de tudo o que os agentes fizeram",
+            "Desfazer as mudanças no computador"
+          ],
+          "shot": "chat-changes",
+          "alt": "Conversa na Central de agentes com um diff aceito, a aba Alterações e a mensagem de commit sugerida"
+        },
+        {
+          "id": "privacidade",
+          "label": "Privacidade",
+          "tone": "teal",
+          "title": "O modelo mora no seu computador.",
+          "text": "Local por padrão: o modelo de IA roda na sua máquina com llama.cpp, na GPU ou na CPU. Um painel mostra o que cada agente pode acessar.",
+          "bullets": [
+            "Modelo local com llama.cpp",
+            "A ISO não leva modelo: você escolhe e baixa depois",
+            "Painel de privacidade por agente"
+          ],
+          "shot": "privacy-panel",
+          "alt": "Painel Privacidade agora: microfone e tela em uso, câmera livre, 0 tokens enviados à nuvem, pastas privadas e o botão Pausar tudo"
+        },
+        {
+          "id": "desktop",
+          "label": "Desktop próprio",
+          "tone": "gold",
+          "title": "Um desktop feito em Rust.",
+          "text": "Shell próprio em Rust e GTK4 sobre o niri: barra, dock, barras laterais, busca de comandos, bloqueio e tela de entrada, nos temas claro e escuro.",
+          "bullets": [
+            "Shell em Rust + GTK4 sobre o niri",
+            "Busca de comandos e espaços de trabalho",
+            "Tema claro e escuro, do sistema aos apps"
+          ],
+          "shot": "command-ui",
+          "alt": "Barra de comando respondendo “o que está ocupando meu disco” com categorias, tamanhos e o botão “Liberar 3,0 MB”"
+        }
+      ]
+    },
+    "apps": {
+      "eyebrow": "Já vem na 0.1",
+      "title": "Apps do sistema, prontos",
+      "lead": "Os apps do KalangoOS, com os ícones e o desenho do próprio sistema.",
+      "items": [
+        {
+          "icon": "arquivos",
+          "name": "Arquivos",
+          "text": "Pastas, busca e prévia"
+        },
+        {
+          "icon": "configuracoes",
+          "name": "Configurações",
+          "text": "Tudo do sistema num lugar"
+        },
+        {
+          "icon": "terminal",
+          "name": "Terminal",
+          "text": "Com o agente ao lado"
+        },
+        {
+          "icon": "editor-de-texto",
+          "name": "Editor de texto",
+          "text": "Leve e rápido"
+        },
+        {
+          "icon": "calculadora",
+          "name": "Calculadora",
+          "text": "Com histórico"
+        },
+        {
+          "icon": "agentes",
+          "name": "Central de agentes",
+          "text": "Crie e governe agentes"
+        },
+        {
+          "icon": "ajuda",
+          "name": "Ajuda",
+          "text": "Responde sem internet"
+        },
+        {
+          "icon": "documentos",
+          "name": "Documentos",
+          "text": "Leia e organize"
+        }
+      ]
+    },
+    "gallery": {
+      "eyebrow": "Capturas",
+      "title": "Veja o sistema de verdade",
+      "note": "Capturas da sessão de teste.",
+      "label": "Telas do sistema",
+      "tabs": [
+        {
+          "shot": "desktop",
+          "label": "Área de trabalho",
+          "caption": "A área de trabalho, com o resumo do dia escrito pelo agente local.",
+          "alt": "Área de trabalho do KalangoOS: relógio, resumo do dia gerado pelo agente, campo “Pergunte ao KalangoOS”, dock na parte de baixo e o céu noturno do papel de parede"
+        },
+        {
+          "shot": "files-agent",
+          "label": "Agentes",
+          "caption": "Agente organizando arquivos, com a aprovação antes de mover.",
+          "alt": "Arquivos com a faixa “Agente está usando Arquivos · 0/5 arquivos” e um PDF marcado como duplicado"
+        },
+        {
+          "shot": "appearance",
+          "label": "Aparência",
+          "caption": "Aparência: escuro ou claro, a cor de destaque, o arredondamento e a dock.",
+          "alt": "Configurações › Aparência com prévia ao vivo, o estilo (claro, escuro ou automático), a cor de destaque, o arredondamento e a dock"
+        },
+        {
+          "shot": "help",
+          "label": "Ajuda",
+          "caption": "Ajuda que responde sem internet.",
+          "alt": "App Ajuda respondendo como conectar um segundo monitor, com os botões Mostre para mim e Fazer por mim"
+        },
+        {
+          "shot": "lock",
+          "label": "Bloqueio",
+          "caption": "Tela de bloqueio com o relógio colorido e cartões discretos.",
+          "alt": "Tela de bloqueio com o relógio colorido, a data e cartões discretos de agentes e notificações"
+        },
+        {
+          "shot": "spaces",
+          "label": "Espaços",
+          "caption": "Espaços por intenção, com a sugestão de rotina do agente.",
+          "alt": "Tela Espaços com os espaços Estudar e Escrever textos e a sugestão de rotina do agente"
+        }
+      ]
+    },
+    "download": {
+      "eyebrow": "Baixar",
+      "title": "Baixe o KalangoOS 0.1",
+      "lead": "A ISO instalável, os binários e as somas de verificação estão no lançamento v0.1.0 do GitHub, com o atestado de origem do build.",
+      "edition": {
+        "label": "Prévia técnica · 0.1.0",
+        "title": "KalangoOS 0.1.0",
+        "text": "Sessão ao vivo com o instalador. x86_64, UEFI. O modelo de IA é baixado depois.",
+        "iso": "Baixar a ISO",
+        "sums": "SHA-256",
+        "all": "Todas as versões",
+        "filesLabel": "Arquivos do lançamento",
+        "files": [
+          {
+            "name": "kalangoos-0.1.0-amd64.iso",
+            "badge": "Para instalar",
+            "tone": "accent"
+          },
+          {
+            "name": "SHA256SUMS-iso.txt",
+            "badge": "Conferir a ISO",
+            "tone": "cream"
+          },
+          {
+            "name": "kalangoos-0.1.0-linux-x86_64.tar.gz",
+            "badge": "Binários",
+            "tone": "gold"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "badge": "Conferir os binários",
+            "tone": "cream"
+          }
+        ]
+      },
+      "req": {
+        "label": "Requisitos",
+        "items": [
+          {
+            "title": "Mínimo (planejado)",
+            "text": "64 bits, 4 núcleos (x86-64-v2), 8 GB de memória, SSD de 64 GB, vídeo com Vulkan e UEFI."
+          },
+          {
+            "title": "Recomendado",
+            "text": "8 núcleos, 16 GB, NVMe de 256 GB e placa de vídeo dedicada. Para modelos maiores, 32 GB."
+          },
+          {
+            "title": "Testado",
+            "text": "Máquinas virtuais (QEMU/KVM). Hardware real e Secure Boot ainda não."
+          }
+        ]
+      },
+      "startTitle": "Como começar",
+      "copy": "Copiar",
+      "copied": "Copiado",
+      "steps": [
+        {
+          "title": "Confira a soma",
+          "code": "sha256sum -c --ignore-missing \\\n  SHA256SUMS-iso.txt"
+        },
+        {
+          "title": "Experimente numa VM",
+          "code": "git clone https://github.com/kalangoos/kalangoos\ncd kalangoos\nKALANGO_ISO=…/kalangoos-0.1.0-amd64.iso \\\n  imagem/rodar-iso.sh novo"
+        },
+        {
+          "title": "Grave e ligue em UEFI",
+          "code": "sudo dd if=kalangoos-0.1.0-amd64.iso \\\n  of=/dev/sdX bs=4M status=progress conv=fsync"
+        }
+      ],
+      "warn": "Prévia técnica 0.x: testada só em máquinas virtuais (UEFI). Use numa VM ou num computador sem dados importantes.",
+      "guide": "Guia completo: baixar, conferir e instalar"
+    },
+    "notes": {
+      "eyebrow": "Notas da versão",
+      "title": "O que tem na 0.1.0",
+      "items": [
+        "ISO instalável x86_64, UEFI, testada numa VM a cada execução",
+        "Primeira versão dos agentes, do kalangod e do desktop",
+        "Shell em Rust e GTK4 sobre o niri, com os apps do sistema",
+        "SHA256SUMS e atestado de origem do build"
+      ],
+      "limits": "Limitações conhecidas: hardware real não testado, modelo baixado à parte, sistema só em português.",
+      "more": "Ler as notas completas"
+    },
+    "roadmap": {
+      "eyebrow": "Roteiro",
+      "items": [
+        {
+          "v": "0.1.0",
+          "title": "Prévia técnica",
+          "status": "Publicada",
+          "done": true
+        },
+        {
+          "v": "Próxima",
+          "title": "Atualizações com ponto de restauração",
+          "status": "No roteiro",
+          "done": false
+        },
+        {
+          "v": "Depois",
+          "title": "Imagens e pacotes assinados",
+          "status": "No roteiro",
+          "done": false
+        },
+        {
+          "v": "Depois",
+          "title": "Modo híbrido e sistema em inglês",
+          "status": "No roteiro",
+          "done": false
+        }
+      ],
+      "more": "Roteiro completo no GitHub"
+    },
+    "community": {
+      "eyebrow": "Comunidade",
+      "title": "Feito em público",
+      "lead": "Código aberto. Cada bug relatado, ideia e linha de código ajudam.",
+      "soon": "em breve",
+      "cards": [
+        {
+          "id": "github",
+          "name": "GitHub",
+          "text": "Código, issues e lançamentos",
+          "cta": "github.com/kalangoos",
+          "href": "https://github.com/kalangoos",
+          "tone": "text"
+        },
+        {
+          "id": "discord",
+          "name": "Discord",
+          "text": "Converse com quem usa e desenvolve",
+          "cta": "Entrar no servidor",
+          "href": "",
+          "tone": "accent"
+        },
+        {
+          "id": "youtube",
+          "name": "YouTube",
+          "text": "Tours, novidades e tutoriais",
+          "cta": "Inscrever-se no canal",
+          "href": "",
+          "tone": "coral"
+        },
+        {
+          "id": "contribuir",
+          "name": "Contribuir",
+          "text": "Código em Rust, traduções e testes",
+          "cta": "Ler o guia",
+          "href": "@contribute",
+          "tone": "teal"
+        }
+      ],
+      "channel": {
+        "eyebrow": "No canal",
+        "title": "Vídeos do KalangoOS",
+        "videos": [
+          {
+            "id": "tour",
+            "title": "Tour da 0.1 em um minuto",
+            "duration": "1:04",
+            "shot": "desktop",
+            "alt": "Área de trabalho do KalangoOS"
+          },
+          {
+            "id": "agentes",
+            "title": "Agentes: do pedido ao resultado",
+            "duration": "em breve",
+            "shot": "chat-data",
+            "alt": "Conversa em que o agente monta uma tabela com gráfico"
+          },
+          {
+            "id": "vm",
+            "title": "Instalando numa VM passo a passo",
+            "duration": "em breve",
+            "shot": "monitor-agents",
+            "alt": "Monitor do sistema na página Agentes"
+          }
+        ]
+      }
+    },
+    "support": {
+      "eyebrow": "Apoie o projeto",
+      "title": "Ajude o KalangoOS a crescer",
+      "text": "Doações pagam o domínio, os servidores de build e os computadores de teste, e mantêm o sistema gratuito para todos.",
+      "methods": [
+        {
+          "name": "PIX",
+          "text": "Copie a chave",
+          "tone": "teal"
+        },
+        {
+          "name": "GitHub Sponsors",
+          "text": "Apoio mensal",
+          "tone": "accent"
+        },
+        {
+          "name": "Outras formas",
+          "text": "Cartão e exterior",
+          "tone": "gold"
+        }
+      ],
+      "cta": "Apoiar o KalangoOS",
+      "soon": "As formas de doação ainda estão sendo preparadas: em breve aqui."
+    },
+    "members": {
+      "eyebrow": "Área de membros",
+      "title": "Para quem contribui",
+      "text": "Entre com o GitHub e acompanhe o quadro do projeto, a documentação interna e as especificações.",
+      "items": [
+        "Quadro do projeto",
+        "Documentação",
+        "Especificações"
+      ],
+      "cta": "Entrar com GitHub"
+    },
+    "footer": {
+      "tagline": "O Linux em que agentes de IA trabalham com você. Código aberto.",
+      "follow": "Novidades: acompanhe os lançamentos no GitHub",
+      "cols": [
+        {
+          "title": "Produto",
+          "links": [
+            {
+              "label": "Recursos",
+              "href": "#recursos"
+            },
+            {
+              "label": "Capturas",
+              "href": "#capturas"
+            },
+            {
+              "label": "Baixar",
+              "href": "#baixar"
+            },
+            {
+              "label": "Notas da versão",
+              "href": "@notes"
+            },
+            {
+              "label": "Roteiro",
+              "href": "#roteiro"
+            }
+          ]
+        },
+        {
+          "title": "Comunidade",
+          "links": [
+            {
+              "label": "GitHub",
+              "href": "https://github.com/kalangoos"
+            },
+            {
+              "label": "Discord",
+              "href": ""
+            },
+            {
+              "label": "YouTube",
+              "href": ""
+            },
+            {
+              "label": "Contribuir",
+              "href": "@contribute"
+            },
+            {
+              "label": "Reportar um bug",
+              "href": "https://github.com/kalangoos/kalangoos/issues/new/choose"
+            }
+          ]
+        },
+        {
+          "title": "Projeto",
+          "links": [
+            {
+              "label": "Segurança",
+              "href": "@security"
+            },
+            {
+              "label": "Documentação",
+              "href": "@docs"
+            },
+            {
+              "label": "Licenças",
+              "href": "https://github.com/kalangoos/kalangoos/blob/main/docs/LICENCAS.md"
+            },
+            {
+              "label": "Apoie",
+              "href": "#apoie"
+            },
+            {
+              "label": "Área de membros",
+              "href": "/membros/"
+            }
+          ]
+        }
+      ],
+      "copyright": "© KalangoOS · software livre",
+      "theme": "Tema",
+      "dark": "escuro",
+      "light": "claro"
+    }
   }
 }
