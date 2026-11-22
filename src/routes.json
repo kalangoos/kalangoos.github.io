@@ -1,0 +1,12 @@
+{
+  "origin": "https://kalangoos.com",
+  "pages": {
+    "home": { "pt-BR": "/", "en": "/en/" },
+    "download": { "pt-BR": "/baixar/", "en": "/en/download/" },
+    "security": { "pt-BR": "/seguranca/", "en": "/en/security/" },
+    "docs": { "pt-BR": "/documentacao/", "en": "/en/docs/" },
+    "notes": { "pt-BR": "/notas/0-1-0/", "en": "/en/notes/0-1-0/" },
+    "contribute": { "pt-BR": "/contribuir/", "en": "/en/contribute/" },
+    "notfound": { "pt-BR": "/404.html", "en": "/404.html" }
+  }
+}

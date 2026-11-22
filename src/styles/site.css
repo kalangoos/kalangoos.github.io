@@ -1,3 +1,19 @@
+/* Fonts are served by this site (npm packages @fontsource/*, Latin subset, SIL OFL 1.1 / Ubuntu Font Licence 1.0):
+   no request to any third party. Roboto and Ubuntu are only fetched when the light theme uses them. */
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-500.css';
+@import '@fontsource/inter/latin-600.css';
+@import '@fontsource/inter/latin-700.css';
+@import '@fontsource/jetbrains-mono/latin-400.css';
+@import '@fontsource/jetbrains-mono/latin-500.css';
+@import '@fontsource/jetbrains-mono/latin-600.css';
+@import '@fontsource/jost/latin-500.css';
+@import '@fontsource/jost/latin-600.css';
+@import '@fontsource/roboto/latin-400.css';
+@import '@fontsource/roboto/latin-500.css';
+@import '@fontsource/roboto/latin-700.css';
+@import '@fontsource/ubuntu/latin-500.css';
+@import '@fontsource/ubuntu/latin-700.css';
 @import './tokens.css';
 @import './motion.css';
 
@@ -204,10 +220,10 @@ ul, ol { padding: 0; list-style: none; }
 .dock__item:hover .dock__tile { background: var(--raised); }
 .dock__item:focus-visible { outline: none; }
 .dock__item:focus-visible .dock__tile { background: var(--raised); box-shadow: inset 0 0 0 2px var(--accent); }
-.dock__item[aria-current="true"] { color: var(--accent-text); }
-.dock__item[aria-current="true"] .dock__tile { background: var(--surface2); }
+.dock__item[aria-current] { color: var(--accent-text); }
+.dock__item[aria-current] .dock__tile { background: var(--surface2); }
 .dock__bar { width: 12px; height: 3px; border-radius: 2px; background: transparent; margin-bottom: 1px; transition: background-color var(--motion-base); }
-.dock__item[aria-current="true"] .dock__bar { background: var(--accent); }
+.dock__item[aria-current] .dock__bar { background: var(--accent); }
 .dock__sep { width: 1px; height: 24px; background: var(--divider); margin: 10px 3px 0; flex: none; }
 .dock__tip {
   position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translate(-50%, 4px);
@@ -652,3 +668,34 @@ ul, ol { padding: 0; list-style: none; }
 @media (max-width: 720px) {
   .window__title .mono { display: none; }
 }
+
+/* ------------------------------------------------------------------ sub-pages (download, security, docs, notes, contribute, 404) */
+.page-head { padding-top: clamp(40px, 5vw, 72px); padding-bottom: clamp(24px, 3vw, 40px); }
+.page-head h1 { font-size: clamp(32px, 3vw + 8px, 48px); line-height: 1.12; max-width: 900px; }
+.page-head .lead { font-size: clamp(16px, 0.4vw + 14px, 18px); line-height: 1.55; color: var(--text2); max-width: 760px; }
+.section--tight { padding-block: 0 clamp(24px, 3vw, 40px); }
+.grid--auto { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.card .badge { align-self: flex-start; }
+.card--link h3 a { text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+.card--link h3 a:hover { text-decoration: underline; }
+.card--link svg { width: 16px; height: 16px; }
+.mono { overflow-wrap: anywhere; }
+.prose { display: flex; flex-direction: column; gap: 14px; max-width: 760px; }
+.prose p { color: var(--text2); line-height: 1.6; }
+.notice a { font-weight: 600; white-space: nowrap; }
+.notice a svg { width: 14px; height: 14px; display: inline; vertical-align: -2px; }
+.notice--warn { background: color-mix(in srgb, var(--gold) 10%, var(--surface)); border-color: color-mix(in srgb, var(--gold) 40%, var(--border)); }
+.notice--warn svg { color: var(--gold); }
+.step__body { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.step__body .links { margin-top: 8px; }
+.step__body .links svg { width: 14px; height: 14px; }
+.code {
+  margin: 10px 0 0; padding: 12px 14px; overflow-x: auto; border-radius: var(--radius-sm);
+  background: var(--field); border: 1px solid var(--border); color: var(--text);
+  font: 400 13px/1.55 var(--font-mono); tab-size: 2; max-width: 100%;
+}
+.code code { font: inherit; white-space: pre; }
+.footer__nav { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.footer__nav a { font-size: 13px; font-weight: 600; }
+.sheet__sub { margin: 18px 0 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.page-head ~ .section { padding-block: clamp(40px, 5vw, 56px); }

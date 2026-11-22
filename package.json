@@ -3,16 +3,23 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "Landing page do KalangoOS (kalangoos.com): React + Vite, páginas estáticas pré-renderizadas em pt-BR e inglês.",
+  "description": "Site do KalangoOS (kalangoos.com): React + Vite, páginas estáticas pré-renderizadas em pt-BR e inglês.",
   "scripts": {
     "dev": "vite",
     "tokens": "node scripts/gen-tokens.mjs",
     "springs": "node scripts/gen-springs.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "build": "npm run typecheck && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
-    "preview": "vite preview --host 127.0.0.1 --port 18900"
+    "build": "npm run check:content && npm run check:placeholders && npm run typecheck && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 18900",
+    "check:content": "node scripts/check-content.mjs",
+    "check:placeholders": "node scripts/check-content.mjs --placeholders"
   },
   "dependencies": {
+    "@fontsource/inter": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "@fontsource/jost": "5.3.0",
+    "@fontsource/roboto": "5.3.0",
+    "@fontsource/ubuntu": "5.3.0",
     "react": "19.3.1",
     "react-dom": "19.3.1"
   },

@@ -1,20 +1,39 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 import { Icon } from './Icon';
 import { useSite } from '../lib/context';
+import { pathOf, type PageId } from '../lib/routes';
 import { useScrollSpy } from '../lib/useReveal';
 
 const MOBILE_KEEP = ['top', 'agents', 'undo', 'security', 'roadmap'];
 
-/** The site's navigation is the system's single dock: one item per section, the grid opens every section. */
+/** The site's navigation is the system's single dock. On the home page: one item per section, and the grid opens every
+ *  section and every page. On the other pages: one item per page. */
 export function Dock() {
-  const { t } = useSite();
+  const { t, lang, page } = useSite();
+  const home = page === 'home';
   const [active, setActive] = useState('top');
   const sheet = useRef<HTMLDialogElement>(null);
-  const ids = useMemo(() => [...t.nav.map((n) => n.id), ...t.navMore.map((n) => n.id)], [t]);
+  const ids = useMemo(() => (home ? [...t.nav.map((n) => n.id), ...t.navMore.map((n) => n.id)] : []), [t, home]);
   const set = useCallback((id: string) => setActive(id), []);
   useScrollSpy(ids, set);
 
   const go = () => sheet.current?.close();
+  const pages = t.pagesNav.map((p) => ({ ...p, href: pathOf(lang, p.id as PageId), current: p.id === page }));
+
+  if (!home) {
+    return (
+      <nav className="dock" aria-label={t.a11y.pages}>
+        {pages.map((p) => (
+          <a key={p.id} href={p.href} className="dock__item" aria-current={p.current ? 'page' : undefined}>
+            <span className="dock__tile"><Icon name={p.icon} /></span>
+            <span className="dock__bar" aria-hidden="true" />
+            <span className="dock__tip">{p.label}</span>
+            <span className="visually-hidden">{p.label}</span>
+          </a>
+        ))}
+      </nav>
+    );
+  }
 
   return (
     <>
@@ -66,6 +85,17 @@ export function Dock() {
                   <Icon name={n.icon} />
                 </span>
                 {n.label}
+              </a>
+            ))}
+          </nav>
+          <h3 className="sheet__sub">{t.a11y.pages}</h3>
+          <nav className="sheet__grid" aria-label={t.a11y.pages}>
+            {pages.filter((p) => p.id !== 'home').map((p) => (
+              <a key={p.id} href={p.href}>
+                <span className="dock__tile">
+                  <Icon name={p.icon} />
+                </span>
+                {p.label}
               </a>
             ))}
           </nav>

@@ -4,14 +4,16 @@ import { ApprovalCard, StepRow } from '../components/AgentPanel';
 import { Capture, Checks, Eyebrow, SectionHead } from '../components/Bits';
 import { SpringLab } from '../components/SpringLab';
 import { useSite } from '../lib/context';
+import { PAGES, type PageId } from '../lib/routes';
 
 const i = (n: number) => ({ '--i': n }) as CSSProperties;
 
 export function Promises() {
   const { t } = useSite();
   return (
-    <section className="section" style={{ paddingTop: 'clamp(40px, 5vw, 72px)', paddingBottom: 'clamp(16px, 2vw, 32px)' }} aria-label={t.promises.map((p) => p.title).join(', ')}>
+    <section className="section" style={{ paddingTop: 'clamp(40px, 5vw, 72px)', paddingBottom: 'clamp(16px, 2vw, 32px)' }} aria-labelledby="summary-title">
       <div className="container">
+        <h2 className="visually-hidden" id="summary-title">{t.a11y.summary}</h2>
         <ul className="grid">
           {t.promises.map((p, k) => (
             <li key={p.title} className="card reveal" style={i(k)}>
@@ -149,6 +151,30 @@ export function Security() {
   );
 }
 
+export function Platform() {
+  const { t } = useSite();
+  const P = t.platform;
+  return (
+    <section className="section section--base" id="platform" aria-labelledby="platform-title">
+      <div className="container">
+        <SectionHead eyebrow={P.eyebrow} title={P.title} lead={P.lead} />
+        <ul className="grid">
+          {P.items.map((f, k) => (
+            <li key={f.title} className="feature reveal" style={i(k)}>
+              <span className="icon-tile"><Icon name={f.icon} /></span>
+              <span>
+                <h3>{f.title}</h3>
+                <p>{f.text}</p>
+              </span>
+            </li>
+          ))}
+        </ul>
+        <p className="note reveal">{P.note}</p>
+      </div>
+    </section>
+  );
+}
+
 export function Desktop() {
   const { t } = useSite();
   const D = t.desktop;
@@ -264,6 +290,15 @@ export function Roadmap() {
           </ol>
           <p className="rule reveal"><Icon name="info" /><span>{R.rule}</span></p>
         </div>
+        <div className="card reveal">
+          <h3>{R.ideas.title}</h3>
+          <p>{R.ideas.text}</p>
+          <p className="links">
+            {R.ideas.links.map((l) => (
+              <a key={l.href} href={l.href} rel="noopener">{l.label}<Icon name="chev" /></a>
+            ))}
+          </p>
+        </div>
         <div className="milestones">
           <div className="milestones__head reveal">
             <h3>{R.milestonesTitle}</h3>
@@ -323,21 +358,9 @@ export function Follow() {
             <Eyebrow>{F.eyebrow}</Eyebrow>
             <h2 className="display" id="follow-title">{F.title}</h2>
             <p>{F.text}</p>
-            {/* TODO(lista): no mailing list exists yet. Wire this form to the real list (action + method),
-                remove `disabled` from the fieldset and the "Em breve" note before going public. */}
-            <form className="form" onSubmit={(e) => e.preventDefault()} aria-describedby="follow-note">
-              <fieldset disabled style={{ border: 0, padding: 0, margin: 0, display: 'contents' }}>
-                <label htmlFor="follow-email">{F.formLabel}</label>
-                <div className="form__row">
-                  <input id="follow-email" type="email" name="email" placeholder={F.formPlaceholder} autoComplete="email" />
-                  <button type="submit" className="btn btn--primary" disabled>{F.formButton}</button>
-                </div>
-              </fieldset>
-              <p className="form__note" id="follow-note"><Icon name="clock" />{F.formNote}</p>
-            </form>
             <p className="links">
               {F.links.map((l) => (
-                <a key={l.href} href={l.href}>{l.label}<Icon name="chev" /></a>
+                <a key={l.href} href={l.href} {...(l.href.startsWith('http') ? { rel: 'noopener' } : {})}>{l.label}<Icon name="chev" /></a>
               ))}
             </p>
           </div>
@@ -348,7 +371,7 @@ export function Follow() {
 }
 
 export function Footer() {
-  const { t } = useSite();
+  const { t, lang } = useSite();
   const F = t.footer;
   return (
     <footer className="footer">
@@ -361,6 +384,12 @@ export function Footer() {
           </span>
           <span className="footer__status">{F.status}</span>
         </div>
+        <nav className="footer__nav" aria-label={t.a11y.pages}>
+          {t.pagesNav.map((p) => (
+            <a key={p.id} href={PAGES[p.id as PageId][lang]}>{p.label}</a>
+          ))}
+          <a href="https://github.com/kalangoos/kalangoos" rel="noopener">GitHub</a>
+        </nav>
         <p>{F.license}</p>
         <p>{F.ai}</p>
         <p>{F.captures}</p>

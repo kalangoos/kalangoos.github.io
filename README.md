@@ -1,16 +1,17 @@
 # Site do KalangoOS (kalangoos.com)
 
-Landing page pública do KalangoOS, em português (`/`) e inglês (`/en/`). React 19 + Vite 8 + TypeScript,
+Site público do KalangoOS (início, baixar, segurança, documentação, notas da versão, contribuir e 404), em português e inglês. React 19 + Vite 8 + TypeScript,
 pré-renderizada no build: o `dist/` é só HTML, CSS, JS e imagens estáticos, e o conteúdo aparece mesmo sem
 JavaScript.
 
-O desenho vem primeiro do FigCraft: página **"Site · Landing page"** do Design System do KalangoOS
+O desenho vem primeiro do FigCraft: página **"Site · Landing page"** de `design/KalangoOS-DesignSystem.figcraft`
 (quadros desktop 1440 e celular 390, escuro e claro, inglês, estados e os componentes do site, com anotações de
 comportamento e movimento). O código espelha esses quadros.
 
 ## Rodar
 
 ```sh
+cd site
 npm ci                 # dependências exatas do package-lock.json
 npm run dev            # desenvolvimento em http://localhost:5173 (sem pré-renderização)
 npm run build          # typecheck + build + pré-renderização → dist/
@@ -21,31 +22,64 @@ Dependências de execução: só `react` e `react-dom`. De desenvolvimento: `vit
 `typescript` e os tipos do React. Nada de bibliotecas de i18n, animação ou CSS: o dicionário é JSON e as molas são
 CSS gerado dos tokens.
 
+## Páginas
+
+Cada página existe em português e em inglês, pré-renderizada (`src/routes.json` tem os caminhos):
+
+| Página | pt-BR | en |
+|---|---|---|
+| Início (landing, desenhada no FigCraft) | `/` | `/en/` |
+| Baixar e instalar, com somas de verificação | `/baixar/` | `/en/download/` |
+| Segurança e privacidade | `/seguranca/` | `/en/security/` |
+| Documentação | `/documentacao/` | `/en/docs/` |
+| Notas da versão 0.1.0 | `/notas/0-1-0/` | `/en/notes/0-1-0/` |
+| Contribuir | `/contribuir/` | `/en/contribute/` |
+| 404 (bilíngue) | `/404.html` | |
+
+Também saem `sitemap.xml` (com `hreflang`) e `robots.txt`. As páginas que não são o início usam blocos de conteúdo
+(`pages.*` nos dois JSON; os tipos de bloco estão em `src/sections/SubPages.tsx`) com os mesmos componentes do início.
+O desenho do início está no FigCraft; as outras páginas ainda não têm quadros próprios no Design System.
+
 ## Publicar
 
-O workflow `.github/workflows/pages.yml` compila cada pull request e publica no GitHub Pages a cada push no `main`.
-Para outra hospedagem: `npm run build` e copiar o conteúdo de `dist/` para a raiz de qualquer hospedagem estática do domínio
-`kalangoos.com` (não precisa de servidor de aplicação, nem de regra de reescrita: `/` e `/en/` são arquivos
-`index.html` de verdade). Sugestões para o servidor: `Cache-Control` longo para `/assets/*` (os nomes têm hash) e
-curto para os `index.html`; HTTPS; `Content-Type: image/webp` para `.webp`.
+O site é publicado pelo repositório `kalangoos/kalangoos.github.io` (GitHub Pages, domínio `kalangoos.com`), cujo
+workflow `pages.yml` roda `npm ci` e `npm run build` na raiz e publica o `dist/`. Para publicar uma versão nova:
 
-As URLs canônicas, `hreflang` e a imagem do Open Graph já apontam para `https://kalangoos.com/`. Se o site for para
-outro endereço, troque nos dois `index.html` (raiz e `en/`).
+```sh
+git clone https://github.com/kalangoos/kalangoos.github.io.git pages && cd pages    # um clone limpo, do main
+git switch -c site-0-1-0
+rsync -a --delete --exclude .git --exclude node_modules --exclude dist /caminho/do/kalangoos/site/ ./
+git status        # confira: arquivos velhos (design-tokens/, membros/, worker/…) devem aparecer como removidos
+```
 
-## Antes de tornar público (placeholders)
+Nunca copie por cima de uma cópia local com ramos antigos (como `membros-e-barra-alta`, que não foi publicado): o
+`--delete` é o que faz sumirem os arquivos que o site não tem mais. O `robots.txt` e o `sitemap.xml` (gerado no
+build) são novos. Depois, abra o pull request (ou faça o push no `main` dele) e confira a execução do workflow.
+O domínio e o HTTPS já estão configurados no repositório (Settings › Pages); não há CNAME porque a publicação é
+por Actions. Qualquer hospedagem estática também serve: o `dist/` é só arquivos (`/x/` é `x/index.html`, e o
+`404.html` é o que o GitHub Pages mostra).
 
-Nada abaixo foi inventado: o que não existe ainda está marcado como "em breve" ou "a confirmar" na própria página.
+As URLs canônicas, `hreflang`, o sitemap e a imagem do Open Graph apontam para `https://kalangoos.com/`; para
+outro endereço, troque `origin` em `src/routes.json` (o `og:image` também usa essa origem).
 
-| O quê | Onde | O que fazer |
-|---|---|---|
-| Formulário "Avise-me" (lista de e-mails) | `src/sections/Sections.tsx`, `Follow` (comentário `TODO(lista)`) | Está desativado: não existe lista. Ligar ao serviço escolhido (ação e método do form), tirar o `disabled` e a nota "Em breve" (`follow.formNote` nos dois JSON). Revisar a política de privacidade do serviço |
-| Repositório público, fórum, chat da comunidade | `follow.text` nos dois JSON | A página diz que ainda não existem. Quando existirem, acrescentar os links em `follow.links` |
-| Canal de segurança | `security.disclosure` | Diz que será publicado em `kalangoos.com/seguranca` (como em `docs/SEGURANCA.md`). Criar a página e o contato antes de divulgar o site |
-| Licenças | `footer.license`, FAQ "É software livre?" | Seguem `docs/LICENCAS.md`: GPL-3.0-or-later e CC BY-SA 4.0 "a confirmar". Atualizar quando a fase 0 decidir |
-| Marca e recursos gerados por IA | `footer.ai` | Registro da marca e termos de uso do serviço de imagens ainda a verificar (`docs/PLANO.md`, D7) |
-| Situação e roteiro | `roadmap.*`, `hero.note`, `bar.*`, FAQ | Retrato de 19/11/2026 (`docs/PLANO.md`). Atualizar a cada passo concluído; a data está em `roadmap.updated` |
-| Requisitos de hardware | FAQ "Que computador vou precisar?" | São os **planejados** de `docs/REQUISITOS.md`; só NVIDIA foi testada |
-| Análise de visitas | — | Não há nenhum script de terceiros além do Google Fonts. Se for usar, escolher algo sem cookies e citar no rodapé |
+## Antes de publicar uma versão
+
+- `pages.notes.pending` (nos dois JSON) é a linha "ainda não incluído na 0.1.0" das notas: edite-a ou apague-a
+  conforme o que entrou. `npm run check:placeholders`, que o `npm run build` também roda, falha se sobrar um
+  marcador `[PREENCHER` ou `[FILL IN` em qualquer texto.
+- Os nomes dos arquivos da página Baixar (`kalangoos-0.1.0-amd64.iso`, `SHA256SUMS-iso.txt`,
+  `kalangoos-0.1.0-linux-x86_64.tar.gz`, `SHA256SUMS.txt`) vêm do `.github/workflows/release.yml`: confira com o
+  lançamento real e troque a versão nas notas e na página Baixar a cada lançamento.
+- A página Baixar e as notas dizem que os arquivos estão anexados ao lançamento v0.1.0 (publicado). Publique o
+  lançamento antes de publicar o site; não publique o site com o lançamento ainda em rascunho.
+- Repita as verificações abaixo.
+
+## Verificações
+
+- `npm run build` confere que `en.json` tem as chaves de `pt-BR.json`, faz o typecheck e pré-renderiza.
+- Sem pedidos a terceiros: as fontes vêm de pacotes `@fontsource/*` (OFL, registradas no `ATTRIBUTION.md`), não há
+  scripts de análise e os únicos links externos são `<a>` para o GitHub.
+- A página só guarda no navegador a escolha de tema (`localStorage`, `kalangoos-theme`).
 
 ## Conteúdo
 
@@ -104,17 +138,12 @@ python3 scripts/prepare-images.py` e
 - **Contraste:** no modo Claro, `cor/accent_text` (#248F55) fica em 3,6:1 sobre o fundo. O site usa #277955
   (mistura 80/20 com `cor/text`, 4,68:1) e texto escuro sobre o verde. Nenhum texto usa `cor/dim`. Vale levar a
   correção para o Design System.
-- **Fontes:** Inter e JetBrains Mono (Google Fonts); no claro, Roboto e Ubuntu, como nos tokens. A fonte de
+- **Fontes:** Inter e JetBrains Mono, servidas pelo próprio site (pacotes `@fontsource/*`, WOFF2 latino; nada de Google Fonts); no claro, Roboto e Ubuntu, como nos tokens. A fonte de
   títulos do escuro, URW Gothic, não é servida pelo site (a licença AGPL com exceção para PDF/PostScript não cobre
-  claramente a web): quem não a tem instalada vê Jost, a mais próxima no Google Fonts.
+  claramente a web): o site usa a Jost, a mais próxima, também servida por ele.
 - **Movimento:** molas do Design System (suave, rápida, elástica, lenta) como curvas `linear()`; entradas em cascata
   de 24 ms. Com "reduzir animações", tudo vira um esmaecer de 90 ms. Se o JavaScript não carregar, nada fica
   escondido.
 - **Acessibilidade:** HTML semântico, link para pular ao conteúdo, foco visível em tudo, abas com o padrão ARIA
   (setas, Home, End), diálogos nativos (`<dialog>`, Esc fecha, o foco volta), textos alternativos em todas as
   capturas (no inglês, dizem que a interface está em português), alvos de toque de 44 px.
-
-## Tokens do Design System
-
-`design-tokens/tokens.json` é a cópia dos tokens exportados do Design System (cores, raios, molas). `npm run tokens` e
-`npm run springs` regeneram `src/styles/tokens.css` e `motion.css` a partir dela.
