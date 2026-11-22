@@ -11,8 +11,9 @@ import { Hero } from './sections/Hero';
 import { Agents } from './sections/Agents';
 import { Desktop, Faq, Follow, Footer, Gallery, Platform, Privacy, Promises, Roadmap, Security, Stack, Undo } from './sections/Sections';
 import { NotFoundPage, SubPage } from './sections/SubPages';
+import './styles/members.css'; // small, and needed before the members chunk arrives: the pre-rendered card is already styled
 
-export function App({ lang, t, page }: { lang: Lang; t: Content; page: PageId }) {
+export function App({ lang, t, page }: { lang: Lang; t: Content; page: Exclude<PageId, 'members'> }) {
   const lb = useRef<LightboxHandle>(null);
   const ctx = useMemo(() => ({ t, lang, page, openShot: (s: string) => lb.current?.open(s) }), [t, lang, page]);
   useReveal();

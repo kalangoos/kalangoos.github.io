@@ -1,7 +1,6 @@
 # Site do KalangoOS (kalangoos.com)
 
-Site público do KalangoOS (início, baixar, segurança, documentação, notas da versão, contribuir e 404), em português e inglês, mais a área de
-membros (`/membros/`). React 19 + Vite 8 + TypeScript,
+Site público do KalangoOS (início, baixar, segurança, documentação, notas da versão, contribuir e 404), em português e inglês, mais a área de membros (`/membros/`, com login pelo GitHub). React 19 + Vite 8 + TypeScript,
 pré-renderizada no build: o `dist/` é só HTML, CSS, JS e imagens estáticos, e o conteúdo aparece mesmo sem
 JavaScript.
 
@@ -15,16 +14,16 @@ comportamento e movimento). O código espelha esses quadros.
 cd site
 npm ci                 # dependências exatas do package-lock.json
 npm run dev            # desenvolvimento em http://localhost:5173 (sem pré-renderização)
-npm test               # testes de unidade (node --test): quadro, leitura do repositório, serviço de login
-npm run build          # typecheck (site e worker) + testes + build + pré-renderização → dist/
+npm test               # testes de unidade (node --test, Node 24): quadro, leitura do repositório, rotas, Worker de login
+npm run build          # conteúdo, typecheck (site e Worker), testes, build e pré-renderização → dist/
 npm run preview        # serve o dist/ em http://127.0.0.1:18900
 ```
 
-Dependências de execução: `react`, `react-dom` e `marked` (só na área de membros, MIT). De desenvolvimento: `vite`, `@vitejs/plugin-react`,
+Dependências de execução: `react`, `react-dom` e `marked` (só na área de membros, MIT; carregada só nessa página). De desenvolvimento: `vite`, `@vitejs/plugin-react`,
 `typescript` e os tipos do React. Nada de bibliotecas de i18n, animação ou CSS: o dicionário é JSON e as molas são
 CSS gerado dos tokens.
 
-## Páginas públicas
+## Páginas
 
 Cada página existe em português e em inglês, pré-renderizada (`src/routes.json` tem os caminhos):
 
@@ -36,29 +35,56 @@ Cada página existe em português e em inglês, pré-renderizada (`src/routes.js
 | Documentação | `/documentacao/` | `/en/docs/` |
 | Notas da versão 0.1.0 | `/notas/0-1-0/` | `/en/notes/0-1-0/` |
 | Contribuir | `/contribuir/` | `/en/contribute/` |
+| Área de membros (`noindex`, fora do sitemap) | `/membros/` | `/en/members/` |
 | 404 (bilíngue) | `/404.html` | |
 
 Também saem `sitemap.xml` (com `hreflang`) e `robots.txt`. As páginas que não são o início usam blocos de conteúdo
 (`pages.*` nos dois JSON; os tipos de bloco estão em `src/sections/SubPages.tsx`) com os mesmos componentes do início.
 O desenho do início está no FigCraft; as outras páginas ainda não têm quadros próprios no Design System.
 
-## Área de membros (`/membros/`)
+## Área de membros (`/membros/`, `/en/members/`)
 
-Documentação técnica, especificação (OpenSpec) e quadro de tarefas, só para quem é da organização `kalangoos` no
-GitHub. Desenho: quadros "Site · Barra alta" e "Site · Membros · …" da página "Site · Landing page" do Design System.
+Quadro de tarefas da organização `kalangoos` (GitHub Projects) e, por conveniência de leitura, a documentação técnica e
+a especificação (OpenSpec) do repositório público. Desenho: quadros "Site · Barra alta" e "Site · Membros · …" da
+página "Site · Landing page" do Design System. A página tem `noindex, nofollow`, não está no `sitemap.xml` e leva uma
+Content-Security-Policy em `<meta>` (script por hash, `connect-src` só `auth.kalangoos.com`, `api.github.com` e
+`raw.githubusercontent.com`, imagens só do site e do GitHub, fontes só do próprio site: nada de Google Fonts nem de outros terceiros além do GitHub).
 
-- **Entrada:** login com o GitHub por um Cloudflare Worker em `auth.kalangoos.com` (código em `worker/`, desenho em
-  [worker/README.md](worker/README.md)). O token fica num cookie `HttpOnly` cifrado do Worker; a página nunca o vê.
-  O endereço do serviço entra no build por `VITE_AUTH_URL` (num `.env.production`); **sem ele a área aparece como
-  "ainda não conectada"**, que é o estado de hoje. Para ligar: [worker/SETUP.md](worker/SETUP.md) (precisa de
-  aprovação: app OAuth, Worker, domínio e segredos).
-- **Documentação e especificação:** lidas do repositório público `kalangoos/kalangoos` (a árvore numa chamada da
-  API, sem token; os arquivos pelo `raw.githubusercontent.com`). O Markdown vira componentes React (`marked` só como
-  lexer); o HTML dos documentos passa por uma lista fechada de tags e atributos, sem `dangerouslySetInnerHTML`.
-- **Quadro:** GitHub Projects (v2) da organização, pelo Worker (`GET /project`, consultas GraphQL fixas). Sem sessão
-  ou sem projeto, diz isso; nunca mostra cartões de exemplo.
-- **Prévia local** sem sessão (só a parte pública): `VITE_MEMBERS_PREVIEW=1 npx vite build --outDir /tmp/previa`
-  e `npx vite preview --outDir /tmp/previa`. O build da CI nunca liga essa opção.
+**Estado de hoje: login LIGADO.** O app OAuth da organização e os segredos do Worker já existem (criados pelos
+mantenedores) e `.env.production` (versionado, valor público) tem `VITE_AUTH_URL=https://auth.kalangoos.com`, então a
+página pede o login do GitHub e mostra o quadro a quem é da organização. Para **desligar a interface**, apague
+`site/.env.production` e publique de novo: sem `VITE_AUTH_URL` a página mostra o cartão "A área de membros ainda não
+está conectada", não faz nenhuma chamada ao Worker e o botão da barra ganha o selo "em breve" (o build não precisa de
+segredo em nenhum dos dois casos). O Worker em si só sai do ar com `npx wrangler delete`. Os textos da página (cartões,
+barra, menus, rótulos do quadro) estão nos dois JSON (`members.*`, `bar.*`); o leitor de documentos e a especificação
+ficam em português, como o conteúdo que mostram.
+
+- **Barreira de interface, não cofre.** A documentação e a especificação vêm do repositório público (a árvore numa
+  chamada da API, sem token; os arquivos pelo `raw.githubusercontent.com`) e qualquer pessoa as lê. Só o quadro é
+  protegido de fato, pelo Worker (`GET /project`, consultas GraphQL fixas, conferência de participação no servidor). O
+  texto da página não diz que os documentos são privados e não deve passar a dizer.
+- **Markdown seguro.** O Markdown vira componentes React (`marked` só como lexer); o HTML dos documentos passa por uma
+  lista fechada de tags e atributos, sem `dangerouslySetInnerHTML`. Imagens só de `raw.githubusercontent.com`,
+  `github.com` e `camo.githubusercontent.com` (nada de pixel de rastreamento); links só `http(s)` e `mailto`.
+- **Rotas no hash** (`#/docs/…`, `#/spec/…`, `#/quadro`, `#/fora`, `#/erro`), porque o GitHub Pages não tem
+  reescritas. Endereços malformados (`#/%`) não quebram a página, e `#/fora?login=` só nomeia a conta se ela tiver o
+  formato de um login do GitHub (`[A-Za-z0-9-]{1,39}`).
+- **Prévia local** sem sessão (só a parte pública): `VITE_MEMBERS_PREVIEW=1 npx vite build --outDir /tmp/previa` e
+  `npx vite preview --outDir /tmp/previa`. O build da CI nunca liga essa opção.
+
+### Operar o login
+
+O serviço de login é um Cloudflare Worker em `worker/` (desenho em [worker/README.md](worker/README.md), passos e
+verificações em [worker/SETUP.md](worker/SETUP.md)). **O que falta fazer depois de publicar este código:** o Worker no ar
+ainda roda a versão anterior; a corrigida entra com `cd site/worker && npm ci && npx wrangler deploy` (os segredos
+`GITHUB_CLIENT_SECRET` e `SESSION_KEY` persistem). Depois, as verificações do SETUP.md, passo 5. Para reverter:
+`npx wrangler rollback` (volta o Worker) ou apagar `site/.env.production` (desliga só a interface).
+
+Com o login ligado, toda página do site pede `GET /session` ao Worker uma vez (para mostrar a conta na barra): isso
+envia o cookie de sessão, se houver, e o endereço IP do visitante ao `auth.kalangoos.com` (Cloudflare). O cartão
+"Sem rastreadores" da página Segurança diz isso. O alcance do token (`read:org read:project` cobrem todas as
+organizações da pessoa), o limite de 10 tokens por pessoa e a opção de um GitHub App ficam no SETUP.md ("Alcance do
+token").
 
 ## Publicar
 
@@ -68,11 +94,12 @@ workflow `pages.yml` roda `npm ci` e `npm run build` na raiz e publica o `dist/`
 ```sh
 git clone https://github.com/kalangoos/kalangoos.github.io.git pages && cd pages    # um clone limpo, do main
 git switch -c site-0-1-0
-rsync -a --delete --exclude .git --exclude node_modules --exclude dist /caminho/do/kalangoos/site/ ./
-git status        # confira: arquivos velhos (design-tokens/, membros/, worker/…) devem aparecer como removidos
+rsync -a --delete --exclude .git --exclude .github --exclude node_modules --exclude dist /caminho/do/kalangoos/site/ ./
+# --exclude .github: o .github/workflows/pages.yml existe só no repositório do Pages; sem isso o --delete o apaga
+git status        # confira: arquivos velhos (design-tokens/…) devem aparecer como removidos; o worker/ e os tests/ agora fazem parte do site/
 ```
 
-Nunca copie por cima de uma cópia local com ramos antigos (como `membros-e-barra-alta`, que não foi publicado): o
+Nunca copie por cima de uma cópia local com ramos antigos (como `membros-e-barra-alta`, que não foi publicado e já foi trazido para cá): o
 `--delete` é o que faz sumirem os arquivos que o site não tem mais. O `robots.txt` e o `sitemap.xml` (gerado no
 build) são novos. Depois, abra o pull request (ou faça o push no `main` dele) e confira a execução do workflow.
 O domínio e o HTTPS já estão configurados no repositório (Settings › Pages); não há CNAME porque a publicação é
@@ -96,10 +123,15 @@ outro endereço, troque `origin` em `src/routes.json` (o `og:image` também usa 
 
 ## Verificações
 
-- `npm run build` confere que `en.json` tem as chaves de `pt-BR.json`, faz o typecheck e pré-renderiza.
-- Sem pedidos a terceiros: as fontes vêm de pacotes `@fontsource/*` (OFL, registradas no `ATTRIBUTION.md`), não há
-  scripts de análise e os únicos links externos são `<a>` para o GitHub.
-- A página só guarda no navegador a escolha de tema (`localStorage`, `kalangoos-theme`).
+- `npm run build` confere que `en.json` tem as chaves de `pt-BR.json`, faz o typecheck (site e Worker), roda os testes
+  (`npm test`) e pré-renderiza. A pré-renderização falha se o `VITE_AUTH_URL` não for vazio nem `https://auth.kalangoos.com`.
+- Pedidos a terceiros: as páginas do site não fazem nenhum (fontes de pacotes `@fontsource/*`, OFL, no
+  `ATTRIBUTION.md`; sem scripts de análise; os links externos são `<a>` para o GitHub). Com o login ligado, **toda**
+  página consulta `auth.kalangoos.com` uma vez, e a página de membros também fala com `api.github.com` e
+  `raw.githubusercontent.com` e mostra imagens de `raw`, `github.com`, `camo` e `avatars.githubusercontent.com`. Esse é o
+  conjunto documentado; qualquer outro é um defeito (a CSP da página de membros bloqueia).
+- A página guarda no navegador a escolha de tema (`localStorage`, `kalangoos-theme`); a sessão fica só num cookie
+  `HttpOnly` do Worker (8 horas) para quem entra.
 
 ## Conteúdo
 
@@ -121,10 +153,9 @@ site/
   index.html, en/index.html     páginas (meta, Open Graph, tema antes da pintura)
   src/content/*.json            texto em pt-BR e inglês
   src/sections/                 seções da página
-  membros/index.html            a área de membros (pt-BR, noindex)
-  src/members/                  área de membros: entrada, documentação, especificação, quadro, Markdown
-  worker/                       serviço de login (Cloudflare Worker), README do desenho e SETUP
-  tests/                        testes de unidade (node --test)
+  src/members/                  área de membros: página, documentação, especificação, quadro, Markdown, rotas
+  worker/                       serviço de login (Cloudflare Worker): código, README do desenho, SETUP, wrangler.toml
+  tests/                        testes de unidade (node --test): quadro, repositório, rotas, Worker
   src/components/               barra (a barra superior do sistema), dock, painel do agente, aprovação,
                                 capturas, ampliação, laboratório de molas, ícones
   src/styles/tokens.css         GERADO de design/tokens/tokens.json (npm run tokens)

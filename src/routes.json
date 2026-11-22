@@ -7,6 +7,7 @@
     "docs": { "pt-BR": "/documentacao/", "en": "/en/docs/" },
     "notes": { "pt-BR": "/notas/0-1-0/", "en": "/en/notes/0-1-0/" },
     "contribute": { "pt-BR": "/contribuir/", "en": "/en/contribute/" },
+    "members": { "pt-BR": "/membros/", "en": "/en/members/" },
     "notfound": { "pt-BR": "/404.html", "en": "/404.html" }
   }
 }
