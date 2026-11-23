@@ -11,8 +11,11 @@ import { currentTheme, idx, tone, switchTheme, useIndicator, useLandingReveal, u
 
 /** "@page" → that page in the current language; "#id", "/x/" and "https://…" as they are; "" → not known yet. */
 function useHref() {
-  const { lang } = useSite();
-  return useCallback((h: string) => (h.startsWith('@') ? pathOf(lang, h.slice(1) as PageId) : h), [lang]);
+  const { lang, page } = useSite();
+  return useCallback(
+    (h: string) => (h.startsWith('@') ? pathOf(lang, h.slice(1) as PageId) : h.startsWith('#') && page !== 'home' ? pathOf(lang, 'home') + h : h),
+    [lang, page],
+  );
 }
 const external = (h: string) => (h.startsWith('http') ? { rel: 'noopener' } : {});
 
@@ -81,18 +84,20 @@ function ThemeButton() {
   );
 }
 
+/** The same page in the other language (the home keeps the section in view; the 404 offers the home). */
 function LangSwitch() {
-  const { t, lang } = useSite();
+  const { t, lang, page } = useSite();
+  const target: PageId = page === 'notfound' ? 'home' : page;
   const keepHash = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (location.hash) e.currentTarget.href = e.currentTarget.pathname + location.hash;
+    if (page === 'home' && location.hash) e.currentTarget.href = e.currentTarget.pathname + location.hash;
   };
   return (
     <nav className="lv-lang" aria-label={t.a11y.language}>
-      <a href={pathOf('pt-BR', 'home')} hrefLang="pt-BR" lang="pt-BR" aria-current={lang === 'pt-BR' ? 'true' : undefined} onClick={keepHash}>
+      <a href={pathOf('pt-BR', target)} hrefLang="pt-BR" lang="pt-BR" aria-current={lang === 'pt-BR' ? 'true' : undefined} onClick={keepHash}>
         <span aria-hidden="true">PT</span>
         <span className="visually-hidden">Português</span>
       </a>
-      <a href={pathOf('en', 'home')} hrefLang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} onClick={keepHash}>
+      <a href={pathOf('en', target)} hrefLang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} onClick={keepHash}>
         <span aria-hidden="true">EN</span>
         <span className="visually-hidden">English</span>
       </a>
@@ -101,17 +106,19 @@ function LangSwitch() {
 }
 
 function Nav() {
-  const { t, lang } = useSite();
+  const { t, lang, page } = useSite();
   const L = t.landing.nav;
+  // on the other pages the section links go back to the home page
+  const base = page === 'home' ? '' : pathOf(lang, 'home');
   const head = useRef<HTMLElement>(null);
   const row = useRef<HTMLDivElement>(null);
   const ind = useRef<HTMLSpanElement>(null);
   const [active, setActive] = useState('');
-  const ids = useMemo(() => L.items.map((n) => n.id), [L]);
+  const ids = useMemo(() => (page === 'home' ? L.items.map((n) => n.id) : []), [L, page]);
   const set = useCallback((id: string) => setActive(id), []);
   useScrollSpy(ids, set);
   useNavScrolled(head);
-  useIndicator(row, ind, ids.indexOf(active));
+  useIndicator(row, ind, L.items.findIndex((n) => n.id === active));
   const closeMenu = (e: React.MouseEvent<HTMLElement>) => {
     if ((e.target as HTMLElement).closest('a')) e.currentTarget.closest('details')?.removeAttribute('open');
   };
@@ -129,7 +136,7 @@ function Nav() {
             <ul>
               {L.items.map((n) => (
                 <li key={n.id}>
-                  <a href={`#${n.id}`} data-ind-item="" aria-current={active === n.id ? 'true' : undefined}>
+                  <a href={`${base}#${n.id}`} data-ind-item="" aria-current={active === n.id ? 'true' : undefined}>
                     {n.label}
                   </a>
                 </li>
@@ -144,7 +151,7 @@ function Nav() {
           <span className="lv-nav__wide">
             <Btn href={LINKS.members} kind="ghost" small>{L.members}</Btn>
           </span>
-          <Btn href="#baixar" small icon="chevdown">{L.download}</Btn>
+          <Btn href={page === 'home' ? '#baixar' : pathOf(lang, 'download')} small icon="chevdown">{L.download}</Btn>
           <details className="lv-menu">
             <summary className="lv-icon-btn" aria-label={L.menu}>
               <Icon name="menu" className="icon when-closed" />
@@ -154,7 +161,7 @@ function Nav() {
               <ul>
                 {L.items.map((n, i) => (
                   <li key={n.id} style={idx(i)}>
-                    <a href={`#${n.id}`}>{n.label}</a>
+                    <a href={`${base}#${n.id}`}>{n.label}</a>
                   </li>
                 ))}
                 <li style={idx(L.items.length)}>
@@ -684,12 +691,11 @@ function Footer() {
   );
 }
 
-/** The home page ("Landing v3 · Produto" in the Design System), in pt-BR and English, dark and light. */
-export function Landing() {
+/** The skip link, the announcement and the menu: the top of every public page. */
+export function SiteHeader() {
   const { t, lang } = useSite();
-  useLandingReveal();
   return (
-    <div className="lv">
+    <>
       <a className="skip" href="#main">{t.a11y.skip}</a>
       <a className="lv-announce" href={pathOf(lang, 'notes')}>
         <span>{t.landing.announce.text}</span>
@@ -699,6 +705,18 @@ export function Landing() {
         </span>
       </a>
       <Nav />
+    </>
+  );
+}
+
+export { Footer as SiteFooter };
+
+/** The home page ("Landing v3 · Produto" in the Design System), in pt-BR and English, dark and light. */
+export function Landing() {
+  useLandingReveal();
+  return (
+    <div className="lv">
+      <SiteHeader />
       <main id="main">
         <Hero />
         <Facts />

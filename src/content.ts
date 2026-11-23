@@ -40,19 +40,3 @@ export const SHOTS: Record<string, { w: number; h: number; small?: boolean; ligh
   calculator: { w: 1280, h: 800, small: true, light: true },
   'first-use': { w: 699, h: 320, light: true },
 };
-
-export type ShotRef = { shot: string; caption: string; alt: string };
-
-/** The page's captures in reading order, without repeats: what the lightbox steps through. */
-export function allShots(t: Content): ShotRef[] {
-  const list: ShotRef[] = [
-    { shot: 'desktop', caption: t.hero.shotCaption, alt: t.hero.shotAlt },
-    ...t.agents.tabs.map((x) => ({ shot: x.shot, caption: x.title, alt: x.alt })),
-    ...t.privacy.shots,
-    { shot: 'install-agent', caption: t.security.install.caption, alt: t.security.install.alt },
-    ...t.desktop.bento,
-    ...t.gallery.items,
-  ];
-  const seen = new Set<string>();
-  return list.filter((s) => (seen.has(s.shot) ? false : (seen.add(s.shot), true)));
-}

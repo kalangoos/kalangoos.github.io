@@ -39,7 +39,7 @@ Cada página existe em português e em inglês, pré-renderizada (`src/routes.js
 | 404 (bilíngue) | `/404.html` | |
 
 Também saem `sitemap.xml` (com `hreflang`) e `robots.txt`. As páginas que não são o início usam blocos de conteúdo
-(`pages.*` nos dois JSON; os tipos de bloco estão em `src/sections/SubPages.tsx`) com os mesmos componentes do início.
+(`pages.*` nos dois JSON; os tipos de bloco estão em `src/sections/SubPages.tsx`), com o menu e o rodapé do início.
 O desenho do início está no FigCraft; as outras páginas ainda não têm quadros próprios no Design System.
 
 ## Área de membros (`/membros/`)
@@ -120,13 +120,13 @@ apps reais. Ficaram de fora, por isso: `sessao-instalador.png` (nome de rede com
 site/
   index.html, en/index.html     páginas (meta, Open Graph, tema antes da pintura)
   src/content/*.json            texto em pt-BR e inglês
-  src/sections/                 seções da página
+  src/landing/                  a página inicial (Landing v3), o menu e o rodapé de todas as páginas, vídeos
+  src/sections/                 blocos das outras páginas
   membros/index.html            a área de membros (pt-BR, noindex)
   src/members/                  área de membros: entrada, documentação, especificação, quadro, Markdown
   worker/                       serviço de login (Cloudflare Worker), README do desenho e SETUP
   tests/                        testes de unidade (node --test)
-  src/components/               barra (a barra superior do sistema), dock, painel do agente, aprovação,
-                                capturas, ampliação, laboratório de molas, ícones
+  src/components/               barra superior e conta (área de membros), capturas, ícones
   src/styles/tokens.css         GERADO de design/tokens/tokens.json (npm run tokens)
   src/styles/motion.css         GERADO: as molas do Design System em CSS linear() (npm run springs)
   src/lib/icons.generated.ts    ícones simbólicos exportados do FigCraft (componentes sym/*)
@@ -147,10 +147,10 @@ python3 scripts/prepare-images.py` e
 
 ## Decisões de design
 
-- **O site é a área de trabalho do sistema:** o cabeçalho é a barra superior (com a ilha mostrando a situação do
-  projeto), a navegação é a dock única (um item por seção, a grade abre todas), as seções aparecem como janelas e
-  cartões sobre o papel de parede, e o herói mostra o painel do agente montado com os componentes reais
-  (rotulado como ilustração) ao lado de uma captura real.
+- **Página de produto (Landing v3 · Produto):** faixa de aviso, menu fixo (que desfoca e encolhe ao rolar), herói
+  centrado com o logo e o tour em vídeo, destaques com clipes, capturas em abas, baixar, notas, comunidade, apoio e
+  rodapé completo, em painéis de cantos arredondados. As outras páginas públicas usam o mesmo menu e rodapé; a
+  área de membros mantém a barra superior do sistema.
 - **Logo em destaque:** o logo principal (mascote e nome) abre o herói, grande (216 px; 150 no celular; o mínimo da
   marca é 96 px), sempre sobre o fundo liso: a regra da marca pede só a versão de uma cor sobre papel de parede, então
   o papel de parede fica atrás da captura, que flutua sobre o céu do sistema. No claro, o logo do tema claro.

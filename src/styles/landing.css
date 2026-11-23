@@ -582,3 +582,6 @@ a.lv-card:hover::after, .lv-app:hover::after, .lv-step:hover::after { opacity: 1
   .lv-clip:hover .lv-clip__poster, .lv-tour:hover .lv-tour__media img, .lv-video:hover .lv-video__img img { transform: none; }
   html { scroll-behavior: auto; }
 }
+
+/* the other pages use the menu and footer without the landing's page box (the menu stays sticky) */
+.lv--chrome { display: contents; }

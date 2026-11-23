@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 
-/** Adds .is-in to every .reveal (and .agent-panel) once it scrolls into view: the spring fade-up from the
+/** Adds .is-in to every .reveal (the sub-pages) once it scrolls into view: the spring fade-up from the
  *  Design System. Without JavaScript nothing is hidden (the CSS only hides under html.js). */
 export function useReveal() {
   useEffect(() => {
-    const els = Array.from(document.querySelectorAll<HTMLElement>('.reveal, .agent-panel'));
+    const els = Array.from(document.querySelectorAll<HTMLElement>('.reveal'));
     if (!('IntersectionObserver' in window)) {
       els.forEach((e) => e.classList.add('is-in'));
       return;
@@ -25,7 +25,7 @@ export function useReveal() {
   }, []);
 }
 
-/** The id of the section in view, for the dock's active item. */
+/** The id of the section in view, for the menu's active item on the home page. */
 export function useScrollSpy(ids: string[], set: (id: string) => void) {
   useEffect(() => {
     const sections = ids.map((id) => document.getElementById(id)).filter((e): e is HTMLElement => !!e);

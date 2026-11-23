@@ -53,7 +53,7 @@ export function MembersApp({ t }: { t: Content }) {
   const route = useRoute();
   const [gate, setGate] = useState<Gate>(MEMBERS_PREVIEW ? 'preview' : AUTH_URL ? 'checking' : 'soon');
   const [member, setMember] = useState<MemberState>(AUTH_URL ? { kind: 'checking' } : { kind: 'soon' });
-  const ctx = useMemo(() => ({ t, lang: 'pt-BR' as const, page: 'home' as const, openShot: () => undefined }), [t]);
+  const ctx = useMemo(() => ({ t, lang: 'pt-BR' as const, page: 'home' as const }), [t]);
 
   useEffect(() => {
     (window as Window & { __kalangoMounted?: boolean }).__kalangoMounted = true;
