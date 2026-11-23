@@ -233,6 +233,29 @@ export function Gallery() {
   );
 }
 
+export function DesignSystem() {
+  const { t } = useSite();
+  const D = t.designSystem;
+  return (
+    <section className="section section--base" id="design" aria-labelledby="design-title">
+      <div className="container">
+        <SectionHead eyebrow={D.eyebrow} title={D.title} lead={D.lead} />
+        <div className="grid grid--shots">
+          {D.items.map((g) => (
+            <Capture key={g.shot} shot={g.shot} alt={g.alt} caption={g.caption} />
+          ))}
+        </div>
+        <p className="design-cta reveal">
+          <a className="btn btn--secondary" href={D.cta.href} target="_blank" rel="noopener noreferrer">
+            {D.cta.label}
+          </a>
+          <span className="design-cta__text">{D.cta.text}</span>
+        </p>
+      </div>
+    </section>
+  );
+}
+
 export function Stack() {
   const { t } = useSite();
   const S = t.stack;

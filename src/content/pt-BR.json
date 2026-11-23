@@ -1402,6 +1402,27 @@
           ]
         },
         {
+          "kind": "links",
+          "title": "Design System",
+          "items": [
+            {
+              "label": "kalangoos/design",
+              "href": "https://github.com/kalangoos/design",
+              "text": "Fonte FigCraft, tokens, marca e vitrine. PRs de design entram aqui."
+            },
+            {
+              "label": "CONTRIBUTING (design)",
+              "href": "https://github.com/kalangoos/design/blob/main/CONTRIBUTING.md",
+              "text": "Como abrir um PR de tela com FigCraft e Git LFS."
+            },
+            {
+              "label": "Mirrors & view-only",
+              "href": "https://github.com/kalangoos/design/blob/main/ESPELHOS.md",
+              "text": "Espelho .fig (não é a fonte) e shares temporários só de visualização."
+            }
+          ]
+        },
+        {
           "kind": "text",
           "title": "Agentes de código",
           "paras": [
@@ -1602,5 +1623,37 @@
         "href": "/en/"
       }
     }
+  },
+  "designSystem": {
+    "eyebrow": "Design System",
+    "title": "Telas desenhadas antes do código",
+    "lead": "Trechos do FigCraft (kalangoos/design). A fonte editável é o .figcraft; estas capturas são a vitrine para a comunidade.",
+    "cta": {
+      "label": "Contribuir no design",
+      "href": "https://github.com/kalangoos/design",
+      "text": "Abra o repositório kalangoos/design: FigCraft, Git LFS e PRs com capturas."
+    },
+    "items": [
+      {
+        "shot": "ds-capa",
+        "caption": "Capa do Design System",
+        "alt": "Página de capa do Design System do KalangoOS no FigCraft"
+      },
+      {
+        "shot": "ds-fundamentos",
+        "caption": "Fundamentos: cor, tipo e espaço",
+        "alt": "Página Fundamentos do Design System com tokens de cor e tipografia"
+      },
+      {
+        "shot": "ds-marca",
+        "caption": "Marca e regras de uso",
+        "alt": "Página Marca do Design System com logos e regras"
+      },
+      {
+        "shot": "ds-site",
+        "caption": "Site · landing (referência)",
+        "alt": "Frames da landing page do KalangoOS no Design System"
+      }
+    ]
   }
 }

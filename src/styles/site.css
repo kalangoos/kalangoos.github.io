@@ -764,3 +764,15 @@ ul, ol { padding: 0; list-style: none; }
 .footer__nav a { font-size: 13px; font-weight: 600; }
 .sheet__sub { margin: 18px 0 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .page-head ~ .section { padding-block: clamp(40px, 5vw, 56px); }
+
+.design-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.5rem;
+}
+.design-cta__text {
+  color: var(--fg-muted, inherit);
+  max-width: 36rem;
+}

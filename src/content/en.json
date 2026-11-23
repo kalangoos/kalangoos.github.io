@@ -1402,6 +1402,27 @@
           ]
         },
         {
+          "kind": "links",
+          "title": "Design System",
+          "items": [
+            {
+              "label": "kalangoos/design",
+              "href": "https://github.com/kalangoos/design",
+              "text": "FigCraft source, tokens, brand and screen showcase. Design PRs go here."
+            },
+            {
+              "label": "CONTRIBUTING (design)",
+              "href": "https://github.com/kalangoos/design/blob/main/CONTRIBUTING.md",
+              "text": "How to open a screen PR with FigCraft and Git LFS."
+            },
+            {
+              "label": "Mirrors & view-only",
+              "href": "https://github.com/kalangoos/design/blob/main/ESPELHOS.md",
+              "text": ".fig mirror (not the source) and temporary view-only shares."
+            }
+          ]
+        },
+        {
           "kind": "text",
           "title": "Coding agents",
           "paras": [
@@ -1602,5 +1623,37 @@
         "href": "/"
       }
     }
+  },
+  "designSystem": {
+    "eyebrow": "Design System",
+    "title": "Screens drawn before the code",
+    "lead": "Frames from FigCraft (kalangoos/design). The editable source is the .figcraft file; these captures are the public showcase.",
+    "cta": {
+      "label": "Contribute to the design",
+      "href": "https://github.com/kalangoos/design",
+      "text": "Open kalangoos/design: FigCraft, Git LFS and PRs with captures."
+    },
+    "items": [
+      {
+        "shot": "ds-capa",
+        "caption": "Design System cover",
+        "alt": "KalangoOS Design System cover page in FigCraft"
+      },
+      {
+        "shot": "ds-fundamentos",
+        "caption": "Foundations: colour, type and space",
+        "alt": "Foundations page with colour and type tokens"
+      },
+      {
+        "shot": "ds-marca",
+        "caption": "Brand and usage rules",
+        "alt": "Brand page with logos and usage rules"
+      },
+      {
+        "shot": "ds-site",
+        "caption": "Site · landing (reference)",
+        "alt": "KalangoOS landing-page frames in the Design System"
+      }
+    ]
   }
 }

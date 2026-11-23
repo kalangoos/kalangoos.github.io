@@ -39,7 +39,13 @@ export const SHOTS: Record<string, { w: number; h: number; small?: boolean; ligh
   'chat-data': { w: 1280, h: 800, small: true, light: true },
   calculator: { w: 1280, h: 800, small: true, light: true },
   'first-use': { w: 699, h: 320, light: true },
+  // Design System vitrine (top of FigCraft frames; full source in kalangoos/design)
+  'ds-capa': { w: 1440, h: 810, small: true },
+  'ds-fundamentos': { w: 1440, h: 900, small: true },
+  'ds-marca': { w: 1440, h: 900, small: true },
+  'ds-site': { w: 1440, h: 900, small: true },
 };
+
 
 export type ShotRef = { shot: string; caption: string; alt: string };
 
@@ -52,6 +58,7 @@ export function allShots(t: Content): ShotRef[] {
     { shot: 'install-agent', caption: t.security.install.caption, alt: t.security.install.alt },
     ...t.desktop.bento,
     ...t.gallery.items,
+    ...t.designSystem.items,
   ];
   const seen = new Set<string>();
   return list.filter((s) => (seen.has(s.shot) ? false : (seen.add(s.shot), true)));

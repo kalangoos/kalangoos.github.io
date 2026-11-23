@@ -9,7 +9,7 @@ import { Dock } from './components/Dock';
 import { Lightbox, type LightboxHandle } from './components/Lightbox';
 import { Hero } from './sections/Hero';
 import { Agents } from './sections/Agents';
-import { Desktop, Faq, Follow, Footer, Gallery, Platform, Privacy, Promises, Roadmap, Security, Stack, Undo } from './sections/Sections';
+import { Desktop, DesignSystem, Faq, Follow, Footer, Gallery, Platform, Privacy, Promises, Roadmap, Security, Stack, Undo } from './sections/Sections';
 import { NotFoundPage, SubPage } from './sections/SubPages';
 
 export function App({ lang, t, page }: { lang: Lang; t: Content; page: PageId }) {
@@ -32,6 +32,7 @@ export function App({ lang, t, page }: { lang: Lang; t: Content; page: PageId })
             <Platform />
             <Desktop />
             <Gallery />
+            <DesignSystem />
             <Stack />
             <Roadmap />
             <Faq />
