@@ -67,7 +67,13 @@ function Wordmark() {
 }
 
 function Symbol({ size }: { size: number }) {
-  return <img className="lv-symbol" src="/img/brand/symbol.webp" width={Math.round((size * 115) / 128)} height={size} alt="" />;
+  const w = Math.round((size * 115) / 128);
+  return (
+    <>
+      <img className="lv-symbol only-dark" src="/img/brand/symbol.webp" width={w} height={size} alt="" />
+      <img className="lv-symbol only-light" src="/img/brand/symbol-light.webp" width={w} height={size} alt="" />
+    </>
+  );
 }
 
 /* ------------------------------------------------------------------ announcement + nav */
