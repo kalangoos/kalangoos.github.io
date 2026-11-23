@@ -1,52 +1,33 @@
-import { useMemo, useRef } from 'react';
+import { useMemo } from 'react';
 import './styles/site.css';
 import type { Content, Lang } from './content';
 import { Site } from './lib/context';
 import type { PageId } from './lib/routes';
 import { useReveal } from './lib/useReveal';
-import { Bar } from './components/Bar';
-import { Dock } from './components/Dock';
-import { Lightbox, type LightboxHandle } from './components/Lightbox';
-import { Hero } from './sections/Hero';
-import { Agents } from './sections/Agents';
-import { Desktop, Faq, Follow, Footer, Gallery, Platform, Privacy, Promises, Roadmap, Security, Stack, Undo } from './sections/Sections';
+import { Landing, SiteFooter, SiteHeader } from './landing/Landing';
 import { NotFoundPage, SubPage } from './sections/SubPages';
 import './styles/members.css'; // small, and needed before the members chunk arrives: the pre-rendered card is already styled
 
 export function App({ lang, t, page }: { lang: Lang; t: Content; page: Exclude<PageId, 'members'> }) {
-  const lb = useRef<LightboxHandle>(null);
-  const ctx = useMemo(() => ({ t, lang, page, openShot: (s: string) => lb.current?.open(s) }), [t, lang, page]);
+  const ctx = useMemo(() => ({ t, lang, page }), [t, lang, page]);
   useReveal();
+  if (page === 'home') {
+    return (
+      <Site.Provider value={ctx}>
+        <Landing />
+      </Site.Provider>
+    );
+  }
+  // the other pages share the landing's menu and footer (in .lv--chrome, which adds no box: the menu stays sticky)
   return (
     <Site.Provider value={ctx}>
-      <a className="skip" href="#main">{t.a11y.skip}</a>
-      <Bar />
-      <main id="main">
-        {page === 'home' ? (
-          <>
-            <Hero />
-            <Promises />
-            <Agents />
-            <Undo />
-            <Privacy />
-            <Security />
-            <Platform />
-            <Desktop />
-            <Gallery />
-            <Stack />
-            <Roadmap />
-            <Faq />
-            <Follow />
-          </>
-        ) : page === 'notfound' ? (
-          <NotFoundPage />
-        ) : (
-          <SubPage id={page} />
-        )}
-      </main>
-      <Footer />
-      {page !== 'notfound' && <Dock />}
-      <Lightbox ref={lb} />
+      <div className="lv lv--chrome">
+        <SiteHeader />
+      </div>
+      <main id="main">{page === 'notfound' ? <NotFoundPage /> : <SubPage id={page} />}</main>
+      <div className="lv lv--chrome">
+        <SiteFooter />
+      </div>
     </Site.Provider>
   );
 }

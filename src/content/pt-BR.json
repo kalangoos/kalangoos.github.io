@@ -8,24 +8,16 @@
   },
   "a11y": {
     "skip": "Pular para o conteúdo",
-    "sections": "Seções",
-    "allSections": "Todas as seções",
-    "close": "Fechar",
-    "previous": "Anterior",
-    "next": "Próxima",
-    "openImage": "Ampliar imagem",
     "themeToLight": "Mudar para o tema claro",
     "themeToDark": "Mudar para o tema escuro",
     "language": "Idioma",
-    "realCapture": "Captura real",
-    "pages": "Páginas do site",
-    "current": "página atual",
     "summary": "Resumo do projeto"
   },
   "bar": {
     "status": "Prévia técnica 0.1",
     "statusDetail": "ISO e binários na página de lançamentos",
     "statusLink": "Como baixar",
+    "download": "Baixar",
     "signIn": "Entrar",
     "soon": "em breve",
     "soonHint": "A área de membros ainda não está conectada",
@@ -33,769 +25,7 @@
     "members": "Área de membros",
     "memberOf": "membro da kalangoos",
     "profile": "Perfil no GitHub",
-    "signOut": "Sair",
-    "download": "Baixar"
-  },
-  "nav": [
-    {
-      "id": "top",
-      "label": "Início",
-      "icon": "home"
-    },
-    {
-      "id": "agents",
-      "label": "Agentes",
-      "icon": "spark"
-    },
-    {
-      "id": "undo",
-      "label": "Desfazer",
-      "icon": "clock"
-    },
-    {
-      "id": "privacy",
-      "label": "Privacidade",
-      "icon": "eye"
-    },
-    {
-      "id": "security",
-      "label": "Segurança",
-      "icon": "shield"
-    },
-    {
-      "id": "platform",
-      "label": "Além do chat",
-      "icon": "bolt"
-    },
-    {
-      "id": "desktop",
-      "label": "Área de trabalho",
-      "icon": "display"
-    },
-    {
-      "id": "roadmap",
-      "label": "Roteiro",
-      "icon": "list"
-    },
-    {
-      "id": "faq",
-      "label": "Perguntas",
-      "icon": "info"
-    },
-    {
-      "id": "follow",
-      "label": "Participe",
-      "icon": "bell"
-    }
-  ],
-  "navMore": [
-    {
-      "id": "gallery",
-      "label": "Capturas",
-      "icon": "image"
-    },
-    {
-      "id": "stack",
-      "label": "Tecnologia",
-      "icon": "code"
-    }
-  ],
-  "hero": {
-    "eyebrow": "Sistema operacional · prévia técnica 0.1",
-    "title": "O Linux em que agentes de IA trabalham com você.",
-    "lead": "O KalangoOS é uma distribuição Linux em que agentes entendem pedidos em linguagem natural e operam o sistema e os apps — com o modelo rodando no seu computador, aprovação antes do que é arriscado e uma linha do tempo para desfazer o que eles fizeram.",
-    "ctaPrimary": "Baixar a prévia 0.1",
-    "ctaSecondary": "Veja o roteiro",
-    "note": "É uma prévia técnica 0.x, testada só em máquinas virtuais: pode falhar e a matriz de hardware ainda não está completa. Não instale num computador com dados que você não pode perder; uma máquina virtual é o caminho mais seguro.",
-    "chips": [
-      "Modelo local (LFM3)",
-      "Regras do kernel (eBPF, Landlock)",
-      "Base Ubuntu LTS"
-    ],
-    "panel": {
-      "label": "Ilustração com os componentes do sistema",
-      "tabs": [
-        "Avisos",
-        "Controles",
-        "Agente"
-      ],
-      "agent": "Agente",
-      "model": "LFM3 1.7B · local",
-      "user": "Organize a pasta baixados e apague o que estiver duplicado.",
-      "stepsSummary": "3 passos",
-      "steps": [
-        {
-          "title": "Ler a pasta baixados",
-          "detail": "6 itens",
-          "state": "done"
-        },
-        {
-          "title": "Mover 2 PDFs para a pasta PDFs",
-          "detail": "pode ser desfeito",
-          "state": "done"
-        },
-        {
-          "title": "Apagar fatura-copia.pdf",
-          "detail": "precisa de aprovação",
-          "state": "waiting"
-        }
-      ],
-      "approval": {
-        "title": "Permissão necessária",
-        "risk": "Risco médio",
-        "body": "O agente quer apagar 1 arquivo duplicado:",
-        "command": "fatura-copia.pdf → lixeira",
-        "scope": "Vai para a lixeira · pode ser desfeito na Linha do tempo",
-        "deny": "Negar",
-        "allowOnce": "Permitir uma vez",
-        "always": "Sempre"
-      },
-      "composer": "Peça qualquer coisa · / comandos"
-    },
-    "shotCaption": "Captura real da sessão de teste: a área de trabalho, com o resumo do dia escrito pelo agente local.",
-    "shotAlt": "Área de trabalho do KalangoOS: relógio, resumo do dia gerado pelo agente, campo “Pergunte ao KalangoOS”, dock na parte de baixo e o céu noturno do papel de parede"
-  },
-  "promises": [
-    {
-      "icon": "cpu",
-      "title": "Local por padrão",
-      "text": "Os agentes pensam com o LFM3, um modelo que roda neste computador pelo llama.cpp. O modelo roda aqui; só sai o que um agente busca na web e o que você inicia (Remote)."
-    },
-    {
-      "icon": "shield",
-      "title": "Pergunta antes do que é arriscado",
-      "text": "Apagar, instalar ou mexer no sistema passa por uma aprovação desenhada pelo compositor, fora do alcance do agente; falsificá-la é tratado como falha de segurança."
-    },
-    {
-      "icon": "clock",
-      "title": "Tudo fica registrado, e o que mudou no computador pode ser desfeito.",
-      "text": "Cada ação de agente entra na Linha do tempo com o que mudou, por quê e com quais permissões, e o que mudou no computador tem um botão Desfazer."
-    }
-  ],
-  "agents": {
-    "eyebrow": "Agentes",
-    "title": "Agentes que fazem, não só conversam",
-    "lead": "Eles usam os mesmos apps que você, à vista, e param quando você aperta Esc.",
-    "window": "Central de agentes",
-    "tabs": [
-      {
-        "id": "organize",
-        "label": "Organizar arquivos",
-        "title": "Peça para organizar uma pasta",
-        "text": "O agente usa o Arquivos na sua frente: uma faixa mostra o que ele está fazendo e quantos arquivos faltam, a janela fica contornada e o Esc para tudo. Duplicados ficam marcados; apagar pede aprovação.",
-        "shot": "files-agent",
-        "alt": "Arquivos com a faixa “Agente está usando Arquivos · 0/5 arquivos” e um PDF marcado como duplicado"
-      },
-      {
-        "id": "documents",
-        "label": "Perguntar a documentos",
-        "title": "Pergunte sobre um PDF",
-        "text": "O leitor de documentos resume o arquivo, mostra onde cada ponto está no texto e sugere perguntas. A resposta vem do modelo local, e o arquivo não sai do computador.",
-        "shot": "documents",
-        "alt": "Leitor de documentos com um relatório aberto e, ao lado, o resumo do documento, onde cada ponto está e perguntas sugeridas"
-      },
-      {
-        "id": "answers",
-        "label": "Respostas que viram interface",
-        "title": "Pergunte, e a resposta vira uma tela",
-        "text": "Na barra de comando (Super+Espaço), “o que está ocupando meu disco?” vira uma interface medida aqui, com o que dá para liberar sem apagar nada seu.",
-        "shot": "command-ui",
-        "alt": "Barra de comando respondendo “o que está ocupando meu disco” com categorias, tamanhos e o botão “Liberar 3,0 MB”"
-      },
-      {
-        "id": "routines",
-        "label": "Criar agentes e rotinas",
-        "title": "Descreva um agente em uma frase",
-        "text": "“Toda sexta, organize meus downloads…” vira um agente com nome, horário, onde pensa e quanta autonomia tem — e uma simulação do que ele faria antes de você criar.",
-        "shot": "new-agent",
-        "alt": "Tela “Novo agente” com o pedido escrito, o que o agente entendeu (nome, quando roda, onde pensa, autonomia) e a simulação ao lado"
-      },
-      {
-        "id": "code",
-        "label": "Código e alterações",
-        "title": "Cada edição é um diff que você aceita",
-        "text": "No chat, o agente mostra o que vai mudar antes de gravar; o que você aceita vai para a Linha do tempo com Desfazer. Commit e pull request só com a sua aprovação.",
-        "shot": "chat-changes",
-        "alt": "Conversa na Central de agentes com um diff aceito, a aba Alterações e a mensagem de commit sugerida"
-      }
-    ],
-    "moreTitle": "E também",
-    "more": [
-      "Modo voz: segure Super e fale",
-      "Descrever a tela com o LFM3-VL",
-      "Pesquisa e leitura de páginas na web",
-      "Diagramas Mermaid e fórmulas LaTeX no chat",
-      "Tabela e gráfico a partir de um CSV",
-      "Ajuda que responde sem internet"
-    ]
-  },
-  "undo": {
-    "eyebrow": "Linha do tempo",
-    "title": "Tudo fica registrado, e o que mudou no computador pode ser desfeito.",
-    "lead": "O kalangod — o serviço do sistema que executa as ações dos agentes — registra cada uma delas a partir de eventos do kernel, não do que o agente diz ter feito.",
-    "points": [
-      "O que mudou (antes e depois), quem fez, por quê e com quais permissões.",
-      "Desfazer passa pela aprovação do sistema; “Desfazer tudo desde” volta várias ações de uma vez.",
-      "Antes de ações de sistema, um ponto de restauração: o /etc e a lista exata de pacotes — com btrfs, um snapshot da raiz. A restauração também cria um ponto, então ela também se desfaz.",
-      "Arquivos apagados vão para a lixeira."
-    ],
-    "flowTitle": "O caminho de um pedido",
-    "flow": [
-      {
-        "title": "Você pede",
-        "detail": "por texto ou voz, em linguagem natural"
-      },
-      {
-        "title": "O agente planeja",
-        "detail": "os passos aparecem enquanto ele trabalha"
-      },
-      {
-        "title": "Aprovação",
-        "detail": "só para o que é arriscado; sem resposta, é negado"
-      },
-      {
-        "title": "Ponto de restauração",
-        "detail": "antes de qualquer mudança no sistema"
-      },
-      {
-        "title": "O kalangod executa",
-        "detail": "com as regras impostas pelo kernel"
-      },
-      {
-        "title": "Linha do tempo",
-        "detail": "registro com Desfazer"
-      }
-    ],
-    "proof": "Validado numa máquina virtual: pacote removido e reinstalado, conta criada por fora desfeita, snapshot btrfs restaurado."
-  },
-  "privacy": {
-    "eyebrow": "Privacidade",
-    "title": "Local primeiro, e você vê quem usa o quê",
-    "lead": "O modelo roda no seu computador. Quem usa o microfone, a câmera e a tela aparece na barra — e um atalho pausa tudo.",
-    "points": [
-      {
-        "title": "Modelos neste computador",
-        "text": "LFM3 1.7B para texto, LFM3-VL 2B para visão e LFM3-Audio 2B para voz, pelo llama.cpp, ouvindo só num soquete local, sem porta de rede."
-      },
-      {
-        "title": "Privacidade agora",
-        "text": "Quem está usando microfone, câmera e tela, o que saiu do computador hoje e as pastas fora do alcance dos agentes."
-      },
-      {
-        "title": "Pausar tudo",
-        "text": "Super+Shift+P pausa tudo de uma vez."
-      },
-      {
-        "title": "Redes sem agentes",
-        "text": "Uma rede Wi-Fi pode ficar fora do alcance dos agentes."
-      }
-    ],
-    "cloud": {
-      "badge": "Planejado",
-      "title": "Nuvem, só se você quiser",
-      "text": "Hoje não existe provedor de nuvem. O modo híbrido está planejado como opcional, com permissão, orçamento e relatório do que saiu."
-    },
-    "shots": [
-      {
-        "shot": "privacy-panel",
-        "caption": "“Privacidade agora”: acessos em uso, o que saiu do computador hoje e as regras.",
-        "alt": "Painel Privacidade agora: microfone e tela em uso, câmera livre, 0 tokens enviados à nuvem, pastas privadas e o botão Pausar tudo"
-      },
-      {
-        "shot": "monitor-agents",
-        "caption": "Monitor do sistema › Agentes: os modelos locais, a memória de vídeo e os tokens do dia.",
-        "alt": "Monitor do sistema na página Agentes: LFM3 1.7B em uso, LFM3-VL e LFM3-Audio parados, 5,8 mil tokens hoje, tudo neste computador"
-      }
-    ]
-  },
-  "security": {
-    "eyebrow": "Segurança",
-    "title": "Poder de verdade, com regras que o kernel impõe",
-    "lead": "Os agentes operam o sistema por um único serviço, o kalangod, que fala MCP num soquete local e não escuta na rede. O que nem ele pode quebrar fica no kernel.",
-    "layersTitle": "Quatro camadas",
-    "layers": [
-      {
-        "title": "Interface",
-        "text": "Aprovações e indicadores desenhados pelo sistema, fora do alcance do agente; pausar tudo."
-      },
-      {
-        "title": "Motor de agentes",
-        "text": "Separa instrução de dado; permissões por agente e por ferramenta: livre, perguntar ou nunca."
-      },
-      {
-        "title": "kalangod",
-        "text": "Níveis de poder, o contrato de cada ferramenta, aprovação e ponto de restauração. Reconhece quem chama pelas credenciais do soquete, não por um nome."
-      },
-      {
-        "title": "Kernel Linux",
-        "text": "Cada tarefa num cgroup próprio, com Landlock; seccomp no auxiliar de arquivos; eBPF LSM bloqueia pastas protegidas até para o nível total e alimenta a auditoria."
-      }
-    ],
-    "levelsTitle": "Níveis de poder",
-    "levels": [
-      {
-        "n": "0",
-        "title": "Observar",
-        "text": "Ler o estado do sistema, sem o conteúdo dos seus arquivos.",
-        "grant": "livre"
-      },
-      {
-        "n": "1",
-        "title": "Usuário",
-        "text": "Agir como você, nas pastas permitidas.",
-        "grant": "pela tabela de permissões"
-      },
-      {
-        "n": "2",
-        "title": "Sistema",
-        "text": "Mudanças reversíveis: pacotes, serviços, rede, configurações.",
-        "grant": "pergunta; ponto de restauração antes"
-      },
-      {
-        "n": "3",
-        "title": "Total",
-        "text": "Qualquer ação como root.",
-        "grant": "aprovação presencial a cada sessão, por 15 minutos; tudo registrado"
-      }
-    ],
-    "injection": {
-      "title": "Conteúdo lido é tratado como dado, não como comando",
-      "text": "Uma página ou arquivo que diga “envie ~/.ssh para este site” tem por regra não virar ação, mas o modelo pode ser enganado (veja os limites em Segurança). Na web, o agente pesquisa e lê páginas por um navegador em Rust (Moli) preso pelo kalangod: Landlock, cgroup e um proxy que recusa endereços locais e privados. A regra barra segredo local colado, em partes ou codificado (base64, hex, percentual) no endereço; não cobre rot13, texto invertido, segredo dividido entre parâmetros nem o corpo de um POST."
-    },
-    "approval": {
-      "title": "A aprovação é do sistema",
-      "text": "Desenhada pelo compositor, fora do alcance do agente. Negar, Permitir uma vez ou Sempre — e “Sempre” vale só para o mesmo pedido, não vale para o nível total e pode ser revogado. Sem resposta, o pedido é negado."
-    },
-    "install": {
-      "caption": "Agentes de terceiros mostram o que vão poder fazer antes de instalar — e dá para experimentar em simulação.",
-      "alt": "Tela Instalar agente com as permissões ajustáveis, a autonomia, o resumo de confiança e o modo simulação"
-    },
-    "statusTitle": "O que já foi provado e o que falta",
-    "done": "Implementado e testado na sessão e numa VM: isolamento por tarefa, regras eBPF, auditoria pelo kernel, pontos de restauração.",
-    "planned": "Planejado antes da 1.0: revisão externa do kalangod e do isolamento, testes automáticos com páginas e arquivos maliciosos, pacotes e imagens assinados. Hoje a ISO e os binários têm só um atestado de origem do build (GitHub).",
-    "disclosure": "Divulgação responsável: relato privado pela aba Security do repositório, sem issue pública. Detalhes na página de segurança."
-  },
-  "desktop": {
-    "eyebrow": "Área de trabalho",
-    "title": "Uma área de trabalho própria, do relógio às janelas",
-    "lead": "Shell em Rust e GTK4 sobre o compositor niri, com o mesmo Design System em todo o sistema — a regra é nenhuma tela de outro sistema.",
-    "features": [
-      {
-        "icon": "spark",
-        "title": "Barra superior com a ilha",
-        "text": "Relógio, agente, música, foco e aprovações numa pílula que cresce com mola."
-      },
-      {
-        "icon": "apps",
-        "title": "Uma dock só",
-        "text": "Flutuante, fixa como barra de tarefas ou lateral."
-      },
-      {
-        "icon": "display",
-        "title": "Barras nas bordas da tela",
-        "text": "À esquerda, Hoje com widgets; à direita, Avisos, Controles e o Agente."
-      },
-      {
-        "icon": "grid",
-        "title": "Espaços por intenção",
-        "text": "Cada espaço lembra janelas, agentes e regras de foco."
-      },
-      {
-        "icon": "sliders",
-        "title": "Telas que se ajustam",
-        "text": "Do notebook ao ultrawide: colunas que cabem, painéis que cedem e rolagem onde precisa."
-      },
-      {
-        "icon": "palette",
-        "title": "Escuro e claro",
-        "text": "Cor de destaque, cantos sutis e nenhuma sombra."
-      }
-    ],
-    "bento": [
-      {
-        "shot": "today",
-        "caption": "Hoje: resumo do dia, clima, foco e agenda",
-        "alt": "Barra lateral Hoje aberta à esquerda com o resumo do dia, clima, temporizador de foco e agenda"
-      },
-      {
-        "shot": "spaces",
-        "caption": "Espaços por intenção",
-        "alt": "Tela Espaços com os espaços Estudar e Escrever textos e a sugestão de rotina do agente"
-      },
-      {
-        "shot": "lock",
-        "caption": "Bloqueio",
-        "alt": "Tela de bloqueio com o relógio colorido, a data e cartões discretos de agentes e notificações"
-      },
-      {
-        "shot": "appearance",
-        "caption": "Aparência: escuro ou claro",
-        "alt": "Configurações › Aparência com prévia ao vivo, o estilo (claro, escuro ou automático), a cor de destaque, o arredondamento e a dock"
-      },
-      {
-        "shot": "editor",
-        "caption": "Editor de Texto com sugestões",
-        "alt": "Editor de Texto com markdown, prévia ao vivo e sugestões do agente"
-      },
-      {
-        "shot": "music",
-        "caption": "Música",
-        "alt": "App Música tocando uma faixa, com a mistura montada pelo agente"
-      }
-    ],
-    "appsTitle": "Apps do KalangoOS",
-    "appsLead": "Apps próprios, desenhados antes do código. Apps de outros desenvolvedores devem chegar por Flatpak (planejado).",
-    "apps": [
-      {
-        "icon": "arquivos",
-        "name": "Arquivos"
-      },
-      {
-        "icon": "configuracoes",
-        "name": "Configurações"
-      },
-      {
-        "icon": "agentes",
-        "name": "Central de agentes"
-      },
-      {
-        "icon": "terminal",
-        "name": "Terminal"
-      },
-      {
-        "icon": "editor-de-texto",
-        "name": "Editor de Texto"
-      },
-      {
-        "icon": "calculadora",
-        "name": "Calculadora"
-      },
-      {
-        "icon": "calendario",
-        "name": "Calendário"
-      },
-      {
-        "icon": "documentos",
-        "name": "Documentos"
-      },
-      {
-        "icon": "imagens",
-        "name": "Imagens"
-      },
-      {
-        "icon": "musica",
-        "name": "Música"
-      },
-      {
-        "icon": "video",
-        "name": "Vídeo"
-      },
-      {
-        "icon": "monitor",
-        "name": "Monitor do sistema"
-      },
-      {
-        "icon": "discos",
-        "name": "Discos"
-      },
-      {
-        "icon": "ajuda",
-        "name": "Ajuda"
-      }
-    ],
-    "motion": {
-      "title": "Movimento com molas",
-      "text": "As animações usam as molas do Design System: interrompíveis, só com posição e opacidade, em cascata de 24 ms. Com “reduzir animações”, viram um esmaecer de 90 ms.",
-      "play": "Tocar as molas",
-      "reduced": "Seu sistema pede menos movimento: as molas viram um esmaecer.",
-      "springs": [
-        {
-          "id": "suave",
-          "name": "suave",
-          "k": 300,
-          "c": 30
-        },
-        {
-          "id": "rapida",
-          "name": "rápida",
-          "k": 520,
-          "c": 38
-        },
-        {
-          "id": "elastica",
-          "name": "elástica",
-          "k": 380,
-          "c": 20
-        },
-        {
-          "id": "lenta",
-          "name": "lenta",
-          "k": 180,
-          "c": 26
-        }
-      ],
-      "units": "rigidez / amortecimento"
-    }
-  },
-  "gallery": {
-    "eyebrow": "Capturas",
-    "title": "Mais telas, direto da sessão de teste",
-    "lead": "Todas as capturas desta página vêm da sessão de teste do KalangoOS, com dados de teste, no tema da página.",
-    "items": [
-      {
-        "shot": "first-use",
-        "caption": "Primeiro uso: trazer pastas e favoritos do outro sistema",
-        "alt": "Primeiro uso perguntando se quer trazer arquivos e pastas, favoritos do navegador e conectores dos agentes"
-      },
-      {
-        "shot": "help",
-        "caption": "Ajuda que responde sem internet",
-        "alt": "App Ajuda respondendo como conectar um segundo monitor, com os botões Mostre para mim e Fazer por mim"
-      },
-      {
-        "shot": "chat-data",
-        "caption": "Tabela e gráfico a partir de um CSV",
-        "alt": "Conversa em que o agente monta uma tabela com gráfico a partir do arquivo gastos.csv"
-      },
-      {
-        "shot": "calculator",
-        "caption": "Calculadora com conta em palavras",
-        "alt": "Calculadora do KalangoOS com o campo “ou escreva”"
-      },
-      {
-        "shot": "install-agent",
-        "caption": "Permissões antes de instalar um agente",
-        "alt": "Tela Instalar agente com permissões, autonomia e o resumo de confiança"
-      },
-      {
-        "shot": "monitor-agents",
-        "caption": "Modelos locais no Monitor do sistema",
-        "alt": "Monitor do sistema mostrando os modelos locais e os tokens do dia"
-      }
-    ]
-  },
-  "stack": {
-    "eyebrow": "Tecnologia",
-    "title": "Do kernel aos pixels",
-    "lead": "Rust em tudo o que é do KalangoOS; os programas eBPF são a exceção, em C.",
-    "groups": [
-      {
-        "title": "Base",
-        "items": [
-          "Ubuntu LTS",
-          "Kernel estável do kernel.org (hoje 7.3.4), só com configuração",
-          "btrfs com snapshots",
-          "Flatpak"
-        ]
-      },
-      {
-        "title": "Compositor e shell",
-        "items": [
-          "niri (Rust) com patches do KalangoOS",
-          "GTK4 em Rust (gtk-rs)",
-          "layer-shell",
-          "greetd"
-        ]
-      },
-      {
-        "title": "Agentes",
-        "items": [
-          "kalango-agente (Rust)",
-          "llama.cpp",
-          "LFM3 em GGUF",
-          "MCP"
-        ]
-      },
-      {
-        "title": "Sistema",
-        "items": [
-          "kalangod (Rust, root)",
-          "eBPF em C com CO-RE, carregado com Aya",
-          "Landlock, seccomp, cgroups v2"
-        ]
-      },
-      {
-        "title": "Integrações",
-        "items": [
-          "PipeWire e GStreamer",
-          "NetworkManager, BlueZ, UDisks2",
-          "PackageKit",
-          "xdg-desktop-portal"
-        ]
-      },
-      {
-        "title": "Web dos agentes",
-        "items": [
-          "Moli, navegador sem interface em Rust",
-          "Proxy que recusa endereços locais e privados"
-        ]
-      }
-    ],
-    "note": "Nas decisões do projeto, o compositor final ainda aparece como “em teste” (niri ou cosmic-comp); o shell de hoje roda no niri."
-  },
-  "roadmap": {
-    "eyebrow": "Roteiro",
-    "title": "Onde estamos, sem enfeite",
-    "updated": "Situação em 22 de novembro de 2026, com a 0.1.0 publicada.",
-    "existsTitle": "Já existe e é testado",
-    "exists": [
-      "O shell inteiro: barra superior, dock, barras laterais, área de trabalho e bloqueio",
-      "Apps próprios, de Arquivos e Configurações à Central de agentes, com Kalango Remote e Kalango Audio na ISO",
-      "kalangod e o motor de agentes com o LFM3 local, aprovação (com a recomendação do d1), Linha do tempo e Desfazer",
-      "Editor de fluxo no shell e a fonte dos modelos de IA; VirtualDesk no kalangod e em Ajustes (o app e o serviço de fluxos ficam fora da ISO)",
-      "Kalango Remote com senha fixa, verificação em duas etapas, gravação de sessão, servidor próprio e modo privacidade",
-      "Instalador e ISO: a CI monta a ISO, instala numa VM vazia e liga o sistema instalado",
-      "Testes automáticos na sessão de desenvolvimento e numa VM com o kernel 7.3.4"
-    ],
-    "missingTitle": "Ainda não existe",
-    "missing": [
-      "Hardware real: o sistema foi testado só em máquinas virtuais; a matriz NVIDIA, AMD e Intel não está completa, nem Secure Boot",
-      "Atualizações com ponto de restauração e a tela de recuperação",
-      "Imagens e pacotes assinados, e revisão externa de segurança",
-      "Modo híbrido com nuvem (opcional, planejado)",
-      "O sistema em inglês (o site e as notas já são bilíngues)"
-    ],
-    "nextTitle": "Próximos passos, em ordem",
-    "next": [
-      {
-        "title": "Colher relatos da 0.1.0",
-        "text": "A versão está no GitHub; os primeiros passos são ouvir testadores, corrigir defeitos e registrar em que hardware ela liga."
-      },
-      {
-        "title": "Hardware real",
-        "text": "A matriz NVIDIA, AMD e Intel e Secure Boot, e a ISO com o modelo local quando as licenças dos modelos forem revistas."
-      },
-      {
-        "title": "Atualizações e recuperação",
-        "text": "Atualizar com ponto de restauração e voltar atrás, com a tela de recuperação."
-      },
-      {
-        "title": "AG-UI",
-        "text": "O protocolo de eventos entre agente e interface: a resposta enquanto é escrita, aprovações como interrupção e progresso ao vivo."
-      },
-      {
-        "title": "Rumo à 1.0",
-        "text": "Acessibilidade, inglês, metas de desempenho e revisão de segurança."
-      }
-    ],
-    "rule": "Um passo só termina quando liga do zero numa VM, tem teste automático e as capturas batem com o design. O roteiro completo, sem datas, está no ROADMAP.md do repositório.",
-    "milestonesTitle": "Marcos de versão",
-    "milestonesNote": "Sem datas. A 0.1.0 traz mais do que o plano original previa para a 0.1 (inclui agentes e instalador); os marcos seguintes ainda podem mudar.",
-    "milestones": [
-      {
-        "v": "0.1",
-        "name": "Prévia técnica",
-        "text": "Shell, agentes locais, kalangod, instalador e ISO de teste (esta versão)",
-        "who": "Desenvolvedores e testadores"
-      },
-      {
-        "v": "0.2",
-        "name": "Prévia",
-        "text": "Tema, ícones, Configurações e apps essenciais",
-        "who": "Entusiastas"
-      },
-      {
-        "v": "0.3",
-        "name": "Beta",
-        "text": "Agentes, kalangod e Linha do tempo maduros",
-        "who": "Testadores com backup"
-      },
-      {
-        "v": "0.4",
-        "name": "Beta",
-        "text": "Atualizações, restauração e loja",
-        "who": "Público em geral, com aviso"
-      },
-      {
-        "v": "1.0",
-        "name": "1.0",
-        "text": "Acessibilidade, inglês, metas de desempenho e revisão de segurança",
-        "who": "Público em geral"
-      }
-    ],
-    "ideas": {
-      "title": "Integrações planejadas (ideias, sem data)",
-      "text": "No ROADMAP.md há ideias para depois da 0.1.0, ainda sem desenho final nem data: o Kalango Audio nos fluxos e nos agentes, o suporte remoto com o Kalango Remote (consultar, depois agir, sempre com aprovação) e um gatilho de entrada pela internet por um túnel da Cloudflare, com os riscos descritos. Nada disso existe na 0.1.0.",
-      "links": [
-        {
-          "href": "https://github.com/kalangoos/kalangoos/blob/main/ROADMAP.md#integra%C3%A7%C3%B5es-planejadas-ideias-sem-data",
-          "label": "Integrações planejadas"
-        },
-        {
-          "href": "https://github.com/kalangoos/kalangoos/blob/main/ROADMAP.md#gatilho-de-entrada-pela-internet",
-          "label": "Gatilho de entrada pela internet"
-        }
-      ]
-    }
-  },
-  "faq": {
-    "eyebrow": "Perguntas",
-    "title": "Perguntas frequentes",
-    "items": [
-      {
-        "q": "Posso baixar e instalar hoje?",
-        "a": "Sim, como prévia técnica. A ISO da 0.1.0 está anexada ao lançamento v0.1.0 no GitHub, com o SHA256SUMS e o atestado de origem do build; a CI a monta, instala numa VM vazia e liga o sistema instalado. Veja Baixar. Use numa máquina virtual ou num computador sem dados importantes."
-      },
-      {
-        "q": "Quando sai a versão 1.0?",
-        "a": "Não há data. Os marcos de 0.1 a 1.0 estão definidos, sem datas, e cada passo só termina quando liga do zero numa VM e passa nos testes."
-      },
-      {
-        "q": "Que computador vou precisar?",
-        "a": "Os requisitos planejados são: mínimo de processador de 64 bits com 4 núcleos (x86-64-v2), 8 GB de memória, SSD de 64 GB, vídeo Intel, AMD ou NVIDIA com Vulkan e UEFI; recomendado 8 núcleos, 16 GB, NVMe de 256 GB e placa de vídeo dedicada. Até agora o sistema só foi testado em máquinas virtuais; a matriz de placas NVIDIA, AMD e Intel não está completa."
-      },
-      {
-        "q": "Qual o tamanho do modelo de IA?",
-        "a": "O padrão é o LFM3 1.7B, da Liquid AI, com cerca de 1 GB em 4 bits e contexto de 256 mil tokens. Visão e voz usam o LFM3-VL 2B e o LFM3-Audio 2B, que desligam sozinhos quando ficam parados. A ISO publicada não leva modelo: o instalador pergunta de onde baixá-los (ou você usa uma pasta ou pen drive)."
-      },
-      {
-        "q": "Meus dados vão para a nuvem?",
-        "a": "Não por padrão. Os modelos rodam no seu computador e hoje não existe provedor de nuvem de IA. A web só é usada quando um agente pesquisa ou lê uma página, e uma regra barra segredo local colado no endereço (com limites: veja Segurança). O Kalango Remote, quando você o usa, abre uma conexão cifrada por um túnel do Cloudflare. Um modo híbrido opcional está planejado."
-      },
-      {
-        "q": "É software livre? Quanto custa?",
-        "a": "O código é software livre sob a GPL-3.0-or-later (arquivo LICENSE do repositório). O nome, o logo e o mascote são a marca do projeto e ficam fora dessa licença. A documentação deve usar CC BY-SA 4.0, ainda a confirmar. Baixar a prévia não custa nada; preço e forma de distribuição de versões futuras não foram decididos."
-      },
-      {
-        "q": "Por que Ubuntu?",
-        "a": "Kernel novo sem trabalho extra, driver NVIDIA assinado para Secure Boot e a máquina de desenvolvimento igual ao alvo. O KalangoOS compila o kernel estável mais recente (hoje 7.3.4) só com configuração, sem patches, e não usa snaps por padrão: apps de terceiros devem vir por Flatpak."
-      },
-      {
-        "q": "O agente aprova as próprias ações?",
-        "a": "Não por padrão. A tela de aprovação mostra a recomendação do d1, um modelo local pequeno, mas a decisão é da pessoa. Em Permissões existe a opção “Aprovar sozinho o que é de baixo risco”, desligada por padrão, só para 3 ações reversíveis na pasta da pessoa (mover para a lixeira, mover, criar um arquivo novo que não roda), só se o d1 indicar que é seguro, com pelo menos a confiança mínima, nunca depois de conteúdo lido de fora, no máximo 5 por pedido; ela se desliga depois de 3 recusas, o kalangod confere de novo e instalar pacotes nunca é “seguro”. É uma ajuda, não uma garantia."
-      },
-      {
-        "q": "E se um agente errar?",
-        "a": "As ações ficam na Linha do tempo, com Desfazer para o que mudou no computador. Antes de mudar o sistema, o kalangod cria um ponto de restauração; arquivos apagados vão para a lixeira; e pastas protegidas ficam bloqueadas por regra do kernel, até para o nível total."
-      },
-      {
-        "q": "Em que idiomas?",
-        "a": "O sistema está em português do Brasil. O inglês faz parte da meta da versão 1.0. Este site e as notas de cada versão são em português e inglês."
-      }
-    ]
-  },
-  "follow": {
-    "eyebrow": "Participe",
-    "title": "Acompanhe e participe",
-    "text": "O código é público. Veja as versões, abra uma issue com um defeito ou uma ideia e leia como contribuir. Não há lista de e-mails, fórum nem rastreadores neste site: o acompanhamento é pelo GitHub.",
-    "links": [
-      {
-        "href": "https://github.com/kalangoos/kalangoos/releases",
-        "label": "Versões no GitHub"
-      },
-      {
-        "href": "https://github.com/kalangoos/kalangoos",
-        "label": "Código-fonte"
-      },
-      {
-        "href": "https://github.com/kalangoos/kalangoos/issues/new/choose",
-        "label": "Abrir uma issue"
-      },
-      {
-        "href": "/contribuir/",
-        "label": "Como contribuir"
-      }
-    ]
+    "signOut": "Sair"
   },
   "footer": {
     "status": "Prévia técnica 0.x. Em desenvolvimento.",
@@ -804,76 +34,6 @@
     "captures": "As capturas são da sessão de teste, com dados de teste.",
     "fonts": "Fontes (servidas por este site, sem pedidos a terceiros): Inter, JetBrains Mono, Jost, Roboto e Ubuntu, sob SIL OFL 1.1 e Ubuntu Font Licence 1.0."
   },
-  "platform": {
-    "eyebrow": "Além do chat",
-    "title": "O que vem junto na 0.1",
-    "lead": "A prévia já inclui ferramentas próprias para automatizar, acessar outros computadores, rodar máquinas virtuais e tratar som. As ações dos agentes passam pela aprovação do sistema; o acesso remoto tem as regras próprias descritas abaixo.",
-    "items": [
-      {
-        "icon": "share",
-        "title": "Fluxos",
-        "text": "O editor de fluxo está no shell: cartões encadeados, ligações que nunca trocam de porta, portas com nome, e o modelo de decisão d1 responde nos blocos “Decidir”. O serviço que executa os fluxos não vai na ISO."
-      },
-      {
-        "icon": "network",
-        "title": "Kalango Remote",
-        "text": "Acesso remoto nativo: compartilhar a tela, controlar outro computador, arquivos e SSH e Mosh no Terminal (o Mosh ainda sem teste). Tem senha fixa e acesso sem supervisão com permissões limitadas (sem arquivos, terminal, câmera, túnel, reinício nem modo de privacidade), verificação em duas etapas (TOTP), gravação de sessão (a pessoa gravada é avisada), servidor próprio compatível com o RustDesk, bloqueio global após tentativas erradas e o painel do plano do agente. O modo privacidade (“tela preta aqui”) cobre a tela local quando alguém controla com um acesso que ninguém aprovou aqui."
-      },
-      {
-        "icon": "display",
-        "title": "Kalango VirtualDesk",
-        "text": "Máquinas virtuais como ferramentas do kalangod (vm.*), com a rede conferida, cópias de sandbox e GPU dedicada por vfio-pci, e a tela em Ajustes › Sandbox. O app em si não vai na ISO."
-      },
-      {
-        "icon": "mic",
-        "title": "Kalango Audio",
-        "text": "Sessões de som com fontes, efeitos e saídas (gravar, transmitir), com transcrição da fala por modelo local, em horários marcados ou por automação."
-      },
-      {
-        "icon": "cpu",
-        "title": "Fonte dos modelos de IA",
-        "text": "No instalador, nos Ajustes e na Central de Apps: escolha de onde baixar os modelos (catálogo público, servidor privado ou pasta), com retomada e conferência de SHA-256."
-      },
-      {
-        "icon": "eye",
-        "title": "Agente que vê a tela e se conecta",
-        "text": "Com a visão do LFM3-VL, o agente pode operar a tela, sempre com aprovação por janela. A ferramenta remoto.conectar pede uma conexão ao Kalango Remote, e quem recebe o pedido aprova."
-      }
-    ],
-    "note": "O Kalango Remote e o Kalango Audio têm repositórios próprios e entram na ISO em versões fixas. O Remote ainda não foi testado entre dois computadores físicos nem numa sessão real do niri (só aninhada); o Mosh não foi testado."
-  },
-  "pagesNav": [
-    {
-      "id": "home",
-      "label": "Início",
-      "icon": "home"
-    },
-    {
-      "id": "download",
-      "label": "Baixar",
-      "icon": "chevdown"
-    },
-    {
-      "id": "security",
-      "label": "Segurança e privacidade",
-      "icon": "shield"
-    },
-    {
-      "id": "docs",
-      "label": "Documentação",
-      "icon": "list"
-    },
-    {
-      "id": "notes",
-      "label": "Notas da 0.1.0",
-      "icon": "bell"
-    },
-    {
-      "id": "contribute",
-      "label": "Contribuir",
-      "icon": "code"
-    }
-  ],
   "pages": {
     "download": {
       "title": "Baixar o KalangoOS 0.1 (prévia técnica) — KalangoOS",
@@ -1599,7 +759,18 @@
     }
   },
   "members": {
-    "board": {"issue": "Issue", "pr": "Pull request", "draft": "Rascunho", "redacted": "Item sem acesso", "redactedTitle": "Item de um repositório que você não pode ver", "closed": "fechada", "merged": "mesclado", "draftState": "rascunho", "linkedPr": "Pull request ligado", "linkedIssue": "Issue ligada"},
+    "board": {
+      "issue": "Issue",
+      "pr": "Pull request",
+      "draft": "Rascunho",
+      "redacted": "Item sem acesso",
+      "redactedTitle": "Item de um repositório que você não pode ver",
+      "closed": "fechada",
+      "merged": "mesclado",
+      "draftState": "rascunho",
+      "linkedPr": "Pull request ligado",
+      "linkedIssue": "Issue ligada"
+    },
     "title": "Área de membros · KalangoOS",
     "description": "Área de membros do KalangoOS: quadro de tarefas da organização kalangoos no GitHub, com a documentação e a especificação do repositório público.",
     "eyebrow": "Área de membros",
@@ -1648,5 +819,571 @@
       "back": "Voltar ao site"
     },
     "preview": "Prévia local, sem sessão: documentação e especificação vêm do repositório público; o quadro precisa do serviço de login."
+  },
+  "landing": {
+    "announce": {
+      "text": "KalangoOS 0.1.0 · prévia técnica publicada",
+      "link": "Leia as notas da versão"
+    },
+    "nav": {
+      "label": "Navegação principal",
+      "items": [
+        {
+          "id": "recursos",
+          "label": "Recursos"
+        },
+        {
+          "id": "capturas",
+          "label": "Capturas"
+        },
+        {
+          "id": "baixar",
+          "label": "Baixar"
+        },
+        {
+          "id": "notas",
+          "label": "Notas"
+        },
+        {
+          "id": "comunidade",
+          "label": "Comunidade"
+        },
+        {
+          "id": "apoie",
+          "label": "Apoie"
+        }
+      ],
+      "members": "Área de membros",
+      "download": "Baixar",
+      "menu": "Menu"
+    },
+    "hero": {
+      "logoAlt": "KalangoOS",
+      "version": "v0.1.0 · PRÉVIA TÉCNICA · x86_64 · UEFI",
+      "title": "O Linux em que agentes de IA trabalham com você",
+      "lead": "Uma distribuição Linux em que agentes entendem pedidos em português e operam o sistema e os apps, com o modelo rodando no seu computador, aprovação antes do que é arriscado e uma linha do tempo para desfazer.",
+      "download": "Baixar a 0.1",
+      "tour": "Assistir ao tour",
+      "github": "Código no GitHub"
+    },
+    "tour": {
+      "label": "Tour · 1:04",
+      "title": "KalangoOS em um minuto",
+      "play": "Reproduzir o tour",
+      "soon": "vídeo em breve",
+      "chaptersLabel": "Capítulos do tour",
+      "chapters": [
+        {
+          "t": "0:00",
+          "s": 0,
+          "label": "Área de trabalho"
+        },
+        {
+          "t": "0:10",
+          "s": 10,
+          "label": "Agentes"
+        },
+        {
+          "t": "0:22",
+          "s": 22,
+          "label": "Aprovar e desfazer"
+        },
+        {
+          "t": "0:34",
+          "s": 34,
+          "label": "Privacidade"
+        },
+        {
+          "t": "0:46",
+          "s": 46,
+          "label": "Apps"
+        },
+        {
+          "t": "0:56",
+          "s": 56,
+          "label": "Baixar"
+        }
+      ],
+      "alt": "Área de trabalho do KalangoOS: relógio, resumo do dia gerado pelo agente, campo “Pergunte ao KalangoOS” e o céu noturno do papel de parede"
+    },
+    "facts": [
+      {
+        "value": "Rust",
+        "text": "do kernel aos pixels",
+        "tone": "gold"
+      },
+      {
+        "value": "Local",
+        "text": "o modelo roda no seu PC",
+        "tone": "teal"
+      },
+      {
+        "value": "Ctrl+Z",
+        "text": "para o sistema todo",
+        "tone": "coral"
+      },
+      {
+        "value": "eBPF + Landlock",
+        "text": "regras que o kernel impõe",
+        "tone": "accent"
+      }
+    ],
+    "features": {
+      "eyebrow": "Funcionalidades",
+      "title": "Tudo o que o sistema faz por você",
+      "lead": "Cada destaque tem um clipe curto, feito a partir das telas reais.",
+      "clip": "Clipe",
+      "watch": "Ver no tour",
+      "items": [
+        {
+          "id": "agentes",
+          "label": "Agentes",
+          "tone": "accent",
+          "title": "Peça em português. Ele faz.",
+          "text": "Agentes entendem pedidos em linguagem natural e operam o sistema e os apps: organizam arquivos, montam tabelas e gráficos, mudam configurações.",
+          "bullets": [
+            "Entendem português do dia a dia",
+            "Operam apps e o próprio sistema",
+            "Mostram o plano antes de agir"
+          ],
+          "shot": "chat-data",
+          "alt": "Conversa em que o agente monta uma tabela com gráfico a partir do arquivo gastos.csv"
+        },
+        {
+          "id": "aprovar",
+          "label": "Aprovar e desfazer",
+          "tone": "coral",
+          "title": "Você aprova. E pode voltar atrás.",
+          "text": "O que é arriscado pede sua aprovação antes. Tudo fica registrado numa linha do tempo, e o que mudou no computador pode ser desfeito.",
+          "bullets": [
+            "Aprovação antes do que é arriscado",
+            "Linha do tempo de tudo o que os agentes fizeram",
+            "Desfazer as mudanças no computador"
+          ],
+          "shot": "chat-changes",
+          "alt": "Conversa na Central de agentes com um diff aceito, a aba Alterações e a mensagem de commit sugerida"
+        },
+        {
+          "id": "privacidade",
+          "label": "Privacidade",
+          "tone": "teal",
+          "title": "O modelo mora no seu computador.",
+          "text": "Local por padrão: o modelo de IA roda na sua máquina com llama.cpp, na GPU ou na CPU. Um painel mostra o que cada agente pode acessar.",
+          "bullets": [
+            "Modelo local com llama.cpp",
+            "A ISO não leva modelo: você escolhe e baixa depois",
+            "Painel de privacidade por agente"
+          ],
+          "shot": "privacy-panel",
+          "alt": "Painel Privacidade agora: microfone e tela em uso, câmera livre, 0 tokens enviados à nuvem, pastas privadas e o botão Pausar tudo"
+        },
+        {
+          "id": "desktop",
+          "label": "Desktop próprio",
+          "tone": "gold",
+          "title": "Um desktop feito em Rust.",
+          "text": "Shell próprio em Rust e GTK4 sobre o niri: barra, dock, barras laterais, busca de comandos, bloqueio e tela de entrada, nos temas claro e escuro.",
+          "bullets": [
+            "Shell em Rust + GTK4 sobre o niri",
+            "Busca de comandos e espaços de trabalho",
+            "Tema claro e escuro, do sistema aos apps"
+          ],
+          "shot": "command-ui",
+          "alt": "Barra de comando respondendo “o que está ocupando meu disco” com categorias, tamanhos e o botão “Liberar 3,0 MB”"
+        }
+      ]
+    },
+    "apps": {
+      "eyebrow": "Já vem na 0.1",
+      "title": "Apps do sistema, prontos",
+      "lead": "Os apps do KalangoOS, com os ícones e o desenho do próprio sistema.",
+      "items": [
+        {
+          "icon": "arquivos",
+          "name": "Arquivos",
+          "text": "Pastas, busca e prévia"
+        },
+        {
+          "icon": "configuracoes",
+          "name": "Configurações",
+          "text": "Tudo do sistema num lugar"
+        },
+        {
+          "icon": "terminal",
+          "name": "Terminal",
+          "text": "Com o agente ao lado"
+        },
+        {
+          "icon": "editor-de-texto",
+          "name": "Editor de texto",
+          "text": "Leve e rápido"
+        },
+        {
+          "icon": "calculadora",
+          "name": "Calculadora",
+          "text": "Com histórico"
+        },
+        {
+          "icon": "agentes",
+          "name": "Central de agentes",
+          "text": "Crie e governe agentes"
+        },
+        {
+          "icon": "ajuda",
+          "name": "Ajuda",
+          "text": "Responde sem internet"
+        },
+        {
+          "icon": "documentos",
+          "name": "Documentos",
+          "text": "Leia e organize"
+        }
+      ]
+    },
+    "gallery": {
+      "eyebrow": "Capturas",
+      "title": "Veja o sistema de verdade",
+      "note": "Capturas da sessão de teste.",
+      "label": "Telas do sistema",
+      "tabs": [
+        {
+          "shot": "desktop",
+          "label": "Área de trabalho",
+          "caption": "A área de trabalho, com o resumo do dia escrito pelo agente local.",
+          "alt": "Área de trabalho do KalangoOS: relógio, resumo do dia gerado pelo agente, campo “Pergunte ao KalangoOS”, dock na parte de baixo e o céu noturno do papel de parede"
+        },
+        {
+          "shot": "files-agent",
+          "label": "Agentes",
+          "caption": "Agente organizando arquivos, com a aprovação antes de mover.",
+          "alt": "Arquivos com a faixa “Agente está usando Arquivos · 0/5 arquivos” e um PDF marcado como duplicado"
+        },
+        {
+          "shot": "appearance",
+          "label": "Aparência",
+          "caption": "Aparência: escuro ou claro, a cor de destaque, o arredondamento e a dock.",
+          "alt": "Configurações › Aparência com prévia ao vivo, o estilo (claro, escuro ou automático), a cor de destaque, o arredondamento e a dock"
+        },
+        {
+          "shot": "help",
+          "label": "Ajuda",
+          "caption": "Ajuda que responde sem internet.",
+          "alt": "App Ajuda respondendo como conectar um segundo monitor, com os botões Mostre para mim e Fazer por mim"
+        },
+        {
+          "shot": "lock",
+          "label": "Bloqueio",
+          "caption": "Tela de bloqueio com o relógio colorido e cartões discretos.",
+          "alt": "Tela de bloqueio com o relógio colorido, a data e cartões discretos de agentes e notificações"
+        },
+        {
+          "shot": "spaces",
+          "label": "Espaços",
+          "caption": "Espaços por intenção, com a sugestão de rotina do agente.",
+          "alt": "Tela Espaços com os espaços Estudar e Escrever textos e a sugestão de rotina do agente"
+        }
+      ]
+    },
+    "download": {
+      "eyebrow": "Baixar",
+      "title": "Baixe o KalangoOS 0.1",
+      "lead": "A ISO instalável, os binários e as somas de verificação estão no lançamento v0.1.0 do GitHub, com o atestado de origem do build.",
+      "edition": {
+        "label": "Prévia técnica · 0.1.0",
+        "title": "KalangoOS 0.1.0",
+        "text": "Sessão ao vivo com o instalador. x86_64, UEFI. O modelo de IA é baixado depois.",
+        "iso": "Baixar a ISO",
+        "sums": "SHA-256",
+        "all": "Todas as versões",
+        "filesLabel": "Arquivos do lançamento",
+        "files": [
+          {
+            "name": "kalangoos-0.1.0-amd64.iso",
+            "badge": "Para instalar",
+            "tone": "accent"
+          },
+          {
+            "name": "SHA256SUMS-iso.txt",
+            "badge": "Conferir a ISO",
+            "tone": "cream"
+          },
+          {
+            "name": "kalangoos-0.1.0-linux-x86_64.tar.gz",
+            "badge": "Binários",
+            "tone": "gold"
+          },
+          {
+            "name": "SHA256SUMS.txt",
+            "badge": "Conferir os binários",
+            "tone": "cream"
+          }
+        ]
+      },
+      "req": {
+        "label": "Requisitos",
+        "items": [
+          {
+            "title": "Mínimo (planejado)",
+            "text": "64 bits, 4 núcleos (x86-64-v2), 8 GB de memória, SSD de 64 GB, vídeo com Vulkan e UEFI."
+          },
+          {
+            "title": "Recomendado",
+            "text": "8 núcleos, 16 GB, NVMe de 256 GB e placa de vídeo dedicada. Para modelos maiores, 32 GB."
+          },
+          {
+            "title": "Testado",
+            "text": "Máquinas virtuais (QEMU/KVM). Hardware real e Secure Boot ainda não."
+          }
+        ]
+      },
+      "startTitle": "Como começar",
+      "copy": "Copiar",
+      "copied": "Copiado",
+      "steps": [
+        {
+          "title": "Confira a soma",
+          "code": "sha256sum -c --ignore-missing \\\n  SHA256SUMS-iso.txt"
+        },
+        {
+          "title": "Experimente numa VM",
+          "code": "git clone https://github.com/kalangoos/kalangoos\ncd kalangoos\nKALANGO_ISO=…/kalangoos-0.1.0-amd64.iso \\\n  imagem/rodar-iso.sh novo"
+        },
+        {
+          "title": "Grave e ligue em UEFI",
+          "code": "sudo dd if=kalangoos-0.1.0-amd64.iso \\\n  of=/dev/sdX bs=4M status=progress conv=fsync"
+        }
+      ],
+      "warn": "Prévia técnica 0.x: testada só em máquinas virtuais (UEFI). Use numa VM ou num computador sem dados importantes.",
+      "guide": "Guia completo: baixar, conferir e instalar"
+    },
+    "notes": {
+      "eyebrow": "Notas da versão",
+      "title": "O que tem na 0.1.0",
+      "items": [
+        "ISO instalável x86_64, UEFI, testada numa VM a cada execução",
+        "Primeira versão dos agentes, do kalangod e do desktop",
+        "Shell em Rust e GTK4 sobre o niri, com os apps do sistema",
+        "SHA256SUMS e atestado de origem do build"
+      ],
+      "limits": "Limitações conhecidas: hardware real não testado, modelo baixado à parte, sistema só em português.",
+      "more": "Ler as notas completas"
+    },
+    "roadmap": {
+      "eyebrow": "Roteiro",
+      "items": [
+        {
+          "v": "0.1.0",
+          "title": "Prévia técnica",
+          "status": "Publicada",
+          "done": true
+        },
+        {
+          "v": "Próxima",
+          "title": "Atualizações com ponto de restauração",
+          "status": "No roteiro",
+          "done": false
+        },
+        {
+          "v": "Depois",
+          "title": "Imagens e pacotes assinados",
+          "status": "No roteiro",
+          "done": false
+        },
+        {
+          "v": "Depois",
+          "title": "Modo híbrido e sistema em inglês",
+          "status": "No roteiro",
+          "done": false
+        }
+      ],
+      "more": "Roteiro completo no GitHub"
+    },
+    "community": {
+      "eyebrow": "Comunidade",
+      "title": "Feito em público",
+      "lead": "Código aberto. Cada bug relatado, ideia e linha de código ajudam.",
+      "soon": "em breve",
+      "cards": [
+        {
+          "id": "github",
+          "name": "GitHub",
+          "text": "Código, issues e lançamentos",
+          "cta": "github.com/kalangoos",
+          "href": "https://github.com/kalangoos",
+          "tone": "text"
+        },
+        {
+          "id": "discord",
+          "name": "Discord",
+          "text": "Converse com quem usa e desenvolve",
+          "cta": "Entrar no servidor",
+          "href": "",
+          "tone": "accent"
+        },
+        {
+          "id": "youtube",
+          "name": "YouTube",
+          "text": "Tours, novidades e tutoriais",
+          "cta": "Inscrever-se no canal",
+          "href": "",
+          "tone": "coral"
+        },
+        {
+          "id": "contribuir",
+          "name": "Contribuir",
+          "text": "Código em Rust, traduções e testes",
+          "cta": "Ler o guia",
+          "href": "@contribute",
+          "tone": "teal"
+        }
+      ],
+      "channel": {
+        "eyebrow": "No canal",
+        "title": "Vídeos do KalangoOS",
+        "videos": [
+          {
+            "id": "tour",
+            "title": "Tour da 0.1 em um minuto",
+            "duration": "1:04",
+            "shot": "desktop",
+            "alt": "Área de trabalho do KalangoOS"
+          },
+          {
+            "id": "agentes",
+            "title": "Agentes: do pedido ao resultado",
+            "duration": "em breve",
+            "shot": "chat-data",
+            "alt": "Conversa em que o agente monta uma tabela com gráfico"
+          },
+          {
+            "id": "vm",
+            "title": "Instalando numa VM passo a passo",
+            "duration": "em breve",
+            "shot": "monitor-agents",
+            "alt": "Monitor do sistema na página Agentes"
+          }
+        ]
+      }
+    },
+    "support": {
+      "eyebrow": "Apoie o projeto",
+      "title": "Ajude o KalangoOS a crescer",
+      "text": "Doações pagam o domínio, os servidores de build e os computadores de teste, e mantêm o sistema gratuito para todos.",
+      "methods": [
+        {
+          "name": "PIX",
+          "text": "Copie a chave",
+          "tone": "teal"
+        },
+        {
+          "name": "GitHub Sponsors",
+          "text": "Apoio mensal",
+          "tone": "accent"
+        },
+        {
+          "name": "Outras formas",
+          "text": "Cartão e exterior",
+          "tone": "gold"
+        }
+      ],
+      "cta": "Apoiar o KalangoOS",
+      "soon": "As formas de doação ainda estão sendo preparadas: em breve aqui."
+    },
+    "members": {
+      "eyebrow": "Área de membros",
+      "title": "Para quem contribui",
+      "text": "Entre com o GitHub e acompanhe o quadro do projeto, a documentação interna e as especificações.",
+      "items": [
+        "Quadro do projeto",
+        "Documentação",
+        "Especificações"
+      ],
+      "cta": "Entrar com GitHub"
+    },
+    "footer": {
+      "tagline": "O Linux em que agentes de IA trabalham com você. Código aberto.",
+      "follow": "Novidades: acompanhe os lançamentos no GitHub",
+      "cols": [
+        {
+          "title": "Produto",
+          "links": [
+            {
+              "label": "Recursos",
+              "href": "#recursos"
+            },
+            {
+              "label": "Capturas",
+              "href": "#capturas"
+            },
+            {
+              "label": "Baixar",
+              "href": "#baixar"
+            },
+            {
+              "label": "Notas da versão",
+              "href": "@notes"
+            },
+            {
+              "label": "Roteiro",
+              "href": "#roteiro"
+            }
+          ]
+        },
+        {
+          "title": "Comunidade",
+          "links": [
+            {
+              "label": "GitHub",
+              "href": "https://github.com/kalangoos"
+            },
+            {
+              "label": "Discord",
+              "href": ""
+            },
+            {
+              "label": "YouTube",
+              "href": ""
+            },
+            {
+              "label": "Contribuir",
+              "href": "@contribute"
+            },
+            {
+              "label": "Reportar um bug",
+              "href": "https://github.com/kalangoos/kalangoos/issues/new/choose"
+            }
+          ]
+        },
+        {
+          "title": "Projeto",
+          "links": [
+            {
+              "label": "Segurança",
+              "href": "@security"
+            },
+            {
+              "label": "Documentação",
+              "href": "@docs"
+            },
+            {
+              "label": "Licenças",
+              "href": "https://github.com/kalangoos/kalangoos/blob/main/docs/LICENCAS.md"
+            },
+            {
+              "label": "Apoie",
+              "href": "#apoie"
+            },
+            {
+              "label": "Área de membros",
+              "href": "@members"
+            }
+          ]
+        }
+      ],
+      "copyright": "© KalangoOS · software livre",
+      "theme": "Tema",
+      "dark": "escuro",
+      "light": "claro"
+    }
   }
 }
