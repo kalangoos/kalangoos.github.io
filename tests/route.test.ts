@@ -3,10 +3,16 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { DEFAULT_DOC, parseRoute, validLogin } from '../src/members/route.ts';
 
-test('routes: docs by default, spec, board, error', () => {
+test('routes: docs by default, spec, screens, board, error', () => {
   assert.deepEqual(parseRoute(''), { view: 'docs', path: DEFAULT_DOC, heading: undefined });
   assert.deepEqual(parseRoute('#/docs/docs/PLANO.md?h=fase-1'), { view: 'docs', path: 'docs/PLANO.md', heading: 'fase-1' });
   assert.deepEqual(parseRoute('#/spec/c/fase-1-shell/tarefas'), { view: 'spec', kind: 'c', id: 'fase-1-shell', tab: 'tarefas' });
+  assert.deepEqual(parseRoute('#/telas'), { view: 'screens' });
+  assert.deepEqual(parseRoute('#/telas/00-Capa/Capa.png'), { view: 'screens', path: '00-Capa/Capa.png' });
+  assert.deepEqual(parseRoute('#/telas/Site-Landing_page/Site%20_%20Desktop%201440%20_%20Escuro.png'), {
+    view: 'screens',
+    path: 'Site-Landing_page/Site _ Desktop 1440 _ Escuro.png',
+  });
   assert.deepEqual(parseRoute('#/quadro'), { view: 'board' });
   assert.deepEqual(parseRoute('#/erro'), { view: 'error' });
 });

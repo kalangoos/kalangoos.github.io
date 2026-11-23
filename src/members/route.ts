@@ -1,10 +1,11 @@
-// The members area's routes live in the hash (#/docs/…, #/spec/…, #/quadro, #/fora, #/erro): GitHub Pages has no
+// The members area's routes live in the hash (#/docs/…, #/spec/…, #/telas/…, #/quadro, #/fora, #/erro): GitHub Pages has no
 // rewrites. Pure functions, shared by the page and the unit tests.
 import { safeDecode } from './repo.ts';
 
 export type Route =
   | { view: 'docs'; path: string; heading?: string }
   | { view: 'spec'; kind: 's' | 'c'; id: string; tab?: string }
+  | { view: 'screens'; path?: string }
   | { view: 'board' }
   | { view: 'outside'; login: string }
   | { view: 'error' };
@@ -25,6 +26,23 @@ export function parseRoute(hash: string): Route {
   if (path.startsWith('/fora')) return { view: 'outside', login: validLogin(q.get('login')) };
   if (path.startsWith('/erro')) return { view: 'error' };
   if (path.startsWith('/quadro')) return { view: 'board' };
+  const screens = /^\/telas(?:\/(.+))?$/.exec(path);
+  if (screens) {
+    const raw = screens[1];
+    if (!raw) return { view: 'screens' };
+    // decode each segment; a bad escape keeps the raw piece (never throws)
+    const decoded = raw
+      .split('/')
+      .map((p) => {
+        try {
+          return decodeURIComponent(p);
+        } catch {
+          return p;
+        }
+      })
+      .join('/');
+    return { view: 'screens', path: decoded };
+  }
   const spec = /^\/spec\/([sc])\/([^/]+(?:\/[^/]+)*?)(?:\/(proposta|design|tarefas|specs))?$/.exec(path);
   if (spec) return { view: 'spec', kind: spec[1] as 's' | 'c', id: spec[2]!, tab: spec[3] };
   if (path.startsWith('/spec')) return { view: 'spec', kind: 'c', id: '' };

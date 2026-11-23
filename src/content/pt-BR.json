@@ -799,7 +799,8 @@
     "titles": {
       "docs": "Documentação",
       "spec": "Especificação",
-      "board": "Quadro de tarefas"
+      "board": "Quadro de tarefas",
+      "screens": "Telas do FigCraft"
     },
     "login": {
       "title": "Entre com a sua conta do GitHub",
@@ -838,9 +839,28 @@
       "specShort": "Especificação",
       "board": "Quadro de tarefas",
       "boardShort": "Quadro",
-      "back": "Voltar ao site"
+      "back": "Voltar ao site",
+      "screens": "Telas",
+      "screensShort": "Telas"
     },
-    "preview": "Prévia local, sem sessão: documentação e especificação vêm do repositório público; o quadro precisa do serviço de login."
+    "preview": "Prévia local, sem sessão: documentação e especificação vêm do repositório público; o quadro precisa do serviço de login; as telas do FigCraft vêm de kalangoos/design.",
+    "screens": {
+      "title": "Telas do FigCraft",
+      "eyebrow": "Design System · kalangoos/design",
+      "lead": "Capturas exportadas da fonte FigCraft para review. O arquivo .figcraft continua no Git LFS; o servidor ao vivo é só espelho.",
+      "search": "Buscar tela",
+      "loading": "Carregando a vitrine…",
+      "empty": "Nenhuma tela neste filtro.",
+      "loadError": "Não deu para carregar exports/manifest.json do repositório de design.",
+      "repo": "Repositório de design",
+      "openPng": "Abrir PNG",
+      "liveTitle": "FigCraft ao vivo",
+      "liveWaiting": "O servidor no Fly está no ar; falta publicar o Design System e gravar o link só de visualização em exports/live.json.",
+      "liveOpen": "Abrir visualização",
+      "liveServer": "Endereço do servidor",
+      "liveHealth": "Saúde do servidor",
+      "liveHint": "No FigCraft: Preferences → Server = wss://kalangoos-figcraft.fly.dev/ → Publish com a server key (privada)."
+    }
   },
   "landing": {
     "announce": {
