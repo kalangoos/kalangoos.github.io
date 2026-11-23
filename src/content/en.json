@@ -799,7 +799,8 @@
     "titles": {
       "docs": "Documentation",
       "spec": "Specification",
-      "board": "Task board"
+      "board": "Task board",
+      "screens": "FigCraft screens"
     },
     "login": {
       "title": "Sign in with your GitHub account",
@@ -838,9 +839,28 @@
       "specShort": "Spec",
       "board": "Task board",
       "boardShort": "Board",
-      "back": "Back to the site"
+      "back": "Back to the site",
+      "screens": "Screens",
+      "screensShort": "Screens"
     },
-    "preview": "Local preview, no session: documentation and specification come from the public repository; the board needs the sign-in service."
+    "preview": "Local preview, no session: documentation and specification come from the public repository; the board needs the sign-in service; FigCraft screens come from kalangoos/design.",
+    "screens": {
+      "title": "FigCraft screens",
+      "eyebrow": "Design System · kalangoos/design",
+      "lead": "Exported showcase frames from the FigCraft source for review. The .figcraft file stays on Git LFS; the live server is only a mirror.",
+      "search": "Search screens",
+      "loading": "Loading the showcase…",
+      "empty": "No screens match this filter.",
+      "loadError": "Could not load exports/manifest.json from the design repository.",
+      "repo": "Design repository",
+      "openPng": "Open PNG",
+      "liveTitle": "Live FigCraft",
+      "liveWaiting": "The Fly server is up; publish the Design System and set the view-only link in exports/live.json.",
+      "liveOpen": "Open view",
+      "liveServer": "Server address",
+      "liveHealth": "Server health",
+      "liveHint": "In FigCraft: Preferences → Server = wss://kalangoos-figcraft.fly.dev/ → Publish with the private server key."
+    }
   },
   "landing": {
     "announce": {

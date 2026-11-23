@@ -8,6 +8,7 @@ import { AUTH_URL, MEMBERS_PREVIEW, REPO, fetchSession, loginUrl } from './auth'
 import { DEFAULT_DOC, parseRoute, type Route } from './route';
 import { Docs } from './Docs';
 import { Spec } from './Spec';
+import { Screens } from './Screens';
 import { Board } from './Board';
 
 function useRoute(): Route {
@@ -48,16 +49,27 @@ export function MembersApp() {
     return () => ac.abort();
   }, []);
 
+  // Docs, OpenSpec and FigCraft screens are public (from the open repos); only the board needs a member session.
+  const publicView = route.view === 'docs' || route.view === 'spec' || route.view === 'screens';
+  const showShell = gate === 'in' || gate === 'preview' || (publicView && gate !== 'soon');
+
   useEffect(() => {
-    const open = gate === 'in' || gate === 'preview';
-    document.title = open ? `${t.members.titles[route.view === 'outside' || route.view === 'error' ? 'docs' : route.view]} · KalangoOS` : t.members.title;
-  }, [route.view, gate, t]);
+    const titleKey = route.view === 'outside' || route.view === 'error' ? 'docs' : route.view;
+    document.title = showShell ? `${t.members.titles[titleKey]} · KalangoOS` : t.members.title;
+  }, [route.view, showShell, t]);
 
   let body: ReactNode;
   if (route.view === 'outside') body = <GateCard kind="outside" login={route.login} />;
   else if (gate === 'soon') body = <GateCard kind="soon" />;
-  else if (gate === 'checking' || gate === 'out' || gate === 'down' || route.view === 'error')
-    body = <GateCard kind="login" checking={gate === 'checking'} notice={route.view === 'error' ? 'error' : gate === 'down' ? 'down' : undefined} />;
+  else if (route.view === 'error') body = <GateCard kind="login" notice="error" />;
+  else if (!showShell)
+    body = (
+      <GateCard
+        kind="login"
+        checking={gate === 'checking'}
+        notice={gate === 'down' ? 'down' : undefined}
+      />
+    );
   else body = <Shell route={route} login={member.kind === 'in' ? member.session.login : null} preview={gate === 'preview'} />;
 
   return (
@@ -66,7 +78,7 @@ export function MembersApp() {
         {t.a11y.skip}
       </a>
       <Bar member={member} />
-      <main id="main" className={`members-main${route.view !== 'outside' && (gate === 'in' || gate === 'preview') ? ' is-shell' : ''}`}>
+      <main id="main" className={`members-main${showShell ? ' is-shell' : ''}`}>
         {body}
       </main>
     </>
@@ -180,6 +192,7 @@ function Shell({ route, login, preview }: { route: Route; login: string | null; 
   const VIEWS = [
     { view: 'docs', href: '#/docs/' + DEFAULT_DOC, icon: 'doc', label: N.docs, short: N.docsShort },
     { view: 'spec', href: '#/spec', icon: 'list', label: N.spec, short: N.specShort },
+    { view: 'screens', href: '#/telas', icon: 'apps', label: N.screens, short: N.screensShort },
     { view: 'board', href: '#/quadro', icon: 'board', label: N.board, short: N.boardShort },
   ] as const;
   return (
@@ -215,6 +228,7 @@ function Shell({ route, login, preview }: { route: Route; login: string | null; 
         )}
         {route.view === 'docs' && <Docs path={route.path} heading={route.heading} />}
         {route.view === 'spec' && <Spec kind={route.kind} id={route.id} tab={route.tab} />}
+        {route.view === 'screens' && <Screens shotPath={route.path} />}
         {route.view === 'board' && <Board login={login} connected={!!AUTH_URL && !preview} />}
       </div>
     </div>
