@@ -28,11 +28,7 @@
     "signOut": "Sign out"
   },
   "footer": {
-    "status": "Technical preview 0.x. In development.",
-    "license": "Code under GPL-3.0-or-later. Documentation: CC BY-SA 4.0 (to be confirmed). Name, logo and mascot: the project's brand, outside the code licence; the trademark registration is still to be checked.",
-    "ai": "The logo, mascot and icons were generated with AI (Higgsfield, GPT Image); their licence is still to be defined, and the service's terms of use are under review before 1.0. Source of each asset: ATTRIBUTION.md and LICENCAS.md in the repository.",
-    "captures": "The captures come from the test session, with test data.",
-    "fonts": "Fonts (served by this site, no third-party requests): Inter, JetBrains Mono, Jost, Roboto and Ubuntu, under SIL OFL 1.1 and Ubuntu Font Licence 1.0."
+    "license": "KalangoOS is free software, licensed under GPL-3.0-or-later."
   },
   "pages": {
     "download": {
@@ -1371,8 +1367,8 @@
               "href": "@docs"
             },
             {
-              "label": "Licences",
-              "href": "https://github.com/kalangoos/kalangoos/blob/main/docs/LICENCAS.md"
+              "label": "License",
+              "href": "https://github.com/kalangoos/kalangoos/blob/main/LICENSE"
             },
             {
               "label": "Support",

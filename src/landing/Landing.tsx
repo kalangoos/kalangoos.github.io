@@ -670,11 +670,7 @@ function Footer() {
           ))}
         </div>
         <div className="lv-footer__legal">
-          <p>{t.footer.status}</p>
           <p>{t.footer.license}</p>
-          <p>{t.footer.ai}</p>
-          <p>{t.footer.captures}</p>
-          <p>{t.footer.fonts}</p>
         </div>
         <div className="lv-footer__bottom">
           <p>{F.copyright}</p>
