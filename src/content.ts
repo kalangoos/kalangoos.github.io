@@ -39,4 +39,9 @@ export const SHOTS: Record<string, { w: number; h: number; small?: boolean; ligh
   'chat-data': { w: 1280, h: 800, small: true, light: true },
   calculator: { w: 1280, h: 800, small: true, light: true },
   'first-use': { w: 699, h: 320, light: true },
+  'ds-capa': { w: 1440, h: 810, small: true },
+  'ds-fundamentos': { w: 1440, h: 900, small: true },
+  'ds-marca': { w: 1440, h: 900, small: true },
+  'ds-site': { w: 1440, h: 900, small: true },
 };
+

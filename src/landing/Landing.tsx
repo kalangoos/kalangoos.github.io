@@ -322,6 +322,46 @@ function Apps() {
   );
 }
 
+/* ------------------------------------------------------------------ design system */
+
+function DesignSystem() {
+  const { t } = useSite();
+  const L = t.landing.designSystem;
+  return (
+    <section className="lv-panel lv-panel--bg" id="design" aria-labelledby="lv-design">
+      <div className="lv-wrap">
+        <header className="lv-head lv-head--split" data-reveal>
+          <div>
+            <Label tone="gold">{L.eyebrow}</Label>
+            <h2 className="lv-h2 lv-r" style={idx(1)} id="lv-design">
+              {L.title}
+            </h2>
+          </div>
+          <p className="lv-sub lv-r" style={idx(2)}>
+            {L.lead}
+          </p>
+        </header>
+        <ul className="lv-shots lv-shots--design" data-reveal>
+          {L.items.map((g, i) => (
+            <li key={g.shot} className="lv-card lv-r" style={idx(i)}>
+              <figure className="lv-shot">
+                <ShotImages shot={g.shot} alt={g.alt} sizes="(max-width: 960px) 100vw, 50vw" />
+                <figcaption>{g.caption}</figcaption>
+              </figure>
+            </li>
+          ))}
+        </ul>
+        <p className="lv-design-cta lv-r" style={idx(4)} data-reveal>
+          <a className="lv-btn lv-btn--ghost" href={L.cta.href} target="_blank" rel="noopener noreferrer">
+            {L.cta.label}
+          </a>
+          <span>{L.cta.text}</span>
+        </p>
+      </div>
+    </section>
+  );
+}
+
 /* ------------------------------------------------------------------ gallery */
 
 function Gallery() {
@@ -423,7 +463,7 @@ function Download() {
     <section className="lv-panel lv-panel--bg" id="baixar" aria-labelledby="lv-download">
       <div className="lv-wrap">
         <header className="lv-head" data-reveal>
-          <Label tone="teal">{L.eyebrow}</Label>
+          <Label tone="gold">{L.eyebrow}</Label>
           <h2 className="lv-h2 lv-r" style={idx(1)} id="lv-download">{L.title}</h2>
           <p className="lv-body lv-head__lead lv-r" style={idx(2)}>{L.lead}</p>
         </header>
@@ -718,6 +758,7 @@ export function Landing() {
         <Facts />
         <Features />
         <Apps />
+        <DesignSystem />
         <Gallery />
         <Download />
         <Notes />
