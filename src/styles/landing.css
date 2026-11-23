@@ -173,7 +173,22 @@ a.lv-card:hover::after, .lv-app:hover::after, .lv-step:hover::after { opacity: 1
 .lv-symbol { display: block; height: 44px; width: auto; transition: transform var(--spring-suave-ms) var(--spring-suave); }
 .lv-nav[data-scrolled] .lv-symbol { transform: scale(.86); }
 .lv-brand:hover .lv-symbol { transform: rotate(-6deg) scale(1.04); transition-timing-function: var(--spring-elastica); transition-duration: var(--spring-elastica-ms); }
-.lv-wordmark { font: italic 900 22px/1 var(--lv-font); letter-spacing: -0.01em; color: var(--text); white-space: nowrap; }
+/* Wordmark: the lettering of the official logo, rebuilt in type — heavy italic "KALANGO" with an offset accent
+   shadow (the logo's depth) and "OS" on a slanted plate, like the plate under the badge. Token colours only. */
+.lv-wordmark { --wm: 22px; display: inline-flex; align-items: center; gap: calc(var(--wm) * .3); font: italic 900 var(--wm)/1 var(--lv-font); white-space: nowrap; }
+.lv-wordmark__name { position: relative; color: var(--text); letter-spacing: -0.02em; text-shadow: calc(var(--wm) * .09) calc(var(--wm) * .09) 0 var(--accent); }
+.lv-wordmark__os {
+  position: relative; display: inline-block; padding: calc(var(--wm) * .16) calc(var(--wm) * .42) calc(var(--wm) * .14);
+  font-size: calc(var(--wm) * .62); letter-spacing: .06em; color: var(--accent-fg); background: var(--accent);
+  clip-path: polygon(14% 0, 100% 0, 86% 100%, 0 100%); overflow: hidden;
+}
+.lv-wordmark__os::after {
+  content: ""; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 30%, var(--lv-sheen) 50%, transparent 70%);
+  transform: translateX(-120%);
+}
+.lv-brand:hover .lv-wordmark__os::after { transform: translateX(120%); transition: transform calc(var(--spring-lenta-ms) * 1.2) var(--spring-suave); }
+.lv-brand:hover .lv-wordmark__name { text-shadow: calc(var(--wm) * .13) calc(var(--wm) * .13) 0 var(--accent); transition: text-shadow var(--spring-suave-ms) var(--spring-suave); }
+.lv-wordmark__name { transition: text-shadow var(--spring-suave-ms) var(--spring-suave); }
 .lv-nav__links { margin-left: auto; }
 .lv-nav__list { position: relative; }
 .lv-nav__list ul { display: flex; gap: clamp(16px, 2vw, 30px); }
@@ -481,7 +496,7 @@ a.lv-card:hover::after, .lv-app:hover::after, .lv-step:hover::after { opacity: 1
 /* ------------------------------------------------------------------ footer */
 .lv-footer { position: relative; background: var(--panel); border-top: 1px solid var(--border); padding: 72px 0 40px; }
 .lv-footer__top { display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)); gap: 40px; }
-.lv-footer .lv-wordmark { font-size: 24px; }
+.lv-footer .lv-wordmark { --wm: 26px; }
 .lv-footer .lv-symbol { height: 56px; }
 .lv-footer__brand > p { max-width: 320px; margin-top: 20px; font-size: 14px; line-height: 1.6; color: var(--muted); }
 .lv-follow {
@@ -543,7 +558,7 @@ a.lv-card:hover::after, .lv-app:hover::after, .lv-step:hover::after { opacity: 1
   .lv-nav { height: 64px; }
   .lv-nav__tools { gap: 6px; }
   .lv-nav__tools > .lv-btn { display: none; }
-  .lv-wordmark { font-size: 18px; }
+  .lv-wordmark { --wm: 18px; }
   .lv-symbol { height: 36px; }
   .lv-hero { padding-top: 36px; }
   .lv-hero__title { text-wrap: balance; }

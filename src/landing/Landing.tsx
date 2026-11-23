@@ -60,7 +60,8 @@ function Label({ children, tone: tn, dot = true }: { children: ReactNode; tone?:
 function Wordmark() {
   return (
     <span className="lv-wordmark" aria-hidden="true">
-      KALANGO OS
+      <span className="lv-wordmark__name">KALANGO</span>
+      <span className="lv-wordmark__os">OS</span>
     </span>
   );
 }
