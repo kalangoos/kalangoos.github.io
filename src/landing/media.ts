@@ -32,4 +32,6 @@ export const LINKS = {
   releases: 'https://github.com/kalangoos/kalangoos/releases',
   roadmap: 'https://github.com/kalangoos/kalangoos/blob/main/ROADMAP.md',
   members: '/membros/',
+  discord: 'https://discord.gg/Yvu762kNr',
+  youtube: 'https://www.youtube.com/@KalangoOS',
 } as const;
