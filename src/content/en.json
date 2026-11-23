@@ -1239,7 +1239,7 @@
           "name": "Discord",
           "text": "Talk to people who use and build it",
           "cta": "Join the server",
-          "href": "",
+          "href": "https://discord.gg/Yvu762kNr",
           "tone": "accent"
         },
         {
@@ -1247,7 +1247,7 @@
           "name": "YouTube",
           "text": "Tours, news and tutorials",
           "cta": "Subscribe to the channel",
-          "href": "",
+          "href": "https://www.youtube.com/@KalangoOS",
           "tone": "coral"
         },
         {
@@ -1360,11 +1360,11 @@
             },
             {
               "label": "Discord",
-              "href": ""
+              "href": "https://discord.gg/Yvu762kNr"
             },
             {
               "label": "YouTube",
-              "href": ""
+              "href": "https://www.youtube.com/@KalangoOS"
             },
             {
               "label": "Contribute",
