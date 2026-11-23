@@ -856,7 +856,7 @@
         },
         {
           "id": "capturas",
-          "label": "Capturas"
+          "label": "Telas"
         },
         {
           "id": "baixar",
@@ -926,7 +926,7 @@
           "label": "Baixar"
         }
       ],
-      "alt": "Área de trabalho do KalangoOS: relógio, resumo do dia gerado pelo agente, campo “Pergunte ao KalangoOS” e o céu noturno do papel de parede"
+      "alt": "Área de trabalho do KalangoOS: relógio, resumo do dia gerado pelo agente, campo Pergunte ao KalangoOS e a dock"
     },
     "facts": [
       {
@@ -953,7 +953,7 @@
     "features": {
       "eyebrow": "Funcionalidades",
       "title": "Tudo o que o sistema faz por você",
-      "lead": "Cada destaque tem um clipe curto, feito a partir das telas reais.",
+      "lead": "Cada destaque tem um clipe curto, feito com as telas do design do KalangoOS.",
       "clip": "Clipe",
       "watch": "Ver no tour",
       "items": [
@@ -968,8 +968,8 @@
             "Operam apps e o próprio sistema",
             "Mostram o plano antes de agir"
           ],
-          "shot": "chat-data",
-          "alt": "Conversa em que o agente monta uma tabela com gráfico a partir do arquivo gastos.csv"
+          "shot": "ds-criar-agente",
+          "alt": "Tela Novo agente com o pedido “Toda sexta, organize meus downloads…”, o que o agente entendeu, os passos e as permissões necessárias; depois, a Central de agentes com os agentes em execução"
         },
         {
           "id": "aprovar",
@@ -982,8 +982,8 @@
             "Linha do tempo de tudo o que os agentes fizeram",
             "Desfazer as mudanças no computador"
           ],
-          "shot": "chat-changes",
-          "alt": "Conversa na Central de agentes com um diff aceito, a aba Alterações e a mensagem de commit sugerida"
+          "shot": "ds-aprovar-tela",
+          "alt": "Diálogo Permissão necessária: o agente Assistente quer controlar a tela (Editor de texto, por 10 min), com Negar e Permitir por 10 min; depois, a Linha do tempo com o botão Desfazer em “Moveu 118 arquivos para 4 pastas”"
         },
         {
           "id": "privacidade",
@@ -994,10 +994,10 @@
           "bullets": [
             "Modelo local com llama.cpp",
             "A ISO não leva modelo: você escolhe e baixa depois",
-            "Painel de privacidade por agente"
+            "Quem pode usar o quê, por app e por agente"
           ],
-          "shot": "privacy-panel",
-          "alt": "Painel Privacidade agora: microfone e tela em uso, câmera livre, 0 tokens enviados à nuvem, pastas privadas e o botão Pausar tudo"
+          "shot": "ds-privacidade",
+          "alt": "Configurações › Privacidade e segurança com a tabela Quem pode usar o quê, por app e por agente; depois, Ajustes › Modelos e provedores com os modelos locais e “Dados pessoais nunca saem do computador”"
         },
         {
           "id": "desktop",
@@ -1010,8 +1010,8 @@
             "Busca de comandos e espaços de trabalho",
             "Tema claro e escuro, do sistema aos apps"
           ],
-          "shot": "command-ui",
-          "alt": "Barra de comando respondendo “o que está ocupando meu disco” com categorias, tamanhos e o botão “Liberar 3,0 MB”"
+          "shot": "ds-desktop",
+          "alt": "Área de trabalho com o relógio, o resumo do dia gerado pelo agente (“Bom dia, Roo”), o campo Pergunte ao KalangoOS e a dock; depois, a barra lateral Hoje com os widgets"
         }
       ]
     },
@@ -1063,46 +1063,46 @@
       ]
     },
     "gallery": {
-      "eyebrow": "Capturas",
-      "title": "Veja o sistema de verdade",
-      "note": "Capturas da sessão de teste.",
+      "eyebrow": "Telas",
+      "title": "Veja as telas do KalangoOS",
+      "note": "Telas do design do KalangoOS (Design System no FigCraft): o sistema como foi planejado.",
       "label": "Telas do sistema",
       "tabs": [
         {
-          "shot": "desktop",
+          "shot": "ds-desktop",
           "label": "Área de trabalho",
-          "caption": "A área de trabalho, com o resumo do dia escrito pelo agente local.",
-          "alt": "Área de trabalho do KalangoOS: relógio, resumo do dia gerado pelo agente, campo “Pergunte ao KalangoOS”, dock na parte de baixo e o céu noturno do papel de parede"
+          "caption": "A área de trabalho, com o resumo do dia gerado pelo agente e o campo Pergunte ao KalangoOS.",
+          "alt": "Área de trabalho do KalangoOS: relógio, resumo do dia gerado pelo agente (“Bom dia, Roo”), agentes ativos, campo Pergunte ao KalangoOS e a dock"
         },
         {
-          "shot": "files-agent",
+          "shot": "ds-central",
           "label": "Agentes",
-          "caption": "Agente organizando arquivos, com a aprovação antes de mover.",
-          "alt": "Arquivos com a faixa “Agente está usando Arquivos · 0/5 arquivos” e um PDF marcado como duplicado"
+          "caption": "Central de agentes: o que cada agente está fazendo, esperando ou já terminou.",
+          "alt": "Central de agentes, Em execução: Organizar ~/Downloads executando, Limpar duplicados aguardando, Resumo diário de e-mails concluído e Sincronizar repositórios com falha, com o registro do Organizador ao lado"
         },
         {
-          "shot": "appearance",
-          "label": "Aparência",
-          "caption": "Aparência: escuro ou claro, a cor de destaque, o arredondamento e a dock.",
-          "alt": "Configurações › Aparência com prévia ao vivo, o estilo (claro, escuro ou automático), a cor de destaque, o arredondamento e a dock"
+          "shot": "ds-criar-agente",
+          "label": "Criar agente",
+          "caption": "Criar um agente descrevendo o que ele deve fazer: o sistema mostra o que entendeu e as permissões antes de criar.",
+          "alt": "Tela Novo agente com o pedido “Toda sexta, organize meus downloads…”, o agente Faxina de sexta com os passos, as permissões necessárias e a simulação"
         },
         {
-          "shot": "help",
-          "label": "Ajuda",
-          "caption": "Ajuda que responde sem internet.",
-          "alt": "App Ajuda respondendo como conectar um segundo monitor, com os botões Mostre para mim e Fazer por mim"
+          "shot": "ds-linha-tempo",
+          "label": "Linha do tempo",
+          "caption": "Linha do tempo: o que os agentes fizeram hoje, com Desfazer nas ações.",
+          "alt": "Linha do tempo com 37 ações de agentes hoje, “Moveu 118 arquivos para 4 pastas” selecionada com o antes e depois, e os botões Desfazer esta ação e Desfazer tudo desde 13:58"
         },
         {
-          "shot": "lock",
-          "label": "Bloqueio",
-          "caption": "Tela de bloqueio com o relógio colorido e cartões discretos.",
-          "alt": "Tela de bloqueio com o relógio colorido, a data e cartões discretos de agentes e notificações"
+          "shot": "ds-memoria",
+          "label": "Memória",
+          "caption": "Memória: o que o sistema sabe de você, guardado só neste computador.",
+          "alt": "Tela Memória com 42 lembranças guardadas só neste computador, como “Responder em português, direto ao ponto”, e as opções Memória ligada e Modo anônimo"
         },
         {
-          "shot": "spaces",
-          "label": "Espaços",
-          "caption": "Espaços por intenção, com a sugestão de rotina do agente.",
-          "alt": "Tela Espaços com os espaços Estudar e Escrever textos e a sugestão de rotina do agente"
+          "shot": "ds-loja",
+          "label": "Central de Apps",
+          "caption": "Central de Apps: agentes, apps essenciais e modelos locais para instalar.",
+          "alt": "Central de Apps com o destaque Agentes que trabalham com você, Agentes em alta (Dev Sync, Organizador, Tutor), Apps essenciais e Modelos locais"
         }
       ]
     },
@@ -1267,22 +1267,22 @@
             "id": "tour",
             "title": "Tour da 0.1 em um minuto",
             "duration": "1:04",
-            "shot": "desktop",
+            "shot": "ds-desktop",
             "alt": "Área de trabalho do KalangoOS"
           },
           {
             "id": "agentes",
             "title": "Agentes: do pedido ao resultado",
             "duration": "em breve",
-            "shot": "chat-data",
-            "alt": "Conversa em que o agente monta uma tabela com gráfico"
+            "shot": "ds-central",
+            "alt": "Central de agentes com os agentes em execução"
           },
           {
             "id": "vm",
             "title": "Instalando numa VM passo a passo",
             "duration": "em breve",
-            "shot": "monitor-agents",
-            "alt": "Monitor do sistema na página Agentes"
+            "shot": "ds-instalador",
+            "alt": "Instalador do KalangoOS no passo Disco: Onde instalar?"
           }
         ]
       }
@@ -1334,7 +1334,7 @@
               "href": "#recursos"
             },
             {
-              "label": "Capturas",
+              "label": "Telas",
               "href": "#capturas"
             },
             {

@@ -17,28 +17,19 @@ export type SubPageId = 'download' | 'security' | 'docs' | 'notes' | 'contribute
  *  fails the build when they do not). The sub-pages are declared above because JSON cannot narrow `kind`. */
 export type Content = Omit<typeof pt, 'pages'> & { pages: Record<SubPageId, PageContent> & { notfound: NotFound } };
 
-/** Every screenshot on the page: real captures from the KalangoOS test session (see site/README.md). */
-/** small: there is a 640 px version too; light: there is a capture of the same screen in the light theme (<name>-light). */
-export const SHOTS: Record<string, { w: number; h: number; small?: boolean; light?: boolean }> = {
-  desktop: { w: 1280, h: 800, small: true, light: true },
-  'files-agent': { w: 1280, h: 800, small: true, light: true },
-  documents: { w: 1280, h: 800, small: true, light: true },
-  'command-ui': { w: 1280, h: 800, small: true, light: true },
-  'new-agent': { w: 1280, h: 800, small: true, light: true },
-  'chat-changes': { w: 1280, h: 800, small: true, light: true },
-  'privacy-panel': { w: 460, h: 590, light: true },
-  'monitor-agents': { w: 1280, h: 800, small: true, light: true },
-  'install-agent': { w: 1280, h: 800, small: true, light: true },
-  today: { w: 1280, h: 800, small: true, light: true },
-  spaces: { w: 1280, h: 800, small: true, light: true },
-  lock: { w: 1280, h: 800, small: true, light: true },
-  appearance: { w: 1280, h: 800, small: true, light: true },
-  editor: { w: 1280, h: 800, small: true, light: true },
-  music: { w: 1280, h: 800, small: true, light: true },
-  help: { w: 1280, h: 800, small: true, light: true },
-  'chat-data': { w: 1280, h: 800, small: true, light: true },
-  calculator: { w: 1280, h: 800, small: true, light: true },
-  'first-use': { w: 699, h: 320, light: true },
+/** Each capture: its size, whether a small copy exists (`-640`, or `-<sw>`), whether a light-theme copy exists, and its
+ *  folder under /img (default `shots`). The `ds/` ones are frames exported from the KalangoOS Design System (FigCraft),
+ *  1920×1080 plus a 960 copy, dark and light (each from the DS's own light-theme frame). */
+export const SHOTS: Record<string, { w: number; h: number; small?: boolean; light?: boolean; dir?: string; sw?: number }> = {
+  'ds-desktop': { w: 1920, h: 1080, small: true, light: true, dir: 'ds', sw: 960 },
+  'ds-central': { w: 1920, h: 1080, small: true, light: true, dir: 'ds', sw: 960 },
+  'ds-criar-agente': { w: 1920, h: 1080, small: true, light: true, dir: 'ds', sw: 960 },
+  'ds-linha-tempo': { w: 1920, h: 1080, small: true, light: true, dir: 'ds', sw: 960 },
+  'ds-memoria': { w: 1920, h: 1080, small: true, light: true, dir: 'ds', sw: 960 },
+  'ds-loja': { w: 1920, h: 1080, small: true, light: true, dir: 'ds', sw: 960 },
+  'ds-aprovar-tela': { w: 1920, h: 1080, small: true, light: true, dir: 'ds', sw: 960 },
+  'ds-privacidade': { w: 1920, h: 1080, small: true, light: true, dir: 'ds', sw: 960 },
+  'ds-instalador': { w: 1920, h: 1080, small: true, light: true, dir: 'ds', sw: 960 },
   'ds-capa': { w: 1440, h: 810, small: true },
   'ds-fundamentos': { w: 1440, h: 900, small: true },
   'ds-marca': { w: 1440, h: 900, small: true },
