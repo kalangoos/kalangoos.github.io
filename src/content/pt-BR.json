@@ -589,6 +589,27 @@
               "text": ""
             }
           ]
+        },
+        {
+          "kind": "links",
+          "title": "Design System",
+          "items": [
+            {
+              "label": "kalangoos/design",
+              "href": "https://github.com/kalangoos/design",
+              "text": "Fonte FigCraft, tokens, marca e vitrine."
+            },
+            {
+              "label": "CONTRIBUTING",
+              "href": "https://github.com/kalangoos/design/blob/main/CONTRIBUTING.md",
+              "text": "Como abrir um PR de tela com FigCraft e Git LFS."
+            },
+            {
+              "label": "Espelhos e view-only",
+              "href": "https://github.com/kalangoos/design/blob/main/ESPELHOS.md",
+              "text": "Arquivo .fig unidirecional e shares só de visualização."
+            }
+          ]
         }
       ]
     },
@@ -1385,6 +1406,38 @@
       "theme": "Tema",
       "dark": "escuro",
       "light": "claro"
+    },
+    "designSystem": {
+      "eyebrow": "Design System",
+      "title": "Telas desenhadas antes do código",
+      "lead": "Vitrine do FigCraft em kalangoos/design. A fonte é o .figcraft; o .fig e o share ao vivo são só espelhos.",
+      "cta": {
+        "label": "Contribuir no design",
+        "href": "https://github.com/kalangoos/design",
+        "text": "FigCraft + Git LFS, PRs com capturas. Veja também ESPELHOS.md."
+      },
+      "items": [
+        {
+          "shot": "ds-capa",
+          "caption": "Capa",
+          "alt": "Capa do Design System do KalangoOS no FigCraft"
+        },
+        {
+          "shot": "ds-fundamentos",
+          "caption": "Fundamentos",
+          "alt": "Fundamentos: cor, tipo e espaço"
+        },
+        {
+          "shot": "ds-marca",
+          "caption": "Marca",
+          "alt": "Página Marca com logos e regras"
+        },
+        {
+          "shot": "ds-site",
+          "caption": "Site",
+          "alt": "Landing page no Design System"
+        }
+      ]
     }
   }
 }
