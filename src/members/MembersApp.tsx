@@ -1,39 +1,14 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
-import '../styles/site.css';
-import '../styles/members.css';
-import type { Content } from '../content';
-import { Site } from '../lib/context';
+import { useEffect, useState, type ReactNode } from 'react';
+import { useSite } from '../lib/context';
+import { pathOf } from '../lib/routes';
 import { Bar } from '../components/Bar';
 import { Icon } from '../components/Icon';
 import type { MemberState } from '../components/Member';
-import { AUTH_URL, MEMBERS_PREVIEW, ORG, REPO, fetchSession, loginUrl } from './auth';
+import { AUTH_URL, MEMBERS_PREVIEW, REPO, fetchSession, loginUrl } from './auth';
+import { DEFAULT_DOC, parseRoute, type Route } from './route';
 import { Docs } from './Docs';
 import { Spec } from './Spec';
 import { Board } from './Board';
-
-/** Routes live in the hash (#/docs/…, #/spec/…, #/quadro, #/fora): GitHub Pages has no rewrites. */
-export type Route =
-  | { view: 'docs'; path: string; heading?: string }
-  | { view: 'spec'; kind: 's' | 'c'; id: string; tab?: string }
-  | { view: 'board' }
-  | { view: 'outside'; login: string }
-  | { view: 'error' };
-
-export const DEFAULT_DOC = 'README.md';
-
-export function parseRoute(hash: string): Route {
-  const h = decodeURIComponent(hash.replace(/^#/, ''));
-  const [path, query = ''] = h.split('?') as [string, string?];
-  const q = new URLSearchParams(query);
-  if (path.startsWith('/fora')) return { view: 'outside', login: q.get('login') ?? '' };
-  if (path.startsWith('/erro')) return { view: 'error' };
-  if (path.startsWith('/quadro')) return { view: 'board' };
-  const spec = /^\/spec\/([sc])\/([^/]+(?:\/[^/]+)*?)(?:\/(proposta|design|tarefas|specs))?$/.exec(path);
-  if (spec) return { view: 'spec', kind: spec[1] as 's' | 'c', id: spec[2]!, tab: spec[3] };
-  if (path.startsWith('/spec')) return { view: 'spec', kind: 'c', id: '' };
-  const doc = /^\/docs\/(.+)$/.exec(path);
-  return { view: 'docs', path: doc ? doc[1]! : DEFAULT_DOC, heading: q.get('h') ?? undefined };
-}
 
 function useRoute(): Route {
   // the server render and the first client render agree on the default; the hash is read after hydration
@@ -47,57 +22,62 @@ function useRoute(): Route {
   return route;
 }
 
-type Gate = 'checking' | 'soon' | 'out' | 'in' | 'preview';
+/** soon: no login service in this build (VITE_AUTH_URL empty; nothing is requested). down: the service did not answer. */
+type Gate = 'checking' | 'soon' | 'out' | 'down' | 'in' | 'preview';
 
-export function MembersApp({ t }: { t: Content }) {
+/** The members page (/membros/ and /en/members/): the entry card, or the area once the session is known. */
+export function MembersApp() {
+  const { t } = useSite();
   const route = useRoute();
   const [gate, setGate] = useState<Gate>(MEMBERS_PREVIEW ? 'preview' : AUTH_URL ? 'checking' : 'soon');
   const [member, setMember] = useState<MemberState>(AUTH_URL ? { kind: 'checking' } : { kind: 'soon' });
-  const ctx = useMemo(() => ({ t, lang: 'pt-BR' as const, page: 'home' as const }), [t]);
 
   useEffect(() => {
-    (window as Window & { __kalangoMounted?: boolean }).__kalangoMounted = true;
-    if (!AUTH_URL) return;
+    if (!AUTH_URL) return; // login OFF: not a single request to the service
     const ac = new AbortController();
     fetchSession(ac.signal)
       .then((s) => {
         setMember(s ? { kind: 'in', session: s } : { kind: 'out' });
         if (!MEMBERS_PREVIEW) setGate(s ? 'in' : 'out');
       })
-      .catch(() => {
+      .catch((e) => {
+        if ((e as Error).name === 'AbortError') return;
         setMember({ kind: 'out' });
-        if (!MEMBERS_PREVIEW) setGate('out');
+        if (!MEMBERS_PREVIEW) setGate('down');
       });
     return () => ac.abort();
   }, []);
 
   useEffect(() => {
-    const titles: Record<Route['view'], string> = { docs: 'Documentação', spec: 'Especificação', board: 'Quadro de tarefas', outside: 'Área de membros', error: 'Área de membros' };
-    document.title = `${gate === 'in' || gate === 'preview' ? titles[route.view] : 'Área de membros'} · KalangoOS`;
-  }, [route.view, gate]);
+    const open = gate === 'in' || gate === 'preview';
+    document.title = open ? `${t.members.titles[route.view === 'outside' || route.view === 'error' ? 'docs' : route.view]} · KalangoOS` : t.members.title;
+  }, [route.view, gate, t]);
 
   let body: ReactNode;
   if (route.view === 'outside') body = <GateCard kind="outside" login={route.login} />;
   else if (gate === 'soon') body = <GateCard kind="soon" />;
-  else if (gate === 'checking' || gate === 'out' || route.view === 'error') body = <GateCard kind="login" checking={gate === 'checking'} failed={route.view === 'error'} />;
+  else if (gate === 'checking' || gate === 'out' || gate === 'down' || route.view === 'error')
+    body = <GateCard kind="login" checking={gate === 'checking'} notice={route.view === 'error' ? 'error' : gate === 'down' ? 'down' : undefined} />;
   else body = <Shell route={route} login={member.kind === 'in' ? member.session.login : null} preview={gate === 'preview'} />;
 
   return (
-    <Site.Provider value={ctx}>
+    <>
       <a className="skip" href="#main">
         {t.a11y.skip}
       </a>
-      <Bar onLanding={false} member={member} />
+      <Bar member={member} />
       <main id="main" className={`members-main${route.view !== 'outside' && (gate === 'in' || gate === 'preview') ? ' is-shell' : ''}`}>
         {body}
       </main>
-    </Site.Provider>
+    </>
   );
 }
 
 // ------------------------------------------------------------------ the entry cards
 
-function GateCard({ kind, login, checking, failed }: { kind: 'login' | 'outside' | 'soon'; login?: string; checking?: boolean; failed?: boolean }) {
+function GateCard({ kind, login, checking, notice }: { kind: 'login' | 'outside' | 'soon'; login?: string; checking?: boolean; notice?: 'error' | 'down' }) {
+  const { t, lang } = useSite();
+  const M = t.members;
   const [leaving, setLeaving] = useState(false);
   return (
     <div className="gate">
@@ -109,45 +89,40 @@ function GateCard({ kind, login, checking, failed }: { kind: 'login' | 'outside'
         ) : (
           <img className="gate__symbol" src="/img/brand/symbol.webp" width="44" height="48" alt="" />
         )}
-        <p className="eyebrow">Área de membros</p>
+        <p className="eyebrow">{M.eyebrow}</p>
         <h1 id="gate-title" className="display">
-          {kind === 'login' && 'Entre com a sua conta do GitHub'}
-          {kind === 'outside' && `Esta área é só para quem é da organização ${ORG}`}
-          {kind === 'soon' && 'A área de membros ainda não está conectada'}
+          {kind === 'login' && M.login.title}
+          {kind === 'outside' && M.outside.title}
+          {kind === 'soon' && M.soon.title}
         </h1>
         <p className="gate__text">
-          {kind === 'login' &&
-            `A documentação técnica, a especificação e o quadro de tarefas do KalangoOS num lugar só. Só entra quem faz parte da organização ${ORG} no GitHub.`}
+          {kind === 'login' && M.login.text}
           {kind === 'outside' && (
             <>
-              {login ? <>Você entrou como <b>@{login}</b>, mas essa conta</> : 'A conta com que você entrou'} não faz parte da organização {ORG} no
-              GitHub. O código, a documentação e a especificação são públicos no repositório, e qualquer pessoa pode contribuir.
+              {/* `login` already passed the GitHub login charset (route.ts); anything else is not shown at all */}
+              {login ? <>{M.outside.as} <b>@{login}</b>, {M.outside.but}</> : M.outside.unknown} {M.outside.text}
             </>
           )}
-          {kind === 'soon' &&
-            'O login com o GitHub entra no ar quando o serviço de autenticação for ligado. Enquanto isso, a documentação e a especificação estão no repositório público.'}
+          {kind === 'soon' && M.soon.text}
         </p>
         {kind === 'login' && (
           <>
-            {failed && (
-              <p className="gate__notice gate__notice--error">
+            {notice && (
+              <p className="gate__notice gate__notice--error" role="alert">
                 <Icon name="alert" />
-                <span>Não deu para concluir a entrada (o pedido expirou ou foi recusado no GitHub). Tente de novo.</span>
+                <span>{notice === 'down' ? M.login.down : M.login.error}</span>
               </p>
             )}
             <a
               className={`btn btn--primary btn--lg gate__wide${checking ? ' is-busy' : ''}`}
-              href={checking ? undefined : loginUrl()}
+              href={checking ? undefined : loginUrl(lang)}
               aria-disabled={checking || undefined}
               onClick={() => setLeaving(true)}
             >
               <Icon name="github" className="icon" />
-              {checking ? 'Conferindo a sessão…' : leaving ? 'Abrindo o GitHub…' : 'Entrar com o GitHub'}
+              {checking ? M.login.checking : leaving ? M.login.opening : M.login.button}
             </a>
-            <p className="gate__fine">
-              Pedimos só leitura: a sua participação na organização (read:org) e os projetos (read:project). Nada é publicado em seu nome, e a
-              sessão fica num cookie protegido do serviço de login, nunca no armazenamento do navegador.
-            </p>
+            <p className="gate__fine">{M.login.fine}</p>
           </>
         )}
         {kind === 'outside' && (
@@ -155,15 +130,15 @@ function GateCard({ kind, login, checking, failed }: { kind: 'login' | 'outside'
             <div className="gate__row">
               <a className="btn btn--primary btn--lg" href={`https://github.com/${REPO}`}>
                 <Icon name="github" className="icon" />
-                Ver o repositório
+                {M.outside.repo}
               </a>
               <a className="btn btn--secondary btn--lg" href={`https://github.com/${REPO}/blob/main/CONTRIBUTING.md`}>
-                Como contribuir
+                {M.outside.contribute}
               </a>
             </div>
             {AUTH_URL && (
-              <a className="gate__link" href={loginUrl(true)}>
-                Entrar com outra conta
+              <a className="gate__link" href={loginUrl(lang, true)}>
+                {M.outside.other}
               </a>
             )}
           </>
@@ -172,23 +147,23 @@ function GateCard({ kind, login, checking, failed }: { kind: 'login' | 'outside'
           <>
             <p className="gate__notice">
               <Icon name="info" />
-              <span>Falta ligar o serviço de login (Cloudflare Worker) e o app OAuth do GitHub.</span>
+              <span>{M.soon.notice}</span>
             </p>
             <button type="button" className="btn btn--primary btn--lg gate__wide" disabled>
               <Icon name="github" className="icon" />
-              Entrar com o GitHub
+              {M.soon.button}
             </button>
           </>
         )}
         <hr />
         {kind === 'outside' ? (
-          <a className="gate__foot is-muted" href={`https://docs.github.com/pt/organizations/managing-membership-in-your-organization`}>
-            Por que não entro? A organização decide quem é membro
+          <a className="gate__foot is-muted" href={`https://docs.github.com/${lang === 'en' ? 'en' : 'pt'}/organizations/managing-membership-in-your-organization`}>
+            {M.outside.why}
             <Icon name="chev" className="icon icon--sm" />
           </a>
         ) : (
           <a className="gate__foot" href={kind === 'soon' ? `https://github.com/${REPO}/tree/main/docs` : `https://github.com/${REPO}`}>
-            {kind === 'soon' ? 'Ler a documentação no repositório' : 'Não é da organização? Contribua pelo repositório público'}
+            {kind === 'soon' ? M.soon.foot : M.login.foot}
             <Icon name="chev" className="icon icon--sm" />
           </a>
         )}
@@ -199,16 +174,17 @@ function GateCard({ kind, login, checking, failed }: { kind: 'login' | 'outside'
 
 // ------------------------------------------------------------------ the area: rail (tabs on phones) and the views
 
-const VIEWS = [
-  { view: 'docs', href: '#/docs/' + DEFAULT_DOC, icon: 'doc', label: 'Documentação', short: 'Docs' },
-  { view: 'spec', href: '#/spec', icon: 'list', label: 'Especificação', short: 'Especificação' },
-  { view: 'board', href: '#/quadro', icon: 'board', label: 'Quadro de tarefas', short: 'Quadro' },
-] as const;
-
 function Shell({ route, login, preview }: { route: Route; login: string | null; preview: boolean }) {
+  const { t, lang } = useSite();
+  const N = t.members.nav;
+  const VIEWS = [
+    { view: 'docs', href: '#/docs/' + DEFAULT_DOC, icon: 'doc', label: N.docs, short: N.docsShort },
+    { view: 'spec', href: '#/spec', icon: 'list', label: N.spec, short: N.specShort },
+    { view: 'board', href: '#/quadro', icon: 'board', label: N.board, short: N.boardShort },
+  ] as const;
   return (
     <div className="members">
-      <nav className="rail" aria-label="Área de membros">
+      <nav className="rail" aria-label={N.label}>
         {VIEWS.map((v) => (
           <a key={v.view} href={v.href} className="rail__item" aria-current={route.view === v.view ? 'page' : undefined}>
             <Icon name={v.icon} />
@@ -216,13 +192,13 @@ function Shell({ route, login, preview }: { route: Route; login: string | null; 
             <span className="visually-hidden">{v.label}</span>
           </a>
         ))}
-        <a href="/" className="rail__item rail__home">
+        <a href={pathOf(lang, 'home')} className="rail__item rail__home">
           <Icon name="home" />
-          <span className="rail__tip">Voltar ao site</span>
-          <span className="visually-hidden">Voltar ao site</span>
+          <span className="rail__tip">{N.back}</span>
+          <span className="visually-hidden">{N.back}</span>
         </a>
       </nav>
-      <nav className="mtabs" aria-label="Área de membros">
+      <nav className="mtabs" aria-label={N.label}>
         {VIEWS.map((v) => (
           <a key={v.view} href={v.href} aria-current={route.view === v.view ? 'page' : undefined}>
             <Icon name={v.icon} />
@@ -234,7 +210,7 @@ function Shell({ route, login, preview }: { route: Route; login: string | null; 
         {preview && (
           <p className="preview-note">
             <Icon name="info" />
-            Prévia local, sem sessão: documentação e especificação vêm do repositório público; o quadro precisa do serviço de login.
+            {t.members.preview}
           </p>
         )}
         {route.view === 'docs' && <Docs path={route.path} heading={route.heading} />}

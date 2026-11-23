@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { facets, mapProject, matches, NO_FILTER, NO_STATUS, pickProject, shortRef } from '../src/members/project.ts';
+import { facets, mapItem, mapProject, matches, NO_FILTER, NO_STATUS, pickProject, shortRef } from '../src/members/project.ts';
 
 const sample = JSON.parse(readFileSync(new URL('./fixtures/project-v2-sample.json', import.meta.url), 'utf8'));
 
@@ -69,4 +69,26 @@ test('filters: text without accents, assignee, label, repository and "só os meu
   assert.equal(count({ repo: 'kalangoos/kalangoos.github.io' }), 1);
   assert.equal(count({ mine: 'davi-t' }), 1);
   assert.deepEqual(facets(mapProject(sample)!).repos, ['kalangoos/kalangoos', 'kalangoos/kalangoos.github.io']);
+});
+
+test('board data from GitHub: only github.com links, six-digit label colours and GitHub avatars reach the page', () => {
+  const issue = (over: Record<string, unknown>) => ({
+    id: '1', fieldValueByName: { name: 'Todo' },
+    content: { __typename: 'Issue', title: 't', number: 1, url: 'https://github.com/kalangoos/kalangoos/issues/1', state: 'OPEN', repository: { nameWithOwner: 'kalangoos/kalangoos' },
+      labels: { nodes: [{ name: 'bug', color: 'd73a4a' }] }, assignees: { nodes: [{ login: 'a', avatarUrl: 'https://avatars.githubusercontent.com/u/1' }] }, closedByPullRequestsReferences: { nodes: [] }, ...over },
+  });
+  const ok = mapItem(issue({}))!;
+  assert.equal(ok.url, 'https://github.com/kalangoos/kalangoos/issues/1');
+  assert.equal(ok.labels[0]!.color, 'd73a4a');
+  assert.equal(ok.assignees[0]!.avatarUrl, 'https://avatars.githubusercontent.com/u/1');
+  const bad = mapItem(issue({
+    url: 'javascript:alert(1)', labels: { nodes: [{ name: 'x', color: 'red;background:url(//evil.example/x)' }] },
+    assignees: { nodes: [{ login: 'a', avatarUrl: 'https://tracker.example/p.gif' }] },
+    closedByPullRequestsReferences: { nodes: [{ number: 2, url: 'https://evil.example/pr/2' }] },
+  }))!;
+  assert.equal(bad.url, null);
+  assert.equal(bad.labels[0]!.color, '8E8F99');
+  assert.equal(bad.assignees[0]!.avatarUrl, '');
+  assert.equal(bad.links.length, 0);
+  assert.equal(mapItem(issue({ url: 'https://github.com.evil.example/x' }))!.url, null);
 });

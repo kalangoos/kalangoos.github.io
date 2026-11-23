@@ -190,7 +190,7 @@ export function linkTarget(from: string, href: string, docs: Set<string>): LinkT
   if (/^[a-z][a-z0-9+.-]*:/i.test(href)) return { kind: 'external', href: /^(https?|mailto):/i.test(href) ? href : '' };
   if (href.startsWith('//')) return { kind: 'external', href: `https:${href}` };
   const [pathPart, anchor] = href.split('#') as [string, string | undefined];
-  const path = resolvePath(from, decodeURIComponent(pathPart));
+  const path = resolvePath(from, safeDecode(pathPart));
   if (docs.has(path)) return { kind: 'doc', href: `#/docs/${path}${anchor ? `?h=${anchor}` : ''}` };
   const spec = /^openspec\/specs\/(.+)\/spec\.md$/.exec(path);
   if (spec) return { kind: 'spec', href: `#/spec/s/${spec[1]}` };
@@ -200,10 +200,30 @@ export function linkTarget(from: string, href: string, docs: Set<string>): LinkT
   return { kind: 'external', href: (isFile ? BLOB : TREE) + path + (anchor ? `#${anchor}` : '') };
 }
 
-/** Image sources relative to the document: served from raw.githubusercontent.com. */
+/** decodeURIComponent that keeps the text as it is when the escape is malformed ("%E0%A4%A"), instead of throwing. */
+export function safeDecode(s: string): string {
+  try {
+    return decodeURIComponent(s);
+  } catch {
+    return s;
+  }
+}
+
+/** Hosts an image of a document may come from: the repository's own files and GitHub's image proxy. Anything else
+ *  would be a tracking pixel that tells a third party who reads the documents. */
+export const IMAGE_HOSTS = ['raw.githubusercontent.com', 'github.com', 'camo.githubusercontent.com'];
+
+/** Image sources relative to the document: served from raw.githubusercontent.com. Absolute ones only from IMAGE_HOSTS. */
 export function imageSrc(from: string, src: string): string {
-  if (/^[a-z][a-z0-9+.-]*:/i.test(src)) return /^https:/i.test(src) ? src : '';
-  if (src.startsWith('//')) return `https:${src}`;
+  const abs = src.startsWith('//') ? `https:${src}` : src;
+  if (/^[a-z][a-z0-9+.-]*:/i.test(abs)) {
+    try {
+      const u = new URL(abs);
+      return u.protocol === 'https:' && !u.username && !u.password && IMAGE_HOSTS.includes(u.hostname) ? abs : '';
+    } catch {
+      return '';
+    }
+  }
   return RAW + resolvePath(from, src);
 }
 

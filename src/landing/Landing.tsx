@@ -149,7 +149,7 @@ function Nav() {
           <LangSwitch />
           <ThemeButton />
           <span className="lv-nav__wide">
-            <Btn href={LINKS.members} kind="ghost" small>{L.members}</Btn>
+            <Btn href={pathOf(lang, 'members')} kind="ghost" small>{L.members}</Btn>
           </span>
           <Btn href={page === 'home' ? '#baixar' : pathOf(lang, 'download')} small icon="chevdown">{L.download}</Btn>
           <details className="lv-menu">
@@ -165,7 +165,7 @@ function Nav() {
                   </li>
                 ))}
                 <li style={idx(L.items.length)}>
-                  <a href={LINKS.members}>{L.members}</a>
+                  <a href={pathOf(lang, 'members')}>{L.members}</a>
                 </li>
               </ul>
             </div>
@@ -594,7 +594,7 @@ function Community() {
 /* ------------------------------------------------------------------ support + members */
 
 function Support() {
-  const { t } = useSite();
+  const { t, lang } = useSite();
   const S = t.landing.support;
   const M = t.landing.members;
   return (
@@ -628,7 +628,7 @@ function Support() {
               <li key={x}><Icon name="check" className="icon icon--sm" />{x}</li>
             ))}
           </ul>
-          <Btn href={LINKS.members} kind="ghost" icon="chev">{M.cta}</Btn>
+          <Btn href={pathOf(lang, 'members')} kind="ghost" icon="chev">{M.cta}</Btn>
         </article>
       </div>
     </section>

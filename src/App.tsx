@@ -6,8 +6,9 @@ import type { PageId } from './lib/routes';
 import { useReveal } from './lib/useReveal';
 import { Landing, SiteFooter, SiteHeader } from './landing/Landing';
 import { NotFoundPage, SubPage } from './sections/SubPages';
+import './styles/members.css'; // small, and needed before the members chunk arrives: the pre-rendered card is already styled
 
-export function App({ lang, t, page }: { lang: Lang; t: Content; page: PageId }) {
+export function App({ lang, t, page }: { lang: Lang; t: Content; page: Exclude<PageId, 'members'> }) {
   const ctx = useMemo(() => ({ t, lang, page }), [t, lang, page]);
   useReveal();
   if (page === 'home') {

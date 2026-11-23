@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Icon } from './Icon';
 import { useSite } from '../lib/context';
+import { pathOf } from '../lib/routes';
 import { MemberButton, useMemberState, type MemberState } from './Member';
-import { pathOf, type PageId } from '../lib/routes';
 
 const KEY = 'kalangoos-theme';
 
@@ -13,10 +13,11 @@ function currentTheme(): 'dark' | 'light' {
 }
 
 /**
- * The site's header is the system's top bar: brand, the island with the project's status, follow, language, theme and
- * the members area ("Entrar" or the account). `onLanding` is false on /membros/, where section links go back home.
+ * The site's header is the system's top bar: brand, the island with the project's status, download, language, theme and
+ * the members area ("Entrar", with "em breve" while the login service is not connected, or the account). The members
+ * page passes what it already knows about the visitor; the other pages ask the service once, only if the build has one.
  */
-export function Bar({ onLanding = true, member }: { onLanding?: boolean; member?: MemberState }) {
+export function Bar({ member }: { member?: MemberState } = {}) {
   const { t, lang, page } = useSite();
   const memberState = useMemberState(member);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
@@ -33,18 +34,17 @@ export function Bar({ onLanding = true, member }: { onLanding?: boolean; member?
     setTheme(next);
   };
 
-  const langPage: PageId = onLanding ? (page === 'notfound' ? 'home' : page) : 'home';
-
-  // the other language opens the same page, and keeps the section in view on the landing home
+  // the other language opens the same page, and keeps the section in view
   const keepHash = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (onLanding && page === 'home' && location.hash) e.currentTarget.href = e.currentTarget.pathname + location.hash;
+    if (location.hash) e.currentTarget.href = e.currentTarget.pathname + location.hash;
   };
   const home = pathOf(lang, 'home');
+  const here = page === 'notfound' ? 'home' : page;
 
   return (
     <header className="bar">
       <a className="bar__brand" href={`${home}#top`}>
-        <img src="/img/brand/symbol.webp" width="36" height="40" alt="" />
+        <img src="/img/brand/symbol.webp" width="22" height="24" alt="" />
         <span>KalangoOS</span>
       </a>
       <a className="island" href={pathOf(lang, 'download')}>
@@ -64,11 +64,11 @@ export function Bar({ onLanding = true, member }: { onLanding?: boolean; member?
           <span className="indicator__dots" aria-hidden="true"><i /><i /><i /></span>
         </a>
         <nav className="lang" aria-label={t.a11y.language}>
-          <a href={pathOf('pt-BR', langPage)} hrefLang="pt-BR" lang="pt-BR" aria-current={lang === 'pt-BR' ? 'true' : undefined} onClick={keepHash}>
+          <a href={pathOf('pt-BR', here)} hrefLang="pt-BR" lang="pt-BR" aria-current={lang === 'pt-BR' ? 'true' : undefined} onClick={keepHash}>
             <span aria-hidden="true">PT</span>
             <span className="visually-hidden">Português</span>
           </a>
-          <a href={pathOf('en', langPage)} hrefLang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} onClick={keepHash}>
+          <a href={pathOf('en', here)} hrefLang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} onClick={keepHash}>
             <span aria-hidden="true">EN</span>
             <span className="visually-hidden">English</span>
           </a>

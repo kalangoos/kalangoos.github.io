@@ -10,12 +10,14 @@ export const AUTH_URL: string = (import.meta.env.VITE_AUTH_URL ?? '').trim().rep
  */
 export const MEMBERS_PREVIEW: boolean = import.meta.env.VITE_MEMBERS_PREVIEW === '1';
 
-export { ORG, REPO, MEMBERS_PATH } from './constants';
-import { MEMBERS_PATH } from './constants';
+export { ORG, REPO } from './constants';
+import type { Lang } from '../content';
+import { pathOf } from '../lib/routes';
 
 export type Session = { login: string; name: string | null; avatarUrl: string };
 
-/** Who is signed in, or null. Throws only when the service cannot be reached. */
+/** Who is signed in, or null (no session, or not a member). Throws when the service or GitHub cannot answer (503, network):
+ *  the person may well still be signed in, so the page must not say they are not. */
 export async function fetchSession(signal?: AbortSignal): Promise<Session | null> {
   if (!AUTH_URL) return null;
   const r = await fetch(`${AUTH_URL}/session`, { credentials: 'include', signal, cache: 'no-store' });
@@ -26,8 +28,8 @@ export async function fetchSession(signal?: AbortSignal): Promise<Session | null
 }
 
 /** Starts the GitHub sign-in at the Worker; `switchAccount` asks GitHub to let the person pick another account. */
-export function loginUrl(switchAccount = false): string {
-  const q = new URLSearchParams({ next: MEMBERS_PATH });
+export function loginUrl(lang: Lang, switchAccount = false): string {
+  const q = new URLSearchParams({ next: pathOf(lang, 'members') });
   if (switchAccount) q.set('switch', '1');
   return `${AUTH_URL}/login?${q}`;
 }

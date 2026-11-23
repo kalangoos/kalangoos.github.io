@@ -27,6 +27,7 @@ const SESSION_TTL = 8 * 60 * 60;
 // read:org: see the person's membership of the organisation; read:project: read the organisation's projects
 export const SCOPES = 'read:org read:project';
 const MEMBERS_PATH = '/membros/';
+const MEMBERS_PATH_EN = '/en/members/';
 const MAX_PAGES = 5; // 500 project items
 
 type OAuthState = { state: string; verifier: string; next: string };
@@ -49,7 +50,7 @@ export async function handle(req: Request, env: Env, gh: Fetch): Promise<Respons
     if (req.method === 'POST' && url.pathname === '/logout') return await logout(req, env, gh);
     return json({ error: 'not found' }, 404);
   } catch (e) {
-    console.error('kalangoos-auth', (e as Error).message);
+    console.error('kalangoos-auth', logSafe((e as Error).message));
     return json({ error: 'internal' }, 500);
   }
 }
@@ -60,6 +61,7 @@ function baseHeaders(h: Headers = new Headers()): Headers {
   h.set('Cache-Control', 'no-store');
   h.set('X-Content-Type-Options', 'nosniff');
   h.set('Referrer-Policy', 'no-referrer');
+  h.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
   return h;
 }
 
@@ -99,9 +101,26 @@ function preflight(req: Request, env: Env): Response {
 
 const clearSession = () => cookie(SESSION_COOKIE, '', 0, 'Strict');
 
-/** Only paths inside the members area are allowed after signing in (no open redirect). */
+/**
+ * Only the members area's own pages are allowed after signing in (no open redirect): a fixed prefix, then a short
+ * whitelist of path characters (no backslash, no percent escapes such as %0d or %2e, no query), no "." / ".." segment,
+ * and at most a plain fragment (#/docs/...).
+ */
 export function safeNext(next: string | null): string {
-  return next && next.startsWith(MEMBERS_PATH) && !next.includes('//') && !/[\\\s]/.test(next) ? next : MEMBERS_PATH;
+  if (!next) return MEMBERS_PATH;
+  const [path = '', ...frag] = next.split('#');
+  const ok =
+    (path.startsWith(MEMBERS_PATH) || path.startsWith(MEMBERS_PATH_EN)) &&
+    /^\/[A-Za-z0-9._~\/-]*$/.test(path) &&
+    !path.includes('//') &&
+    !/(^|\/)\.\.?(\/|$)/.test(path) &&
+    (frag.length === 0 || (frag.length === 1 && /^[A-Za-z0-9._~\/?=&-]*$/.test(frag[0]!)));
+  return ok ? next : MEMBERS_PATH;
+}
+
+/** What goes into the logs from outside input: a short, plain-text slice (no URLs, no control characters). */
+export function logSafe(v: unknown): string {
+  return String(v ?? '').replace(/[^A-Za-z0-9 _.:-]/g, '?').slice(0, 60);
 }
 
 function ghHeaders(token?: string): Headers {
@@ -110,13 +129,27 @@ function ghHeaders(token?: string): Headers {
   return h;
 }
 
-/** active member → true; not a member (or only invited) → false; token no longer valid → null. */
-async function isMember(gh: Fetch, env: Env, token: string): Promise<boolean | null> {
-  const r = await gh(`https://api.github.com/user/memberships/orgs/${encodeURIComponent(env.ORG)}`, { headers: ghHeaders(token) });
-  if (r.status === 401) return null;
-  if (r.status !== 200) return false; // 404: not a member; 403: the organisation blocks the app (SETUP.md, step 5)
-  const m = (await r.json()) as { state?: string };
-  return m.state === 'active';
+/**
+ * - member: active member of the organisation
+ * - not-member: GitHub answered that the person is not (404) or only invited
+ * - expired: the token is no longer valid (401)
+ * - unavailable: GitHub could not answer (403 from SAML SSO or a blocked app, 429 / secondary rate limit, 5xx, network):
+ *   nothing is known about the person, so nobody is signed out or revoked because of it
+ */
+export type Membership = 'member' | 'not-member' | 'expired' | 'unavailable';
+
+async function isMember(gh: Fetch, env: Env, token: string): Promise<Membership> {
+  let r: Response;
+  try {
+    r = await gh(`https://api.github.com/user/memberships/orgs/${encodeURIComponent(env.ORG)}`, { headers: ghHeaders(token) });
+  } catch {
+    return 'unavailable';
+  }
+  if (r.status === 401) return 'expired';
+  if (r.status === 404) return 'not-member';
+  if (r.status !== 200) return 'unavailable';
+  const m = (await r.json().catch(() => ({}))) as { state?: string };
+  return m.state === 'active' ? 'member' : 'not-member';
 }
 
 async function revoke(gh: Fetch, env: Env, token: string): Promise<void> {
@@ -155,43 +188,60 @@ async function login(url: URL, env: Env): Promise<Response> {
 }
 
 async function callback(req: Request, url: URL, env: Env, gh: Fetch): Promise<Response> {
-  const fail = (why: string) => {
-    console.warn('kalangoos-auth callback:', why);
-    return redirect(`${env.SITE_ORIGIN}${MEMBERS_PATH}#/erro`, [cookie(OAUTH_COOKIE, '', 0, 'Lax')]);
-  };
   const st = await open<OAuthState>(env.SESSION_KEY, 'oauth', readCookie(req, OAUTH_COOKIE));
+  const back = (st?.next ?? MEMBERS_PATH).split('#')[0]!; // the language the person started from
+  const fail = (why: string) => {
+    console.warn('kalangoos-auth callback:', logSafe(why));
+    return redirect(`${env.SITE_ORIGIN}${back}#/erro`, [cookie(OAUTH_COOKIE, '', 0, 'Lax')]);
+  };
   const code = url.searchParams.get('code');
   const state = url.searchParams.get('state') ?? '';
   if (!st) return fail('no or expired login state');
   if (!sameString(state, st.state)) return fail('state mismatch');
   if (!code) return fail(url.searchParams.get('error') ?? 'no code');
 
-  const r = await gh('https://github.com/login/oauth/access_token', {
-    method: 'POST',
-    headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'kalangoos-auth' },
-    body: new URLSearchParams({
-      client_id: env.GITHUB_CLIENT_ID,
-      client_secret: env.GITHUB_CLIENT_SECRET,
-      code,
-      redirect_uri: `${env.AUTH_ORIGIN}/callback`,
-      code_verifier: st.verifier,
-    }),
-  });
+  let r: Response;
+  try {
+    r = await gh('https://github.com/login/oauth/access_token', {
+      method: 'POST',
+      headers: { Accept: 'application/json', 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': 'kalangoos-auth' },
+      body: new URLSearchParams({
+        client_id: env.GITHUB_CLIENT_ID,
+        client_secret: env.GITHUB_CLIENT_SECRET,
+        code,
+        redirect_uri: `${env.AUTH_ORIGIN}/callback`,
+        code_verifier: st.verifier,
+      }),
+    });
+  } catch {
+    return fail('token exchange: network'); // GitHub unreachable: the error page, not a raw 500
+  }
   const tok = (await r.json().catch(() => ({}))) as { access_token?: string; error?: string };
   if (!tok.access_token) return fail(`token exchange: ${tok.error ?? r.status}`);
   const token = tok.access_token;
 
-  const ur = await gh('https://api.github.com/user', { headers: ghHeaders(token) });
-  if (!ur.ok) {
+  // from here a token exists: whatever goes wrong, it is revoked and nothing is kept
+  let user: { login: string; name: string | null; avatar_url: string };
+  try {
+    const ur = await gh('https://api.github.com/user', { headers: ghHeaders(token) });
+    if (!ur.ok) {
+      await revoke(gh, env, token);
+      return fail(`user: ${ur.status}`);
+    }
+    user = (await ur.json()) as typeof user;
+    if (typeof user?.login !== 'string') throw new Error('no login');
+  } catch {
     await revoke(gh, env, token);
-    return fail(`user: ${ur.status}`);
+    return fail('user: network or bad answer');
   }
-  const user = (await ur.json()) as { login: string; name: string | null; avatar_url: string };
 
-  if (!(await isMember(gh, env, token))) {
-    // nothing is kept for people outside the organisation: the token is revoked right away
+  const membership = await isMember(gh, env, token);
+  if (membership !== 'member') {
+    // nothing is kept: the token is revoked right away. Only a definite "not a member" says so; when GitHub could not
+    // answer (SAML SSO, rate limit, outage) the person is told to try again, not that they are outside.
     await revoke(gh, env, token);
-    return redirect(`${env.SITE_ORIGIN}${MEMBERS_PATH}#/fora?login=${encodeURIComponent(user.login)}`, [cookie(OAUTH_COOKIE, '', 0, 'Lax')]);
+    if (membership !== 'not-member') return fail(`membership ${membership}`);
+    return redirect(`${env.SITE_ORIGIN}${back}#/fora?login=${encodeURIComponent(user.login)}`, [cookie(OAUTH_COOKIE, '', 0, 'Lax')]);
   }
 
   const s = await seal(env.SESSION_KEY, 'session', { token, login: user.login, name: user.name, avatarUrl: user.avatar_url } satisfies Session, SESSION_TTL);
@@ -204,9 +254,11 @@ async function session(req: Request, env: Env, gh: Fetch): Promise<Response> {
   const s = await currentSession(req, env);
   if (!s) return json({ error: 'no session' }, 401, cors);
   const member = await isMember(gh, env, s.token);
-  if (!member) {
+  // GitHub could not answer: keep the cookie (the person is still a member) and let the page retry
+  if (member === 'unavailable') return json({ error: 'unavailable' }, 503, cors);
+  if (member !== 'member') {
     cors.append('Set-Cookie', clearSession());
-    return json({ error: member === null ? 'expired' : 'not a member' }, 401, cors);
+    return json({ error: member === 'expired' ? 'expired' : 'not a member' }, 401, cors);
   }
   return json({ login: s.login, name: s.name, avatarUrl: s.avatarUrl }, 200, cors);
 }
@@ -238,7 +290,8 @@ async function project(req: Request, env: Env, gh: Fetch): Promise<Response> {
       cors.append('Set-Cookie', clearSession());
       return json({ error: 'expired' }, 401, cors);
     }
-    const j = (await r.json()) as Page;
+    if (r.status === 403 || r.status === 429 || r.status >= 500) return json({ error: 'unavailable' }, 503, cors);
+    const j = (await r.json().catch(() => ({ errors: [{ message: 'bad json' }] }))) as Page;
     if (j.errors?.length && !j.data?.organization) return json({ error: 'github', detail: j.errors.map((e) => e.type ?? e.message) }, 502, cors);
     const org = j.data?.organization;
     if (!org?.viewerIsAMember) {

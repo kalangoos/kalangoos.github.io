@@ -269,11 +269,11 @@
           "items": [
             {
               "title": "No trackers",
-              "text": "No cookies, analytics, ads, or third-party fonts, scripts or images. The fonts and images come from this very site."
+              "text": "No cookies and no analytics. If you sign in to the members area, the sign-in service (auth.kalangoos.com, Cloudflare) keeps an 8-hour session cookie; once login is on, every page asks that service once, so it sees your IP address. The members area also loads files and avatars from GitHub."
             },
             {
               "title": "What stays in your browser",
-              "text": "Only your theme choice (light or dark), in localStorage, on your computer. There is no form and no account."
+              "text": "Only your theme choice (light or dark), in localStorage, on your computer. There is no form; your GitHub account only comes into play if you sign in to the members area."
             },
             {
               "title": "Hosting",
@@ -757,6 +757,68 @@
         "href": "/"
       }
     }
+  },
+  "members": {
+    "board": {
+      "issue": "Issue",
+      "pr": "Pull request",
+      "draft": "Draft",
+      "redacted": "No access",
+      "redactedTitle": "An item from a repository you cannot see",
+      "closed": "closed",
+      "merged": "merged",
+      "draftState": "draft",
+      "linkedPr": "Linked pull request",
+      "linkedIssue": "Linked issue"
+    },
+    "title": "Members area · KalangoOS",
+    "description": "KalangoOS members area: the task board of the kalangoos GitHub organisation, with the documentation and specification of the public repository.",
+    "eyebrow": "Members area",
+    "titles": {
+      "docs": "Documentation",
+      "spec": "Specification",
+      "board": "Task board"
+    },
+    "login": {
+      "title": "Sign in with your GitHub account",
+      "text": "The KalangoOS task board is restricted to people in the kalangoos GitHub organisation. The technical documentation and the specification are public: they come from the open repository and appear here for convenience only.",
+      "button": "Sign in with GitHub",
+      "checking": "Checking the session…",
+      "opening": "Opening GitHub…",
+      "error": "We could not finish signing in (the request expired, was declined or GitHub did not answer). Try again.",
+      "down": "We could not check your session right now (GitHub or the sign-in service did not answer). Your session is kept; try again in a moment.",
+      "fine": "We ask for read access only: your membership of organisations (read:org) and projects (read:project). Nothing is published in your name, and the session lives in a protected cookie of the sign-in service, never in the browser's storage.",
+      "foot": "Not in the organisation? Contribute through the public repository"
+    },
+    "outside": {
+      "title": "The task board is only for people in the kalangoos organisation",
+      "as": "You signed in as",
+      "but": "but that account",
+      "unknown": "The account you signed in with",
+      "text": "is not part of the kalangoos organisation on GitHub. The code, the documentation and the specification are public in the repository, and anyone can contribute.",
+      "repo": "See the repository",
+      "contribute": "How to contribute",
+      "other": "Sign in with another account",
+      "why": "Why can't I get in? The organisation decides who is a member"
+    },
+    "soon": {
+      "title": "The members area is not connected yet",
+      "text": "Signing in with GitHub goes live when the authentication service is switched on. Meanwhile, the documentation and the specification are in the public repository.",
+      "notice": "The sign-in service has not been switched on yet. When it is, this page will ask for your GitHub account.",
+      "button": "Sign in with GitHub",
+      "foot": "Read the documentation in the repository"
+    },
+    "nav": {
+      "label": "Members area",
+      "docs": "Documentation",
+      "docsShort": "Docs",
+      "spec": "Specification",
+      "specShort": "Spec",
+      "board": "Task board",
+      "boardShort": "Board",
+      "back": "Back to the site"
+    },
+    "preview": "Local preview, no session: documentation and specification come from the public repository; the board needs the sign-in service."
   },
   "landing": {
     "announce": {
@@ -1313,7 +1375,7 @@
             },
             {
               "label": "Members area",
-              "href": "/membros/"
+              "href": "@members"
             }
           ]
         }

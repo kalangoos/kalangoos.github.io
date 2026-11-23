@@ -269,11 +269,11 @@
           "items": [
             {
               "title": "Sem rastreadores",
-              "text": "Nenhum cookie, análise de visitas, publicidade, fonte, script ou imagem de terceiros. As fontes e as imagens vêm deste próprio site."
+              "text": "Nenhum cookie nem análise de visitas. Se você entrar na área de membros, o serviço de login (auth.kalangoos.com, Cloudflare) guarda um cookie de sessão de 8 horas; com o login ligado, cada página consulta esse serviço uma vez e ele vê o seu endereço IP. A área de membros também carrega arquivos e avatares do GitHub."
             },
             {
               "title": "O que fica no seu navegador",
-              "text": "Só a sua escolha de tema (claro ou escuro), em localStorage, no seu computador. Não há formulário nem conta."
+              "text": "Só a sua escolha de tema (claro ou escuro), em localStorage, no seu computador. Não há formulário; a conta do GitHub só entra em jogo se você entrar na área de membros."
             },
             {
               "title": "Hospedagem",
@@ -757,6 +757,68 @@
         "href": "/en/"
       }
     }
+  },
+  "members": {
+    "board": {
+      "issue": "Issue",
+      "pr": "Pull request",
+      "draft": "Rascunho",
+      "redacted": "Item sem acesso",
+      "redactedTitle": "Item de um repositório que você não pode ver",
+      "closed": "fechada",
+      "merged": "mesclado",
+      "draftState": "rascunho",
+      "linkedPr": "Pull request ligado",
+      "linkedIssue": "Issue ligada"
+    },
+    "title": "Área de membros · KalangoOS",
+    "description": "Área de membros do KalangoOS: quadro de tarefas da organização kalangoos no GitHub, com a documentação e a especificação do repositório público.",
+    "eyebrow": "Área de membros",
+    "titles": {
+      "docs": "Documentação",
+      "spec": "Especificação",
+      "board": "Quadro de tarefas"
+    },
+    "login": {
+      "title": "Entre com a sua conta do GitHub",
+      "text": "O quadro de tarefas do KalangoOS é restrito a quem faz parte da organização kalangoos no GitHub. A documentação técnica e a especificação são públicas: vêm do repositório aberto e aparecem aqui só por conveniência.",
+      "button": "Entrar com o GitHub",
+      "checking": "Conferindo a sessão…",
+      "opening": "Abrindo o GitHub…",
+      "error": "Não deu para concluir a entrada (o pedido expirou, foi recusado ou o GitHub não respondeu). Tente de novo.",
+      "down": "Não deu para conferir a sua sessão agora (o GitHub ou o serviço de login não respondeu). Você continua com a sessão; tente de novo em instantes.",
+      "fine": "Pedimos só leitura: a sua participação em organizações (read:org) e os projetos (read:project). Nada é publicado em seu nome, e a sessão fica num cookie protegido do serviço de login, nunca no armazenamento do navegador.",
+      "foot": "Não é da organização? Contribua pelo repositório público"
+    },
+    "outside": {
+      "title": "O quadro de tarefas é só para quem é da organização kalangoos",
+      "as": "Você entrou como",
+      "but": "mas essa conta",
+      "unknown": "A conta com que você entrou",
+      "text": "não faz parte da organização kalangoos no GitHub. O código, a documentação e a especificação são públicos no repositório, e qualquer pessoa pode contribuir.",
+      "repo": "Ver o repositório",
+      "contribute": "Como contribuir",
+      "other": "Entrar com outra conta",
+      "why": "Por que não entro? A organização decide quem é membro"
+    },
+    "soon": {
+      "title": "A área de membros ainda não está conectada",
+      "text": "O login com o GitHub entra no ar quando o serviço de autenticação for ligado. Enquanto isso, a documentação e a especificação estão no repositório público.",
+      "notice": "O serviço de login ainda não foi ligado. Quando for, esta página passa a pedir a sua conta do GitHub.",
+      "button": "Entrar com o GitHub",
+      "foot": "Ler a documentação no repositório"
+    },
+    "nav": {
+      "label": "Área de membros",
+      "docs": "Documentação",
+      "docsShort": "Docs",
+      "spec": "Especificação",
+      "specShort": "Especificação",
+      "board": "Quadro de tarefas",
+      "boardShort": "Quadro",
+      "back": "Voltar ao site"
+    },
+    "preview": "Prévia local, sem sessão: documentação e especificação vêm do repositório público; o quadro precisa do serviço de login."
   },
   "landing": {
     "announce": {
@@ -1313,7 +1375,7 @@
             },
             {
               "label": "Área de membros",
-              "href": "/membros/"
+              "href": "@members"
             }
           ]
         }

@@ -71,3 +71,25 @@ test('heading ids and search ignore accents the way readers expect', () => {
   assert.equal(hits[0]!.snippet.slice(hits[0]!.at, hits[0]!.at + hits[0]!.length), 'compositor');
   assert.equal(searchText('x', 'Segurança do sistema', 'seguranca').length, 1);
 });
+
+test('a malformed percent escape in a link never throws; the text is used as it is', () => {
+  const docs = new Set(['README.md']);
+  assert.doesNotThrow(() => linkTarget('README.md', '%E0%A4%A', docs));
+  assert.doesNotThrow(() => linkTarget('README.md', '[x](%E0%A4%A)', docs));
+  assert.equal(linkTarget('README.md', '%E0%A4%A', docs).kind, 'external');
+  assert.deepEqual(linkTarget('README.md', 'espa%C3%A7o.md', new Set(['espaço.md'])), { kind: 'doc', href: '#/docs/espaço.md' });
+});
+
+test('images come from the repository or GitHub only: a tracking pixel loses its source', () => {
+  for (const ok of [
+    'https://raw.githubusercontent.com/kalangoos/kalangoos/main/a.png',
+    'https://github.com/kalangoos/kalangoos/raw/main/a.png',
+    'https://camo.githubusercontent.com/abc123',
+    '//camo.githubusercontent.com/abc123',
+  ]) assert.equal(imageSrc('README.md', ok), ok.startsWith('//') ? `https:${ok}` : ok, ok);
+  for (const bad of [
+    'https://tracker.example/pixel.gif?u=1', 'http://raw.githubusercontent.com/a.png', '//tracker.example/p.gif', 'https://github.com.evil.example/a.png',
+    'https://raw.githubusercontent.com@evil.example/a.png', 'https://user:pw@github.com/a.png', 'ftp://github.com/a.png', 'javascript:alert(1)', 'https://',
+  ]) assert.equal(imageSrc('README.md', bad), '', bad);
+  assert.equal(imageSrc('docs/A.md', 'img/a.png'), 'https://raw.githubusercontent.com/kalangoos/kalangoos/main/docs/img/a.png');
+});
