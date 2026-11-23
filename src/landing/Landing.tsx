@@ -331,6 +331,8 @@ function Apps() {
 
 /* ------------------------------------------------------------------ design system */
 
+const DS_TONES = ['var(--accent)', 'var(--teal)', 'var(--gold)', 'var(--blue)'];
+
 function DesignSystem() {
   const { t } = useSite();
   const L = t.landing.designSystem;
@@ -348,22 +350,30 @@ function DesignSystem() {
             {L.lead}
           </p>
         </header>
-        <ul className="lv-shots lv-shots--design" data-reveal>
+        <ul className="lv-ds-grid" data-reveal>
           {L.items.map((g, i) => (
-            <li key={g.shot} className="lv-card lv-r" style={idx(i)}>
-              <figure className="lv-shot">
-                <ShotImages shot={g.shot} alt={g.alt} sizes="(max-width: 960px) 100vw, 50vw" />
-                <figcaption>{g.caption}</figcaption>
-              </figure>
+            <li key={g.shot} className="lv-r" style={idx(i)}>
+              <a className="lv-card lv-ds-card" href={L.cta.href} {...external(L.cta.href)} style={{ ['--tone' as string]: DS_TONES[i % DS_TONES.length] }}>
+                <span className="lv-ds-card__media">
+                  <ShotImages shot={g.shot} alt={g.alt} sizes="(max-width: 600px) 100vw, (max-width: 1100px) 50vw, 25vw" />
+                </span>
+                <span className="lv-ds-card__body">
+                  <span className="lv-ds-card__n">{String(i + 1).padStart(2, '0')} · {L.page}</span>
+                  <span className="lv-ds-card__title">{g.caption}</span>
+                  <span className="lv-more lv-ds-card__more">
+                    {L.open} <span className="lv-more__arrow" aria-hidden="true">→</span>
+                  </span>
+                </span>
+              </a>
             </li>
           ))}
         </ul>
-        <p className="lv-design-cta lv-r" style={idx(4)} data-reveal>
-          <a className="lv-btn lv-btn--ghost" href={L.cta.href} target="_blank" rel="noopener noreferrer">
+        <div className="lv-design-cta lv-r" style={idx(4)} data-reveal>
+          <Btn href={L.cta.href} kind="ghost">
             {L.cta.label}
-          </a>
-          <span>{L.cta.text}</span>
-        </p>
+          </Btn>
+          <p>{L.cta.text}</p>
+        </div>
       </div>
     </section>
   );

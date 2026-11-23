@@ -1437,7 +1437,9 @@
           "caption": "Site",
           "alt": "Landing page no Design System"
         }
-      ]
+      ],
+      "page": "Página",
+      "open": "Ver no repositório"
     }
   }
 }
