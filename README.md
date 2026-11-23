@@ -140,11 +140,11 @@ reclama se faltar uma chave no inglês). Cada afirmação tem origem no reposit�
 `docs/PLANO.md`, `docs/ARQUITETURA.md`, `docs/SEGURANCA.md`, `docs/REQUISITOS.md`, `docs/LANCAMENTO.md`,
 `docs/LICENCAS.md` e `docs/telas.md`. O que é plano aparece como "planejado" ou "a confirmar".
 
-As capturas são da sessão de teste (`target/captura/`, com dados de teste). Antes de trocar ou acrescentar uma,
-leia todo o texto dela: nada de nomes reais, nomes de rede Wi-Fi, e-mails, caminhos `/home/...` ou notificações de
-apps reais. Ficaram de fora, por isso: `sessao-instalador.png` (nome de rede com nome de pessoa),
-`sessao-avisos.png` (nome de pessoa numa notificação), `sessao-controles.png` (o mesmo nome de rede),
-`sessao-aprovacao.png`, `sessao-voz.png` e `sessao-sugestao-layout.png` (cartão de erro e o chamador de teste).
+As telas da página inicial são quadros do Design System do KalangoOS (`design/KalangoOS-DesignSystem.figcraft`,
+exportados com `figcraft-cli export --node <id>`), em `public/img/ds/` (1920×1080 e uma cópia de 960, `<nome>.webp`
+no escuro e `<nome>-light.webp` no claro, cada uma do quadro do tema claro do próprio DS). Os vídeos (`public/video/`)
+são feitos no Remotion só com esses quadros: câmera, transições, cursor e anéis de destaque, sem interface nova. As
+legendas e os textos alternativos descrevem o que o quadro mostra; a galeria avisa que são telas do design.
 
 ## Estrutura
 
@@ -166,11 +166,11 @@ site/
   scripts/                      geração de tokens, molas, imagens, Open Graph e a pré-renderização
 ```
 
-Cada tela também foi capturada com o sistema no tema claro (a mesma sessão de teste, com o `tema.json` em
-`"claro"`): o site mostra a captura do tema da página (`<nome>.webp` no escuro, `<nome>-light.webp` no claro). As duas
+Cada tela tem a versão do tema escuro e a do claro: o site mostra a do tema da página (`<nome>.webp` no escuro,
+`<nome>-light.webp` no claro). As duas
 ficam no HTML pré-renderizado e o CSS esconde a do outro tema, pelo `data-theme` do botão ou pelo
 `prefers-color-scheme` do sistema, então a troca funciona também sem JavaScript; a escondida é `loading="lazy"` com
-`display: none`, e o navegador não a baixa. A tela "Tema claro" (Aparência) é a mesma nos dois temas.
+`display: none`, e o navegador não a baixa.
 
 Regenerar as imagens: `KALANGO_CAPTURES=<repo>/target/captura/ KALANGO_CAPTURES_CLARO=<pasta da rodada clara>/
 python3 scripts/prepare-images.py` e

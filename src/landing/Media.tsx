@@ -164,7 +164,7 @@ export function Tour() {
   return (
     <div className={`lv-tour${playing ? ' is-playing' : ''}`} id="tour">
       <div className="lv-tour__media">
-        <ShotImages shot="desktop" alt={L.alt} eager sizes="(max-width: 1200px) 100vw, 1120px" />
+        <ShotImages shot="ds-desktop" alt={L.alt} eager sizes="(max-width: 1200px) 100vw, 1120px" />
         {src && <video ref={vid} className="lv-tour__video" controls={playing} playsInline preload="none" aria-label={L.title} />}
         <div className="lv-tour__shade" aria-hidden="true" />
         {src ? (

@@ -1,6 +1,7 @@
 /**
- * The landing page's videos, in one place. The clips are rendered with Remotion from the real screens (remotion repo,
- * src/kalango/site: SiteTour and Clip* compositions, 1280×800, VP9) and live in public/video/ as WebM, one render per
+ * The landing page's videos, in one place. The clips are rendered with Remotion only from frames of the KalangoOS Design
+ * System (FigCraft) — camera moves, transitions, a cursor and highlight rings, no added UI (remotion repo,
+ * src/kalango/site/ds: SiteTour and Clip* compositions, 1600×900, VP9) and live in public/video/ as WebM, one render per
  * theme (`src` dark, `light` light) plus a poster JPG (the first frame) for each. Media.tsx picks the render for the
  * page's theme and swaps it when the theme changes. An entry that is `null` shows the poster capture with the
  * "▶ CLIPE" badge instead, so nothing points at a missing file.

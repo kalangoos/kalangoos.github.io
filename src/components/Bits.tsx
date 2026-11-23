@@ -17,13 +17,15 @@ export function Eyebrow({ children }: { children: ReactNode }) {
 export function ShotImages({ shot, alt, eager, sizes }: { shot: string; alt: string; eager?: boolean; sizes?: string }) {
   const s = SHOTS[shot];
   const one = (variant: '' | '-light') => {
-    const src = `/img/shots/${shot}${variant}.webp`;
+    const dir = s.dir ?? 'shots';
+    const name = s.dir ? shot.replace(/^ds-/, '') : shot;
+    const src = `/img/${dir}/${name}${variant}.webp`;
     return (
       <img
         key={variant || 'dark'}
         className={s.light ? (variant ? 'only-light' : 'only-dark') : undefined}
         src={src}
-        srcSet={s.small ? `/img/shots/${shot}${variant}-640.webp 640w, ${src} ${s.w}w` : undefined}
+        srcSet={s.small ? `/img/${dir}/${name}${variant}-${s.sw ?? 640}.webp ${s.sw ?? 640}w, ${src} ${s.w}w` : undefined}
         sizes={s.small ? sizes ?? '(max-width: 760px) 100vw, 50vw' : undefined}
         width={s.w}
         height={s.h}

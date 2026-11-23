@@ -281,7 +281,7 @@ function Features() {
           {L.items.map((f, i) => (
             <article key={f.id} className={`lv-feature${i % 2 ? ' lv-feature--flip' : ''}`} id={`recurso-${f.id}`} data-reveal style={{ ['--tone' as string]: tone(f.tone) }}>
               <div className={`lv-feature__media lv-r ${i % 2 ? 'lv-r--right' : 'lv-r--left'}`}>
-                <Clip id={f.id as 'agentes'} shot={f.shot} alt={f.alt} tone={f.tone} portrait={f.shot === 'privacy-panel'} />
+                <Clip id={f.id as 'agentes'} shot={f.shot} alt={f.alt} tone={f.tone} />
               </div>
               <div className="lv-feature__text">
                 <p className="lv-label lv-label--tone lv-r" style={idx(1)}>
