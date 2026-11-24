@@ -1,7 +1,7 @@
 // After `vite build` (client) and `vite build --ssr` (server entry): writes the rendered HTML of every page and
 // language (dist/<path>/index.html, dist/404.html), plus sitemap.xml, so dist/ works as plain static files and the
-// text is there without JavaScript. The two Vite pages (dist/index.html, dist/en/index.html) are the templates.
-import { readFileSync, writeFileSync, rmSync, mkdirSync, readdirSync } from 'node:fs';
+// text is there without JavaScript.
+import { readFileSync, writeFileSync, rmSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { loadEnv } from 'vite';
@@ -9,28 +9,31 @@ import { dirname, join } from 'node:path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const { render } = await import(pathToFileURL(join(root, 'dist-ssr/entry-server.js')).href);
+const localesDoc = JSON.parse(readFileSync(join(root, 'src/locales.json'), 'utf8'));
 const routes = JSON.parse(readFileSync(join(root, 'src/routes.json'), 'utf8'));
-const content = {
-  'pt-BR': JSON.parse(readFileSync(join(root, 'src/content/pt-BR.json'), 'utf8')),
-  en: JSON.parse(readFileSync(join(root, 'src/content/en.json'), 'utf8')),
-};
-const templates = {
-  'pt-BR': readFileSync(join(root, 'dist/index.html'), 'utf8'),
-  en: readFileSync(join(root, 'dist/en/index.html'), 'utf8'),
-};
+const published = localesDoc.locales.filter((l) => l.published);
+const langIds = published.map((l) => l.id);
+const byId = Object.fromEntries(published.map((l) => [l.id, l]));
+
+const content = Object.fromEntries(
+  langIds.map((id) => [id, JSON.parse(readFileSync(join(root, 'src/content', `${id}.json`), 'utf8'))]),
+);
+
+const templates = {};
+for (const loc of published) {
+  const file = loc.prefix ? join(root, 'dist', loc.prefix, 'index.html') : join(root, 'dist/index.html');
+  if (!existsSync(file)) throw new Error(`missing vite template: ${file}`);
+  templates[loc.id] = readFileSync(file, 'utf8');
+}
+
 const origin = routes.origin;
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-// The members page (/membros/, /en/members/) is not for search engines: noindex, no canonical or hreflang, not in the
-// sitemap. It may be signed in, so it also gets a Content-Security-Policy (see csp()).
 const HIDDEN = new Set(['notfound', 'members']);
 const AUTH_ORIGIN = 'https://auth.kalangoos.com';
 {
-  // the login service address enters the build only as VITE_AUTH_URL (process env or .env.production): it has to be the
-  // one origin the CSP lets the page talk to, and it is never a secret (nothing else is read from the environment here)
   const url = (loadEnv('production', root, 'VITE_').VITE_AUTH_URL ?? '').trim().replace(/\/+$/, '');
   if (url && url !== AUTH_ORIGIN) throw new Error(`VITE_AUTH_URL is "${url}", expected empty (login off) or ${AUTH_ORIGIN}`);
 }
-const OG_LOCALE = { 'pt-BR': 'pt_BR', en: 'en_US' };
 
 function head(lang, page) {
   const c = content[lang];
@@ -38,15 +41,17 @@ function head(lang, page) {
   const url = origin + routes.pages[page][lang];
   const lines = [`<meta name="description" content="${esc(m.description)}" />`];
   if (page === 'members') {
-    lines.push('<meta name="robots" content="noindex, nofollow" />'); // no canonical, no alternates, no social card
+    lines.push('<meta name="robots" content="noindex, nofollow" />');
     return { title: m.title, tags: lines.join('\n    ') };
   }
   if (page !== 'notfound') {
     lines.push(`<link rel="canonical" href="${url}" />`);
-    for (const l of ['pt-BR', 'en']) lines.push(`<link rel="alternate" hreflang="${l}" href="${origin + routes.pages[page][l]}" />`);
-    lines.push(`<link rel="alternate" hreflang="x-default" href="${origin + routes.pages[page]['pt-BR']}" />`);
+    for (const l of langIds) {
+      lines.push(`<link rel="alternate" hreflang="${byId[l].hreflang}" href="${origin + routes.pages[page][l]}" />`);
+    }
+    lines.push(`<link rel="alternate" hreflang="x-default" href="${origin + routes.pages[page][localesDoc.default]}" />`);
   } else {
-    lines.push('<meta name="robots" content="noindex" />'); // the 404 answers every unknown address: no canonical
+    lines.push('<meta name="robots" content="noindex" />');
   }
   lines.push(
     '<meta property="og:type" content="website" />',
@@ -54,8 +59,13 @@ function head(lang, page) {
     `<meta property="og:title" content="${esc(m.title)}" />`,
     `<meta property="og:description" content="${esc(m.description)}" />`,
     `<meta property="og:url" content="${url}" />`,
-    `<meta property="og:locale" content="${OG_LOCALE[lang]}" />`,
-    `<meta property="og:locale:alternate" content="${OG_LOCALE[lang === 'en' ? 'pt-BR' : 'en']}" />`,
+    `<meta property="og:locale" content="${byId[lang].ogLocale}" />`,
+  );
+  for (const l of langIds) {
+    if (l === lang) continue;
+    lines.push(`<meta property="og:locale:alternate" content="${byId[l].ogLocale}" />`);
+  }
+  lines.push(
     `<meta property="og:image" content="${origin}/og.png" />`,
     '<meta property="og:image:width" content="1200" />',
     '<meta property="og:image:height" content="630" />',
@@ -65,12 +75,6 @@ function head(lang, page) {
   return { title: m.title, tags: lines.join('\n    ') };
 }
 
-/**
- * CSP for the members page, as a <meta> (GitHub Pages cannot send headers). Scripts: this site's bundle and the one
- * inline script of the template, by hash. Network: only the login service and GitHub (repository files, API); images:
- * the site, the repository's files, GitHub's image proxy and avatars. Fonts and styles: this site only (the fonts are
- * the @fontsource copies), so no visitor address goes to a third party.
- */
 function csp(html) {
   const inline = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => m[1]);
   if (inline.length !== 1) throw new Error(`expected exactly one inline script in the template, found ${inline.length}`);
@@ -106,19 +110,20 @@ function write(lang, page) {
   console.log(`prerendered ${path}`);
 }
 
-const written = [];
 for (const page of Object.keys(routes.pages)) {
   if (page === 'notfound') continue;
-  for (const lang of ['pt-BR', 'en']) { write(lang, page); written.push(page); }
+  for (const lang of langIds) write(lang, page);
 }
-write('pt-BR', 'notfound'); // GitHub Pages serves /404.html for every unknown address
+write(localesDoc.default, 'notfound');
 
 const urls = Object.keys(routes.pages)
   .filter((p) => !HIDDEN.has(p))
   .map((p) => {
-    const alt = ['pt-BR', 'en'].map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${origin + routes.pages[p][l]}"/>`);
-    alt.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${origin + routes.pages[p]['pt-BR']}"/>`);
-    return ['pt-BR', 'en'].map((l) => `  <url>\n    <loc>${origin + routes.pages[p][l]}</loc>\n${alt.join('\n')}\n  </url>`).join('\n');
+    const alt = langIds.map(
+      (l) => `    <xhtml:link rel="alternate" hreflang="${byId[l].hreflang}" href="${origin + routes.pages[p][l]}"/>`,
+    );
+    alt.push(`    <xhtml:link rel="alternate" hreflang="x-default" href="${origin + routes.pages[p][localesDoc.default]}"/>`);
+    return langIds.map((l) => `  <url>\n    <loc>${origin + routes.pages[p][l]}</loc>\n${alt.join('\n')}\n  </url>`).join('\n');
   });
 writeFileSync(
   join(root, 'dist/sitemap.xml'),
@@ -126,7 +131,6 @@ writeFileSync(
 );
 console.log('wrote sitemap.xml');
 
-// fonts: every browser that runs this site reads woff2, so the woff fallbacks fontsource also ships are dropped
 const assets = join(root, 'dist/assets');
 for (const f of readdirSync(assets)) {
   if (f.endsWith('.woff')) rmSync(join(assets, f));

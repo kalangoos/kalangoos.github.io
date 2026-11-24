@@ -1,6 +1,7 @@
 import type pt from './content/pt-BR.json';
+import type { LocaleId } from './lib/locales';
 
-export type Lang = 'pt-BR' | 'en';
+export type Lang = LocaleId;
 
 /** One item of a content block: a card, a step or a link (the fields each kind uses are in Blocks.tsx). */
 export type Item = { title?: string; text?: string; badge?: string; code?: string; label?: string; href?: string; link?: { label: string; href: string; text?: string } };
@@ -13,8 +14,8 @@ export type NotFound = {
 };
 export type SubPageId = 'download' | 'security' | 'docs' | 'notes' | 'contribute';
 
-/** The site's text: src/content/pt-BR.json and src/content/en.json have the same shape (scripts/check-content.mjs
- *  fails the build when they do not). The sub-pages are declared above because JSON cannot narrow `kind`. */
+/** The site's text: one JSON per published locale under src/content/ (scripts/check-content.mjs fails the build
+ *  when a published locale does not mirror pt-BR.json). The sub-pages are declared above because JSON cannot narrow `kind`. */
 export type Content = Omit<typeof pt, 'pages'> & { pages: Record<SubPageId, PageContent> & { notfound: NotFound } };
 
 /** Each capture: its size, whether a small copy exists (`-640`, or `-<sw>`), whether a light-theme copy exists, and its

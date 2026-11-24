@@ -1,13 +1,13 @@
 import { Icon } from '../components/Icon';
 import { Checks, Eyebrow } from '../components/Bits';
 import { useSite } from '../lib/context';
-import { PAGES, type PageId } from '../lib/routes';
+import { pathOf, type PageId } from '../lib/routes';
 import type { Block, Item, SubPageId } from '../content';
 
 /** "@id" in a link means another page of the site, in the visitor's language. */
 function useHref() {
   const { lang } = useSite();
-  return (href: string) => (href.startsWith('@') ? PAGES[href.slice(1) as PageId][lang] : href);
+  return (href: string) => (href.startsWith('@') ? pathOf(lang, href.slice(1) as PageId) : href);
 }
 
 function Ext({ href, children }: { href: string; children: React.ReactNode }) {

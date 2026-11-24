@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import '../styles/landing.css';
 import { Icon } from '../components/Icon';
+import { LangSwitch } from '../components/LangSwitch';
 import { ShotImages } from '../components/Bits';
 import { useSite } from '../lib/context';
 import { pathOf, type PageId } from '../lib/routes';
@@ -92,24 +93,8 @@ function ThemeButton() {
 }
 
 /** The same page in the other language (the home keeps the section in view; the 404 offers the home). */
-function LangSwitch() {
-  const { t, lang, page } = useSite();
-  const target: PageId = page === 'notfound' ? 'home' : page;
-  const keepHash = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (page === 'home' && location.hash) e.currentTarget.href = e.currentTarget.pathname + location.hash;
-  };
-  return (
-    <nav className="lv-lang" aria-label={t.a11y.language}>
-      <a href={pathOf('pt-BR', target)} hrefLang="pt-BR" lang="pt-BR" aria-current={lang === 'pt-BR' ? 'true' : undefined} onClick={keepHash}>
-        <span aria-hidden="true">PT</span>
-        <span className="visually-hidden">Português</span>
-      </a>
-      <a href={pathOf('en', target)} hrefLang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} onClick={keepHash}>
-        <span aria-hidden="true">EN</span>
-        <span className="visually-hidden">English</span>
-      </a>
-    </nav>
-  );
+function LandingLangSwitch() {
+  return <LangSwitch className="lv-lang" keepHashOnHome />;
 }
 
 function Nav() {
@@ -153,7 +138,7 @@ function Nav() {
           </div>
         </nav>
         <div className="lv-nav__tools">
-          <LangSwitch />
+          <LandingLangSwitch />
           <ThemeButton />
           <span className="lv-nav__wide">
             <Btn href={pathOf(lang, 'members')} kind="ghost" small>{L.members}</Btn>
@@ -732,7 +717,7 @@ function Footer() {
         <div className="lv-footer__bottom">
           <p>{F.copyright}</p>
           <div className="lv-footer__prefs">
-            <LangSwitch />
+            <LandingLangSwitch />
             <span className="lv-footer__theme">
               {F.theme}: <span className="when-dark">{F.dark}</span><span className="when-light">{F.light}</span>
             </span>

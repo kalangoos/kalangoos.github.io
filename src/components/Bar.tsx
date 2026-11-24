@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Icon } from './Icon';
 import { useSite } from '../lib/context';
 import { pathOf } from '../lib/routes';
+import { LangSwitch } from './LangSwitch';
 import { MemberButton, useMemberState, type MemberState } from './Member';
 
 const KEY = 'kalangoos-theme';
@@ -34,12 +35,8 @@ export function Bar({ member }: { member?: MemberState } = {}) {
     setTheme(next);
   };
 
-  // the other language opens the same page, and keeps the section in view
-  const keepHash = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (location.hash) e.currentTarget.href = e.currentTarget.pathname + location.hash;
-  };
+
   const home = pathOf(lang, 'home');
-  const here = page === 'notfound' ? 'home' : page;
 
   return (
     <header className="bar">
@@ -63,16 +60,7 @@ export function Bar({ member }: { member?: MemberState } = {}) {
           {t.bar.download}
           <span className="indicator__dots" aria-hidden="true"><i /><i /><i /></span>
         </a>
-        <nav className="lang" aria-label={t.a11y.language}>
-          <a href={pathOf('pt-BR', here)} hrefLang="pt-BR" lang="pt-BR" aria-current={lang === 'pt-BR' ? 'true' : undefined} onClick={keepHash}>
-            <span aria-hidden="true">PT</span>
-            <span className="visually-hidden">Português</span>
-          </a>
-          <a href={pathOf('en', here)} hrefLang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} onClick={keepHash}>
-            <span aria-hidden="true">EN</span>
-            <span className="visually-hidden">English</span>
-          </a>
-        </nav>
+        <LangSwitch />
         <button
           type="button"
           className="theme-btn"
