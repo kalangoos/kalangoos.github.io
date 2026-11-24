@@ -2,320 +2,320 @@
   "lang": "ja",
   "path": "/ja/",
   "meta": {
-    "title": "KalangoOS — the Linux where AI agents work with you",
-    "description": "Technical preview 0.1 of a Linux distribution where AI agents run on your computer, ask before anything risky, follow rules enforced by the kernel and record what they do, so you can undo what changed.",
-    "ogImageAlt": "The KalangoOS logo over the wallpaper's night sky, with the system's desktop"
+    "title": "KalangoOS — AI エージェントが協力する Linux",
+    "description": "Linux ディストリビューションのテクニカル プレビュー 0.1 では、AI エージェントがコンピューター上で実行され、危険なことが起こる前に確認し、カーネルによって強制されたルールに従い、その動作を記録するため、変更内容を元に戻すことができます。",
+    "ogImageAlt": "壁紙の夜空の上にある KalangoOS ロゴとシステムのデスクトップ"
   },
   "a11y": {
-    "skip": "Skip to content",
-    "themeToLight": "Switch to the light theme",
-    "themeToDark": "Switch to the dark theme",
-    "language": "Language",
-    "summary": "Project summary"
+    "skip": "コンテンツにスキップ",
+    "themeToLight": "ライトテーマに切り替える",
+    "themeToDark": "ダークテーマに切り替える",
+    "language": "言語",
+    "summary": "プロジェクト概要"
   },
   "bar": {
-    "status": "Technical preview 0.1",
-    "statusDetail": "ISO and binaries on the releases page",
-    "statusLink": "How to download",
-    "download": "Download",
-    "signIn": "Sign in",
-    "soon": "soon",
-    "soonHint": "The members area is not connected yet",
-    "account": "Account",
-    "members": "Members area",
-    "memberOf": "kalangoos member",
-    "profile": "GitHub profile",
-    "signOut": "Sign out"
+    "status": "テクニカルプレビュー0.1",
+    "statusDetail": "リリースページの ISO とバイナリ",
+    "statusLink": "ダウンロード方法",
+    "download": "ダウンロード",
+    "signIn": "サインイン",
+    "soon": "すぐ",
+    "soonHint": "メンバーエリアはまだ接続されていません",
+    "account": "アカウント",
+    "members": "メンバーエリア",
+    "memberOf": "kalangoosメンバー",
+    "profile": "GitHub プロフィール",
+    "signOut": "サインアウト"
   },
   "footer": {
-    "license": "KalangoOS is free software, licensed under GPL-3.0-or-later."
+    "license": "KalangoOS は、GPL-3.0-or-later に基づいてライセンス供与されているフリー ソフトウェアです。"
   },
   "pages": {
     "download": {
-      "title": "Download KalangoOS 0.1 (technical preview) — KalangoOS",
-      "description": "How to download, verify and try the KalangoOS 0.1 technical preview: ISO, binaries, checksums and requirements.",
-      "eyebrow": "Download",
-      "h1": "Download the 0.1 technical preview",
-      "lead": "The installable ISO and the binaries live on the GitHub releases page, with checksums. Read the warnings before installing.",
+      "title": "ダウンロード KalangoOS 0.1 (テクニカルプレビュー) — KalangoOS",
+      "description": "KalangoOS 0.1 テクニカル プレビューをダウンロード、検証、試す方法: ISO、バイナリ、チェックサム、要件。",
+      "eyebrow": "ダウンロード",
+      "h1": "0.1 テクニカル プレビューをダウンロードする",
+      "lead": "インストール可能な ISO とバイナリは、チェックサム付きで「B2」リリース ページにあります。インストールする前に警告をお読みください。",
       "blocks": [
         {
           "kind": "notice",
           "tone": "warn",
-          "text": "Technical preview 0.x. The system can break, was tested only in virtual machines (UEFI), the real-hardware matrix is not complete and there are no updates with restore yet. Use it in a virtual machine or on a computer with no important data."
+          "text": "テクニカル プレビュー 0.x。システムは壊れる可能性があり、仮想マシン (UEFI) でのみテストされており、実際のハードウェア マトリックスは完全ではなく、復元を伴う更新はまだありません。仮想マシンまたは重要なデータのないコンピュータで使用してください。"
         },
         {
           "kind": "notice",
           "tone": "info",
-          "text": "Where the files are: version 0.1.0 is published on GitHub, and the ISO, the binaries, SHA256SUMS and the build provenance attestation are attached to the v0.1.0 release.",
+          "text": "ファイルの場所: バージョン 0.1.0 は GitHub で公開されており、ISO、バイナリ、SHA256SUMS、およびビルド来歴証明書は v0.1.0 リリースに添付されています。",
           "link": {
-            "label": "Release page v0.1.0",
+            "label": "リリースページ v0.1.0",
             "href": "https://github.com/kalangoos/kalangoos/releases/tag/v0.1.0"
           }
         },
         {
           "kind": "cards",
-          "title": "What to download",
+          "title": "ダウンロードするもの",
           "items": [
             {
               "title": "kalangoos-0.1.0-amd64.iso",
-              "badge": "To install",
-              "text": "The ISO: a live session with the installer. x86_64, UEFI (CI tests with UEFI). It carries no AI model."
+              "badge": "インストールするには",
+              "text": "ISO: インストーラーとのライブ セッション。 x86_64、UEFI (UEFI による CI テスト)。 AI モデルは搭載されていません。"
             },
             {
               "title": "SHA256SUMS-iso.txt",
-              "badge": "Verify",
-              "text": "The ISO's SHA-256 checksum. See how to verify it just below."
+              "badge": "確認する",
+              "text": "ISO の SHA-256 チェックサム。以下の確認方法をご覧ください。"
             },
             {
               "title": "kalangoos-0.1.0-linux-x86_64.tar.gz",
-              "badge": "Binaries",
-              "text": "The compiled programs (shell, kalangod, agent, approval, login and installer). Not an installer: it is for people who assemble their own session."
+              "badge": "バイナリ",
+              "text": "コンパイルされたプログラム (シェル、カランゴッド、エージェント、承認、ログイン、およびインストーラー)。インストーラーではありません。独自のセッションを組み立てる人向けです。"
             },
             {
               "title": "SHA256SUMS.txt",
-              "badge": "Verify",
-              "text": "The SHA-256 checksum of the binaries archive."
+              "badge": "確認する",
+              "text": "バイナリ アーカイブの SHA-256 チェックサム。"
             }
           ]
         },
         {
           "kind": "steps",
-          "title": "Verify the file before using it",
+          "title": "ファイルを使用する前に検証してください",
           "items": [
             {
-              "title": "Download the ISO and SHA256SUMS-iso.txt into the same folder and check the sum",
-              "text": "The ISO's line must end in OK. If it says FAILED, delete the file and download it again; never use an ISO that does not match.",
+              "title": "ISO と SHA256SUMS-iso.txt を同じフォルダーにダウンロードし、合計を確認してください",
+              "text": "ISO の行は OK で終わる必要があります。 「FAILED」と表示された場合は、ファイルを削除して再度ダウンロードします。一致しない ISO は決して使用しないでください。",
               "code": "sha256sum -c --ignore-missing SHA256SUMS-iso.txt"
             },
             {
-              "title": "Check the origin (optional, needs the GitHub CLI)",
-              "text": "Each release carries a build provenance attestation, showing the file came out of the repository's CI pipeline. It does not prove the code was reviewed, and the ISO is not signed yet.",
+              "title": "オリジンを確認します (オプション、GitHub CLI が必要です)",
+              "text": "各リリースには、ファイルがリポジトリの CI パイプラインから取得されたものであることを示すビルド来歴証明書が含まれています。コードがレビューされたことを証明するものではなく、ISO はまだ署名されていません。",
               "code": "gh attestation verify kalangoos-0.1.0-amd64.iso --repo kalangoos/kalangoos"
             }
           ]
         },
         {
           "kind": "steps",
-          "title": "Try it in a virtual machine (recommended)",
+          "title": "仮想マシンで試してみる (推奨)",
           "items": [
             {
-              "title": "Use the repository script (the simplest)",
-              "text": "With qemu-system-x86 and ovmf installed and no root. The script creates an empty 40 GB virtual disk (DISCO=, MEM=, CPUS= and RES= adjust it), boots the ISO with UEFI firmware and opens the live session with the installer; the live account kalango has no password. After installing, imagem/rodar-iso.sh with no argument boots the installed disk first.",
+              "title": "リポジトリ スクリプトを使用する (最も単純な)",
+              "text": "qemu-system-x86 と ovmf がインストールされており、root はありません。スクリプトは空の 40 GB 仮想ディスクを作成し (DISCO=、MEM=、CPUS=、RES= で調整)、UEFI ファームウェアで ISO を起動し、インストーラーとのライブ セッションを開きます。ライブアカウントkalangoにはパスワードがありません。インストール後、引数なしで imagem/rodar-iso.sh を実行すると、最初にインストールされたディスクが起動します。",
               "code": "git clone https://github.com/kalangoos/kalangoos && cd kalangoos\nKALANGO_ISO=/path/kalangoos-0.1.0-amd64.iso imagem/rodar-iso.sh novo"
             },
             {
-              "title": "Or, without the script: create a 40 GB virtual disk",
-              "text": "CI installs and boots the system like this, with QEMU and UEFI firmware (the ovmf package). Other UEFI VM programs may work, but they have not been tested.",
+              "title": "または、スクリプトを使用しない場合: 40 GB の仮想ディスクを作成します。",
+              "text": "CI は、QEMU および UEFI ファームウェア (ovmf パッケージ) を使用して、次のようにシステムをインストールして起動します。他のUEFI VM プログラムも動作する可能性がありますが、テストされていません。",
               "code": "qemu-img create -f qcow2 kalango.qcow2 40G\ncp /usr/share/OVMF/OVMF_VARS_4M.fd uefi-vars.fd"
             },
             {
-              "title": "Boot the ISO with 8 GB of memory and 6 CPUs",
-              "text": "The empty disk falls through to the ISO; after installing, the disk boots the system. Without /dev/kvm the VM is slow.",
+              "title": "8 GB のメモリと 6 つの CPU で ISO を起動します",
+              "text": "空のディスクは ISO に転送されます。インストール後、ディスクによってシステムが起動します。 /dev/kvm がないと VM が遅くなります。",
               "code": "qemu-system-x86_64 -enable-kvm -cpu host -machine q35 -m 8192 -smp 6 \\\n  -drive if=pflash,format=raw,readonly=on,file=/usr/share/OVMF/OVMF_CODE_4M.fd \\\n  -drive if=pflash,format=raw,file=uefi-vars.fd \\\n  -drive file=kalangoos-0.1.0-amd64.iso,media=cdrom,readonly=on,if=none,id=cd -device ide-cd,drive=cd,bootindex=1 \\\n  -drive file=kalango.qcow2,format=qcow2,if=none,id=disco -device virtio-blk-pci,drive=disco,bootindex=0 \\\n  -device virtio-vga-gl,xres=1920,yres=1080 -display sdl,gl=on \\\n  -device virtio-keyboard-pci -device virtio-tablet-pci -nic user,model=virtio-net-pci"
             }
           ]
         },
         {
           "kind": "steps",
-          "title": "Install on a computer (at your own risk)",
+          "title": "コンピュータにインストールします (自己責任で)",
           "items": [
             {
-              "title": "Write the ISO to a USB stick",
-              "text": "Replace /dev/sdX with the USB stick. Check with lsblk: picking the wrong disk erases your data.",
+              "title": "ISO を USB スティックに書き込みます",
+              "text": "/dev/sdX を USB スティックに置き換えます。 lsblk で確認してください。間違ったディスクを選択するとデータが消去されます。",
               "code": "lsblk\nsudo dd if=kalangoos-0.1.0-amd64.iso of=/dev/sdX bs=4M status=progress conv=fsync"
             },
             {
-              "title": "Boot from the USB stick in UEFI mode",
-              "text": "The live session opens the installer (the live account has no password). The installation writes to the disk you choose: back up first."
+              "title": "UEFI モードで USB スティックから起動します",
+              "text": "ライブ セッションではインストーラーが開きます (ライブ アカウントにはパスワードがありません)。インストールは選択したディスクに書き込みます。最初にバックアップしてください。"
             }
           ]
         },
         {
           "kind": "text",
-          "title": "AI models come afterwards",
+          "title": "AIモデルはその後に登場する",
           "paras": [
-            "The published ISO carries no AI model, because the model's licence is still under review. The installer has an AI models step, and you can change it later in Settings and the App Center. You choose the source: the public one, a private server, a folder or a USB stick. Downloads resume where they stopped and are checked by SHA-256.",
-            "Without a model installed the interface works, but the agents do not answer. The default is LFM3 1.7B, about 1 GB."
+            "モデルのライセンスはまだ審査中であるため、公開された ISO には AI モデルは含まれていません。インストーラーには AI モデルのステップがあり、後から設定と App Center で変更できます。ソースを選択します: パブリック サーバー、プライベート サーバー、フォルダー、または USB スティック。ダウンロードは停止したところから再開され、SHA-256 によってチェックされます。",
+            "モデルがインストールされていない場合、インターフェイスは機能しますが、エージェントは応答しません。デフォルトは LFM3 1.7B、約 1 GB です。"
           ]
         },
         {
           "kind": "cards",
-          "title": "Requirements",
+          "title": "要件",
           "items": [
             {
-              "title": "Minimum (planned)",
-              "text": "64-bit processor with 4 cores (x86-64-v2), 8 GB of memory, a 64 GB SSD, Intel, AMD or NVIDIA graphics with Vulkan, and UEFI."
+              "title": "最小値（予定）",
+              "text": "4 コア (x86-64-v2) を備えた 64 ビット プロセッサ、8 GB のメモリ、64 GB SSD、Intel、AMD、または NVIDIA グラフィックス (Vulkan、および UEFI)。"
             },
             {
-              "title": "Recommended",
-              "text": "8 cores, 16 GB of memory, a 256 GB NVMe and a dedicated graphics card. For larger local models, 32 GB."
+              "title": "推奨",
+              "text": "8 コア、16 GB のメモリ、256 GB NVMe、専用グラフィックス カード。大規模なローカル モデルの場合は 32 GB。"
             },
             {
-              "title": "What was tested",
-              "text": "Virtual machines (QEMU/KVM in the automated tests). Real hardware (NVIDIA, AMD, Intel) and Secure Boot were not tested yet; Kalango Remote was not tested between two physical computers."
+              "title": "テストされた内容",
+              "text": "仮想マシン (自動テストでは QEMU/KVM)。実際のハードウェア (NVIDIA、AMD、Intel) とセキュア ブートはまだテストされていません。 Kalango Remote は 2 台の物理コンピューター間でテストされていません。"
             }
           ]
         },
         {
           "kind": "links",
-          "title": "Other ways",
+          "title": "他の方法",
           "items": [
             {
-              "label": "All releases",
+              "label": "すべてのリリース",
               "href": "https://github.com/kalangoos/kalangoos/releases",
-              "text": "The list of versions on GitHub."
+              "text": "GitHub のバージョンのリスト。"
             },
             {
-              "label": "Build from source",
+              "label": "ソースからビルドする",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/README.md#english",
-              "text": "Run the development session, for people who want to work on the code."
+              "text": "コードに取り組みたい人のために、開発セッションを実行します。"
             },
             {
-              "label": "0.1.0 release notes",
+              "label": "0.1.0 リリースノート",
               "href": "@notes",
-              "text": "What went in and what was left out."
+              "text": "何が入り、何が残されたのか。"
             }
           ]
         }
       ]
     },
     "security": {
-      "title": "Security and privacy — KalangoOS",
-      "description": "How KalangoOS limits what agents do, what it does not guarantee, this site's privacy and how to report a security flaw.",
-      "eyebrow": "Security and privacy",
-      "h1": "Real power, with limits you can check",
-      "lead": "Agents operate the system through a single service, kalangod. This page says what stands today, what does not yet and how to reach us about a flaw.",
+      "title": "セキュリティとプライバシー — KalangoOS",
+      "description": "KalangoOS がエージェントの行動、保証しないこと、このサイトのプライバシー、セキュリティ上の欠陥を報告する方法をどのように制限するか。",
+      "eyebrow": "セキュリティとプライバシー",
+      "h1": "本当のパワー、限界を確認できる",
+      "lead": "エージェントは、kalangod という単一のサービスを通じてシステムを操作します。このページには、現在あるもの、まだないもの、および欠陥について当社に連絡する方法が記載されています。",
       "blocks": [
         {
           "kind": "cards",
-          "title": "What protects you today",
+          "title": "今日あなたを守るもの",
           "items": [
             {
-              "title": "System approval",
-              "text": "Risky actions ask for approval on a screen drawn by the compositor, out of the agent's reach; forging it is treated as a security flaw. With no answer, the request is denied."
+              "title": "システム承認",
+              "text": "危険なアクションは、エージェントの手の届かない、コンポジターによって描画された画面上で承認を求めます。偽造はセキュリティ上の欠陥として扱われます。応答がない場合、リクエストは拒否されます。"
             },
             {
-              "title": "Four power levels",
-              "text": "Observe, user, system and total. The total level needs in-person approval each session, for 15 minutes, with everything recorded."
+              "title": "4 つのパワーレベル",
+              "text": "ユーザー、システム、全体を観察します。合計レベルは、セッションごとに 15 分間、すべてを記録して直接承認する必要があります。"
             },
             {
-              "title": "Rules in the kernel",
-              "text": "Landlock, seccomp, cgroups and eBPF LSM, with no kernel module of our own. Protected folders stay locked even for the total level."
+              "title": "カーネル内のルール",
+              "text": "Landlock、seccomp、cgroups、および eBPF LSM。独自のカーネル モジュールはありません。保護されたフォルダーは、合計レベルであってもロックされたままになります。"
             },
             {
-              "title": "What is read is data",
-              "text": "Pages, files and tool answers do not become commands. On the way out to the web, a rule blocks a local secret pasted, split into parts or encoded (base64, hex, percent-encoding) in the address."
+              "title": "読み込まれるのはデータです",
+              "text": "ページ、ファイル、ツールの応答はコマンドになりません。 Web に送信される途中で、アドレス内に貼り付けられたり、部分に分割されたり、エンコード (base64、16 進数、パーセント エンコーディング) されたローカル シークレットがルールによってブロックされます。"
             },
             {
-              "title": "Timeline and Undo",
-              "text": "Each action is recorded from kernel events and can be undone; before changing the system there is a restore point."
+              "title": "タイムラインと元に戻す",
+              "text": "各アクションはカーネル イベントから記録され、元に戻すことができます。システムを変更する前に復元ポイントがあります。"
             },
             {
-              "title": "Allowed folders",
-              "text": "Agents' commands and file tools only write to allowed folders; files that run at login and PATH folders ask for approval; KalangoOS's own configuration is out of agents' reach."
+              "title": "許可されたフォルダー",
+              "text": "エージェントのコマンドとファイル ツールは、許可されたフォルダーにのみ書き込みます。ログインおよび PATH フォルダーで実行されるファイルは承認を求めます。 KalangoOS 自身の設定はエージェントの手の届かないところにあります。"
             },
             {
-              "title": "d1 recommendation in approvals (optional)",
-              "text": "The approval screen shows the recommendation of d1, a small local model that helps, and the decision is the person's; the “Aprovar sozinho o que é de baixo risco” option in Permissions is off by default and only covers moving to trash, moving and creating a new file that does not run, only if the d1 says it looks safe with at least the minimum confidence, never after content read from outside, up to 5 per request, switching itself off after 3 denials, with kalangod checking again and installing packages never counting as “safe”."
+              "title": "承認における d1 推奨事項 (オプション)",
+              "text": "承認画面には、役立つ小規模なローカル モデルである d1 の推奨事項が表示され、決定はその人が行います。アクセス許可の「Aprovar sozinho o que é de baixo risco」オプションはデフォルトでオフになっており、ゴミ箱への移動、実行されない新しいファイルの移動と作成のみを対象とします。これは、d1 が少なくとも最低限の信頼度で安全であると判断した場合に限り、コンテンツが外部から読み取られた後は決して行われません。リクエストごとに最大 5 回、3 回の拒否後に自動的にオフになります。kalangod は再度チェックし、パッケージのインストールは「安全」とはカウントされません。"
             },
             {
-              "title": "Kalango Remote: privacy mode",
-              "text": "When someone controls with access nobody approved here (a fixed password or unattended access, which has no files, terminal, camera, tunnel, restart or privacy mode), the local screen is covered (“tela preta aqui”) while the controller sees the real desktop. Emergency exits: Esc Esc, switching virtual terminal, the power button and the lock. There is also two-step verification, a global lockout after attempts and a notice to the person being recorded."
+              "title": "Kalango Remote: プライバシーモード",
+              "text": "ここで誰も承認されていないアクセス (固定パスワード、またはファイル、端末、カメラ、トンネル、再起動、プライバシー モードを持たない無人アクセス) で誰かが制御すると、コントローラーが実際のデスクトップを認識している間、ローカル画面は覆われます (「テラ プレタ アクイ」)。非常口: Esc Esc、仮想端末の切り替え、電源ボタン、ロック。また、2 段階認証、試行後のグローバル ロックアウト、記録される人への通知もあります。"
             }
           ]
         },
         {
           "kind": "checks",
           "tone": "coral",
-          "title": "What KalangoOS does not guarantee",
+          "title": "KalangoOS が保証しないこと",
           "items": [
-            "No external security review has been done; it is planned before 1.0.",
-            "It is a 0.x preview: there are flaws we do not know yet. Do not use it with data you cannot lose.",
-            "The rule blocks a local secret pasted, split into parts or encoded (base64, hex, percent-encoding) in the address; it does not cover rot13, reversed text, a secret split across parameters or the body of a POST.",
-            "The local model can be wrong or be tricked. Kernel rules and approval exist precisely because it cannot be trusted alone.",
-            "Whoever approves decides. An approval given without reading counts as permission.",
-            "The ISO and the binaries are not signed: they only have the build provenance attestation and the SHA-256 checksum.",
-            "Using Kalango Remote opens access to another person or machine: do it only with people you know and approve each request.",
-            "d1 is a small local model that helps the person decide; it can be wrong. That is why automatic approval is off by default and limited to a few reversible actions.",
-            "Kalango Remote: privacy mode, two-step verification and recording were not tested between two physical computers nor in a real (non-nested) niri session; Mosh was not tested; the lock-screen path under the cover is only covered by code, not by a test.",
-            "Secure Boot and TPM were not tested, and neither was real hardware (NVIDIA, AMD, Intel)."
+            "外部のセキュリティレビューは行われていません。 1.0 より前に計画されています。",
+            "これは 0.x プレビューです。まだわかっていない欠陥があります。紛失してはいけないデータには使用しないでください。",
+            "このルールは、アドレス内に貼り付けられたローカル シークレット、部分に分割されたローカル シークレット、またはエンコード (base64、16 進数、パーセント エンコーディング) されたローカル シークレットをブロックします。 rot13、反転テキスト、パラメータ間でのシークレット分割、または POST の本文はカバーしません。",
+            "ローカル モデルが間違っているか、だまされている可能性があります。カーネル ルールと承認は、それだけでは信頼できないからこそ存在します。",
+            "承認する人が決定します。読まずに与えられた承認は許可としてカウントされます。",
+            "ISO とバイナリは署名されていません。ビルド来歴証明書と SHA-256 チェックサムのみが含まれています。",
+            "Kalango Remote を使用すると、別の人またはマシンにアクセスできるようになります。知っている人に対してのみ実行し、各リクエストを承認してください。",
+            "d1 は、個人の決定を支援する小さなローカル モデルです。それは間違っている可能性があります。そのため、自動承認はデフォルトでオフになっており、元に戻せるアクションがいくつかに限定されています。",
+            "Kalango Remote: プライバシー モード、2 段階認証および記録は、2 台の物理コンピューター間でも、実際の (ネストされていない) niri セッションでもテストされていません。モッシュはテストされていませんでした。カバーの下にあるロック画面のパスはコードのみでカバーされており、テストではカバーされていません。",
+            "セキュア ブートと TPM はテストされておらず、実際のハードウェア (NVIDIA、AMD、Intel) もテストされていません。"
           ]
         },
         {
           "kind": "cards",
-          "title": "System privacy",
+          "title": "システムのプライバシー",
           "items": [
             {
-              "title": "Models on this computer",
-              "text": "LFM3, LFM3-VL and LFM3-Audio run through llama.cpp on a local socket, with no network port. There is no cloud AI provider today."
+              "title": "このコンピュータのモデル",
+              "text": "LFM3、LFM3-VL、および LFM3-Audio は、ネットワーク ポートなしでローカル ソケットの llama.cpp を介して実行されます。現在、クラウド AI プロバイダーは存在しません。"
             },
             {
-              "title": "What can leave",
-              "text": "Searches and pages an agent reads on the web; the model download from the source you chose; and Kalango Remote connections, which you start (a Cloudflare tunnel, end-to-end encrypted). The Privacy now panel shows what left today."
+              "title": "何が残せるのか",
+              "text": "エージェントが Web 上で閲覧する検索とページ。選択したソースからモデルをダウンロードします。および Kalango Remote 接続。これはあなたが開始します (Cloudflare トンネル、エンドツーエンド暗号化)。 「プライバシー・ナウ」パネルには、今日残った内容が表示されます。"
             },
             {
-              "title": "You see who uses what",
-              "text": "Microphone, camera and screen in use show in the bar; Super+Shift+P pauses everything; Wi-Fi networks can be kept out of agents' reach."
+              "title": "誰が何を使っているかがわかります",
+              "text": "使用中のマイク、カメラ、画面がバーに表示されます。 Super+Shift+P はすべてを一時停止します。 Wi-Fi ネットワークはエージェントの手の届かないところに置くことができます。"
             }
           ]
         },
         {
           "kind": "cards",
-          "title": "This site's privacy",
+          "title": "このサイトのプライバシー",
           "items": [
             {
-              "title": "No trackers",
-              "text": "No cookies and no analytics. If you sign in to the members area, the sign-in service (auth.kalangoos.com, Cloudflare) keeps an 8-hour session cookie; once login is on, every page asks that service once, so it sees your IP address. The members area also loads files and avatars from GitHub."
+              "title": "トラッカーなし",
+              "text": "クッキーも分析もありません。メンバーエリアにサインインすると、サインインサービス (auth.kalangoos.com、Cloudflare) は 8 時間のセッション Cookie を保持します。ログインがオンになると、すべてのページでそのサービスが 1 回要求されるため、IP アドレスが認識されます。メンバーエリアには、GitHub からファイルとアバターもロードされます。"
             },
             {
-              "title": "What stays in your browser",
-              "text": "Only your theme choice (light or dark), in localStorage, on your computer. There is no form; your GitHub account only comes into play if you sign in to the members area."
+              "title": "ブラウザに残るもの",
+              "text": "テーマ (明るいまたは暗い) のみをコンピューター上の localStorage に選択します。形はありません。 GitHub アカウントは、メンバーエリアにサインインした場合にのみ有効になります。"
             },
             {
-              "title": "Hosting",
-              "text": "The site is served by GitHub Pages, which may log visits as GitHub's policy describes. The project does not receive those logs."
+              "title": "ホスティング",
+              "text": "このサイトは GitHub Pages によって提供されており、GitHub のポリシーに記載されているように訪問を記録する場合があります。プロジェクトはそれらのログを受け取りません。"
             }
           ]
         },
         {
           "kind": "steps",
-          "title": "How to report a flaw",
+          "title": "欠陥を報告する方法",
           "items": [
             {
-              "title": "Use GitHub's private report",
-              "text": "In the repository, Security tab, Report a vulnerability. Do not open an issue, pull request or public discussion about a flaw.",
+              "title": "GitHub のプライベートレポートを使用する",
+              "text": "リポジトリの [セキュリティ] タブで、脆弱性を報告します。欠陥に関するイシュー、プルリクエスト、公開ディスカッションを開かないでください。",
               "link": {
-                "label": "Open a private report",
+                "label": "プライベートレポートを開く",
                 "href": "https://github.com/kalangoos/kalangoos/security/advisories/new",
                 "text": ""
               }
             },
             {
-              "title": "Tell us what you saw",
-              "text": "The version or commit, the component (kalangod, kalango-agente, shell, installer, niri patches), the steps to reproduce and the impact. Do not test on computers or accounts that are not yours."
+              "title": "何を見たのか教えてください",
+              "text": "バージョンまたはコミット、コンポーネント (kalangod、kalango-agente、シェル、インストーラー、niri パッチ)、再現手順とその影響。自分のものではないコンピューターやアカウントでテストしないでください。"
             },
             {
-              "title": "What to expect",
-              "text": "A reply within 5 business days confirming receipt, assessment, a fix and an agreed disclosure date. Credit in the advisory, if you want. There is no security e-mail yet."
+              "title": "何を期待するか",
+              "text": "受領、評価、修正、合意された開示日を確認する 5 営業日以内の返信。必要に応じて、アドバイスをクレジットしてください。セキュリティメールはまだありません。"
             }
           ]
         },
         {
           "kind": "links",
-          "title": "Read more",
+          "title": "続きを読む",
           "items": [
             {
-              "label": "Security policy (SECURITY.md, in Portuguese)",
+              "label": "セキュリティ ポリシー (SECURITY.md、ポルトガル語)",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/SECURITY.md",
               "text": ""
             },
             {
-              "label": "Threat model (docs/SEGURANCA.md, in Portuguese)",
+              "label": "脅威モデル (docs/SEGURANCA.md、ポルトガル語)",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/docs/SEGURANCA.md",
               "text": ""
             },
             {
-              "label": "Architecture (docs/ARQUITETURA.md, in Portuguese)",
+              "label": "アーキテクチャ (docs/ARQUITETURA.md、ポルトガル語)",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/docs/ARQUITETURA.md",
               "text": ""
             }
@@ -324,120 +324,120 @@
       ]
     },
     "docs": {
-      "title": "Documentation — KalangoOS",
-      "description": "Where to read about KalangoOS: vision, architecture, security, requirements, roadmap, licences and the specification. Mostly in Portuguese.",
-      "eyebrow": "Documentation",
-      "h1": "Where to read more",
-      "lead": "The documentation lives in the repository, next to the code. Almost all of it is in Portuguese; the README has an English summary.",
+      "title": "ドキュメント — KalangoOS",
+      "description": "KalangoOS について読む場所: ビジョン、アーキテクチャ、セキュリティ、要件、ロードマップ、ライセンス、仕様。ほとんどがポルトガル語です。",
+      "eyebrow": "ドキュメント",
+      "h1": "続きを読む場所",
+      "lead": "ドキュメントはコードの隣のリポジトリにあります。ほぼすべてポルトガル語です。 README には英語の概要が記載されています。",
       "blocks": [
         {
           "kind": "notice",
           "tone": "info",
-          "text": "For what went into 0.1.0, read the release notes; for what comes next, the roadmap (ROADMAP.md). Older planning documents, such as PLANO.md, may be out of date in details."
+          "text": "0.1.0 の内容については、リリース ノートをお読みください。次にロードマップ (ROADMAP.md) を作成します。 PLANO.md などの古い計画ドキュメントは、詳細が古くなっている可能性があります。"
         },
         {
           "kind": "links",
-          "title": "To start",
+          "title": "始めるには",
           "items": [
             {
               "label": "README",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/README.md",
-              "text": "What the project is, what exists, how to run the development session (English summary at the end)."
+              "text": "プロジェクトとは何か、存在するもの、開発セッションの実行方法 (最後に英語の概要)。"
             },
             {
-              "label": "Roadmap (ROADMAP.md)",
+              "label": "ロードマップ (ROADMAP.md)",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/ROADMAP.md",
-              "text": "Next steps, phases and versions, with no dates."
+              "text": "次のステップ、フェーズ、バージョン。日付はありません。"
             },
             {
-              "label": "0.1.0 release notes",
+              "label": "0.1.0 リリースノート",
               "href": "@notes",
-              "text": "What went into the preview and what was left out."
+              "text": "プレビューに含まれたものと除外されたもの。"
             },
             {
-              "label": "Download",
+              "label": "ダウンロード",
               "href": "@download",
-              "text": "ISO, binaries and how to verify them."
+              "text": "ISO、バイナリ、およびそれらを検証する方法。"
             },
             {
               "label": "CHANGELOG",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/CHANGELOG.md",
-              "text": "Every 0.1.0 change, with pull request numbers (Portuguese)."
+              "text": "0.1.0 の変更ごとにプル リクエスト番号 (ポルトガル語) が付きます。"
             },
             {
-              "label": "Planned integrations (ROADMAP.md)",
+              "label": "計画された統合 (ROADMAP.md)",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/ROADMAP.md#integra%C3%A7%C3%B5es-planejadas-ideias-sem-data",
-              "text": "Ideas with no date: Audio in flows, remote support and an internet trigger (Portuguese)."
+              "text": "日付のないアイデア: フロー内の音声、リモート サポート、インターネット トリガー (ポルトガル語)。"
             }
           ]
         },
         {
           "kind": "links",
-          "title": "How the system works",
+          "title": "システムの仕組み",
           "items": [
             {
-              "label": "Vision",
+              "label": "ビジョン",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/docs/VISAO.md",
-              "text": "Who it is for and why it exists."
+              "text": "それは誰のためのもので、なぜ存在するのか。"
             },
             {
-              "label": "Architecture",
+              "label": "建築",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/docs/ARQUITETURA.md",
-              "text": "The decisions and the reasons."
+              "text": "決定とその理由。"
             },
             {
-              "label": "Security",
+              "label": "安全",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/docs/SEGURANCA.md",
-              "text": "Threat model and layers of defence."
+              "text": "脅威モデルと防御層。"
             },
             {
-              "label": "Requirements",
+              "label": "要件",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/docs/REQUISITOS.md",
-              "text": "Hardware and performance targets."
+              "text": "ハードウェアとパフォーマンスの目標。"
             },
             {
-              "label": "Screens",
+              "label": "スクリーン",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/docs/telas.md",
-              "text": "The system's and the apps' screens."
+              "text": "システムとアプリの画面。"
             },
             {
-              "label": "Versions and release",
+              "label": "バージョンとリリース",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/docs/LANCAMENTO.md",
-              "text": "Numbering, channels and release criteria."
+              "text": "番号付け、チャンネル、リリース基準。"
             },
             {
-              "label": "Plan",
+              "label": "プラン",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/docs/PLANO.md",
-              "text": "What is missing, in short."
+              "text": "要するに、何が欠けているのか。"
             },
             {
-              "label": "Specification by phase",
+              "label": "フェーズ別仕様",
               "href": "https://github.com/kalangoos/kalangoos/tree/main/openspec",
-              "text": "OpenSpec, with each phase's tasks."
+              "text": "OpenSpec と各フェーズのタスク。"
             }
           ]
         },
         {
           "kind": "links",
-          "title": "Licences and where assets come from",
+          "title": "ライセンスと資産の出所",
           "items": [
             {
-              "label": "Code licence (GPL-3.0-or-later)",
+              "label": "コードライセンス (GPL-3.0-or-later)",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/LICENSE",
               "text": ""
             },
             {
-              "label": "Brand (LICENSE-brand.txt)",
+              "label": "ブランド (LICENSE-brand.txt)",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/LICENSE-brand.txt",
-              "text": "The name, mascot and logos sit outside the code licence."
+              "text": "名前、マスコット、ロゴはコードライセンスの対象外です。"
             },
             {
-              "label": "Attributions (ATTRIBUTION.md)",
+              "label": "帰属 (ATTRIBUTION.md)",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/ATTRIBUTION.md",
-              "text": "Where each image, icon and font comes from."
+              "text": "各画像、アイコン、フォントの出所。"
             },
             {
-              "label": "Third-party licences (NOTICE)",
+              "label": "サードパーティのライセンス (通知)",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/NOTICE",
               "text": ""
             }
@@ -445,41 +445,41 @@
         },
         {
           "kind": "links",
-          "title": "Apps with their own repository",
+          "title": "独自のリポジトリを持つアプリ",
           "items": [
             {
               "label": "Kalango Remote",
               "href": "https://github.com/kalangoos/kalango-remote",
-              "text": "Remote access: screen, files, SSH and Mosh."
+              "text": "リモート アクセス: 画面、ファイル、SSH、および Mosh。"
             },
             {
               "label": "Kalango Audio",
               "href": "https://github.com/kalangoos/kalango-audio",
-              "text": "Sound sessions, recording and local transcription."
+              "text": "サウンドセッション、録音、ローカル文字起こし。"
             },
             {
               "label": "Design System",
               "href": "https://github.com/kalangoos/design",
-              "text": "FigCraft source, tokens, brand, icons and screen showcase — design contributions."
+              "text": "FigCraft ソース、トークン、ブランド、アイコン、画面ショーケース - デザインの貢献。"
             }
           ]
         },
         {
           "kind": "links",
-          "title": "Community",
+          "title": "コミュニティ",
           "items": [
             {
-              "label": "How to contribute",
+              "label": "貢献方法",
               "href": "@contribute",
               "text": ""
             },
             {
-              "label": "Code of conduct",
+              "label": "行動規範",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/CODE_OF_CONDUCT.md",
               "text": ""
             },
             {
-              "label": "Security: report a flaw",
+              "label": "セキュリティ: 欠陥を報告する",
               "href": "@security",
               "text": ""
             }
@@ -488,85 +488,85 @@
       ]
     },
     "contribute": {
-      "title": "Contribute — KalangoOS",
-      "description": "How to contribute to KalangoOS: issues, development environment, house rules, pull requests and coding agents.",
-      "eyebrow": "Contribute",
-      "h1": "Help build KalangoOS",
-      "lead": "The project is new and moves fast. Contributions in Portuguese or English are welcome: before writing code, say in the issue what you plan to do.",
+      "title": "投稿する — KalangoOS",
+      "description": "KalangoOS に貢献する方法: 問題、開発環境、社内ルール、プル リクエスト、コーディング エージェント。",
+      "eyebrow": "貢献する",
+      "h1": "KalangoOS の構築を手伝ってください",
+      "lead": "このプロジェクトは新しく、急速に進んでいます。ポルトガル語または英語での寄稿を歓迎します。コードを書く前に、号内で何をするつもりかを述べてください。",
       "blocks": [
         {
           "kind": "steps",
-          "title": "From first look to pull request",
+          "title": "初見からプルリクエストまで",
           "items": [
             {
-              "title": "Read the README and the roadmap",
-              "text": "To know what exists and what comes next.",
+              "title": "README とロードマップを読む",
+              "text": "何が存在し、次に何が起こるかを知ること。",
               "link": {
-                "label": "Full CONTRIBUTING.md (Portuguese)",
+                "label": "COTRIBUTING.md 全文 (ポルトガル語)",
                 "href": "https://github.com/kalangoos/kalangoos/blob/main/CONTRIBUTING.md",
                 "text": ""
               }
             },
             {
-              "title": "Find an issue or open one",
-              "text": "Check whether someone already works on it (by #N number and keywords). There are templates for a bug, an idea and a screen. Big changes become a proposal in the issue first.",
+              "title": "問題を見つけるか開く",
+              "text": "誰かがすでに取り組んでいるかどうかを確認します (#N 番号とキーワードによって)。バグ、アイデア、画面のテンプレートがあります。大きな変更は最初に号で提案されます。",
               "link": {
-                "label": "Open an issue",
+                "label": "問題を開く",
                 "href": "https://github.com/kalangoos/kalangoos/issues/new/choose",
                 "text": ""
               }
             },
             {
-              "title": "Set up the environment and run the checks",
-              "text": "Ubuntu 24.04 or newer. CI runs exactly these commands.",
+              "title": "環境をセットアップしてチェックを実行する",
+              "text": "Ubuntu 24.04以降。 CI はこれらのコマンドを正確に実行します。",
               "code": "sudo apt install build-essential clang libbpf-dev pkg-config libgtk-4-dev libvte-2.91-gtk4-dev \\\n  libpoppler-glib-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev\npoc/setup-deps.sh\ncargo clippy --workspace --all-targets --locked\ncargo test --workspace --locked --exclude kalango-agente"
             },
             {
-              "title": "Open a small pull request",
-              "text": "One subject per pull request, with tests that fail without the change, saying what you tested and what you could not run. main only changes through pull requests and CI must be green."
+              "title": "小さなプルリクエストを開く",
+              "text": "プル リクエストごとに 1 つの件名。変更なしで失敗したテストが含まれ、何をテストしたか、何を実行できなかったかが示されます。 main はプル リクエストを通じてのみ変更され、CI は緑色である必要があります。"
             }
           ]
         },
         {
           "kind": "cards",
-          "title": "House rules",
+          "title": "ハウスルール",
           "items": [
             {
-              "title": "Design first",
-              "text": "Every new screen or visible change is born in the Design System before the code, and the implementation matches it. No screens from another system (GNOME, Yaru, Adwaita)."
+              "title": "まずはデザイン",
+              "text": "新しい画面や目に見える変更はすべて、コードの前にデザイン システムで生成され、実装はコードと一致します。別のシステム (GNOME、Yaru、Adwaita) からの画面はありません。"
             },
             {
-              "title": "The system's look",
-              "text": "No shadows, subtle corners, colours only from the tokens and screens that adapt to any space."
+              "title": "システムの見た目",
+              "text": "影はなく、微妙な角、トークンとスクリーンのみの色で、どんな空間にも適応します。"
             },
             {
-              "title": "Rust, and English in code",
-              "text": "Our programs in Rust; new identifiers in English; interface text in Portuguese through the translation catalogue."
+              "title": "Rustとコード内の英語",
+              "text": "Rust でのプログラム。英語の新しい識別子。翻訳カタログを通じてポルトガル語のインターフェーステキストを提供します。"
             },
             {
-              "title": "No personal data",
-              "text": "Names, Wi-Fi networks, e-mails and files in code, tests and captures are always made up."
+              "title": "個人データなし",
+              "text": "名前、Wi-Fi ネットワーク、電子メール、コード内のファイル、テスト、キャプチャは常に作成されます。"
             },
             {
-              "title": "Third-party assets",
-              "text": "Images, icons and fonts only with a compatible licence, listed in ATTRIBUTION.md in the same change."
+              "title": "サードパーティの資産",
+              "text": "互換性のあるライセンスを持つ画像、アイコン、フォントのみ。同じ変更の ATTRIBUTION.md にリストされます。"
             },
             {
-              "title": "Done means done",
-              "text": "Say what you tested and what you could not run. Do not describe as done something that still has gaps."
+              "title": "Doneは完了を意味します",
+              "text": "何をテストしたか、何を実行できなかったかを述べてください。まだギャップがあるものを完了したと説明しないでください。"
             }
           ]
         },
         {
           "kind": "text",
-          "title": "Coding agents",
+          "title": "コーディングエージェント",
           "paras": [
-            "Coding agents (Claude Code, Codex and others) follow AGENTS.md. A person answers for what the agent opens, comments and sends. Agent-engine tests use the real local model, never a fake one."
+            "コーディング エージェント (Claude Code、Codex など) は AGENTS.md に従います。人は、エージェントが開いてコメントし、送信した内容に応答します。エージェント エンジン テストでは、偽のモデルではなく、本物のローカル モデルを使用します。"
           ]
         },
         {
           "kind": "links",
-          "title": "More",
+          "title": "もっと",
           "items": [
             {
               "label": "AGENTS.md",
@@ -574,17 +574,17 @@
               "text": ""
             },
             {
-              "label": "Code of conduct",
+              "label": "行動規範",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/CODE_OF_CONDUCT.md",
               "text": ""
             },
             {
-              "label": "Security flaw? Do not open an issue",
+              "label": "セキュリティ上の欠陥?問題を開かないでください",
               "href": "@security",
-              "text": "Use the private report."
+              "text": "プライベートレポートをご利用ください。"
             },
             {
-              "label": "Code on GitHub",
+              "label": "GitHub のコード",
               "href": "https://github.com/kalangoos/kalangoos",
               "text": ""
             }
@@ -597,185 +597,185 @@
             {
               "label": "kalangoos/design",
               "href": "https://github.com/kalangoos/design",
-              "text": "FigCraft source, tokens, brand and showcase."
+              "text": "FigCraft ソース、トークン、ブランド、ショーケース。"
             },
             {
               "label": "CONTRIBUTING",
               "href": "https://github.com/kalangoos/design/blob/main/CONTRIBUTING.md",
-              "text": "How to open a screen PR with FigCraft and Git LFS."
+              "text": "FigCraft と Git LFS で画面 PR を開く方法。"
             },
             {
-              "label": "Mirrors & view-only",
+              "label": "ミラー＆ビュー専用",
               "href": "https://github.com/kalangoos/design/blob/main/ESPELHOS.md",
-              "text": "One-way .fig file and view-only share sessions."
+              "text": "一方向の .fig ファイルと表示専用の共有セッション。"
             }
           ]
         }
       ]
     },
     "notes": {
-      "title": "0.1.0 release notes — KalangoOS",
-      "description": "What went into the KalangoOS 0.1.0 technical preview, what was left out and the known limitations.",
-      "eyebrow": "Release notes",
-      "h1": "KalangoOS 0.1.0 · technical preview",
-      "lead": "The first KalangoOS release: the installable ISO, the binaries and the code of the agents, kalangod and the desktop. These notes follow the repository's docs/NOTAS-0.1.0.md and CHANGELOG.md. It was tested only in virtual machines.",
+      "title": "0.1.0 リリースノート — KalangoOS",
+      "description": "KalangoOS 0.1.0 テクニカル プレビューに含まれるもの、省略されたもの、および既知の制限事項。",
+      "eyebrow": "リリースノート",
+      "h1": "KalangoOS 0.1.0 · テクニカルプレビュー",
+      "lead": "最初の KalangoOS リリース: インストール可能な ISO、エージェント、kalangod、デスクトップのバイナリとコード。これらのメモは、リポジトリの docs/NOTAS-0.1.0.md および CHANGELOG.md に続きます。仮想マシンでのみテストされました。",
       "blocks": [
         {
           "kind": "notice",
           "tone": "info",
-          "text": "Status: published. The files are attached to the v0.1.0 release on GitHub, with SHA256SUMS and the build provenance attestation.",
+          "text": "ステータス: 公開済み。ファイルは、GitHub の v0.1.0 リリースに、SHA256SUMS およびビルドの出所証明書とともに添付されています。",
           "link": {
-            "label": "Download",
+            "label": "ダウンロード",
             "href": "@download",
             "text": ""
           }
         },
         {
           "kind": "cards",
-          "title": "Highlights",
+          "title": "ハイライト",
           "items": [
             {
-              "title": "Installable ISO",
-              "text": "x86_64, UEFI. The release workflow builds the ISO and tests it in a VM on every run: the live session boots with the installer, the installer engine writes to an empty virtual disk (the graphical “AI models” step is not exercised by the test) and the installed system boots into its session."
+              "title": "インストール可能な ISO",
+              "text": "x86_64、UEFI。リリース ワークフローでは ISO が構築され、実行のたびに VM でテストされます。ライブ セッションはインストーラーで起動し、インストーラー エンジンは空の仮想ディスクに書き込み (テストではグラフィカルな「AI モデル」ステップは実行されません)、インストールされたシステムがセッションで起動します。"
             },
             {
-              "title": "Installer and model source",
-              "text": "An “AI models” step: choose where models come from (public catalogue, private server or a folder), also in Settings and the App Center. Downloads resume and are checked against a SHA-256 sum (#33). d1-Omni-2B joined the catalogue (#40)."
+              "title": "インストーラーとモデルソース",
+              "text": "「AI モデル」ステップ: モデルの取得元 (パブリック カタログ、プライベート サーバー、またはフォルダー) を選択します。これも設定と App Center で行います。ダウンロードが再開され、SHA-256 合計 (#33) と照合されます。 d1-Omni-2B がカタログに追加されました (#40)。"
             },
             {
-              "title": "Approval with d1",
-              "text": "The approval screen shows the recommendation of the d1 decision model (“looks safe” or “looks dangerous”, its confidence and a reason from a closed list); the decision stays with the person. In Permissions, the “Aprovar sozinho o que é de baixo risco” option is off by default: it covers only three reversible actions in the person's folder (move to trash, move, create a new file that does not run), only if the d1 says it looks safe with at least the minimum confidence, never after content read from outside in the conversation, at most 5 per request, and it turns itself off after 3 denials. kalangod re-checks everything, and installing packages is never “safe” (#42)."
+              "title": "d1 による承認",
+              "text": "承認画面には、d1 意思決定モデルの推奨事項 (「安全そう」または「危険そう」、その信頼性、および閉じたリストからの理由) が表示されます。決定はその人自身にあります。 [アクセス許可] で、[Aprovar sozinho o que é de baixo risco] オプションはデフォルトでオフになっています。このオプションは、ユーザーのフォルダー内の 3 つの元に戻せるアクション (ゴミ箱への移動、移動、実行されない新しいファイルの作成) のみを対象とし、d1 が少なくとも最低限の信頼度で安全であると判断した場合に限り、会話内で外部からコンテンツが読み取られた後は禁止され、要求ごとに最大 5 回であり、3 回拒否されると自動的にオフになります。 kalangod はすべてを再チェックし、パッケージのインストールは決して「安全」ではありません (#42)。"
             },
             {
               "title": "Kalango Remote",
-              "text": "Screen sharing, remote control, SSH and Mosh (Mosh not yet tested). A fixed password and unattended access with limited permissions (no files, terminal, camera, tunnel, restart, input blocking or privacy mode; the banner lists what was granted), two-step verification (TOTP), session recording (Videos › Kalango Remote, 30 days, with a notice to the recorded person), its own RustDesk-compatible server, a global lockout after wrong attempts and the agent plan panel (kalango-remote agent-plan) (kalango-remote#11 and #12)."
+              "text": "画面共有、リモートコントロール、SSH、Mosh (Mosh はまだテストされていません)。固定パスワードと制限された権限による無人アクセス (ファイルなし、端末、カメラ、トンネル、再起動、入力ブロック、またはプライバシー モード。バナーには許可された内容がリストされます)、2 段階認証 (TOTP)、セッション記録 (ビデオ › Kalango Remote、30 日間、記録者への通知あり)、独自の RustDesk 互換サーバー、誤った試行後のグローバル ロックアウト、およびエージェント プラン パネル (kalango-remote エージェント プラン) (kalango-remote#11 および #12)。"
             },
             {
-              "title": "Remote privacy mode (“tela preta aqui”)",
-              "text": "While someone controls with access nobody approved on this computer, the local screen is covered and the controller sees the real desktop. Emergency exits: Esc Esc, a virtual-terminal switch, the power button and the lock (niri patch 0012, kalangoos/niri#4, and #44)."
+              "title": "リモートプライバシーモード（「tela preta aqui」）",
+              "text": "誰かがこのコンピュータ上で誰も承認していないアクセス権で制御している間、ローカル画面は覆われ、コントローラには実際のデスクトップが表示されます。緊急出口: Esc Esc、仮想端末スイッチ、電源ボタン、およびロック (niri パッチ 0012、kalangoos/niri#4、および #44)。"
             },
             {
-              "title": "Flows and Kalango VirtualDesk",
-              "text": "A full flow editor in the shell; the d1 model also answers in “Decidir” blocks. kalangod has the vm.* tools and the shell has the Settings › Sandbox screen (the vm.* tools ask a single question, #40); the VirtualDesk app is not on the ISO."
+              "title": "フローと Kalango VirtualDesk",
+              "text": "シェル内の完全なフロー エディター。 d1 モデルも「Decidir」ブロックで応答します。 kalangod には vm.* ツールがあり、シェルには [設定] › [サンドボックス] 画面があります (vm.* ツールでは 1 つの質問 #40)。 VirtualDesk アプリは ISO 上にありません。"
             }
           ]
         },
         {
           "kind": "steps",
-          "title": "Install and verify",
+          "title": "インストールして確認する",
           "items": [
             {
-              "title": "Verify the checksum",
-              "text": "In the downloads folder, the ISO's line must end in OK.",
+              "title": "チェックサムを確認する",
+              "text": "ダウンロード フォルダーでは、ISO の行が OK で終わる必要があります。",
               "code": "sha256sum -c SHA256SUMS-iso.txt"
             },
             {
-              "title": "Verify where the build came from",
-              "text": "GitHub Actions build provenance attestation; needs the GitHub CLI.",
+              "title": "ビルドの出所を確認する",
+              "text": "GitHub アクションにより出所証明が構築されます。 GitHub CLI が必要です。",
               "code": "gh attestation verify kalangoos-0.1.0-amd64.iso --repo kalangoos/kalangoos"
             },
             {
-              "title": "Try it in a VM",
-              "text": "In the repository, with qemu-system-x86 and ovmf installed and no root. The script creates an empty 40 GB virtual disk, boots the ISO with UEFI firmware and opens the live session with the installer (the live account kalango has no password).",
+              "title": "VM で試してみる",
+              "text": "リポジトリ内で、qemu-system-x86 と ovmf がインストールされており、root はありません。スクリプトは空の 40 GB 仮想ディスクを作成し、UEFI ファームウェアで ISO を起動し、インストーラーとのライブ セッションを開きます (ライブ アカウント kalango にはパスワードがありません)。",
               "code": "git clone https://github.com/kalangoos/kalangoos && cd kalangoos\nKALANGO_ISO=/path/kalangoos-0.1.0-amd64.iso imagem/rodar-iso.sh novo"
             },
             {
-              "title": "Choose the AI models",
-              "text": "The ISO ships no local model. In the installer's “AI models” step (or later, in Settings and the App Center), choose the public catalogue, a private server or a folder with the models."
+              "title": "AI モデルを選択する",
+              "text": "ISO にはローカル モデルは付属しません。インストーラーの「AI モデル」ステップ (またはその後の設定および App Center) で、パブリック カタログ、プライベート サーバー、またはモデルが含まれるフォルダーを選択します。"
             }
           ]
         },
         {
           "kind": "checks",
-          "title": "Also in",
+          "title": "また、",
           "items": [
-            "Its own shell in Rust and GTK 4 on a patched niri: bar, dock, side bars, desktop, lock screen, login screen, windows and spaces, and the system apps (Files, Settings, Terminal, Editor, Calculator, Agent Hub and more).",
-            "kalangod: approval on a screen the agent cannot imitate, Undo, a Timeline and four power levels (observe, user, system, total), with kernel-enforced rules (eBPF LSM, Landlock, seccomp and cgroups), a folder allow-list for writes and the system configuration out of agents' reach.",
-            "Local agents with LFM3 through llama.cpp, conversation context management (recent window, background summary and search in the conversation) and agents that operate the screen by vision, always with approval.",
-            "Agent and Remote: the remoto.conectar tool lets the agent propose a connection to one of the person's computers through the Remote plan panel; only a person's click approves (#44).",
-            "Kalango Audio on the image: capture, process, route and record sound.",
-            "Defence against local data leaving in a web address: a secret pasted, split or encoded is blocked in the covered cases (#36); the limits (rot13, reversal, base32/58, XOR, interleaved noise, a secret split across parameters or DNS labels, a POST body and the fragment) are in docs/SEGURANCA.md.",
-            "url 2.5.9 against RUSTSEC-2026-0592 (#37) and the Help dictation that stops when its window closes (#38).",
-            "Shell memory: closed app windows release their graphics surface after 60 s (#35)."
+            "パッチを適用したniri 上の Rust および GTK 4 の独自のシェル: バー、ドック、サイド バー、デスクトップ、ロック画面、ログイン画面、ウィンドウとスペース、およびシステム アプリ (ファイル、設定、ターミナル、エディター、電卓、エージェント ハブなど)。",
+            "kalangod: エージェントが模倣できない画面での承認、元に戻す、タイムライン、カーネル強制ルール (eBPF LSM、Landlock、seccomp、cgroups) による 4 つの電力レベル (eBPF LSM、Landlock、seccomp および cgroups)、書き込み用のフォルダー許可リスト、およびエージェントの手の届かないシステム構成。",
+            "llama.cpp までの LFM3 を備えたローカル エージェント、会話コンテキスト管理 (最近のウィンドウ、背景の概要、会話内の検索)、および常に承認を得て視覚によって画面を操作するエージェント。",
+            "エージェントとリモート: remoto.conctar ツールを使用すると、エージェントはリモート プラン パネルを通じてユーザーのコンピュータの 1 つへの接続を提案できます。ユーザーのクリックのみが承認されます (#44)。",
+            "画像上のKalango Audio: サウンドをキャプチャ、処理、ルーティング、録音します。",
+            "Web アドレスに残るローカル データに対する防御: 対象となるケースでは、シークレットの貼り付け、分割、またはエンコードがブロックされます (#36)。制限 (rot13、反転、base32/58、XOR、インターリーブ ノイズ、パラメーターまたは DNS ラベル間の秘密分割、POST 本文およびフラグメント) は docs/SEGURANCA.md にあります。",
+            "URL 2.5.9 は、RUSTSEC-2026-0592 (#37) と、ウィンドウが閉じると停止するヘルプのディクテーション (#38) に対するものです。",
+            "シェル メモリ: 閉じたアプリ ウィンドウは 60 秒後にグラフィック サーフェスを解放します (#35)。"
           ]
         },
         {
           "kind": "checks",
           "tone": "coral",
-          "title": "What is not in 0.1.0",
+          "title": "0.1.0にないもの",
           "items": [
-            "Updates with a restore point and the recovery screen.",
-            "Signed images and packages and the external security review.",
-            "Hybrid mode with the cloud and the system in English."
+            "復元ポイントと回復画面を更新します。",
+            "署名されたイメージとパッケージ、および外部セキュリティ レビュー。",
+            "クラウドと英語のシステムによるハイブリッド モード。"
           ]
         },
         {
           "kind": "checks",
           "tone": "gold",
-          "title": "Known limitations",
+          "title": "既知の制限事項",
           "items": [
-            "Real hardware: tested in VMs only (UEFI); the NVIDIA, AMD and Intel matrix is incomplete.",
-            "Local model: the models' licences are under review; the ISO ships no model, it is downloaded afterwards.",
-            "Accessibility: not certified or audited.",
-            "Language: UI and docs in Brazilian Portuguese; English comes in phase 6.",
-            "Kalango Remote: not tested between two physical computers nor in a real niri session (nested only); Mosh was not tested (it is not installed where we tested); the lock-screen path and the screen-transition frame under the privacy-mode cover are only covered by code, not by a test.",
-            "VirtualDesk and Flows: not on the ISO; the flows service lives in a private repository.",
-            "Updates: no update with a restore point and no recovery screen.",
-            "Documentation licence: the proposed CC BY-SA 4.0 is still to be confirmed.",
-            "Security: no external review; the limits of the web-address defence are in docs/SEGURANCA.md."
+            "実際のハードウェア: VM のみでテスト済み (UEFI)。 NVIDIA、AMD、Intel のマトリックスは不完全です。",
+            "ローカル モデル: モデルのライセンスは審査中です。 ISO にはモデルは付属せず、後でダウンロードされます。",
+            "アクセシビリティ: 認定または監査されていません。",
+            "言語: ブラジルポルトガル語の UI とドキュメント。英語はフェーズ6に入ります。",
+            "Kalango Remote: 2 台の物理コンピューター間や実際の niri セッション (ネストのみ) ではテストされていません。 Mosh はテストされていません (テストした場所にはインストールされていません)。プライバシー モード カバーの下にあるロック画面パスと画面遷移フレームはコードのみでカバーされており、テストではカバーされていません。",
+            "VirtualDesk と Flows: ISO には含まれていません。フロー サービスはプライベート リポジトリに存在します。",
+            "更新: 復元ポイントを含む更新はなく、回復画面もありません。",
+            "文書ライセンス: 提案されている CC BY-SA 4.0 はまだ確認されていません。",
+            "セキュリティ: 外部レビューなし。 Web アドレス防御の制限は docs/SEGURANCA.md にあります。"
           ]
         },
         {
           "kind": "links",
-          "title": "Verify what you downloaded",
+          "title": "ダウンロードしたものを確認する",
           "items": [
             {
               "label": "CHANGELOG",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/CHANGELOG.md",
-              "text": "Every 0.1.0 change, with pull request numbers (Portuguese)."
+              "text": "0.1.0 の変更ごとにプル リクエスト番号 (ポルトガル語) が付きます。"
             },
             {
-              "label": "Release notes in the repository (docs/NOTAS-0.1.0.md)",
+              "label": "リポジトリのリリース ノート (docs/NOTAS-0.1.0.md)",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/docs/NOTAS-0.1.0.md",
-              "text": "How to install, verify, and the known limitations; English section at the end."
+              "text": "インストール、確認方法、既知の制限事項。最後に英語のセクション。"
             },
             {
-              "label": "Planned integrations (ROADMAP.md)",
+              "label": "計画された統合 (ROADMAP.md)",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/ROADMAP.md#integra%C3%A7%C3%B5es-planejadas-ideias-sem-data",
-              "text": "Ideas with no date: Audio in flows, remote support and an internet trigger (Portuguese)."
+              "text": "日付のないアイデア: フロー内の音声、リモート サポート、インターネット トリガー (ポルトガル語)。"
             },
             {
-              "label": "Download and check the SHA-256 checksum",
+              "label": "SHA-256 チェックサムをダウンロードして確認します",
               "href": "@download",
               "text": ""
             },
             {
-              "label": "All releases",
+              "label": "すべてのリリース",
               "href": "https://github.com/kalangoos/kalangoos/releases",
               "text": ""
             },
             {
-              "label": "Roadmap",
+              "label": "ロードマップ",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/ROADMAP.md",
               "text": ""
             }
           ]
         }
       ],
-      "pending": "Not yet included in 0.1.0: the local model inside the ISO (the licences are under review); VirtualDesk and Flows on the ISO; validation on real hardware and the complete NVIDIA, AMD and Intel matrix; Remote between two physical computers and in a real niri session; the roadmap ideas (a live audio source for flows, an inbound internet trigger through a Cloudflare tunnel, Remote inside flows); and the CC BY-SA 4.0 documentation licence, still to be confirmed."
+      "pending": "0.1.0 にはまだ含まれていません: ISO 内のローカル モデル (ライセンスは検討中)。 ISO 上の VirtualDesk と Flows。実際のハードウェアと完全な NVIDIA、AMD、Intel マトリックスでの検証。 2 台の物理コンピューター間で、実際の niri セッションでリモート。ロードマップのアイデア (フローのライブ オーディオ ソース、Cloudflare トンネルを介した受信インターネット トリガー、フロー内のリモート)。 CC BY-SA 4.0 ドキュメント ライセンス (まだ確認されていません)。"
     },
     "notfound": {
-      "title": "Page not found — KalangoOS",
-      "description": "This page does not exist.",
-      "eyebrow": "Error 404",
-      "h1": "Page not found",
-      "lead": "This address does not exist or has moved.",
-      "home": "Go to the home page",
+      "title": "ページが見つかりません — KalangoOS",
+      "description": "このページは存在しません。",
+      "eyebrow": "エラー404",
+      "h1": "ページが見つかりません",
+      "lead": "このアドレスは存在しないか、移転されています。",
+      "home": "ホームページへ行く",
       "other": {
         "lang": "pt-BR",
-        "h": "Página não encontrada",
-        "text": "O endereço não existe ou mudou de lugar.",
-        "home": "Ir para o início",
+        "h": "コントラーダを開く",
+        "text": "あなたの存在は無道です。",
+        "home": "最初の瞬間",
         "href": "/"
       }
     }
@@ -784,150 +784,150 @@
     "board": {
       "issue": "Issue",
       "pr": "Pull request",
-      "draft": "Draft",
-      "redacted": "No access",
-      "redactedTitle": "An item from a repository you cannot see",
-      "closed": "closed",
-      "merged": "merged",
-      "draftState": "draft",
-      "linkedPr": "Linked pull request",
-      "linkedIssue": "Linked issue"
+      "draft": "下書き",
+      "redacted": "アクセス不可",
+      "redactedTitle": "リポジトリのアイテムが表示されない",
+      "closed": "閉まっている",
+      "merged": "合併した",
+      "draftState": "下書き",
+      "linkedPr": "リンクされたプルリクエスト",
+      "linkedIssue": "リンクされた問題"
     },
-    "title": "Members area · KalangoOS",
-    "description": "KalangoOS members area: the task board of the kalangoos GitHub organisation, with the documentation and specification of the public repository.",
-    "eyebrow": "Members area",
+    "title": "メンバーエリア · KalangoOS",
+    "description": "KalangoOS メンバーエリア: kalangoos GitHub 組織のタスクボード。パブリックリポジトリのドキュメントと仕様が含まれます。",
+    "eyebrow": "メンバーエリア",
     "titles": {
-      "docs": "Documentation",
-      "spec": "Specification",
-      "board": "Task board",
-      "screens": "FigCraft screens"
+      "docs": "ドキュメント",
+      "spec": "仕様",
+      "board": "タスクボード",
+      "screens": "FigCraft スクリーン"
     },
     "login": {
-      "title": "Sign in with your GitHub account",
-      "text": "The KalangoOS task board is restricted to people in the kalangoos GitHub organisation. The technical documentation and the specification are public: they come from the open repository and appear here for convenience only.",
-      "button": "Sign in with GitHub",
-      "checking": "Checking the session…",
-      "opening": "Opening GitHub…",
-      "error": "We could not finish signing in (the request expired, was declined or GitHub did not answer). Try again.",
-      "down": "We could not check your session right now (GitHub or the sign-in service did not answer). Your session is kept; try again in a moment.",
-      "fine": "We ask for read access only: your membership of organisations (read:org) and projects (read:project). Nothing is published in your name, and the session lives in a protected cookie of the sign-in service, never in the browser's storage.",
-      "foot": "Not in the organisation? Contribute through the public repository"
+      "title": "GitHub アカウントでサインインします",
+      "text": "KalangoOS タスクボードは、kalangoos GitHub 組織内のユーザーに制限されています。技術文書と仕様は公開されています。これらはオープン リポジトリからのものであり、便宜上のみここに掲載されています。",
+      "button": "GitHub でサインイン",
+      "checking": "セッションを確認中…",
+      "opening": "オープンGitHub…",
+      "error": "サインインを完了できませんでした (リクエストの有効期限が切れたか、拒否されたか、GitHub が応答しませんでした)。もう一度やり直してください。",
+      "down": "現在セッションを確認できませんでした (GitHub またはサインイン サービスが応答しませんでした)。セッションは維持されます。しばらくしてからもう一度試してください。",
+      "fine": "組織 (read:org) およびプロジェクト (read:project) のメンバーシップには読み取りアクセスのみをお願いします。ユーザーの名前では何も公開されず、セッションはブラウザーのストレージではなく、サインイン サービスの保護された Cookie 内に存在します。",
+      "foot": "組織にいないのですか？パブリックリポジトリを通じて貢献する"
     },
     "outside": {
-      "title": "The task board is only for people in the kalangoos organisation",
-      "as": "You signed in as",
-      "but": "but that account",
-      "unknown": "The account you signed in with",
-      "text": "is not part of the kalangoos organisation on GitHub. The code, the documentation and the specification are public in the repository, and anyone can contribute.",
+      "title": "タスクボードはkalangoos 組織内の人々のみを対象としています",
+      "as": "あなたは次のようにサインインしました",
+      "but": "でもそのアカウント",
+      "unknown": "サインインしたアカウント",
+      "text": "は、GitHub の kalangoos 組織の一部ではありません。コード、ドキュメント、仕様はリポジトリで公開されており、誰でも貢献できます。",
       "repo": "See the repository",
-      "contribute": "How to contribute",
-      "other": "Sign in with another account",
-      "why": "Why can't I get in? The organisation decides who is a member"
+      "contribute": "貢献方法",
+      "other": "別のアカウントでサインインする",
+      "why": "なぜ入れないのですか？組織がメンバーを決定します"
     },
     "soon": {
-      "title": "The members area is not connected yet",
-      "text": "Signing in with GitHub goes live when the authentication service is switched on. Meanwhile, the documentation and the specification are in the public repository.",
-      "notice": "The sign-in service has not been switched on yet. When it is, this page will ask for your GitHub account.",
-      "button": "Sign in with GitHub",
-      "foot": "Read the documentation in the repository"
+      "title": "メンバーエリアはまだ接続されていません",
+      "text": "認証サービスがオンになると、GitHub でのサインインが有効になります。一方、ドキュメントと仕様はパブリック リポジトリにあります。",
+      "notice": "サインイン サービスはまだオンになっていません。その場合、このページでは、GitHub アカウントの入力を求められます。",
+      "button": "GitHub でサインイン",
+      "foot": "リポジトリ内のドキュメントを読む"
     },
     "nav": {
-      "label": "Members area",
-      "docs": "Documentation",
+      "label": "メンバーエリア",
+      "docs": "ドキュメント",
       "docsShort": "Docs",
-      "spec": "Specification",
-      "specShort": "Spec",
-      "board": "Task board",
-      "boardShort": "Board",
-      "back": "Back to the site",
-      "screens": "Screens",
-      "screensShort": "Screens"
+      "spec": "仕様",
+      "specShort": "スペック",
+      "board": "タスクボード",
+      "boardShort": "ボード",
+      "back": "サイトに戻る",
+      "screens": "スクリーン",
+      "screensShort": "スクリーン"
     },
-    "preview": "Local preview, no session: documentation and specification come from the public repository; the board needs the sign-in service; FigCraft screens come from kalangoos/design.",
+    "preview": "ローカル プレビュー、セッションなし: ドキュメントと仕様はパブリック リポジトリから取得されます。ボードにはサインイン サービスが必要です。 FigCraft スクリーンは kalangoos/design から提供されています。",
     "screens": {
-      "title": "FigCraft screens",
-      "eyebrow": "OS · Tools",
-      "lead": "FigCraft captures grouped by OS and tools: kalango-audio, kalango-agents, kalango-remote and kalango-virtualdesk.",
-      "search": "Search screens",
-      "loading": "Loading the showcase…",
-      "empty": "No screens match this filter.",
-      "loadError": "Could not load exports/manifest.json from the design repository.",
+      "title": "FigCraft スクリーン",
+      "eyebrow": "OS・ツール",
+      "lead": "FigCraft は OS とツールごとにグループ化されたキャプチャ: kalango-audio、kalango-agents、kalango-remote、kalango-virtualdesk。",
+      "search": "検索画面",
+      "loading": "ショーケースを読み込み中…",
+      "empty": "このフィルターに一致する画面はありません。",
+      "loadError": "デザインリポジトリからexports/manifest.jsonをロードできませんでした。",
       "repo": "Design repository",
-      "openPng": "Open PNG"
+      "openPng": "PNG を開く"
     }
   },
   "landing": {
     "announce": {
-      "text": "KalangoOS 0.1.0 · technical preview released",
-      "link": "Read the release notes"
+      "text": "KalangoOS 0.1.0 · テクニカルプレビューがリリースされました",
+      "link": "リリースノートを読む"
     },
     "nav": {
-      "label": "Main navigation",
+      "label": "メインナビゲーション",
       "items": [
         {
           "id": "recursos",
-          "label": "Features"
+          "label": "特徴"
         },
         {
           "id": "capturas",
-          "label": "Screens"
+          "label": "スクリーン"
         },
         {
           "id": "baixar",
-          "label": "Download"
+          "label": "ダウンロード"
         },
         {
           "id": "notas",
-          "label": "Notes"
+          "label": "注意事項"
         },
         {
           "id": "comunidade",
-          "label": "Community"
+          "label": "コミュニティ"
         },
         {
           "id": "apoie",
-          "label": "Support"
+          "label": "サポート"
         }
       ],
-      "members": "Members area",
-      "download": "Download",
+      "members": "メンバーエリア",
+      "download": "ダウンロード",
       "menu": "Menu"
     },
     "hero": {
       "logoAlt": "KalangoOS",
-      "version": "v0.1.0 · TECHNICAL PREVIEW · x86_64 · UEFI",
-      "title": "The Linux where AI agents work with you",
-      "lead": "A Linux distribution where agents understand requests in plain language and operate the system and its apps, with the model running on your computer, approval before anything risky and a timeline to undo.",
-      "download": "Download 0.1",
-      "tour": "Watch the tour",
-      "github": "Code on GitHub"
+      "version": "v0.1.0 · テクニカルプレビュー · x86_64 · UEFI",
+      "title": "AI エージェントが協力する Linux",
+      "lead": "Linux ディストリビューションでは、エージェントが平易な言語でリクエストを理解し、システムとそのアプリを操作します。モデルはコンピューター上で実行され、危険なことが起こる前に承認され、元に戻すタイムラインが表示されます。",
+      "download": "0.1をダウンロード",
+      "tour": "ツアーを見る",
+      "github": "GitHub のコード"
     },
     "tour": {
       "label": "Tour · 1:04",
-      "title": "KalangoOS in one minute",
-      "play": "Play the tour",
-      "soon": "video coming soon",
-      "chaptersLabel": "Tour chapters",
+      "title": "1分以内にKalangoOS",
+      "play": "ツアーをプレイする",
+      "soon": "ビデオは近日公開予定",
+      "chaptersLabel": "ツアーの章",
       "chapters": [
         {
           "t": "0:00",
           "s": 0,
-          "label": "Desktop"
+          "label": "デスクトップ"
         },
         {
           "t": "0:10",
           "s": 10,
-          "label": "Agents"
+          "label": "エージェント"
         },
         {
           "t": "0:22",
           "s": 22,
-          "label": "Approve and undo"
+          "label": "承認して取り消し"
         },
         {
           "t": "0:34",
           "s": 34,
-          "label": "Privacy"
+          "label": "プライバシー"
         },
         {
           "t": "0:46",
@@ -937,313 +937,313 @@
         {
           "t": "0:56",
           "s": 56,
-          "label": "Download"
+          "label": "ダウンロード"
         }
       ],
-      "alt": "KalangoOS desktop: clock, the agent's daily summary, the Ask KalangoOS field and the dock"
+      "alt": "KalangoOS デスクトップ: 時計、エージェントの毎日の概要、Ask KalangoOS フィールド、およびドック"
     },
     "facts": [
       {
         "value": "Rust",
-        "text": "from the kernel to the pixels",
+        "text": "カーネルからピクセルまで",
         "tone": "gold"
       },
       {
         "value": "Local",
-        "text": "the model runs on your PC",
+        "text": "モデルは PC 上で実行されます",
         "tone": "teal"
       },
       {
         "value": "Ctrl+Z",
-        "text": "for the whole system",
+        "text": "システム全体にとって",
         "tone": "coral"
       },
       {
         "value": "eBPF + Landlock",
-        "text": "rules the kernel enforces",
+        "text": "カーネルが適用するルール",
         "tone": "accent"
       }
     ],
     "features": {
-      "eyebrow": "Features",
-      "title": "Everything the system does for you",
-      "lead": "Each highlight has a short clip, made from the screens of the KalangoOS design.",
-      "clip": "Clip",
-      "watch": "See it in the tour",
+      "eyebrow": "特徴",
+      "title": "システムがあなたに代わって行うすべてのこと",
+      "lead": "各ハイライトには、KalangoOS デザインの画面から作成された短いクリップが含まれています。",
+      "clip": "クリップ",
+      "watch": "ツアーで見てね",
       "items": [
         {
           "id": "agentes",
-          "label": "Agents",
+          "label": "エージェント",
           "tone": "accent",
-          "title": "Ask in plain words. It does it.",
-          "text": "Agents understand natural-language requests and operate the system and its apps: they tidy up files, build tables and charts, change settings.",
+          "title": "わかりやすい言葉で尋ねてください。それはできます。",
+          "text": "エージェントは自然言語リクエストを理解し、システムとそのアプリを操作します。ファイルを整理し、表やグラフを作成し、設定を変更します。",
           "bullets": [
-            "Understand everyday language",
-            "Operate apps and the system itself",
-            "Show the plan before acting"
+            "日常言語を理解する",
+            "アプリやシステム自体を操作する",
+            "行動する前に計画を示す"
           ],
           "shot": "ds-criar-agente",
-          "alt": "New agent screen with the request “Every Friday, organize my downloads…”, what the agent understood, its steps and the permissions it needs; then the Agents hub with the agents running"
+          "alt": "新しいエージェント画面には、「毎週金曜日にダウンロードを整理してください…」というリクエスト、エージェントが理解した内容、その手順、必要な権限が表示されます。次に、エージェントが実行されているエージェント ハブ"
         },
         {
           "id": "aprovar",
-          "label": "Approve and undo",
+          "label": "承認して取り消し",
           "tone": "coral",
-          "title": "You approve. And you can go back.",
-          "text": "Anything risky asks for your approval first. Everything is recorded on a timeline, and what changed on the computer can be undone.",
+          "title": "あなたは承認します。そして、戻ることができます。",
+          "text": "危険なことはすべて、最初にあなたの承認を求めます。すべてはタイムラインに記録され、コンピューター上で変更された内容は元に戻すことができます。",
           "bullets": [
-            "Approval before anything risky",
-            "A timeline of everything the agents did",
-            "Undo the changes on the computer"
+            "リスクのあることを行う前に承認を得る",
+            "エージェントが行ったすべてのタイムライン",
+            "コンピュータ上の変更を元に戻す"
           ],
           "shot": "ds-aprovar-tela",
-          "alt": "Permission dialog: the Assistant agent wants to control the screen (Text editor, for 10 min), with Deny and Allow for 10 min; then the Timeline with the Undo button on “Moved 118 files into 4 folders”"
+          "alt": "許可ダイアログ: アシスタント エージェントは、10 分間拒否および許可を指定して画面 (テキスト エディター、10 分間) を制御したいと考えています。次に、「118 個のファイルを 4 つのフォルダーに移動しました」の「元に戻す」ボタンのあるタイムライン"
         },
         {
           "id": "privacidade",
-          "label": "Privacy",
+          "label": "プライバシー",
           "tone": "teal",
-          "title": "The model lives on your computer.",
-          "text": "Local by default: the AI model runs on your machine with llama.cpp, on the GPU or the CPU. A panel shows what each agent can access.",
+          "title": "モデルはコンピュータ上に存在します。",
+          "text": "デフォルトでローカル: AI モデルは、llama.cpp を備えたマシン、GPU または CPU 上で実行されます。パネルには、各エージェントがアクセスできる内容が表示されます。",
           "bullets": [
-            "Local model with llama.cpp",
-            "The ISO ships no model: you choose and download it later",
-            "Who can use what, per app and per agent"
+            "llama.cppのローカルモデル",
+            "ISO にはモデルが付属しません。後で選択してダウンロードします。",
+            "アプリごと、エージェントごとに、誰が何を使用できるか"
           ],
           "shot": "ds-privacidade",
-          "alt": "Settings › Privacy and security with the Who can use what table, per app and per agent; then Settings › Models and providers with the local models and “Personal data never leaves the computer”"
+          "alt": "設定 › プライバシーとセキュリティ、アプリごと、エージェントごとに誰がどのテーブルを使用できるか。次に、設定 › ローカル モデルと「個人データがコンピューターから離れることはありません」を備えたモデルとプロバイダー"
         },
         {
           "id": "desktop",
-          "label": "Its own desktop",
+          "label": "独自のデスクトップ",
           "tone": "gold",
-          "title": "A desktop built in Rust.",
-          "text": "Its own shell in Rust and GTK4 on niri: top bar, dock, sidebars, command search, lock and login screens, in light and dark themes.",
+          "title": "Rustで構築されたデスクトップ。",
+          "text": "niri 上の Rust と GTK4 の独自のシェル: トップバー、ドック、サイドバー、コマンド検索、ロック画面とログイン画面、明るいテーマと暗いテーマ。",
           "bullets": [
-            "Shell in Rust + GTK4 on niri",
-            "Command search and workspaces",
-            "Light and dark themes, from the system to the apps"
+            "niri の Rust + GTK4 のシェル",
+            "コマンド検索とワークスペース",
+            "システムからアプリまで、明るいテーマと暗いテーマ"
           ],
           "shot": "ds-desktop",
-          "alt": "Desktop with the clock, the agent's daily summary (“Bom dia, Roo”), the Ask KalangoOS field and the dock; then the Today sidebar with its widgets"
+          "alt": "時計、エージェントの毎日の概要 (「Bom dia, Roo」)、Ask KalangoOS フィールド、およびドックを備えたデスクトップ。次に、Today サイドバーとそのウィジェット"
         }
       ]
     },
     "apps": {
-      "eyebrow": "Included in 0.1",
-      "title": "System apps, ready to use",
-      "lead": "The KalangoOS apps, with the system's own icons and design.",
+      "eyebrow": "0.1に含まれる",
+      "title": "システムアプリ、すぐに使用可能",
+      "lead": "システム独自のアイコンとデザインを備えたKalangoOS アプリ。",
       "items": [
         {
           "icon": "arquivos",
-          "name": "Files",
-          "text": "Folders, search and preview"
+          "name": "ファイル",
+          "text": "フォルダー、検索、プレビュー"
         },
         {
           "icon": "configuracoes",
-          "name": "Settings",
-          "text": "The whole system in one place"
+          "name": "設定",
+          "text": "システム全体を 1 か所に"
         },
         {
           "icon": "terminal",
           "name": "Terminal",
-          "text": "With the agent alongside"
+          "text": "エージェントと一緒に"
         },
         {
           "icon": "editor-de-texto",
-          "name": "Text Editor",
-          "text": "Light and fast"
+          "name": "テキストエディタ",
+          "text": "軽くて速い"
         },
         {
           "icon": "calculadora",
-          "name": "Calculator",
-          "text": "With history"
+          "name": "電卓",
+          "text": "歴史とともに"
         },
         {
           "icon": "agentes",
-          "name": "Agent center",
-          "text": "Create and govern agents"
+          "name": "エージェントセンター",
+          "text": "エージェントの作成と管理"
         },
         {
           "icon": "ajuda",
-          "name": "Help",
-          "text": "Answers offline"
+          "name": "ヘルプ",
+          "text": "オフラインで回答する"
         },
         {
           "icon": "documentos",
-          "name": "Documents",
-          "text": "Read and organise"
+          "name": "書類",
+          "text": "読んで整理する"
         }
       ]
     },
     "gallery": {
-      "eyebrow": "Screens",
-      "title": "See the KalangoOS screens",
-      "note": "Screens from the KalangoOS design (Design System in FigCraft): the system as planned; the interface is in Brazilian Portuguese.",
-      "label": "System screens",
+      "eyebrow": "スクリーン",
+      "title": "KalangoOS 画面を参照してください",
+      "note": "KalangoOS 設計の画面 (FigCraft の設計システム): 計画どおりのシステム。インターフェースはブラジル系ポルトガル語です。",
+      "label": "システム画面",
       "tabs": [
         {
           "shot": "ds-desktop",
-          "label": "Desktop",
-          "caption": "The desktop, with the agent's daily summary and the Ask KalangoOS field.",
-          "alt": "KalangoOS desktop: clock, the agent's daily summary (“Bom dia, Roo”), active agents, the Ask KalangoOS field and the dock"
+          "label": "デスクトップ",
+          "caption": "デスクトップ。エージェントの毎日の概要と「Ask KalangoOS」フィールドが表示されます。",
+          "alt": "KalangoOS デスクトップ: 時計、エージェントの毎日の概要 (「Bom dia, Roo」)、アクティブなエージェント、Ask KalangoOS フィールド、およびドック"
         },
         {
           "shot": "ds-central",
-          "label": "Agents",
-          "caption": "Agents hub: what each agent is doing, waiting on or has finished.",
-          "alt": "Agents hub, Running: Organize ~/Downloads running, Clean duplicates waiting, Daily e-mail summary done and Sync repositories failed, with the Organizer's log beside it"
+          "label": "エージェント",
+          "caption": "エージェント ハブ: 各エージェントが実行していること、待機していること、または終了したこと。",
+          "alt": "エージェント ハブ、実行中: Organize ~/Downloads が実行中、重複のクリーンアップが待機中、毎日の電子メール サマリーが完了、リポジトリの同期が失敗しました。オーガナイザーのログが横に表示されます"
         },
         {
           "shot": "ds-criar-agente",
-          "label": "Create agent",
-          "caption": "Create an agent by describing what it should do: the system shows what it understood and the permissions before creating it.",
-          "alt": "New agent screen with the request “Every Friday, organize my downloads…”, the Friday cleanup agent with its steps, the permissions it needs and the simulation"
+          "label": "エージェントの作成",
+          "caption": "エージェントが何をすべきかを記述してエージェントを作成します。システムはエージェントを作成する前に、理解した内容と権限を表示します。",
+          "alt": "「毎週金曜日にダウンロードを整理してください…」というリクエストを含む新しいエージェント画面、金曜日のクリーンアップ エージェントとその手順、必要な権限、およびシミュレーション"
         },
         {
           "shot": "ds-linha-tempo",
-          "label": "Timeline",
-          "caption": "Timeline: what the agents did today, with Undo on the actions.",
-          "alt": "Timeline with 37 agent actions today, “Moved 118 files into 4 folders” selected with before and after, and the Undo this action and Undo everything since 13:58 buttons"
+          "label": "タイムライン",
+          "caption": "タイムライン: エージェントが今日行ったことと、アクションの元に戻すこと。",
+          "alt": "今日の 37 のエージェント アクションを含むタイムライン、前後で選択された「118 個のファイルを 4 つのフォルダーに移動」、および「このアクションを元に戻す」ボタンと「13:58 以降のすべてを元に戻す」ボタン"
         },
         {
           "shot": "ds-memoria",
-          "label": "Memory",
-          "caption": "Memory: what the system knows about you, kept only on this computer.",
-          "alt": "Memory screen with 42 memories kept only on this computer, such as “Answer in Portuguese, straight to the point”, and the Memory on and Incognito options"
+          "label": "メモリ",
+          "caption": "メモリ: システムがユーザーについて認識しているもの。このコンピューター上にのみ保存されます。",
+          "alt": "「ポルトガル語で要点だけ答えてください」など、このコンピュータにのみ保存される 42 件のメモリを含むメモリ画面、およびメモリ オンおよびシークレット オプション"
         },
         {
           "shot": "ds-loja",
-          "label": "App Center",
-          "caption": "App Center: agents, essential apps and local models to install.",
-          "alt": "App Center with the Agents that work with you highlight, trending agents (Dev Sync, Organizer, Tutor), essential apps and local models"
+          "label": "アプリセンター",
+          "caption": "App Center: エージェント、必須アプリ、インストールするローカル モデル。",
+          "alt": "App Center には、連携するエージェントがハイライトされ、トレンドのエージェント (Dev Sync、オーガナイザー、講師)、必須のアプリ、ローカル モデルが表示されます。"
         }
       ]
     },
     "download": {
-      "eyebrow": "Download",
-      "title": "Download KalangoOS 0.1",
-      "lead": "The installable ISO, the binaries and the checksums are on the v0.1.0 release on GitHub, with the build provenance attestation.",
+      "eyebrow": "ダウンロード",
+      "title": "ダウンロード KalangoOS 0.1",
+      "lead": "インストール可能な ISO、バイナリ、チェックサムは、ビルド来歴証明書付きで、GitHub の v0.1.0 リリースにあります。",
       "edition": {
-        "label": "Technical preview · 0.1.0",
+        "label": "テクニカルプレビュー · 0.1.0",
         "title": "KalangoOS 0.1.0",
-        "text": "Live session with the installer. x86_64, UEFI. The AI model is downloaded later.",
-        "iso": "Download the ISO",
+        "text": "インストーラーとのライブセッション。 x86_64、UEFI。 AI モデルは後でダウンロードされます。",
+        "iso": "ISOをダウンロードする",
         "sums": "SHA-256",
-        "all": "All releases",
-        "filesLabel": "Release files",
+        "all": "すべてのリリース",
+        "filesLabel": "リリースファイル",
         "files": [
           {
             "name": "kalangoos-0.1.0-amd64.iso",
-            "badge": "To install",
+            "badge": "インストールするには",
             "tone": "accent"
           },
           {
             "name": "SHA256SUMS-iso.txt",
-            "badge": "Check the ISO",
+            "badge": "ISOを確認してください",
             "tone": "cream"
           },
           {
             "name": "kalangoos-0.1.0-linux-x86_64.tar.gz",
-            "badge": "Binaries",
+            "badge": "バイナリ",
             "tone": "gold"
           },
           {
             "name": "SHA256SUMS.txt",
-            "badge": "Check the binaries",
+            "badge": "バイナリを確認する",
             "tone": "cream"
           }
         ]
       },
       "req": {
-        "label": "Requirements",
+        "label": "要件",
         "items": [
           {
-            "title": "Minimum (planned)",
-            "text": "64-bit, 4 cores (x86-64-v2), 8 GB of memory, 64 GB SSD, Vulkan graphics and UEFI."
+            "title": "最小値（予定）",
+            "text": "64 ビット、4 コア (x86-64-v2)、8 GB のメモリ、64 GB SSD、Vulkan グラフィックスおよびUEFI。"
           },
           {
-            "title": "Recommended",
-            "text": "8 cores, 16 GB, 256 GB NVMe and a dedicated graphics card. For larger models, 32 GB."
+            "title": "推奨",
+            "text": "8 コア、16 GB、256 GB NVMe、専用グラフィックス カード。より大きなモデルの場合は 32 GB。"
           },
           {
-            "title": "Tested",
-            "text": "Virtual machines (QEMU/KVM). Real hardware and Secure Boot not yet."
+            "title": "テスト済み",
+            "text": "仮想マシン (QEMU/KVM)。実際のハードウェアとセキュア ブートはまだです。"
           }
         ]
       },
-      "startTitle": "Getting started",
-      "copy": "Copy",
-      "copied": "Copied",
+      "startTitle": "はじめる",
+      "copy": "コピー",
+      "copied": "コピーされました",
       "steps": [
         {
-          "title": "Check the sum",
+          "title": "合計を確認してください",
           "code": "sha256sum -c --ignore-missing \\\n  SHA256SUMS-iso.txt"
         },
         {
-          "title": "Try it in a VM",
+          "title": "VM で試してみる",
           "code": "git clone https://github.com/kalangoos/kalangoos\ncd kalangoos\nKALANGO_ISO=…/kalangoos-0.1.0-amd64.iso \\\n  imagem/rodar-iso.sh novo"
         },
         {
-          "title": "Write it and boot in UEFI",
+          "title": "それを書いてUEFIで起動します",
           "code": "sudo dd if=kalangoos-0.1.0-amd64.iso \\\n  of=/dev/sdX bs=4M status=progress conv=fsync"
         }
       ],
-      "warn": "Technical preview 0.x: tested only in virtual machines (UEFI). Use it in a VM or on a computer without important data.",
-      "guide": "Full guide: download, verify and install"
+      "warn": "テクニカル プレビュー 0.x: 仮想マシン (UEFI) でのみテストされています。 VM または重要なデータのないコンピューターで使用します。",
+      "guide": "完全ガイド: ダウンロード、確認、インストール"
     },
     "notes": {
-      "eyebrow": "Release notes",
-      "title": "What's in 0.1.0",
+      "eyebrow": "リリースノート",
+      "title": "0.1.0の内容",
       "items": [
-        "Installable x86_64 ISO, UEFI, tested in a VM on every run",
-        "First version of the agents, kalangod and the desktop",
-        "Shell in Rust and GTK4 on niri, with the system apps",
-        "SHA256SUMS and build provenance attestation"
+        "インストール可能な x86_64 ISO、UEFI、実行ごとに VM でテスト",
+        "エージェント、kalangod、デスクトップの最初のバージョン",
+        "niri の Rust と GTK4 のシェル、システム アプリ付き",
+        "SHA256SUMS と出所証明書の構築"
       ],
-      "limits": "Known limitations: real hardware untested, model downloaded separately, system in Portuguese only.",
-      "more": "Read the full notes"
+      "limits": "既知の制限: 実際のハードウェアはテストされていない、モデルは個別にダウンロードされる、システムはポルトガル語のみ。",
+      "more": "メモ全文を読む"
     },
     "roadmap": {
-      "eyebrow": "Roadmap",
+      "eyebrow": "ロードマップ",
       "items": [
         {
           "v": "0.1.0",
-          "title": "Technical preview",
-          "status": "Released",
+          "title": "テクニカルプレビュー",
+          "status": "リリースされました",
           "done": true
         },
         {
-          "v": "Next",
-          "title": "Updates with a restore point",
-          "status": "On the roadmap",
+          "v": "次",
+          "title": "復元ポイントを使用した更新",
+          "status": "ロードマップ上",
           "done": false
         },
         {
-          "v": "Later",
-          "title": "Signed images and packages",
-          "status": "On the roadmap",
+          "v": "後で",
+          "title": "署名付きイメージとパッケージ",
+          "status": "ロードマップ上",
           "done": false
         },
         {
-          "v": "Later",
-          "title": "Hybrid mode and the system in English",
-          "status": "On the roadmap",
+          "v": "後で",
+          "title": "ハイブリッド モードと英語のシステム",
+          "status": "ロードマップ上",
           "done": false
         }
       ],
-      "more": "Full roadmap on GitHub"
+      "more": "GitHub の完全なロードマップ"
     },
     "community": {
-      "eyebrow": "Community",
-      "title": "Built in the open",
-      "lead": "Open source. Every bug report, idea and line of code helps.",
-      "soon": "coming soon",
+      "eyebrow": "コミュニティ",
+      "title": "屋外に建てられる",
+      "lead": "オープンソース。すべてのバグレポート、アイデア、コード行が役に立ちます。",
+      "soon": "近日公開",
       "cards": [
         {
           "id": "github",
           "name": "GitHub",
-          "text": "Code, issues and releases",
+          "text": "コード、問題、リリース",
           "cta": "github.com/kalangoos",
           "href": "https://github.com/kalangoos",
           "tone": "text"
@@ -1251,122 +1251,122 @@
         {
           "id": "discord",
           "name": "Discord",
-          "text": "Talk to people who use and build it",
-          "cta": "Join the server",
+          "text": "それを使用したり構築したりしている人々と話す",
+          "cta": "サーバーに参加する",
           "href": "https://discord.gg/Yvu762kNr",
           "tone": "accent"
         },
         {
           "id": "youtube",
           "name": "YouTube",
-          "text": "Tours, news and tutorials",
-          "cta": "Subscribe to the channel",
+          "text": "ツアー、ニュース、チュートリアル",
+          "cta": "チャンネル登録してください",
           "href": "https://www.youtube.com/@KalangoOS",
           "tone": "coral"
         },
         {
           "id": "contribuir",
-          "name": "Contribute",
-          "text": "Rust code, translations and testing",
-          "cta": "Read the guide",
+          "name": "貢献する",
+          "text": "Rustのコード、翻訳、テスト",
+          "cta": "ガイドを読む",
           "href": "@contribute",
           "tone": "teal"
         }
       ],
       "channel": {
-        "eyebrow": "On the channel",
-        "title": "KalangoOS videos",
+        "eyebrow": "チャンネル上で",
+        "title": "KalangoOS ビデオ",
         "videos": [
           {
             "id": "tour",
-            "title": "The 0.1 tour in one minute",
+            "title": "1分で0.1ツアー",
             "duration": "1:04",
             "shot": "ds-desktop",
-            "alt": "KalangoOS desktop"
+            "alt": "KalangoOS デスクトップ"
           },
           {
             "id": "agentes",
-            "title": "Agents: from request to result",
-            "duration": "coming soon",
+            "title": "エージェント: リクエストから結果まで",
+            "duration": "近日公開",
             "shot": "ds-central",
-            "alt": "Agents hub with the agents running"
+            "alt": "エージェントが実行されているエージェント ハブ"
           },
           {
             "id": "vm",
-            "title": "Installing in a VM, step by step",
-            "duration": "coming soon",
+            "title": "VM へのインストール (ステップバイステップ)",
+            "duration": "近日公開",
             "shot": "ds-instalador",
-            "alt": "KalangoOS installer at the Disk step: Where to install?"
+            "alt": "「ディスク」ステップのKalangoOS インストーラー: どこにインストールしますか?"
           }
         ]
       }
     },
     "support": {
-      "eyebrow": "Support the project",
-      "title": "Help KalangoOS grow",
-      "text": "Donations pay for the domain, the build servers and the test computers, and keep the system free for everyone.",
+      "eyebrow": "プロジェクトをサポートする",
+      "title": "KalangoOS の成長を手伝う",
+      "text": "寄付はドメイン、ビルド サーバー、テスト コンピューターの費用を支払い、システムを誰でも無料で利用できるようにします。",
       "methods": [
         {
           "name": "PIX",
-          "text": "Copy the key",
+          "text": "キーをコピーする",
           "tone": "teal"
         },
         {
           "name": "GitHub Sponsors",
-          "text": "Monthly support",
+          "text": "月々サポート",
           "tone": "accent"
         },
         {
-          "name": "Other ways",
-          "text": "Card and international",
+          "name": "他の方法",
+          "text": "カードとインターナショナル",
           "tone": "gold"
         }
       ],
-      "cta": "Support KalangoOS",
-      "soon": "Donation options are still being set up: coming soon here."
+      "cta": "サポートKalangoOS",
+      "soon": "寄付オプションはまだ準備中です。近日中にこちらに追加されます。"
     },
     "members": {
-      "eyebrow": "Members area",
-      "title": "For contributors",
-      "text": "Sign in with GitHub to follow the project board, the internal documentation and the specifications.",
+      "eyebrow": "メンバーエリア",
+      "title": "投稿者向け",
+      "text": "GitHub でサインインして、プロジェクト ボード、内部ドキュメント、仕様に従ってください。",
       "items": [
-        "Project board",
-        "Documentation",
-        "Specifications"
+        "プロジェクトボード",
+        "ドキュメント",
+        "仕様"
       ],
-      "cta": "Sign in with GitHub"
+      "cta": "GitHub でサインイン"
     },
     "footer": {
-      "tagline": "The Linux where AI agents work with you. Open source.",
-      "follow": "News: follow the releases on GitHub",
+      "tagline": "AI エージェントが協力する Linux。オープンソース。",
+      "follow": "ニュース: GitHub でリリースをフォローしてください",
       "cols": [
         {
-          "title": "Product",
+          "title": "製品",
           "links": [
             {
-              "label": "Features",
+              "label": "特徴",
               "href": "#recursos"
             },
             {
-              "label": "Screens",
+              "label": "スクリーン",
               "href": "#capturas"
             },
             {
-              "label": "Download",
+              "label": "ダウンロード",
               "href": "#baixar"
             },
             {
-              "label": "Release notes",
+              "label": "リリースノート",
               "href": "@notes"
             },
             {
-              "label": "Roadmap",
+              "label": "ロードマップ",
               "href": "#roteiro"
             }
           ]
         },
         {
-          "title": "Community",
+          "title": "コミュニティ",
           "links": [
             {
               "label": "GitHub",
@@ -1381,79 +1381,79 @@
               "href": "https://www.youtube.com/@KalangoOS"
             },
             {
-              "label": "Contribute",
+              "label": "貢献する",
               "href": "@contribute"
             },
             {
-              "label": "Report a bug",
+              "label": "バグを報告する",
               "href": "https://github.com/kalangoos/kalangoos/issues/new/choose"
             }
           ]
         },
         {
-          "title": "Project",
+          "title": "プロジェクト",
           "links": [
             {
-              "label": "Security",
+              "label": "安全",
               "href": "@security"
             },
             {
-              "label": "Documentation",
+              "label": "ドキュメント",
               "href": "@docs"
             },
             {
-              "label": "License",
+              "label": "ライセンス",
               "href": "https://github.com/kalangoos/kalangoos/blob/main/LICENSE"
             },
             {
-              "label": "Support",
+              "label": "サポート",
               "href": "#apoie"
             },
             {
-              "label": "Members area",
+              "label": "メンバーエリア",
               "href": "@members"
             }
           ]
         }
       ],
-      "copyright": "© KalangoOS · free software",
-      "theme": "Theme",
-      "dark": "dark",
-      "light": "light"
+      "copyright": "© KalangoOS · フリーソフトウェア",
+      "theme": "テーマ",
+      "dark": "暗い",
+      "light": "ライト"
     },
     "designSystem": {
       "eyebrow": "Design System",
-      "title": "Screens drawn before the code",
-      "lead": "FigCraft showcase from kalangoos/design. The source is the .figcraft file; .fig and live share are mirrors only.",
+      "title": "コードの前に描画される画面",
+      "lead": "kalangoos/デザインのFigCraftショーケース。ソースは .figcraft ファイルです。 .fig と live share はミラーのみです。",
       "cta": {
-        "label": "Contribute to the design",
+        "label": "デザインに貢献する",
         "href": "https://github.com/kalangoos/design",
-        "text": "FigCraft + Git LFS, PRs with captures. See also ESPELHOS.md."
+        "text": "FigCraft + Git LFS、キャプチャ付き PR。 ESPELHOS.mdも参照してください。"
       },
       "items": [
         {
           "shot": "ds-capa",
-          "caption": "Cover",
-          "alt": "KalangoOS Design System cover in FigCraft"
+          "caption": "カバー",
+          "alt": "KalangoOS FigCraft のシステムカバーをデザインします。"
         },
         {
           "shot": "ds-fundamentos",
-          "caption": "Foundations",
-          "alt": "Foundations: colour, type and space"
+          "caption": "基礎",
+          "alt": "基礎: 色、種類、空間"
         },
         {
           "shot": "ds-marca",
-          "caption": "Brand",
-          "alt": "Brand page with logos and rules"
+          "caption": "ブランド",
+          "alt": "ロゴとルールが記載されたブランドページ"
         },
         {
           "shot": "ds-site",
           "caption": "Site",
-          "alt": "Landing page in the Design System"
+          "alt": "デザインシステムのランディングページ"
         }
       ],
-      "page": "Page",
-      "open": "View in the repository"
+      "page": "ページ",
+      "open": "リポジトリで見る"
     }
   }
 }
