@@ -772,11 +772,11 @@
       "lead": "Esta dirección no existe o se ha trasladado.",
       "home": "Ir a la página de inicio",
       "other": {
-        "lang": "en",
-        "h": "Page not found",
-        "text": "This address does not exist or has moved.",
-        "home": "Go to the home page",
-        "href": "/en/"
+        "lang": "pt-BR",
+        "h": "Página não encontrada",
+        "text": "O endereço não existe ou mudou de lugar.",
+        "home": "Ir para o início",
+        "href": "/"
       }
     }
   },
@@ -865,15 +865,15 @@
       "label": "Navegación principal",
       "items": [
         {
-          "id": "resources",
+          "id": "recursos",
           "label": "Características"
         },
         {
-          "id": "captures",
+          "id": "capturas",
           "label": "Pantallas"
         },
         {
-          "id": "bajar",
+          "id": "baixar",
           "label": "Descargar"
         },
         {
@@ -881,11 +881,11 @@
           "label": "Notas"
         },
         {
-          "id": "comunidad",
+          "id": "comunidade",
           "label": "Comunidad"
         },
         {
-          "id": "apoye",
+          "id": "apoie",
           "label": "Soporte"
         }
       ],
@@ -972,7 +972,7 @@
       "watch": "Verlo en el recorrido",
       "items": [
         {
-          "id": "agents",
+          "id": "agentes",
           "label": "Agentes",
           "tone": "accent",
           "title": "Pregunta con palabras simples. Lo hace.",
@@ -982,11 +982,11 @@
             "Operate apps and the system itself",
             "Show the plan before acting"
           ],
-          "shot": "ds-crear-agente",
+          "shot": "ds-criar-agente",
           "alt": "Nueva pantalla del agente con la solicitud “Cada viernes, organiza mis descargas…”, lo que el agente entendió, sus pasos y los permisos que necesita; luego el centro de agentes con los agentes en ejecución"
         },
         {
-          "id": "aprobar",
+          "id": "aprovar",
           "label": "Aprobar y deshacer",
           "tone": "coral",
           "title": "Usted aprueba. Y puede regresar.",
@@ -996,11 +996,11 @@
             "A timeline of everything the agents did",
             "Undo the changes on the computer"
           ],
-          "shot": "ds-aprobar-tela",
+          "shot": "ds-aprovar-tela",
           "alt": "Diálogo de permiso: el agente Asistente quiere controlar la pantalla (Editor de texto, durante 10 minutos), con Denegar y Permitir por 10 minutos; luego la Línea de tiempo con el botón Deshacer en “Se movieron 118 archivos a 4 carpetas”"
         },
         {
-          "id": "privacidad",
+          "id": "privacidade",
           "label": "Privacidad",
           "tone": "teal",
           "title": "El modelo vive en tu computadora.",
@@ -1010,11 +1010,11 @@
             "The ISO ships no model: you choose and download it later",
             "Who can use what, per app and per agent"
           ],
-          "shot": "ds-privacidad",
+          "shot": "ds-privacidade",
           "alt": "Settings › Privacidad y seguridad con la tabla de Quién puede usar qué, por aplicación y por agente; luego Settings › Modelos y proveedores con los modelos locales y “Los datos personales nunca salen del ordenador”"
         },
         {
-          "id": "escritorio",
+          "id": "desktop",
           "label": "Su propio escritorio",
           "tone": "gold",
           "title": "Un escritorio construido en Rust.",
@@ -1024,7 +1024,7 @@
             "Command search and workspaces",
             "Light and dark themes, from the system to the apps"
           ],
-          "shot": "ds-escritorio",
+          "shot": "ds-desktop",
           "alt": "Escritorio con el reloj, el resumen diario del agente (“Bom dia, Roo”), el campo Preguntar KalangoOS y el dock; luego la barra lateral Hoy con sus widgets"
         }
       ]
@@ -1035,12 +1035,12 @@
       "lead": "Las 10 aplicaciones, con los propios íconos y diseño del sistema.",
       "items": [
         {
-          "icon": "archivos",
+          "icon": "arquivos",
           "name": "Archivos",
           "text": "Carpetas, búsqueda y vista previa"
         },
         {
-          "icon": "configuraciones",
+          "icon": "configuracoes",
           "name": "Settings",
           "text": "Todo el sistema en un solo lugar"
         },
@@ -1050,7 +1050,7 @@
           "text": "Con el agente al lado"
         },
         {
-          "icon": "editor de texto",
+          "icon": "editor-de-texto",
           "name": "Editor de texto",
           "text": "Ligero y rápido"
         },
@@ -1060,12 +1060,12 @@
           "text": "Con historia"
         },
         {
-          "icon": "agents",
+          "icon": "agentes",
           "name": "Centro de agente",
           "text": "Crear y gobernar agentes"
         },
         {
-          "icon": "ayuda",
+          "icon": "ajuda",
           "name": "Ayuda",
           "text": "Respuestas sin conexión"
         },
@@ -1083,7 +1083,7 @@
       "label": "Pantallas del sistema",
       "tabs": [
         {
-          "shot": "ds-escritorio",
+          "shot": "ds-desktop",
           "label": "Escritorio",
           "caption": "El escritorio, con el resumen diario del agente y el campo Preguntar KalangoOS.",
           "alt": "KalangoOS escritorio: reloj, el resumen diario del agente (“Bom dia, Roo”), agentes activos, el campo Preguntar KalangoOS y el dock"
@@ -1095,13 +1095,13 @@
           "alt": "Centro de agentes, Ejecutando: Organizar ~/Descargas en ejecución, Limpiar duplicados en espera, Resumen diario por correo electrónico hecho y Sincronización de repositorios fallida, con el registro del Organizador al lado"
         },
         {
-          "shot": "ds-crear-agente",
+          "shot": "ds-criar-agente",
           "label": "Crear agente",
           "caption": "Crea un agente describiendo lo que debe hacer: el sistema muestra lo que entendió y los permisos antes de crearlo.",
           "alt": "Nueva pantalla de agente con la solicitud “Cada viernes, organiza mis descargas…”, el agente de limpieza de los viernes con sus pasos, los permisos que necesita y la simulación"
         },
         {
-          "shot": "ds-línea-tempo",
+          "shot": "ds-linha-tempo",
           "label": "Cronología",
           "caption": "Cronología: lo que los agentes hicieron hoy, con Deshacer en las acciones.",
           "alt": "Cronología con 37 acciones del agente hoy, “Se movieron 118 archivos a 4 carpetas” seleccionado con antes y después, y los botones Deshacer esta acción y Deshacer todo desde las 13:58"
@@ -1249,7 +1249,7 @@
           "tone": "text"
         },
         {
-          "id": "discordia",
+          "id": "discord",
           "name": "Discord",
           "text": "Habla con las personas que lo utilizan y lo construyen",
           "cta": "Únete al servidor",
@@ -1281,11 +1281,11 @@
             "id": "tour",
             "title": "El tour 0.1 en un minuto",
             "duration": "Uno Cuatro",
-            "shot": "ds-escritorio",
+            "shot": "ds-desktop",
             "alt": "KalangoOS escritorio"
           },
           {
-            "id": "agents",
+            "id": "agentes",
             "title": "Agentes: de la solicitud al resultado",
             "duration": "próximamente",
             "shot": "ds-central",
@@ -1447,7 +1447,7 @@
           "alt": "Página de la marca con logotipos y reglas"
         },
         {
-          "shot": "sitio-ds",
+          "shot": "ds-site",
           "caption": "Sitio",
           "alt": "Página de aterrizaje en el Sistema de Diseño"
         }

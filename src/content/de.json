@@ -772,11 +772,11 @@
       "lead": "Diese Adresse existiert nicht oder wurde verschoben.",
       "home": "Gehe zur Startseite",
       "other": {
-        "lang": "en",
-        "h": "Page not found",
-        "text": "This address does not exist or has moved.",
-        "home": "Go to the home page",
-        "href": "/en/"
+        "lang": "pt-BR",
+        "h": "Página não encontrada",
+        "text": "O endereço não existe ou mudou de lugar.",
+        "home": "Ir para o início",
+        "href": "/"
       }
     }
   },
@@ -819,7 +819,7 @@
       "but": "aber dieses Konto",
       "unknown": "Das Konto, mit dem Sie sich angemeldet haben",
       "text": "ist kein Teil der kalangoos Organisation am GitHub. Der Code, die Dokumentation und die Spezifikation sind im Repository öffentlich zugänglich, und jeder kann beitragen.",
-      "repo": "Siehe das Repository",
+      "repo": "Repository ansehen",
       "contribute": "Wie man beiträgt",
       "other": "Mit einem anderen Konto anmelden",
       "why": "Warum kann ich nicht hereinkommen? Die Organisation entscheidet, wer Mitglied ist"
@@ -865,27 +865,27 @@
       "label": "Hauptnavigation",
       "items": [
         {
-          "id": "Ressourcen",
+          "id": "recursos",
           "label": "Funktionen"
         },
         {
-          "id": "Aufnahmen",
+          "id": "capturas",
           "label": "Bildschirme"
         },
         {
-          "id": "herunterladen",
+          "id": "baixar",
           "label": "Herunterladen"
         },
         {
-          "id": "Notizen",
+          "id": "notas",
           "label": "Notizen"
         },
         {
-          "id": "Gemeinschaft",
+          "id": "comunidade",
           "label": "Gemeinschaft"
         },
         {
-          "id": "unterstützen",
+          "id": "apoie",
           "label": "Unterstützen"
         }
       ],
@@ -972,7 +972,7 @@
       "watch": "Siehe es in der Tour",
       "items": [
         {
-          "id": "Agenten",
+          "id": "agentes",
           "label": "Agenten",
           "tone": "accent",
           "title": "Frag mit einfachen Worten. Es tut es.",
@@ -982,11 +982,11 @@
             "Operate apps and the system itself",
             "Show the plan before acting"
           ],
-          "shot": "ds-erstellen-agent",
+          "shot": "ds-criar-agente",
           "alt": "Neuer Agentenbildschirm mit der Anfrage „Jeden Freitag, meine Downloads organisieren…“, was der Agent verstanden hat, seine Schritte und die Berechtigungen, die er benötigt; dann das Agenten-Hub mit den laufenden Agenten"
         },
         {
-          "id": "genehmigen",
+          "id": "aprovar",
           "label": "Genehmigen und rückgängig machen",
           "tone": "coral",
           "title": "Du stimmst zu. Und du kannst zurückgehen.",
@@ -996,11 +996,11 @@
             "A timeline of everything the agents did",
             "Undo the changes on the computer"
           ],
-          "shot": "ds-genehmigen-ihn",
+          "shot": "ds-aprovar-tela",
           "alt": "Berechtigungsdialog: Der Assistent möchte den Bildschirm steuern (Texteditor, für 10 Minuten), mit Ablehnen und Zulassen für 10 Minuten; dann die Zeitleiste mit der Rückgängig-Schaltfläche auf „118 Dateien in 4 Ordner verschoben“"
         },
         {
-          "id": "Privatsphäre",
+          "id": "privacidade",
           "label": "Privatsphäre",
           "tone": "teal",
           "title": "Das Modell lebt auf Ihrem Computer.",
@@ -1010,11 +1010,11 @@
             "The ISO ships no model: you choose and download it later",
             "Who can use what, per app and per agent"
           ],
-          "shot": "ds-privatsphäre",
+          "shot": "ds-privacidade",
           "alt": "Settings › Datenschutz und Sicherheit mit der Tabelle \"Wer kann was verwenden\", pro App und pro Agent; dann Settings › Modelle und Anbieter mit den lokalen Modellen und \"Personenbezogene Daten verlassen niemals den Computer\""
         },
         {
-          "id": "Schreibtisch",
+          "id": "desktop",
           "label": "Sein eigener Desktop",
           "tone": "gold",
           "title": "Ein Desktop, gebaut in 10.",
@@ -1035,42 +1035,42 @@
       "lead": "Die KalangoOS Apps, mit den eigenen Symbolen und dem Design des Systems.",
       "items": [
         {
-          "icon": "Dateien",
+          "icon": "arquivos",
           "name": "Dateien",
           "text": "Ordner, Suche und Vorschau"
         },
         {
-          "icon": "Einstellungen",
+          "icon": "configuracoes",
           "name": "Settings",
           "text": "Das gesamte System an einem Ort"
         },
         {
-          "icon": "Terminal",
+          "icon": "terminal",
           "name": "Terminal",
           "text": "Mit dem Agenten dabei"
         },
         {
-          "icon": "Texteditor",
+          "icon": "editor-de-texto",
           "name": "Texteditor",
           "text": "Leicht und schnell"
         },
         {
-          "icon": "Taschenrechner",
+          "icon": "calculadora",
           "name": "Taschenrechner",
           "text": "Mit Geschichte"
         },
         {
-          "icon": "Agenten",
+          "icon": "agentes",
           "name": "Agentenzentrum",
           "text": "Agenten erstellen und verwalten"
         },
         {
-          "icon": "Hilfe",
+          "icon": "ajuda",
           "name": "Hilfe",
           "text": "Antworten offline"
         },
         {
-          "icon": "Dokumente",
+          "icon": "documentos",
           "name": "Dokumente",
           "text": "Lesen und organisieren"
         }
@@ -1089,31 +1089,31 @@
           "alt": "KalangoOS Desktop: Uhr, die tägliche Zusammenfassung des Agenten („Bom dia, Roo“), aktive Agenten, das Ask-KalangoOS-Feld und das Dock"
         },
         {
-          "shot": "ds-zentral",
+          "shot": "ds-central",
           "label": "Agenten",
           "caption": "Agenten-Zentrale: was jeder Agent gerade tut, worauf er wartet oder was er abgeschlossen hat.",
           "alt": "Agenten-Zentrale, Laufend: Organisiere ~/Downloads laufend, Duplikate werden gereinigt, Tages-E-Mail-Zusammenfassung erledigt und Synchronisierung der Repositories fehlgeschlagen, mit dem Protokoll des Organisierers daneben"
         },
         {
-          "shot": "ds-erstellen-agent",
+          "shot": "ds-criar-agente",
           "label": "Agent erstellen",
           "caption": "Erstellen Sie einen Agenten, indem Sie beschreiben, was er tun soll: Das System zeigt, was es verstanden hat, und die Berechtigungen, bevor es ihn erstellt.",
           "alt": "Neuer Agentenbildschirm mit der Anfrage „Jeden Freitag meine Downloads organisieren…“, der Freitag-Aufräumagent mit seinen Schritten, den benötigten Berechtigungen und der Simulation"
         },
         {
-          "shot": "ds-zeitachse",
+          "shot": "ds-linha-tempo",
           "label": "Zeitleiste",
           "caption": "Zeitachse: was die Agenten heute getan haben, mit Rückgängig für die Aktionen.",
           "alt": "Zeitleiste mit 37 Agentenaktionen heute, „118 Dateien in 4 Ordner verschoben“ ausgewählt mit Vorher und Danach, sowie die Schaltflächen Diese Aktion rückgängig machen und Alles seit 13:58 rückgängig machen"
         },
         {
-          "shot": "ds-erinnerung",
+          "shot": "ds-memoria",
           "label": "Erinnerung",
           "caption": "Speicher: was das System über Sie weiß, nur auf diesem Computer gespeichert.",
           "alt": "Speicherscreen mit 42 Erinnerungen, die nur auf diesem Computer gespeichert sind, wie zum Beispiel „Antwort auf Portugiesisch, direkt zum Punkt“, und die Optionen Speicher an und Inkognito"
         },
         {
-          "shot": "ds-Laden",
+          "shot": "ds-loja",
           "label": "App Center",
           "caption": "App Center: Agenten, wichtige Apps und lokale Modelle zum Installieren.",
           "alt": "App Center mit den Agenten, die mit Ihnen zusammenarbeiten, hervorheben, angesagte Agenten (Dev Sync, Organizer, Tutor), wichtige Apps und lokale Modelle"
@@ -1249,7 +1249,7 @@
           "tone": "text"
         },
         {
-          "id": "Discord",
+          "id": "discord",
           "name": "Discord",
           "text": "Sprich mit Menschen, die es benutzen und entwickeln",
           "cta": "Dem Server beitreten",
@@ -1257,7 +1257,7 @@
           "tone": "accent"
         },
         {
-          "id": "YouTube",
+          "id": "youtube",
           "name": "YouTube",
           "text": "Touren, Nachrichten und Tutorials",
           "cta": "Abonniere den Kanal",
@@ -1265,7 +1265,7 @@
           "tone": "coral"
         },
         {
-          "id": "beitragen",
+          "id": "contribuir",
           "name": "Beitragen",
           "text": "Rust Code, Übersetzungen und Tests",
           "cta": "Lies den Leitfaden",
@@ -1278,24 +1278,24 @@
         "title": "0 Videos",
         "videos": [
           {
-            "id": "Tour",
+            "id": "tour",
             "title": "Die 0,1-Tour in einer Minute",
             "duration": "Eins Vier",
             "shot": "ds-desktop",
             "alt": "KalangoOS Desktop"
           },
           {
-            "id": "Agenten",
+            "id": "agentes",
             "title": "Agenten: von der Anfrage zum Ergebnis",
             "duration": "kommt bald",
-            "shot": "ds-zentral",
+            "shot": "ds-central",
             "alt": "Agenten-Hub mit laufenden Agenten"
           },
           {
-            "id": "VM",
+            "id": "vm",
             "title": "Installation in einer VM, Schritt für Schritt",
             "duration": "kommt bald",
-            "shot": "ds-Installer",
+            "shot": "ds-instalador",
             "alt": "KalangoOS Installer beim Schritt 'Festplatte': Wo installieren?"
           }
         ]
@@ -1437,17 +1437,17 @@
           "alt": "KalangoOS Design-System-Cover in FigCraft"
         },
         {
-          "shot": "ds-grundlagen",
+          "shot": "ds-fundamentos",
           "caption": "Fundamente",
           "alt": "Grundlagen: Farbe, Typ und Raum"
         },
         {
-          "shot": "ds-Marke",
+          "shot": "ds-marca",
           "caption": "Marke",
           "alt": "Markenseite mit Logos und Regeln"
         },
         {
-          "shot": "ds-Website",
+          "shot": "ds-site",
           "caption": "Seite",
           "alt": "Landingpage im Designsystem"
         }

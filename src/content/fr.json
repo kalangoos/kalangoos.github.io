@@ -772,11 +772,11 @@
       "lead": "Cette adresse n'existe pas ou a été déplacée.",
       "home": "Aller à la page d'accueil",
       "other": {
-        "lang": "en",
-        "h": "Page not found",
-        "text": "This address does not exist or has moved.",
-        "home": "Go to the home page",
-        "href": "/en/"
+        "lang": "pt-BR",
+        "h": "Página não encontrada",
+        "text": "O endereço não existe ou mudou de lugar.",
+        "home": "Ir para o início",
+        "href": "/"
       }
     }
   },
@@ -852,7 +852,7 @@
       "loading": "Chargement de la vitrine…",
       "empty": "Aucun écran ne correspond à ce filtre.",
       "loadError": "Impossible de charger exports/manifest.json depuis le dépôt de conception.",
-      "repo": "Répertoire de conception",
+      "repo": "Dépôt design",
       "openPng": "Ouvrir PNG"
     }
   },
@@ -865,27 +865,27 @@
       "label": "Navigation principale",
       "items": [
         {
-          "id": "ressources",
+          "id": "recursos",
           "label": "Fonctionnalités"
         },
         {
-          "id": "captures",
+          "id": "capturas",
           "label": "Écrans"
         },
         {
-          "id": "télécharger",
+          "id": "baixar",
           "label": "Télécharger"
         },
         {
-          "id": "notes",
+          "id": "notas",
           "label": "Notes"
         },
         {
-          "id": "communauté",
+          "id": "comunidade",
           "label": "Communauté"
         },
         {
-          "id": "supports",
+          "id": "apoie",
           "label": "Support"
         }
       ],
@@ -972,7 +972,7 @@
       "watch": "Voir cela dans la visite",
       "items": [
         {
-          "id": "agents",
+          "id": "agentes",
           "label": "Agents",
           "tone": "accent",
           "title": "Demandez en termes simples. Ça le fait.",
@@ -982,11 +982,11 @@
             "Operate apps and the system itself",
             "Show the plan before acting"
           ],
-          "shot": "ds-créer-agent",
+          "shot": "ds-criar-agente",
           "alt": "Nouvel écran de l'agent avec la demande « Chaque vendredi, organise mes téléchargements… », ce que l'agent a compris, ses étapes et les autorisations dont il a besoin ; puis le hub des agents avec les agents en cours d'exécution"
         },
         {
-          "id": "approuver",
+          "id": "aprovar",
           "label": "Approuver et annuler",
           "tone": "coral",
           "title": "Vous approuvez. Et vous pouvez revenir.",
@@ -996,11 +996,11 @@
             "A timeline of everything the agents did",
             "Undo the changes on the computer"
           ],
-          "shot": "ds-approuver-la",
+          "shot": "ds-aprovar-tela",
           "alt": "Boîte de dialogue de permission : l'agent Assistant veut contrôler l'écran (Éditeur de texte, pendant 10 min), avec Refuser et Autoriser pour 10 min ; puis la Timeline avec le bouton Annuler sur « Déplacement de 118 fichiers dans 4 dossiers »"
         },
         {
-          "id": "confidentialité",
+          "id": "privacidade",
           "label": "Confidentialité",
           "tone": "teal",
           "title": "Le modèle vit sur votre ordinateur.",
@@ -1010,11 +1010,11 @@
             "The ISO ships no model: you choose and download it later",
             "Who can use what, per app and per agent"
           ],
-          "shot": "ds-confidentialité",
+          "shot": "ds-privacidade",
           "alt": "Settings › Confidentialité et sécurité avec le tableau Qui peut utiliser quoi, par application et par agent ; puis Settings › Modèles et fournisseurs avec les modèles locaux et « Les données personnelles ne quittent jamais l’ordinateur »"
         },
         {
-          "id": "bureau",
+          "id": "desktop",
           "label": "Son propre bureau",
           "tone": "gold",
           "title": "Un bureau construit en Rust.",
@@ -1024,7 +1024,7 @@
             "Command search and workspaces",
             "Light and dark themes, from the system to the apps"
           ],
-          "shot": "ds-bureau",
+          "shot": "ds-desktop",
           "alt": "Bureau avec l'horloge, le résumé quotidien de l'agent («Bom dia, Roo»), le champ Ask KalangoOS et le dock ; puis la barre latérale Aujourd'hui avec ses widgets"
         }
       ]
@@ -1035,12 +1035,12 @@
       "lead": "Les 10 applications, avec les propres icônes et le design du système.",
       "items": [
         {
-          "icon": "fichiers",
+          "icon": "arquivos",
           "name": "Fichiers",
           "text": "Dossiers, recherche et aperçu"
         },
         {
-          "icon": "paramètres",
+          "icon": "configuracoes",
           "name": "Settings",
           "text": "Tout le système en un seul endroit"
         },
@@ -1050,27 +1050,27 @@
           "text": "Avec l'agent à côté"
         },
         {
-          "icon": "éditeur de texte",
+          "icon": "editor-de-texto",
           "name": "Éditeur de texte",
           "text": "Léger et rapide"
         },
         {
-          "icon": "calculatrice",
+          "icon": "calculadora",
           "name": "Calculator",
           "text": "Avec l'histoire"
         },
         {
-          "icon": "agents",
+          "icon": "agentes",
           "name": "Centre d'agent",
           "text": "Créer et gérer des agents"
         },
         {
-          "icon": "aide",
+          "icon": "ajuda",
           "name": "Aide",
           "text": "Réponses hors ligne"
         },
         {
-          "icon": "documents",
+          "icon": "documentos",
           "name": "Documents",
           "text": "Lire et organiser"
         }
@@ -1083,7 +1083,7 @@
       "label": "Écrans du système",
       "tabs": [
         {
-          "shot": "ds-bureau",
+          "shot": "ds-desktop",
           "label": "Bureau",
           "caption": "Le bureau, avec le résumé quotidien de l'agent et le champ Demander KalangoOS.",
           "alt": "KalangoOS bureau : horloge, le résumé quotidien de l'agent («Bom dia, Roo»), agents actifs, le champ Ask KalangoOS et le dock"
@@ -1095,25 +1095,25 @@
           "alt": "Centre des agents, En cours : Organiser ~/Téléchargements en cours, Nettoyer les doublons en attente, Résumé quotidien par e-mail effectué et Synchronisation des dépôts échouée, avec le journal de l'Organisateur à côté"
         },
         {
-          "shot": "ds-créer-agent",
+          "shot": "ds-criar-agente",
           "label": "Créer un agent",
           "caption": "Créez un agent en décrivant ce qu'il doit faire : le système montre ce qu'il a compris et les autorisations avant de le créer.",
           "alt": "Nouvel écran d'agent avec la demande « Chaque vendredi, organise mes téléchargements… », l'agent de nettoyage du vendredi avec ses étapes, les autorisations dont il a besoin et la simulation"
         },
         {
-          "shot": "ds-ligne-tempo",
+          "shot": "ds-linha-tempo",
           "label": "Chronologie",
           "caption": "Chronologie : ce que les agents ont fait aujourd'hui, avec Annuler sur les actions.",
           "alt": "Chronologie avec 37 actions d’agent aujourd’hui, « Déplacé 118 fichiers dans 4 dossiers » sélectionné avec avant et après, et les boutons Annuler cette action et Tout annuler depuis 13:58"
         },
         {
-          "shot": "ds-mémoire",
+          "shot": "ds-memoria",
           "label": "Mémoire",
           "caption": "Mémoire : ce que le système sait de vous, conservé uniquement sur cet ordinateur.",
           "alt": "Écran de mémoire avec 42 souvenirs conservés uniquement sur cet ordinateur, tels que « Répondre en portugais, directement au but », et les options Mémoire activée et Incognito"
         },
         {
-          "shot": "ds-boutique",
+          "shot": "ds-loja",
           "label": "App Center",
           "caption": "App Center : agents, applications essentielles et modèles locaux à installer.",
           "alt": "App Center avec les agents qui travaillent avec vous mettre en évidence, agents tendance (Dev Sync, Organizer, Tutor), applications essentielles et modèles locaux"
@@ -1265,7 +1265,7 @@
           "tone": "coral"
         },
         {
-          "id": "contribuer",
+          "id": "contribuir",
           "name": "Contribuer",
           "text": "Rust code, traductions et tests",
           "cta": "Lisez le guide",
@@ -1281,11 +1281,11 @@
             "id": "tour",
             "title": "Le tour de 0,1 en une minute",
             "duration": "Un Quatre",
-            "shot": "ds-bureau",
+            "shot": "ds-desktop",
             "alt": "bureau 0"
           },
           {
-            "id": "agents",
+            "id": "agentes",
             "title": "Agents : de la demande au résultat",
             "duration": "bientôt disponible",
             "shot": "ds-central",
@@ -1295,7 +1295,7 @@
             "id": "vm",
             "title": "Installation dans une machine virtuelle, étape par étape",
             "duration": "bientôt disponible",
-            "shot": "ds-installateur",
+            "shot": "ds-instalador",
             "alt": "KalangoOS installer à l'étape du disque : Où installer ?"
           }
         ]
