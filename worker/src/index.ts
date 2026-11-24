@@ -34,6 +34,8 @@ const MEMBERS_PATHS = [
   '/es/members/',
   '/fr/members/',
   '/de/members/',
+  '/it/members/',
+  '/ru/members/',
   '/zh/members/',
   '/ja/members/',
 ] as const;

@@ -195,10 +195,28 @@ a.lv-card:hover::after, .lv-app:hover::after, .lv-step:hover::after { opacity: 1
 .lv-nav__list a { display: block; padding: 8px 0; font: 500 15px/1.2 var(--lv-font); color: var(--text2); transition: color var(--motion-hover); }
 .lv-nav__list a:hover, .lv-nav__list a[aria-current] { color: var(--text); }
 .lv-nav__tools { display: flex; align-items: center; gap: 10px; margin-left: auto; }
-.lv-lang { display: flex; flex-wrap: wrap; gap: 2px; max-width: min(100%, 22rem); padding: 3px; border-radius: var(--radius-pill); background: var(--control); }
-.lv-lang a { padding: 5px 9px; border-radius: var(--radius-pill); font: 600 11px/1 var(--font-mono); letter-spacing: .06em; color: var(--muted); transition: color var(--motion-hover), background-color var(--motion-hover); }
+.lv-lang {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(2.25rem, auto));
+  gap: 2px;
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--control);
+}
+.lv-lang a {
+  display: grid;
+  place-items: center;
+  min-width: 2.25rem;
+  padding: 6px 8px;
+  border-radius: 7px;
+  font: 600 11px/1 var(--font-mono);
+  letter-spacing: .04em;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color var(--motion-hover), background-color var(--motion-hover);
+}
 .lv-lang a[aria-current] { background: var(--raised); color: var(--text); }
-.lv-lang a:hover { color: var(--text); }
+.lv-lang a:hover:not([aria-current]) { color: var(--text); background: color-mix(in srgb, var(--raised) 55%, transparent); }
 
 /* sliding indicators (nav underline, gallery tab pill): --x/--w come from JS; caps + stretched middle, transform only */
 .lv-ind { position: absolute; left: 0; pointer-events: none; opacity: 0; transition: opacity var(--motion-base); }

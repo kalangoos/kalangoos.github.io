@@ -7,6 +7,8 @@
       "es": "/es/",
       "fr": "/fr/",
       "de": "/de/",
+      "it": "/it/",
+      "ru": "/ru/",
       "zh-Hans": "/zh/",
       "ja": "/ja/"
     },
@@ -16,6 +18,8 @@
       "es": "/es/download/",
       "fr": "/fr/download/",
       "de": "/de/download/",
+      "it": "/it/download/",
+      "ru": "/ru/download/",
       "zh-Hans": "/zh/download/",
       "ja": "/ja/download/"
     },
@@ -25,6 +29,8 @@
       "es": "/es/security/",
       "fr": "/fr/security/",
       "de": "/de/security/",
+      "it": "/it/security/",
+      "ru": "/ru/security/",
       "zh-Hans": "/zh/security/",
       "ja": "/ja/security/"
     },
@@ -34,6 +40,8 @@
       "es": "/es/docs/",
       "fr": "/fr/docs/",
       "de": "/de/docs/",
+      "it": "/it/docs/",
+      "ru": "/ru/docs/",
       "zh-Hans": "/zh/docs/",
       "ja": "/ja/docs/"
     },
@@ -43,6 +51,8 @@
       "es": "/es/notes/0-1-0/",
       "fr": "/fr/notes/0-1-0/",
       "de": "/de/notes/0-1-0/",
+      "it": "/it/notes/0-1-0/",
+      "ru": "/ru/notes/0-1-0/",
       "zh-Hans": "/zh/notes/0-1-0/",
       "ja": "/ja/notes/0-1-0/"
     },
@@ -52,6 +62,8 @@
       "es": "/es/contribute/",
       "fr": "/fr/contribute/",
       "de": "/de/contribute/",
+      "it": "/it/contribute/",
+      "ru": "/ru/contribute/",
       "zh-Hans": "/zh/contribute/",
       "ja": "/ja/contribute/"
     },
@@ -61,6 +73,8 @@
       "es": "/es/members/",
       "fr": "/fr/members/",
       "de": "/de/members/",
+      "it": "/it/members/",
+      "ru": "/ru/members/",
       "zh-Hans": "/zh/members/",
       "ja": "/ja/members/"
     },
@@ -70,6 +84,8 @@
       "es": "/404.html",
       "fr": "/404.html",
       "de": "/404.html",
+      "it": "/404.html",
+      "ru": "/404.html",
       "zh-Hans": "/404.html",
       "ja": "/404.html"
     }

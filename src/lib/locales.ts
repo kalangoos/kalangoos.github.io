@@ -1,7 +1,7 @@
 import data from '../locales.json';
 
 /** Keep in sync with src/locales.json `locales[].id`. */
-export type LocaleId = 'pt-BR' | 'en' | 'es' | 'fr' | 'de' | 'zh-Hans' | 'ja';
+export type LocaleId = 'pt-BR' | 'en' | 'es' | 'fr' | 'de' | 'it' | 'ru' | 'zh-Hans' | 'ja';
 
 export type Locale = {
   id: LocaleId;

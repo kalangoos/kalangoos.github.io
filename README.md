@@ -37,9 +37,9 @@ Cada página existe em português e em inglês, pré-renderizada (`src/routes.js
 | Contribuir | `/contribuir/` | `/<lang>/contribute/` |
 | Membros (`noindex`) | `/membros/` | `/<lang>/members/` |
 
-Idiomas publicados: ver `src/locales.json`. Prefixos: `en`, `es`, `fr`, `de`, `zh` (zh-Hans), `ja`. Para adicionar um idioma: entrada em `locales.json`, `src/content/<id>.json` (mesmas chaves que pt-BR), `npm run locales`.
+Idiomas publicados: ver `src/locales.json`. Prefixos: `en`, `es`, `fr`, `de`, `it`, `ru`, `zh` (zh-Hans), `ja`. Para adicionar um idioma: entrada em `locales.json`, `src/content/<id>.json` (mesmas chaves que pt-BR), `npm run locales`.
 
-Os arquivos `es`/`fr`/`de`/`zh-Hans`/`ja` começam a partir do inglês (mesma estrutura); revise o texto nativo quando puder. O seletor e o `hreflang` já os publicam.
+Os arquivos de locale novos partem do inglês e vão sendo traduzidos (mesma estrutura); revise o texto nativo quando puder. O seletor e o `hreflang` já os publicam.
 | 404 (bilíngue) | `/404.html` | |
 
 Também saem `sitemap.xml` (com `hreflang`) e `robots.txt`. As páginas que não são o início usam blocos de conteúdo
@@ -155,7 +155,7 @@ legendas e os textos alternativos descrevem o que o quadro mostra; a galeria avi
 ```
 site/
   index.html, en/index.html     páginas (meta, Open Graph, tema antes da pintura)
-  src/content/*.json            texto em vários idiomas (pt-BR, en, es, fr, de, zh-Hans, ja)
+  src/content/*.json            texto em vários idiomas (pt-BR, en, es, fr, de, it, ru, zh-Hans, ja)
   src/landing/                  a página inicial (Landing v3), o menu e o rodapé de todas as páginas, vídeos
   src/sections/                 blocos das outras páginas
   src/members/                  área de membros: página, documentação, especificação, quadro, Markdown, rotas
