@@ -48,6 +48,24 @@
       "published": true
     },
     {
+      "id": "it",
+      "hreflang": "it",
+      "ogLocale": "it_IT",
+      "prefix": "it",
+      "short": "IT",
+      "nativeName": "Italiano",
+      "published": true
+    },
+    {
+      "id": "ru",
+      "hreflang": "ru",
+      "ogLocale": "ru_RU",
+      "prefix": "ru",
+      "short": "RU",
+      "nativeName": "Русский",
+      "published": true
+    },
+    {
       "id": "zh-Hans",
       "hreflang": "zh-Hans",
       "ogLocale": "zh_CN",
@@ -67,11 +85,29 @@
     }
   ],
   "slugs": {
-    "download": { "pt-BR": "baixar", "*": "download" },
-    "security": { "pt-BR": "seguranca", "*": "security" },
-    "docs": { "pt-BR": "documentacao", "*": "docs" },
-    "notes": { "pt-BR": "notas/0-1-0", "*": "notes/0-1-0" },
-    "contribute": { "pt-BR": "contribuir", "*": "contribute" },
-    "members": { "pt-BR": "membros", "*": "members" }
+    "download": {
+      "pt-BR": "baixar",
+      "*": "download"
+    },
+    "security": {
+      "pt-BR": "seguranca",
+      "*": "security"
+    },
+    "docs": {
+      "pt-BR": "documentacao",
+      "*": "docs"
+    },
+    "notes": {
+      "pt-BR": "notas/0-1-0",
+      "*": "notes/0-1-0"
+    },
+    "contribute": {
+      "pt-BR": "contribuir",
+      "*": "contribute"
+    },
+    "members": {
+      "pt-BR": "membros",
+      "*": "members"
+    }
   }
 }

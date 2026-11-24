@@ -205,7 +205,7 @@ test('PKCE: the challenge is the S256 of the verifier that is later sent with th
 });
 
 test('safeNext refuses traversal, backslashes, percent escapes and other origins; accepts both languages', () => {
-  for (const ok of ['/membros/', '/en/members/', '/es/members/', '/zh/members/', '/membros/#/quadro', '/membros/#/telas', '/en/members/#/docs/README.md', '/ja/members/#/docs/README.md']) assert.equal(safeNext(ok), ok);
+  for (const ok of ['/membros/', '/en/members/', '/es/members/', '/it/members/', '/ru/members/', '/zh/members/', '/membros/#/quadro', '/en/members/#/docs/README.md', '/ja/members/#/docs/README.md']) assert.equal(safeNext(ok), ok);
   for (const bad of ['/membros/..', '/membros/../x', '/membros/./', '/en/members/../../x', '/membros/\\evil', '/membros/%0d%0aSet-Cookie:x', '/membros/%2e%2e/', '/membros/%5cevil',
     '/membros/\r\n', '/membros/ x', '/membros/?a=1', '/membros/#a#b', '/membros/#%0d', '/membrosevil', 'membros/', '/\\evil.example', 'javascript:alert(1)'])
     assert.equal(safeNext(bad), '/membros/', JSON.stringify(bad));

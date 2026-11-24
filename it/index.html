@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="it" data-page="home">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>KalangoOS</title>
+    <!--head-->
+    <meta name="theme-color" content="#16171B" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F0F0F5" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script>
+      /* theme before first paint: the visitor's choice, else the system's (dark by default) */
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        /* if the app never starts (script blocked or failed), show everything without the reveal motion */
+        setTimeout(function () {
+          if (!window.__kalangoMounted) d.classList.remove('js');
+        }, 4000);
+        try {
+          var t = localStorage.getItem('kalangoos-theme');
+          if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"><!--app--></div>
+    <script type="module" src="/src/entry.tsx"></script>
+  </body>
+</html>
