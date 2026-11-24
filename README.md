@@ -27,15 +27,19 @@ CSS gerado dos tokens.
 
 Cada página existe em português e em inglês, pré-renderizada (`src/routes.json` tem os caminhos):
 
-| Página | pt-BR | en |
+| Página | pt-BR | outros (en, es, fr, de, zh, ja) |
 |---|---|---|
-| Início (landing, desenhada no FigCraft) | `/` | `/en/` |
-| Baixar e instalar, com somas de verificação | `/baixar/` | `/en/download/` |
-| Segurança e privacidade | `/seguranca/` | `/en/security/` |
-| Documentação | `/documentacao/` | `/en/docs/` |
-| Notas da versão 0.1.0 | `/notas/0-1-0/` | `/en/notes/0-1-0/` |
-| Contribuir | `/contribuir/` | `/en/contribute/` |
-| Área de membros (`noindex`, fora do sitemap) | `/membros/` | `/en/members/` |
+| Início | `/` | `/<lang>/` |
+| Baixar | `/baixar/` | `/<lang>/download/` |
+| Segurança | `/seguranca/` | `/<lang>/security/` |
+| Documentação | `/documentacao/` | `/<lang>/docs/` |
+| Notas 0.1.0 | `/notas/0-1-0/` | `/<lang>/notes/0-1-0/` |
+| Contribuir | `/contribuir/` | `/<lang>/contribute/` |
+| Membros (`noindex`) | `/membros/` | `/<lang>/members/` |
+
+Idiomas publicados: ver `src/locales.json`. Prefixos: `en`, `es`, `fr`, `de`, `zh` (zh-Hans), `ja`. Para adicionar um idioma: entrada em `locales.json`, `src/content/<id>.json` (mesmas chaves que pt-BR), `npm run locales`.
+
+Os arquivos `es`/`fr`/`de`/`zh-Hans`/`ja` começam a partir do inglês (mesma estrutura); revise o texto nativo quando puder. O seletor e o `hreflang` já os publicam.
 | 404 (bilíngue) | `/404.html` | |
 
 Também saem `sitemap.xml` (com `hreflang`) e `robots.txt`. As páginas que não são o início usam blocos de conteúdo
@@ -123,7 +127,7 @@ outro endereço, troque `origin` em `src/routes.json` (o `og:image` também usa 
 
 ## Verificações
 
-- `npm run build` confere que `en.json` tem as chaves de `pt-BR.json`, faz o typecheck (site e Worker), roda os testes
+- `npm run build` confere que cada locale publicado espelha `pt-BR.json`, faz o typecheck (site e Worker), roda os testes
   (`npm test`) e pré-renderiza. A pré-renderização falha se o `VITE_AUTH_URL` não for vazio nem `https://auth.kalangoos.com`.
 - Pedidos a terceiros: as páginas do site não fazem nenhum (fontes de pacotes `@fontsource/*`, OFL, no
   `ATTRIBUTION.md`; sem scripts de análise; os links externos são `<a>` para o GitHub). Com o login ligado, **toda**
@@ -135,7 +139,7 @@ outro endereço, troque `origin` em `src/routes.json` (o `og:image` também usa 
 
 ## Conteúdo
 
-Todo o texto está em `src/content/pt-BR.json` e `src/content/en.json`, com a mesma estrutura (o TypeScript
+Todo o texto está em `src/content/<locale>.json` (lista em `src/locales.json`), com a mesma estrutura (o TypeScript
 reclama se faltar uma chave no inglês). Cada afirmação tem origem no repositório: `docs/VISAO.md`,
 `docs/PLANO.md`, `docs/ARQUITETURA.md`, `docs/SEGURANCA.md`, `docs/REQUISITOS.md`, `docs/LANCAMENTO.md`,
 `docs/LICENCAS.md` e `docs/telas.md`. O que é plano aparece como "planejado" ou "a confirmar".
@@ -151,7 +155,7 @@ legendas e os textos alternativos descrevem o que o quadro mostra; a galeria avi
 ```
 site/
   index.html, en/index.html     páginas (meta, Open Graph, tema antes da pintura)
-  src/content/*.json            texto em pt-BR e inglês
+  src/content/*.json            texto em vários idiomas (pt-BR, en, es, fr, de, zh-Hans, ja)
   src/landing/                  a página inicial (Landing v3), o menu e o rodapé de todas as páginas, vídeos
   src/sections/                 blocos das outras páginas
   src/members/                  área de membros: página, documentação, especificação, quadro, Markdown, rotas

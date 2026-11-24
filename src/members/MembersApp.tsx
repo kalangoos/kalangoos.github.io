@@ -169,7 +169,7 @@ function GateCard({ kind, login, checking, notice }: { kind: 'login' | 'outside'
         )}
         <hr />
         {kind === 'outside' ? (
-          <a className="gate__foot is-muted" href={`https://docs.github.com/${lang === 'en' ? 'en' : 'pt'}/organizations/managing-membership-in-your-organization`}>
+          <a className="gate__foot is-muted" href={`https://docs.github.com/${lang === 'pt-BR' ? 'pt' : 'en'}/organizations/managing-membership-in-your-organization`}>
             {M.outside.why}
             <Icon name="chev" className="icon icon--sm" />
           </a>

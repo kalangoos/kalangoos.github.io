@@ -1,13 +1,77 @@
 {
   "origin": "https://kalangoos.com",
   "pages": {
-    "home": { "pt-BR": "/", "en": "/en/" },
-    "download": { "pt-BR": "/baixar/", "en": "/en/download/" },
-    "security": { "pt-BR": "/seguranca/", "en": "/en/security/" },
-    "docs": { "pt-BR": "/documentacao/", "en": "/en/docs/" },
-    "notes": { "pt-BR": "/notas/0-1-0/", "en": "/en/notes/0-1-0/" },
-    "contribute": { "pt-BR": "/contribuir/", "en": "/en/contribute/" },
-    "members": { "pt-BR": "/membros/", "en": "/en/members/" },
-    "notfound": { "pt-BR": "/404.html", "en": "/404.html" }
+    "home": {
+      "pt-BR": "/",
+      "en": "/en/",
+      "es": "/es/",
+      "fr": "/fr/",
+      "de": "/de/",
+      "zh-Hans": "/zh/",
+      "ja": "/ja/"
+    },
+    "download": {
+      "pt-BR": "/baixar/",
+      "en": "/en/download/",
+      "es": "/es/download/",
+      "fr": "/fr/download/",
+      "de": "/de/download/",
+      "zh-Hans": "/zh/download/",
+      "ja": "/ja/download/"
+    },
+    "security": {
+      "pt-BR": "/seguranca/",
+      "en": "/en/security/",
+      "es": "/es/security/",
+      "fr": "/fr/security/",
+      "de": "/de/security/",
+      "zh-Hans": "/zh/security/",
+      "ja": "/ja/security/"
+    },
+    "docs": {
+      "pt-BR": "/documentacao/",
+      "en": "/en/docs/",
+      "es": "/es/docs/",
+      "fr": "/fr/docs/",
+      "de": "/de/docs/",
+      "zh-Hans": "/zh/docs/",
+      "ja": "/ja/docs/"
+    },
+    "notes": {
+      "pt-BR": "/notas/0-1-0/",
+      "en": "/en/notes/0-1-0/",
+      "es": "/es/notes/0-1-0/",
+      "fr": "/fr/notes/0-1-0/",
+      "de": "/de/notes/0-1-0/",
+      "zh-Hans": "/zh/notes/0-1-0/",
+      "ja": "/ja/notes/0-1-0/"
+    },
+    "contribute": {
+      "pt-BR": "/contribuir/",
+      "en": "/en/contribute/",
+      "es": "/es/contribute/",
+      "fr": "/fr/contribute/",
+      "de": "/de/contribute/",
+      "zh-Hans": "/zh/contribute/",
+      "ja": "/ja/contribute/"
+    },
+    "members": {
+      "pt-BR": "/membros/",
+      "en": "/en/members/",
+      "es": "/es/members/",
+      "fr": "/fr/members/",
+      "de": "/de/members/",
+      "zh-Hans": "/zh/members/",
+      "ja": "/ja/members/"
+    },
+    "notfound": {
+      "pt-BR": "/404.html",
+      "en": "/404.html",
+      "es": "/404.html",
+      "fr": "/404.html",
+      "de": "/404.html",
+      "zh-Hans": "/404.html",
+      "ja": "/404.html"
+    }
   }
 }

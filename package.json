@@ -3,17 +3,18 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "Site do KalangoOS (kalangoos.com): React + Vite, páginas estáticas pré-renderizadas em pt-BR e inglês.",
+  "description": "Site do KalangoOS (kalangoos.com): React + Vite, p\u00e1ginas est\u00e1ticas pr\u00e9-renderizadas em v\u00e1rios idiomas.",
   "scripts": {
     "dev": "vite",
     "tokens": "node scripts/gen-tokens.mjs",
     "springs": "node scripts/gen-springs.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p worker/tsconfig.json",
-    "build": "npm run check:content && npm run check:placeholders && npm run typecheck && npm test && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "build": "npm run locales && npm run check:content && npm run check:placeholders && npm run typecheck && npm test && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 18900",
     "check:content": "node scripts/check-content.mjs",
     "check:placeholders": "node scripts/check-content.mjs --placeholders",
-    "test": "node --test tests/*.test.ts"
+    "test": "node --test tests/*.test.ts",
+    "locales": "node scripts/gen-routes.mjs && node scripts/gen-locale-html.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "5.3.0",

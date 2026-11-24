@@ -195,7 +195,7 @@ a.lv-card:hover::after, .lv-app:hover::after, .lv-step:hover::after { opacity: 1
 .lv-nav__list a { display: block; padding: 8px 0; font: 500 15px/1.2 var(--lv-font); color: var(--text2); transition: color var(--motion-hover); }
 .lv-nav__list a:hover, .lv-nav__list a[aria-current] { color: var(--text); }
 .lv-nav__tools { display: flex; align-items: center; gap: 10px; margin-left: auto; }
-.lv-lang { display: flex; padding: 3px; border-radius: var(--radius-pill); background: var(--control); }
+.lv-lang { display: flex; flex-wrap: wrap; gap: 2px; max-width: min(100%, 22rem); padding: 3px; border-radius: var(--radius-pill); background: var(--control); }
 .lv-lang a { padding: 5px 9px; border-radius: var(--radius-pill); font: 600 11px/1 var(--font-mono); letter-spacing: .06em; color: var(--muted); transition: color var(--motion-hover), background-color var(--motion-hover); }
 .lv-lang a[aria-current] { background: var(--raised); color: var(--text); }
 .lv-lang a:hover { color: var(--text); }

@@ -27,7 +27,16 @@ const SESSION_TTL = 8 * 60 * 60;
 // read:org: see the person's membership of the organisation; read:project: read the organisation's projects
 export const SCOPES = 'read:org read:project';
 const MEMBERS_PATH = '/membros/';
-const MEMBERS_PATH_EN = '/en/members/';
+/** Members area in every published locale (kept in sync with src/locales.json prefixes). */
+const MEMBERS_PATHS = [
+  '/membros/',
+  '/en/members/',
+  '/es/members/',
+  '/fr/members/',
+  '/de/members/',
+  '/zh/members/',
+  '/ja/members/',
+] as const;
 const MAX_PAGES = 5; // 500 project items
 
 type OAuthState = { state: string; verifier: string; next: string };
@@ -110,7 +119,7 @@ export function safeNext(next: string | null): string {
   if (!next) return MEMBERS_PATH;
   const [path = '', ...frag] = next.split('#');
   const ok =
-    (path.startsWith(MEMBERS_PATH) || path.startsWith(MEMBERS_PATH_EN)) &&
+    MEMBERS_PATHS.some((p) => path.startsWith(p)) &&
     /^\/[A-Za-z0-9._~\/-]*$/.test(path) &&
     !path.includes('//') &&
     !/(^|\/)\.\.?(\/|$)/.test(path) &&

@@ -172,7 +172,7 @@ function groupTree(shots: DesignShot[]): [string, [string, DesignShot[]][]][] {
 function groupLabel(group: string, lang: string): string {
   const entry = GROUP_LABELS[group];
   if (!entry) return group;
-  return lang === 'en' ? entry.en : entry.pt;
+  return lang === 'pt-BR' ? entry.pt : entry.en;
 }
 
 function productLabel(product: string): string {

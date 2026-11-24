@@ -1,0 +1,77 @@
+{
+  "origin": "https://kalangoos.com",
+  "default": "pt-BR",
+  "locales": [
+    {
+      "id": "pt-BR",
+      "hreflang": "pt-BR",
+      "ogLocale": "pt_BR",
+      "prefix": "",
+      "short": "PT",
+      "nativeName": "Português",
+      "published": true
+    },
+    {
+      "id": "en",
+      "hreflang": "en",
+      "ogLocale": "en_US",
+      "prefix": "en",
+      "short": "EN",
+      "nativeName": "English",
+      "published": true
+    },
+    {
+      "id": "es",
+      "hreflang": "es",
+      "ogLocale": "es_ES",
+      "prefix": "es",
+      "short": "ES",
+      "nativeName": "Español",
+      "published": true
+    },
+    {
+      "id": "fr",
+      "hreflang": "fr",
+      "ogLocale": "fr_FR",
+      "prefix": "fr",
+      "short": "FR",
+      "nativeName": "Français",
+      "published": true
+    },
+    {
+      "id": "de",
+      "hreflang": "de",
+      "ogLocale": "de_DE",
+      "prefix": "de",
+      "short": "DE",
+      "nativeName": "Deutsch",
+      "published": true
+    },
+    {
+      "id": "zh-Hans",
+      "hreflang": "zh-Hans",
+      "ogLocale": "zh_CN",
+      "prefix": "zh",
+      "short": "中文",
+      "nativeName": "简体中文",
+      "published": true
+    },
+    {
+      "id": "ja",
+      "hreflang": "ja",
+      "ogLocale": "ja_JP",
+      "prefix": "ja",
+      "short": "JA",
+      "nativeName": "日本語",
+      "published": true
+    }
+  ],
+  "slugs": {
+    "download": { "pt-BR": "baixar", "*": "download" },
+    "security": { "pt-BR": "seguranca", "*": "security" },
+    "docs": { "pt-BR": "documentacao", "*": "docs" },
+    "notes": { "pt-BR": "notas/0-1-0", "*": "notes/0-1-0" },
+    "contribute": { "pt-BR": "contribuir", "*": "contribute" },
+    "members": { "pt-BR": "membros", "*": "members" }
+  }
+}
